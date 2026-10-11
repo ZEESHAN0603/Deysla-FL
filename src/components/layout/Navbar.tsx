@@ -442,10 +442,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() => setActiveDropdown(null)}
                       className="group p-3 rounded-xl border border-slate-200/80 hover:border-black hover:bg-neutral-50 transition-all flex items-start gap-3 bg-white"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-slate-50 border border-slate-100 p-2 flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-slate-50 border border-slate-100 p-1 flex items-center justify-center shrink-0 overflow-hidden">
                         <img
-                          src={selectedProductCat.icon}
-                          alt=""
+                          src={prod.image || selectedProductCat.icon}
+                          alt={prod.imageAlt || prod.name}
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = selectedProductCat.icon;
+                          }}
                           className="w-full h-full object-contain"
                         />
                       </div>

@@ -1,0 +1,1172 @@
+[
+  {
+    "catalogId": "net-trx-40g-qsfp",
+    "catalogName": "40GBASE QSFP Optical Transceiver",
+    "subcategoryId": "transceivers",
+    "brand": "CISCO COMPATIBLE",
+    "zipPath": "Products/01-Networking/06-Transceivers/40gbase-qsfp-optical-transceiver.webp",
+    "zipFilename": "40gbase-qsfp-optical-transceiver.webp",
+    "sha256": "fa7d478abead311bf88492acad75b7c80eaa8861f5d53d9ad70dc88d6f782168"
+  },
+  {
+    "catalogId": "net-trx-module-v1",
+    "catalogName": "Optical Transceiver Module — Variant 1",
+    "subcategoryId": "transceivers",
+    "brand": "HUAWEI / FINISAR",
+    "zipPath": "Products/01-Networking/06-Transceivers/optical-transceiver-module-01.jpg",
+    "zipFilename": "optical-transceiver-module-01.jpg",
+    "sha256": "1d5ddfd3d46e2a90096deb59c127a69a3f7d290cc7b2c281e127aff6aad43161"
+  },
+  {
+    "catalogId": "net-rtr-cisco-897vaw",
+    "catalogName": "Cisco 897VAW Wireless Router",
+    "subcategoryId": "routers",
+    "brand": "CISCO",
+    "zipPath": "Products/01-Networking/02-Routers/cisco-897vaw-wireless-router.webp",
+    "zipFilename": "cisco-897vaw-wireless-router.webp",
+    "sha256": "71b9e5b7739fbf27895cd9c5926ce06663ed5718c8c436fbfa6a5aeb8aae8c5a"
+  },
+  {
+    "catalogId": "net-ind-managed-switch",
+    "catalogName": "Managed Industrial Ethernet Switch",
+    "subcategoryId": "industrial-networking",
+    "brand": "HIRSCHMANN",
+    "zipPath": "Products/01-Networking/05-Industrial-Networking/managed-industrial-ethernet-switch.jpg",
+    "zipFilename": "managed-industrial-ethernet-switch.jpg",
+    "sha256": "375a691918dff233645b8aed0144eb5ac41e221167eb1af0b7332bd694f58a45"
+  },
+  {
+    "catalogId": "net-sw-compact",
+    "catalogName": "Compact Ethernet Switch",
+    "subcategoryId": "network-switches",
+    "brand": "CISCO / DEYSLA",
+    "zipPath": "Products/01-Networking/01-Network-Switches/compact-ethernet-switch.webp",
+    "zipFilename": "compact-ethernet-switch.webp",
+    "sha256": "a17995dff1600b2929a281194306eba65da31f8276212a1398367ad8408df419"
+  },
+  {
+    "catalogId": "net-sw-dlink",
+    "catalogName": "D-Link Ethernet Switch",
+    "subcategoryId": "network-switches",
+    "brand": "D-LINK",
+    "zipPath": "Products/01-Networking/01-Network-Switches/d-link-ethernet-switch.webp",
+    "zipFilename": "d-link-ethernet-switch.webp",
+    "sha256": "734173ffeafe32ef697d0fd9823876f1a6312d6b5754a6b5ffae0c9e6a56830f"
+  },
+  {
+    "catalogId": "net-sw-hikvision",
+    "catalogName": "Hikvision Ethernet Switch",
+    "subcategoryId": "network-switches",
+    "brand": "HIKVISION",
+    "zipPath": "Products/01-Networking/01-Network-Switches/hikvision-ethernet-switch.webp",
+    "zipFilename": "hikvision-ethernet-switch.webp",
+    "sha256": "f91c8f37a095b9e838b6b223d686bb9474fd991c2b5e64a5aa7b932052ce5d79"
+  },
+  {
+    "catalogId": "net-sw-compact-v2",
+    "catalogName": "Compact Network Switch — Variant 2",
+    "subcategoryId": "network-switches",
+    "brand": "NETGEAR / CISCO",
+    "zipPath": "Products/01-Networking/01-Network-Switches/compact-network-switch-02.webp",
+    "zipFilename": "compact-network-switch-02.webp",
+    "sha256": "e6e7f91034ecf887a71abdef1014144ce329eb249015c46f813bf14198c1d8f2"
+  },
+  {
+    "catalogId": "net-sw-rackmount",
+    "catalogName": "Rackmount Network Switch",
+    "subcategoryId": "network-switches",
+    "brand": "CISCO Catalyst",
+    "zipPath": "Products/01-Networking/01-Network-Switches/rackmount-network-switch-01.webp",
+    "zipFilename": "rackmount-network-switch-01.webp",
+    "sha256": "bf397ef3040f72aef67687c6e700f8e2c39536da16a39b04e67866ca55e7bc2e"
+  },
+  {
+    "catalogId": "net-sw-rackmount-uplink",
+    "catalogName": "Rackmount Network Switch with Uplink Ports",
+    "subcategoryId": "network-switches",
+    "brand": "HUAWEI / ARUBA",
+    "zipPath": "Products/01-Networking/01-Network-Switches/rackmount-network-switch-with-uplink-ports.webp",
+    "zipFilename": "rackmount-network-switch-with-uplink-ports.webp",
+    "sha256": "0d326f6488bba95931c5b1f77e910155df31fe52680d98cc78a7d3bf7f30166a"
+  },
+  {
+    "catalogId": "net-rtr-enterprise-appliance",
+    "catalogName": "Enterprise Network Appliance — Exact model unconfirmed",
+    "subcategoryId": "routers",
+    "brand": "CISCO / HUAWEI",
+    "zipPath": "Products/01-Networking/02-Routers/enterprise-network-appliance.webp",
+    "zipFilename": "enterprise-network-appliance.webp",
+    "sha256": "242b14ed0fe0d00441d991ddc3d98ec3eed682a83b1d025c913adb69cb522d14"
+  },
+  {
+    "catalogId": "net-rtr-wireless-antennas",
+    "catalogName": "Wireless Router with External Antennas",
+    "subcategoryId": "routers",
+    "brand": "MIKROTIK / HUAWEI",
+    "zipPath": "Products/01-Networking/02-Routers/wireless-router-with-external-antennas.webp",
+    "zipFilename": "wireless-router-with-external-antennas.webp",
+    "sha256": "8c183eeb294bd70d9d49c3aabc66f2bc1dfa864a2ec99c18375d4fc8b3597bb1"
+  },
+  {
+    "catalogId": "net-wl-white-ap",
+    "catalogName": "White Wireless Access Point",
+    "subcategoryId": "wireless-solutions",
+    "brand": "ARUBA / CISCO",
+    "zipPath": "Products/01-Networking/03-Wireless-Solutions/white-wireless-access-point.webp",
+    "zipFilename": "white-wireless-access-point.webp",
+    "sha256": "e6c7be8800428499df65584773ea275bf7f20d809df2808aa53c01ac17327493"
+  },
+  {
+    "catalogId": "net-wl-ceiling-mount-ap",
+    "catalogName": "Ceiling-Mount Wireless Access Point",
+    "subcategoryId": "wireless-solutions",
+    "brand": "RUIJIE / ARUBA",
+    "zipPath": "Products/01-Networking/03-Wireless-Solutions/ceiling-mount-wireless-access-point.webp",
+    "zipFilename": "ceiling-mount-wireless-access-point.webp",
+    "sha256": "fd4bc4f00c89b2b257bedacca7f5c23d40539c7f54f32ce7523da29e9abd7658"
+  },
+  {
+    "catalogId": "net-wl-outdoor-bridge-pair",
+    "catalogName": "Outdoor Wireless Bridge Pair",
+    "subcategoryId": "wireless-solutions",
+    "brand": "MIKROTIK / UBIQUITI",
+    "zipPath": "Products/01-Networking/03-Wireless-Solutions/outdoor-wireless-bridge-pair.webp",
+    "zipFilename": "outdoor-wireless-bridge-pair.webp",
+    "sha256": "02a134fecc0a2f102c00f90ceccb246a646002e3f9af8decd691dddaf52751d6"
+  },
+  {
+    "catalogId": "net-mc-compact-fiber",
+    "catalogName": "Compact Ethernet-to-Fiber Media Converter",
+    "subcategoryId": "media-converters",
+    "brand": "COMMERCIAL SERIES",
+    "zipPath": "Products/01-Networking/04-Media-Converters/compact-ethernet-fiber-media-converter.webp",
+    "zipFilename": "compact-ethernet-fiber-media-converter.webp",
+    "sha256": "326314ad020647cfa9fada28b6eefaeed4ae959782b21dcc6ef9891c494cdb0e"
+  },
+  {
+    "catalogId": "net-mc-variant-2",
+    "catalogName": "Ethernet-to-Fiber Media Converter — Variant 2",
+    "subcategoryId": "media-converters",
+    "brand": "TPLINK / CISCO",
+    "zipPath": "Products/01-Networking/04-Media-Converters/ethernet-fiber-media-converter-02.webp",
+    "zipFilename": "ethernet-fiber-media-converter-02.webp",
+    "sha256": "99f0d59a56b5e194d77978efce028811ff28d680193bf918933fa4a173694aa3"
+  },
+  {
+    "catalogId": "net-mc-blue-gigabit",
+    "catalogName": "Blue Gigabit Media Converter",
+    "subcategoryId": "media-converters",
+    "brand": "TRANSCEIVER SERIES",
+    "zipPath": "Products/01-Networking/04-Media-Converters/blue-gigabit-media-converter.webp",
+    "zipFilename": "blue-gigabit-media-converter.webp",
+    "sha256": "cf01c2d346edcb189c8d94e502b20f950dca8bdf76e93829cfb5a3946e85bb59"
+  },
+  {
+    "catalogId": "net-mc-industrial-fiber",
+    "catalogName": "Industrial Ethernet-to-Fiber Media Converter",
+    "subcategoryId": "media-converters",
+    "brand": "ADVANTECH / HIRSCHMANN",
+    "zipPath": "Products/01-Networking/04-Media-Converters/industrial-ethernet-fiber-media-converter.webp",
+    "zipFilename": "industrial-ethernet-fiber-media-converter.webp",
+    "sha256": "8906ac4439fab0baf85a345277c634363f8429fe0b25a3c46e8eeb0ac997a8d9"
+  },
+  {
+    "catalogId": "net-trx-module-v2",
+    "catalogName": "Optical Transceiver Module — Variant 2",
+    "subcategoryId": "transceivers",
+    "brand": "CISCO",
+    "zipPath": "Products/01-Networking/06-Transceivers/optical-transceiver-module-02.webp",
+    "zipFilename": "optical-transceiver-module-02.webp",
+    "sha256": "3e9f6ba4a8b113e4d874bcceab143e696d35faaee43da394d2af72a3b4cb535b"
+  },
+  {
+    "catalogId": "net-trx-module-v3",
+    "catalogName": "Optical Transceiver Module — Variant 3",
+    "subcategoryId": "transceivers",
+    "brand": "EXCEL / OEM",
+    "zipPath": "Products/01-Networking/06-Transceivers/optical-transceiver-module-03.webp",
+    "zipFilename": "optical-transceiver-module-03.webp",
+    "sha256": "be816e2de21504bea5b6673e1db6384c63b2051280375d3ee22fff7b154ce229"
+  },
+  {
+    "catalogId": "net-trx-module-v4",
+    "catalogName": "Optical Transceiver Module — Variant 4",
+    "subcategoryId": "transceivers",
+    "brand": "CORNING",
+    "zipPath": "Products/01-Networking/06-Transceivers/optical-transceiver-module-04.webp",
+    "zipFilename": "optical-transceiver-module-04.webp",
+    "sha256": "8844def74a89e7c05323d08d7099756c25029a76028d4e51bce3d840129aeec2"
+  },
+  {
+    "catalogId": "net-trx-highspeed-module",
+    "catalogName": "High-Speed Optical Transceiver Module",
+    "subcategoryId": "transceivers",
+    "brand": "BROCADE / CISCO",
+    "zipPath": "Products/01-Networking/06-Transceivers/high-speed-optical-transceiver-module.webp",
+    "zipFilename": "high-speed-optical-transceiver-module.webp",
+    "sha256": "d9792560a33bd9ee82cb92798272bb1b60df827f99a3fd217ce793f7bf403146"
+  },
+  {
+    "catalogId": "net-sw-desktop-v1",
+    "catalogName": "Desktop Ethernet Switch — Variant 1",
+    "subcategoryId": "network-switches",
+    "brand": "RUIJIE / REYEE",
+    "zipPath": "Products/01-Networking/01-Network-Switches/desktop-ethernet-switch-01.webp",
+    "zipFilename": "desktop-ethernet-switch-01.webp",
+    "sha256": "d01d4eeb3a60e4c02b7eab0b6982f589ff9e11394ca5b55415c45411c7b43889"
+  },
+  {
+    "catalogId": "net-sw-desktop-v2",
+    "catalogName": "Desktop Ethernet Switch — Variant 2",
+    "subcategoryId": "network-switches",
+    "brand": "MIKROTIK",
+    "zipPath": "Products/01-Networking/01-Network-Switches/desktop-ethernet-switch-02.webp",
+    "zipFilename": "desktop-ethernet-switch-02.webp",
+    "sha256": "4a8bc9b61872e59322adc4df03de28a4897d108bb37cf90b2da993fda761a3c3"
+  },
+  {
+    "catalogId": "net-ind-tk525l-switch",
+    "catalogName": "TK525L Industrial Network Switch",
+    "subcategoryId": "industrial-networking",
+    "brand": "WELOTEC",
+    "zipPath": "Products/01-Networking/05-Industrial-Networking/tk525l-industrial-network-switch.webp",
+    "zipFilename": "tk525l-industrial-network-switch.webp",
+    "sha256": "53117cd8c737937fcb2f046471d443ab4e7417be353b9162df80475768bf185b"
+  },
+  {
+    "catalogId": "net-ind-switch-v1",
+    "catalogName": "Industrial Ethernet Switch — Variant 1",
+    "subcategoryId": "industrial-networking",
+    "brand": "ADVANTECH",
+    "zipPath": "Products/01-Networking/05-Industrial-Networking/industrial-ethernet-switch-01.jpg",
+    "zipFilename": "industrial-ethernet-switch-01.jpg",
+    "sha256": "63cb556c9e7127c981ea42094b2eb6219db6d752586af7eec1e2ea6befe23227"
+  },
+  {
+    "catalogId": "net-ind-multiport-switch",
+    "catalogName": "Multiport Industrial Ethernet Switch",
+    "subcategoryId": "industrial-networking",
+    "brand": "PHOENIX CONTACT",
+    "zipPath": "Products/01-Networking/05-Industrial-Networking/industrial-ethernet-switches-multiport.jpg",
+    "zipFilename": "industrial-ethernet-switches-multiport.jpg",
+    "sha256": "a3989c922dd03858a17d1e15943313b5789c34620ac6421c4f6d274ff525dfc7"
+  },
+  {
+    "catalogId": "net-sw-netgear-gs108",
+    "catalogName": "NETGEAR GS108 Unmanaged Switch",
+    "subcategoryId": "network-switches",
+    "brand": "NETGEAR",
+    "zipPath": "Products/01-Networking/01-Network-Switches/netgear-gs108-unmanaged-switch.webp",
+    "zipFilename": "netgear-gs108-unmanaged-switch.webp",
+    "sha256": "027f53cd79d5d461af6820a2b689acebfb6a06c0948623e1434d565437842e93"
+  },
+  {
+    "catalogId": "net-rtr-huawei-5g-cpe-pro",
+    "catalogName": "Huawei 5G CPE Pro Router",
+    "subcategoryId": "routers",
+    "brand": "HUAWEI",
+    "zipPath": "Products/01-Networking/02-Routers/huawei-5g-cpe-pro-router.jpg",
+    "zipFilename": "huawei-5g-cpe-pro-router.jpg",
+    "sha256": "d45ca8c130aa0910f63015f2c1d414c3ac2c718ca1f90dcb2058406d50aba6cf"
+  },
+  {
+    "catalogId": "net-ind-managed-poe-fiber",
+    "catalogName": "Managed PoE Industrial Fiber Switch",
+    "subcategoryId": "industrial-networking",
+    "brand": "WEIDMÜLLER / HIRSCHMANN",
+    "zipPath": "Products/01-Networking/05-Industrial-Networking/managed-poe-industrial-fiber-switch.jpg",
+    "zipFilename": "managed-poe-industrial-fiber-switch.jpg",
+    "sha256": "9698705c8a4e22c70f82e9763751d462752fd44a863a2b1db67e21488c1b84c0"
+  },
+  {
+    "catalogId": "sec-thm-thermal-camera",
+    "catalogName": "Handheld Thermal Imaging Camera",
+    "subcategoryId": "cctv-surveillance",
+    "brand": "FLIR / HIKMICRO",
+    "zipPath": "Products/02-Security-Systems/01-CCTV/handheld-thermal-imaging-camera.jpg",
+    "zipFilename": "handheld-thermal-imaging-camera.jpg",
+    "sha256": "0f0605a85e13339b7135dd9971c6b65395878a3d585d8783380a78c62437ee0b"
+  },
+  {
+    "catalogId": "fs-det-belden-alarm-cable",
+    "catalogName": "Belden Fire-Alarm Cable Family",
+    "subcategoryId": "fire-detection-and-alarm",
+    "brand": "BELDEN",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/01-Fire-Detection-and-Alarm/fire-alarm-cable-family.webp",
+    "zipFilename": "fire-alarm-cable-family.webp",
+    "sha256": "cc1c08c91e544611df20acbf6ddf7e070e70ea2024173837fc7c5eb318232a92"
+  },
+  {
+    "catalogId": "sec-cctv-hikvision-dome",
+    "catalogName": "Hikvision Dome CCTV Camera",
+    "subcategoryId": "cctv-surveillance",
+    "brand": "HIKVISION",
+    "zipPath": "Products/02-Security-Systems/01-CCTV/hikvision-dome-cctv-camera.webp",
+    "zipFilename": "hikvision-dome-cctv-camera.webp",
+    "sha256": "670519bbe4d32d3be1aba889546262654e4c3ad67af407ee1590e4f2878a65cf"
+  },
+  {
+    "catalogId": "sec-cctv-dahua-dome",
+    "catalogName": "Dahua Dome CCTV Camera",
+    "subcategoryId": "cctv-surveillance",
+    "brand": "DAHUA",
+    "zipPath": "Products/02-Security-Systems/01-CCTV/dahua-dome-cctv-camera.webp",
+    "zipFilename": "dahua-dome-cctv-camera.webp",
+    "sha256": "ffcbe41f8d811c815c2e23ecfcb3eb8f04f2ec342478e329817852770aa7e128"
+  },
+  {
+    "catalogId": "sec-cctv-hikvision-bullet",
+    "catalogName": "Hikvision Bullet CCTV Camera",
+    "subcategoryId": "cctv-surveillance",
+    "brand": "HIKVISION",
+    "zipPath": "Products/02-Security-Systems/01-CCTV/hikvision-bullet-cctv-camera.webp",
+    "zipFilename": "hikvision-bullet-cctv-camera.webp",
+    "sha256": "f724c7376ef94ac3f80faecdf5c0106fbaff5b1df3c01b37d2aea1ecc9b92a8a"
+  },
+  {
+    "catalogId": "sec-cctv-ptz-speed-dome",
+    "catalogName": "PTZ Speed Dome CCTV Camera",
+    "subcategoryId": "cctv-surveillance",
+    "brand": "AXIS / HIKVISION",
+    "zipPath": "Products/02-Security-Systems/01-CCTV/ptz-speed-dome-cctv-camera.webp",
+    "zipFilename": "ptz-speed-dome-cctv-camera.webp",
+    "sha256": "1710073f3e95380a02940cad31c1c75d48c915b939382b8ec8f661b22b4d01e5"
+  },
+  {
+    "catalogId": "sec-cctv-nvr",
+    "catalogName": "Network Video Recorder (NVR)",
+    "subcategoryId": "cctv-surveillance",
+    "brand": "HIKVISION / DAHUA",
+    "zipPath": "Products/02-Security-Systems/01-CCTV/network-video-recorder-nvr.webp",
+    "zipFilename": "network-video-recorder-nvr.webp",
+    "sha256": "765c521706e87c741bcea7af0de0cfef84afd5411475d52e33b6681008f2c8f0"
+  },
+  {
+    "catalogId": "sec-cctv-monitoring-display",
+    "catalogName": "Multi-Camera Monitoring Display",
+    "subcategoryId": "cctv-surveillance",
+    "brand": "SAMSUNG / LG COMMERCIAL",
+    "zipPath": "Products/02-Security-Systems/01-CCTV/multi-camera-monitoring-display.webp",
+    "zipFilename": "multi-camera-monitoring-display.webp",
+    "sha256": "a54593fc189630f0319462b458451fd335b5b0d4e0a22ae8d6ecdd2b22bb2d2b"
+  },
+  {
+    "catalogId": "sec-ac-biometric-terminal",
+    "catalogName": "Biometric Time Attendance Terminal",
+    "subcategoryId": "access-control",
+    "brand": "ZKTECO / SUPREMA",
+    "zipPath": "Products/02-Security-Systems/02-Access-Control/biometric-time-attendance-terminal.webp",
+    "zipFilename": "biometric-time-attendance-terminal.webp",
+    "sha256": "2597bed079c231b1742c61cb7da0412d133fe6b1b57bb24101b820a12ecaf250"
+  },
+  {
+    "catalogId": "sec-ac-card-reader",
+    "catalogName": "Access Card Reader Terminal",
+    "subcategoryId": "access-control",
+    "brand": "HID GLOBAL",
+    "zipPath": "Products/02-Security-Systems/02-Access-Control/access-card-reader-terminal.webp",
+    "zipFilename": "access-card-reader-terminal.webp",
+    "sha256": "043f671af642de4ed80c85023fb439d598d4b9e1ff91e54e23124b2edc81e8f7"
+  },
+  {
+    "catalogId": "sec-ac-fingerprint-reader",
+    "catalogName": "Fingerprint Access Control Reader",
+    "subcategoryId": "access-control",
+    "brand": "SUPREMA",
+    "zipPath": "Products/02-Security-Systems/02-Access-Control/fingerprint-access-control-reader.webp",
+    "zipFilename": "fingerprint-access-control-reader.webp",
+    "sha256": "a24e8901cc6d5a050ed126755967ef912885f49e9690c57a3077f35593111711"
+  },
+  {
+    "catalogId": "sec-ac-door-keypad",
+    "catalogName": "Door Access Control Keypad",
+    "subcategoryId": "access-control",
+    "brand": "ZKTECO / HID",
+    "zipPath": "Products/02-Security-Systems/02-Access-Control/door-access-control-keypad.webp",
+    "zipFilename": "door-access-control-keypad.webp",
+    "sha256": "c8d735545914684e0f4a357ca757965853502b89b45bf9f8c79bf946fae7fb58"
+  },
+  {
+    "catalogId": "sec-cab-coaxial-connectors",
+    "catalogName": "Coaxial Video Cable Connectors",
+    "subcategoryId": "security-cabling",
+    "brand": "BELDEN / COMMSCOPE",
+    "zipPath": "Products/02-Security-Systems/03-Security-Cabling/coaxial-video-cable-connectors.webp",
+    "zipFilename": "coaxial-video-cable-connectors.webp",
+    "sha256": "fe895565463e159f0810bc6d082cdde22eeaedf8eb638f7cbddfafec73dd65bf"
+  },
+  {
+    "catalogId": "sec-cab-security-reel",
+    "catalogName": "Coaxial Security Cable Reel",
+    "subcategoryId": "security-cabling",
+    "brand": "BELDEN",
+    "zipPath": "Products/02-Security-Systems/03-Security-Cabling/coaxial-security-cable-reel.webp",
+    "zipFilename": "coaxial-security-cable-reel.webp",
+    "sha256": "110f9b10ca0d2bb1af8810c70fa2dcae7f8ba8fbe5e97185a5dbc71db67384a8"
+  },
+  {
+    "catalogId": "sec-cs-fortinet-firewall",
+    "catalogName": "Fortinet Enterprise Firewall",
+    "subcategoryId": "cybersecurity-systems",
+    "brand": "FORTINET",
+    "zipPath": "Products/02-Security-Systems/04-Cybersecurity/fortinet-enterprise-firewall.webp",
+    "zipFilename": "fortinet-enterprise-firewall.webp",
+    "sha256": "27f0654e2043c6f2edb3a412cff4982444a343165259f9741fff58291de03509"
+  },
+  {
+    "catalogId": "sec-av-eset-endpoint",
+    "catalogName": "ESET Endpoint Antivirus",
+    "subcategoryId": "antivirus-edr",
+    "brand": "ESET",
+    "zipPath": "Products/02-Security-Systems/05-Antivirus/eset-endpoint-antivirus-product.webp",
+    "zipFilename": "eset-endpoint-antivirus-product.webp",
+    "sha256": "f1d8bd7842e45daa738a59809382e3b4dc0b49cdd3984f785aa72944be0b3098"
+  },
+  {
+    "catalogId": "sec-av-quickheal-server",
+    "catalogName": "Quick Heal Server Edition Antivirus",
+    "subcategoryId": "antivirus-edr",
+    "brand": "QUICK HEAL",
+    "zipPath": "Products/02-Security-Systems/05-Antivirus/quick-heal-server-antivirus-edition.jpg",
+    "zipFilename": "quick-heal-server-antivirus-edition.jpg",
+    "sha256": "bd3cae01b20c2cd45967683bc9259f247e64518869f1e8c159966fda00b6f929"
+  },
+  {
+    "catalogId": "sec-cab-rg59-siamese",
+    "catalogName": "RG59 Siamese CCTV Cable",
+    "subcategoryId": "security-cabling",
+    "brand": "BELDEN / COMMSCOPE",
+    "zipPath": "Products/02-Security-Systems/03-Security-Cabling/rg59-siamese-cctv-cable.png",
+    "zipFilename": "rg59-siamese-cctv-cable.png",
+    "sha256": "b2a25ec333a88e173077ac672630e15440b7e25859fcaafdc87cf3c59d483e3d"
+  },
+  {
+    "catalogId": "sec-cctv-cpplus-nvr",
+    "catalogName": "CP Plus Network Video Recorder (NVR)",
+    "subcategoryId": "cctv-surveillance",
+    "brand": "CP PLUS",
+    "zipPath": "Products/02-Security-Systems/01-CCTV/cp-plus-network-video-recorder.webp",
+    "zipFilename": "cp-plus-network-video-recorder.webp",
+    "sha256": "5bee2ce489f58265b5d00af9c8f10ae95a4182c44c88710244c496ca7ca8a9e7"
+  },
+  {
+    "catalogId": "sec-ac-boom-barrier",
+    "catalogName": "Automatic Boom Barrier Parking Access System",
+    "subcategoryId": "access-control",
+    "brand": "CAME / FAAC / ZKTECO",
+    "zipPath": "Products/02-Security-Systems/02-Access-Control/automatic-boom-barrier-parking-access-system.avif",
+    "zipFilename": "automatic-boom-barrier-parking-access-system.avif",
+    "sha256": "eea0f0961c1f29a0bbec0ab8b33a3e6805f76b4310e9674b493bf9a41e46f758"
+  },
+  {
+    "catalogId": "sec-cs-gateprotect-firewall",
+    "catalogName": "Gateprotect Network Firewall Appliance",
+    "subcategoryId": "cybersecurity-systems",
+    "brand": "GATEPROTECT / ROHDE & SCHWARZ",
+    "zipPath": "Products/02-Security-Systems/04-Cybersecurity/gateprotect-network-firewall-appliance.jpg",
+    "zipFilename": "gateprotect-network-firewall-appliance.jpg",
+    "sha256": "3e3ac55bb9f9117b3041c1a4aae7a31bb1248188815b4d30cbfbfe3d584a3905"
+  },
+  {
+    "catalogId": "cbl-cab-36u-outdoor",
+    "catalogName": "Weatherproof 36U Outdoor Telecom Cabinet",
+    "subcategoryId": "network-cabinets",
+    "brand": "GREAT LAKES",
+    "zipPath": "Products/04-Structured-Cabling/05-Network-Cabinets/weatherproof-36u-outdoor-telecom-cabinet.avif",
+    "zipFilename": "weatherproof-36u-outdoor-telecom-cabinet.avif",
+    "sha256": "9b7134807ee597ca9bac75979f631edd09377cebe6c6b6a982ac398eab2a46d5"
+  },
+  {
+    "catalogId": "cbl-pp-cat6a-management",
+    "catalogName": "Cat6A Patch Panel with Cable Management",
+    "subcategoryId": "patch-panels",
+    "brand": "PANDUIT",
+    "zipPath": "Products/04-Structured-Cabling/03-Patch-Panels/cat6a-patch-panel-cable-management.jpg",
+    "zipFilename": "cat6a-patch-panel-cable-management.jpg",
+    "sha256": "7987e55d85e3b66f1e1d391b6d495af4837277574a3a908ced0b76e7dcae422e"
+  },
+  {
+    "catalogId": "cbl-cu-cat6-white",
+    "catalogName": "Cat6 Ethernet Patch Cable — White",
+    "subcategoryId": "copper-cables",
+    "brand": "EXCEL / COMMSCOPE",
+    "zipPath": "Products/04-Structured-Cabling/01-Copper-Cables/cat6-ethernet-patch-cable-white.jpg",
+    "zipFilename": "cat6-ethernet-patch-cable-white.jpg",
+    "sha256": "f467b3750af7de5116d5c09130d6971d975c51976e42a4c5a2d07a516e5adc6d"
+  },
+  {
+    "catalogId": "cbl-cu-cat6a-shielded",
+    "catalogName": "Cat6A Shielded Copper Cable",
+    "subcategoryId": "copper-cables",
+    "brand": "PANDUIT / CORNING",
+    "zipPath": "Products/04-Structured-Cabling/01-Copper-Cables/cat6a-shielded-copper-cable-cutaway.jpg",
+    "zipFilename": "cat6a-shielded-copper-cable-cutaway.jpg",
+    "sha256": "7f86e06b5bf9c0bcc13e733f70ec414fc2024fa5d5bc01bdc76e52dcf6a66a4b"
+  },
+  {
+    "catalogId": "cbl-cu-cat6a-blue-patch",
+    "catalogName": "Cat6A Blue Ethernet Patch Cable",
+    "subcategoryId": "copper-cables",
+    "brand": "EXCEL CABLING",
+    "zipPath": "Products/04-Structured-Cabling/01-Copper-Cables/cat6a-blue-ethernet-patch-cable.webp",
+    "zipFilename": "cat6a-blue-ethernet-patch-cable.webp",
+    "sha256": "5c883ec7ef7bdfaf727c65891645e8c8e81aafc1459005b73381f1027151a1a5"
+  },
+  {
+    "catalogId": "cbl-pp-cat6a-shielded-24p",
+    "catalogName": "Cat6A Shielded 24-Port Patch Panel",
+    "subcategoryId": "patch-panels",
+    "brand": "EXCEL CABLING",
+    "zipPath": "Products/04-Structured-Cabling/03-Patch-Panels/cat6a-shielded-24-port-patch-panel.avif",
+    "zipFilename": "cat6a-shielded-24-port-patch-panel.avif",
+    "sha256": "fba8b74ff760e3eded95f8985655c57ed31bf015206549dfd782fcef2335d37f"
+  },
+  {
+    "catalogId": "cbl-cab-great-lakes-wall",
+    "catalogName": "Great Lakes Wall-Mount Network Cabinet",
+    "subcategoryId": "network-cabinets",
+    "brand": "GREAT LAKES",
+    "zipPath": "Products/04-Structured-Cabling/05-Network-Cabinets/wall-mount-network-cabinet.webp",
+    "zipFilename": "wall-mount-network-cabinet.webp",
+    "sha256": "e3aa96f4e8a1576f28b016567692f805949ac07a5b981f22647dc3169f39c898"
+  },
+  {
+    "catalogId": "cbl-adp-hdmi-coupler",
+    "catalogName": "HDMI Female-to-Female Coupler",
+    "subcategoryId": "keystone-jacks",
+    "brand": "COMMERCIAL SERIES",
+    "zipPath": "Products/04-Structured-Cabling/04-Keystone-Jacks-and-Adapters/hdmi-female-to-female-coupler.jpg",
+    "zipFilename": "hdmi-female-to-female-coupler.jpg",
+    "sha256": "edc1351d72518c59992cd5df8345129c3d3df66c5db792ebe694a0a763fbc050"
+  },
+  {
+    "catalogId": "cbl-cu-cat5e-blue",
+    "catalogName": "Cat5e Blue Ethernet Cable",
+    "subcategoryId": "copper-cables",
+    "brand": "COMMSCOPE",
+    "zipPath": "Products/04-Structured-Cabling/01-Copper-Cables/cat5e-blue-ethernet-cable.webp",
+    "zipFilename": "cat5e-blue-ethernet-cable.webp",
+    "sha256": "2c733053c3bb6b8a3ad64a0692788165048ed97593bea0bc4098f5b0394a73dc"
+  },
+  {
+    "catalogId": "cbl-cu-black-patch-cables",
+    "catalogName": "Black Ethernet Patch Cables",
+    "subcategoryId": "copper-cables",
+    "brand": "LEGRAND",
+    "zipPath": "Products/04-Structured-Cabling/01-Copper-Cables/black-ethernet-patch-cables.webp",
+    "zipFilename": "black-ethernet-patch-cables.webp",
+    "sha256": "a1123771042b9c82ef7bc1e2a36c69da29fc332582ad4ab9f1a2408060381d87"
+  },
+  {
+    "catalogId": "cbl-cu-twisted-pair",
+    "catalogName": "Copper Twisted-Pair Cable",
+    "subcategoryId": "copper-cables",
+    "brand": "3A CORNING",
+    "zipPath": "Products/04-Structured-Cabling/01-Copper-Cables/copper-twisted-pair-cable-cutaway.webp",
+    "zipFilename": "copper-twisted-pair-cable-cutaway.webp",
+    "sha256": "1a84f1bdbad2547e34bf6873c0c689b9e3787d7673292c2d6aeab4b62f9e8408"
+  },
+  {
+    "catalogId": "cbl-cu-shielded-ethernet",
+    "catalogName": "Shielded Ethernet Cable",
+    "subcategoryId": "copper-cables",
+    "brand": "R&M / PANDUIT",
+    "zipPath": "Products/04-Structured-Cabling/01-Copper-Cables/shielded-ethernet-cable-cutaway.webp",
+    "zipFilename": "shielded-ethernet-cable-cutaway.webp",
+    "sha256": "741e3f472b2fadf628a7e7278a46a125a04b574a951c2d9d3560d0d3ffa8262f"
+  },
+  {
+    "catalogId": "cbl-fo-yellow-patch-cord",
+    "catalogName": "Yellow Fiber Optic Patch Cord",
+    "subcategoryId": "fiber-optic-cables",
+    "brand": "CORNING",
+    "zipPath": "Products/04-Structured-Cabling/02-Fiber-Optic-Cables/yellow-fiber-optic-patch-cord.webp",
+    "zipFilename": "yellow-fiber-optic-patch-cord.webp",
+    "sha256": "26fcab02fd1783c465c3949f246c1a378ddf6a8dbea359decd471f7cd040aca5"
+  },
+  {
+    "catalogId": "cbl-fo-orange-patch-cable",
+    "catalogName": "Orange Fiber Optic Patch Cable",
+    "subcategoryId": "fiber-optic-cables",
+    "brand": "COMMSCOPE",
+    "zipPath": "Products/04-Structured-Cabling/02-Fiber-Optic-Cables/orange-fiber-optic-patch-cable.webp",
+    "zipFilename": "orange-fiber-optic-patch-cable.webp",
+    "sha256": "0b303ba6a7f2c65e812da2b359320529de7f2292af18721459a934ba1b9049a8"
+  },
+  {
+    "catalogId": "cbl-fo-multicore-cable",
+    "catalogName": "Multicore Fiber Optic Cable",
+    "subcategoryId": "fiber-optic-cables",
+    "brand": "CORNING",
+    "zipPath": "Products/04-Structured-Cabling/02-Fiber-Optic-Cables/multicore-fiber-optic-cable.webp",
+    "zipFilename": "multicore-fiber-optic-cable.webp",
+    "sha256": "842de826c6773723badf5415afe40c0aa847d357173272080a54c2005c36d4ab"
+  },
+  {
+    "catalogId": "cbl-fo-black-cable",
+    "catalogName": "Black Fiber Optic Cable",
+    "subcategoryId": "fiber-optic-cables",
+    "brand": "NEXANS",
+    "zipPath": "Products/04-Structured-Cabling/02-Fiber-Optic-Cables/black-fiber-optic-cable-cutaway.webp",
+    "zipFilename": "black-fiber-optic-cable-cutaway.webp",
+    "sha256": "72e0c0bb41072f5cdf70120233ad5ab3821f08537b3e13fd0a75412fec448fdb"
+  },
+  {
+    "catalogId": "cbl-fo-industrial-cable",
+    "catalogName": "Industrial Fiber Optic Cable",
+    "subcategoryId": "fiber-optic-cables",
+    "brand": "BELDEN / PHOENIX CONTACT",
+    "zipPath": "Products/04-Structured-Cabling/02-Fiber-Optic-Cables/industrial-fiber-optic-cable-cutaway.webp",
+    "zipFilename": "industrial-fiber-optic-cable-cutaway.webp",
+    "sha256": "d37088f43c4ab7440a64fc077de3e63f24d4ba1d179c2a8edb92a700f357137e"
+  },
+  {
+    "catalogId": "cbl-acc-splice-tray",
+    "catalogName": "Fiber Optic Splice Tray",
+    "subcategoryId": "fiber-optic-cables",
+    "brand": "CORNING / COMMSCOPE",
+    "zipPath": "Products/04-Structured-Cabling/02-Fiber-Optic-Cables/fiber-optic-splice-tray.webp",
+    "zipFilename": "fiber-optic-splice-tray.webp",
+    "sha256": "ab8487a579213602acf939e940bd146081f27c3282989313cadb39a1c0553aab"
+  },
+  {
+    "catalogId": "cbl-pp-rackmount-panel",
+    "catalogName": "Rackmount Network Patch Panel",
+    "subcategoryId": "patch-panels",
+    "brand": "COMMSCOPE",
+    "zipPath": "Products/04-Structured-Cabling/03-Patch-Panels/rackmount-network-patch-panel.webp",
+    "zipFilename": "rackmount-network-patch-panel.webp",
+    "sha256": "4954365d5b721e663a189728c7d1708d57b8ce94b3474b5bfaf9deb1672b03fe"
+  },
+  {
+    "catalogId": "cbl-ks-ethernet-jacks",
+    "catalogName": "Ethernet Keystone Jacks",
+    "subcategoryId": "keystone-jacks",
+    "brand": "PANDUIT / LEGRAND",
+    "zipPath": "Products/04-Structured-Cabling/04-Keystone-Jacks-and-Adapters/ethernet-keystone-jacks.webp",
+    "zipFilename": "ethernet-keystone-jacks.webp",
+    "sha256": "428722a6fc6654a4eda04d72069df136b26c341c5085a6a0061b69e021c52743"
+  },
+  {
+    "catalogId": "cbl-adp-blue-fiber-adapter",
+    "catalogName": "Blue Fiber Optic Adapter",
+    "subcategoryId": "keystone-jacks",
+    "brand": "CORNING",
+    "zipPath": "Products/04-Structured-Cabling/04-Keystone-Jacks-and-Adapters/blue-fiber-optic-adapter.webp",
+    "zipFilename": "blue-fiber-optic-adapter.webp",
+    "sha256": "cbe6b5a8fad7627b56c42826b95e57ea633aa4760609b65d77ee1e488d542d71"
+  },
+  {
+    "catalogId": "cbl-cab-floor-standing",
+    "catalogName": "Floor-Standing Network Cabinet",
+    "subcategoryId": "network-cabinets",
+    "brand": "TOTEN / VERTIV",
+    "zipPath": "Products/04-Structured-Cabling/05-Network-Cabinets/floor-standing-network-cabinet.webp",
+    "zipFilename": "floor-standing-network-cabinet.webp",
+    "sha256": "fa816a4894156f31dae4bdaf252c146f07a947826f3f9badb33c882c3070d736"
+  },
+  {
+    "catalogId": "cbl-cab-open-frame-rack",
+    "catalogName": "Open-Frame Network Rack",
+    "subcategoryId": "network-cabinets",
+    "brand": "PANDUIT / CHATSWORTH",
+    "zipPath": "Products/04-Structured-Cabling/05-Network-Cabinets/open-frame-network-rack.webp",
+    "zipFilename": "open-frame-network-rack.webp",
+    "sha256": "977bc048a411cf5dbb097af9a09448eb7a98297fff2b67c50f3cc988b3aeb4a6"
+  },
+  {
+    "catalogId": "cbl-cab-datacenter-install",
+    "catalogName": "Data-Center Rack Cabinet Installation",
+    "subcategoryId": "network-cabinets",
+    "brand": "VERTIV / SCHNEIDER",
+    "zipPath": "Products/04-Structured-Cabling/05-Network-Cabinets/data-center-rack-cabinet-installation.webp",
+    "zipFilename": "data-center-rack-cabinet-installation.webp",
+    "sha256": "31784feb9ea2051c6e6f1626de153cbad65a9b65e0328ec7be196d7d8946f7dd"
+  },
+  {
+    "catalogId": "cbl-adp-rj45-couplers",
+    "catalogName": "RJ45 Modular Jack Couplers",
+    "subcategoryId": "keystone-jacks",
+    "brand": "EXCEL CABLING",
+    "zipPath": "Products/04-Structured-Cabling/04-Keystone-Jacks-and-Adapters/rj45-modular-jack-couplers.jpg",
+    "zipFilename": "rj45-modular-jack-couplers.jpg",
+    "sha256": "f297dd6213661210c7fc16345200f0caf32141e07592db88890157f7210e7353"
+  },
+  {
+    "catalogId": "disp-touchscreen-kiosk",
+    "catalogName": "Digital Information Touchscreen Kiosk",
+    "subcategoryId": "digital-signage",
+    "brand": "COMMERCIAL SERIES",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/04-Kiosk-Accessories/digital-information-touchscreen-kiosk.avif",
+    "zipFilename": "digital-information-touchscreen-kiosk.avif",
+    "sha256": "30f62accae227be9609ed91fff0f6b3851c0e75356c75c0e44e9db9070f82a4e"
+  },
+  {
+    "catalogId": "prn-thermal-label",
+    "catalogName": "Thermal Label Printer",
+    "subcategoryId": "printers-and-supplies",
+    "brand": "ZEBRA",
+    "zipPath": "Products/06-Servers-and-Computing/03-Printers-and-Supplies/thermal-label-printer.jpg",
+    "zipFilename": "thermal-label-printer.jpg",
+    "sha256": "3a956a605be2f50fcbd39ac8ec143a16821ea2c4f4b3b5e76464c5e0ea6ae0e6"
+  },
+  {
+    "catalogId": "disp-doit-vision-led-wall",
+    "catalogName": "DOIT-VISION Fine-Pitch LED Video Wall",
+    "subcategoryId": "led-displays",
+    "brand": "DOIT-VISION",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/01-LED-Displays/fine-pitch-led-video-wall.webp",
+    "zipFilename": "fine-pitch-led-video-wall.webp",
+    "sha256": "88242df1549ada74ed1c5841c840ef05e9cd242161943f9419d996963282ab28"
+  },
+  {
+    "catalogId": "pc-mini-computer",
+    "catalogName": "Compact Mini PC Computer",
+    "subcategoryId": "desktops-and-laptops",
+    "brand": "HP / LENOVO THINKCENTRE",
+    "zipPath": "Products/06-Servers-and-Computing/02-Desktops-and-Laptops/compact-mini-pc-computers.webp",
+    "zipFilename": "compact-mini-pc-computers.webp",
+    "sha256": "dc11e06e6dfaf508b29724208dd51a51f09f6f0ee21d0ea78a088dcf05440a13"
+  },
+  {
+    "catalogId": "prn-thermal-receipt",
+    "catalogName": "Thermal Receipt Printer",
+    "subcategoryId": "printers-and-supplies",
+    "brand": "EPSON",
+    "zipPath": "Products/06-Servers-and-Computing/03-Printers-and-Supplies/thermal-receipt-printer.webp",
+    "zipFilename": "thermal-receipt-printer.webp",
+    "sha256": "9b94749a706339f30e51916df6810935344cdff3afe74dea870e75e2f308ee32"
+  },
+  {
+    "catalogId": "disp-large-led-wall",
+    "catalogName": "Large-Format LED Video Wall",
+    "subcategoryId": "led-displays",
+    "brand": "SAMSUNG / LG",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/01-LED-Displays/large-format-led-video-wall.webp",
+    "zipFilename": "large-format-led-video-wall.webp",
+    "sha256": "6b8c1547f42e1dcda5af288c1eb76b4d50932748edf13f86e0c260048fd916b9"
+  },
+  {
+    "catalogId": "disp-floor-standing-signage",
+    "catalogName": "Floor-Standing Digital Signage Displays",
+    "subcategoryId": "digital-signage",
+    "brand": "LG COMMERCIAL",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/02-Digital-Signage/floor-standing-digital-signage-displays.webp",
+    "zipFilename": "floor-standing-digital-signage-displays.webp",
+    "sha256": "34be811719b717f083d7d745abf08b0d76051356aef3d6bb68ac48db782a1f51"
+  },
+  {
+    "catalogId": "disp-outdoor-billboard",
+    "catalogName": "Outdoor Digital Billboard Display",
+    "subcategoryId": "led-displays",
+    "brand": "COMMERCIAL OUTDOOR",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/02-Digital-Signage/outdoor-digital-billboard-display.webp",
+    "zipFilename": "outdoor-digital-billboard-display.webp",
+    "sha256": "677be323b02d48dd7ef5761378866fb4ee6ff3462eb09b73be2604d42b23e6f3"
+  },
+  {
+    "catalogId": "disp-self-service-collection",
+    "catalogName": "Self-Service Kiosk Terminal Collection",
+    "subcategoryId": "kiosk-accessories",
+    "brand": "ZEBRA / CUSTOM POS",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/04-Kiosk-Accessories/self-service-kiosk-terminal-collection.webp",
+    "zipFilename": "self-service-kiosk-terminal-collection.webp",
+    "sha256": "5714ce69a715d67d1527a1d2dd098d8861dd5af57ffd4e9830506b46da423abd"
+  },
+  {
+    "catalogId": "disp-floor-kiosk-v1",
+    "catalogName": "Floor-Standing Self-Service Kiosk",
+    "subcategoryId": "kiosk-accessories",
+    "brand": "CUSTOM KIOSK",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/04-Kiosk-Accessories/floor-standing-self-service-kiosk.webp",
+    "zipFilename": "floor-standing-self-service-kiosk.webp",
+    "sha256": "4a44e44c6c0f7dcbfb87fc083530a5201585c63ec9de340fcbda224ec3564fd8"
+  },
+  {
+    "catalogId": "disp-interactive-touch",
+    "catalogName": "Touchscreen Interactive Display",
+    "subcategoryId": "interactive-displays",
+    "brand": "VIEWSONIC",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/03-Interactive-Displays/touchscreen-interactive-display.webp",
+    "zipFilename": "touchscreen-interactive-display.webp",
+    "sha256": "00379b47a22397e97b2e2022658517abdbab94efa700f64ab0a9eb1e5adbecd4"
+  },
+  {
+    "catalogId": "disp-indoor-led-installation",
+    "catalogName": "Indoor LED Video Wall Installation",
+    "subcategoryId": "led-displays",
+    "brand": "SAMSUNG THE WALL",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/01-LED-Displays/indoor-led-video-wall-installation.jpg",
+    "zipFilename": "indoor-led-video-wall-installation.jpg",
+    "sha256": "4bce2dc0a4b06c09e0ee8779ff3ec9c6715c8a0e4cc4cf6c652347593f846309"
+  },
+  {
+    "catalogId": "disp-floor-kiosk-v2",
+    "catalogName": "Floor-Standing Self-Service Kiosk — Variant 2",
+    "subcategoryId": "kiosk-accessories",
+    "brand": "COMMERCIAL SERIES",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/04-Kiosk-Accessories/floor-standing-self-service-kiosk-02.jpg",
+    "zipFilename": "floor-standing-self-service-kiosk-02.jpg",
+    "sha256": "97b058e21eb49c8c54a95418b18e5271235b8a30dce949fab34a1a4eff75fa2b"
+  },
+  {
+    "catalogId": "disp-conference-display",
+    "catalogName": "Interactive Conference-Room Display",
+    "subcategoryId": "interactive-displays",
+    "brand": "VIEWSONIC / LG",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/03-Interactive-Displays/interactive-conference-room-display.jpg",
+    "zipFilename": "interactive-conference-room-display.jpg",
+    "sha256": "ccef4cde88f84301208c377c7ff3804b11ecbda7c1a6958afb6b13c576d59f26"
+  },
+  {
+    "catalogId": "disp-facade-led",
+    "catalogName": "Building-Facade LED Display",
+    "subcategoryId": "led-displays",
+    "brand": "DOIT-VISION / ARCHITECTURAL",
+    "zipPath": "Products/05-Digital-Displays-and-Kiosks/01-LED-Displays/building-facade-led-display.webp",
+    "zipFilename": "building-facade-led-display.webp",
+    "sha256": "c5a5a0f867707fb5feca1285fea1c60383526454b3607f8101e58059886a8804"
+  },
+  {
+    "catalogId": "pwr-tower-ups-unit",
+    "catalogName": "Tower UPS Unit",
+    "subcategoryId": "ups-and-pdus",
+    "brand": "EATON / APC",
+    "zipPath": "Products/06-Servers-and-Computing/04-UPS-and-PDUs/tower-ups-unit-01.jpg",
+    "zipFilename": "tower-ups-unit-01.jpg",
+    "sha256": "1b0f1c50520dda04e20ad13dac324b827110e0f2ac6dff6e1a3b0356d14c1144"
+  },
+  {
+    "catalogId": "pwr-tower-ups-lcd",
+    "catalogName": "Tower UPS with LCD Display",
+    "subcategoryId": "ups-and-pdus",
+    "brand": "VERTIV LIEBERT",
+    "zipPath": "Products/06-Servers-and-Computing/04-UPS-and-PDUs/tower-ups-with-lcd-display.jpg",
+    "zipFilename": "tower-ups-with-lcd-display.jpg",
+    "sha256": "08f3deb7fcfb364ad234eeee832802586cc2010a6e4693c0fbf059a21c35315e"
+  },
+  {
+    "catalogId": "pwr-500c-1500va-ups",
+    "catalogName": "500C 1500VA Desktop UPS",
+    "subcategoryId": "ups-and-pdus",
+    "brand": "APC BY SCHNEIDER",
+    "zipPath": "Products/06-Servers-and-Computing/04-UPS-and-PDUs/500c-1500va-desktop-ups.webp",
+    "zipFilename": "500c-1500va-desktop-ups.webp",
+    "sha256": "ea377fb206611d931e9aa3cae561a7bb10b7d684708cdb3129e62c5076db065d"
+  },
+  {
+    "catalogId": "prn-colorworks-cartridges",
+    "catalogName": "ColorWorks SJIC35P Ink Cartridges",
+    "subcategoryId": "printers-and-supplies",
+    "brand": "EPSON COLORWORKS",
+    "zipPath": "Products/06-Servers-and-Computing/03-Printers-and-Supplies/colorworks-printer-ink-cartridges.jpg",
+    "zipFilename": "colorworks-printer-ink-cartridges.jpg",
+    "sha256": "68ef012769865865788773bbc62b14f196ea2057c2ea3c9336cd90424cc5760f"
+  },
+  {
+    "catalogId": "srv-dell-t550",
+    "catalogName": "Dell PowerEdge T550 Tower Server",
+    "subcategoryId": "tower-servers",
+    "brand": "DELL TECHNOLOGIES",
+    "zipPath": "Products/06-Servers-and-Computing/01-Servers/dell-poweredge-t550-tower-server.webp",
+    "zipFilename": "dell-poweredge-t550-tower-server.webp",
+    "sha256": "8cb02c9a6e5daa34ce3593ab47ce1a5bf208c8f4c8688a14f438852881031cf7"
+  },
+  {
+    "catalogId": "srv-rackmount-appliance",
+    "catalogName": "Rackmount Server Appliance",
+    "subcategoryId": "rack-servers",
+    "brand": "HPE PROLIANT",
+    "zipPath": "Products/06-Servers-and-Computing/01-Servers/rackmount-server-appliance.webp",
+    "zipFilename": "rackmount-server-appliance.webp",
+    "sha256": "b81c0d88a47d443769e78e4f68db69f888a2552806297af3088e8f0579823214"
+  },
+  {
+    "catalogId": "srv-rackmount-chassis",
+    "catalogName": "Rackmount Server Chassis",
+    "subcategoryId": "rack-servers",
+    "brand": "DELL POWEREDGE R750",
+    "zipPath": "Products/06-Servers-and-Computing/01-Servers/rackmount-server-chassis.webp",
+    "zipFilename": "rackmount-server-chassis.webp",
+    "sha256": "7963b00008faf9ef960727fa8aee51233d263532603b346ac9293cc240a3019a"
+  },
+  {
+    "catalogId": "pc-laptop-computer",
+    "catalogName": "Laptop Computer",
+    "subcategoryId": "desktops-and-laptops",
+    "brand": "DELL LATITUDE / THINKPAD",
+    "zipPath": "Products/06-Servers-and-Computing/02-Desktops-and-Laptops/laptop-computer.webp",
+    "zipFilename": "laptop-computer.webp",
+    "sha256": "4d80d78219bb64106b1873b6c8b194437990a8ad93c3fa2fb0ef1d9afb50b3b1"
+  },
+  {
+    "catalogId": "pc-rugged-field-laptop",
+    "catalogName": "Rugged Field Laptop Computer",
+    "subcategoryId": "desktops-and-laptops",
+    "brand": "PANASONIC TOUGHBOOK",
+    "zipPath": "Products/06-Servers-and-Computing/02-Desktops-and-Laptops/rugged-field-laptop-computer.webp",
+    "zipFilename": "rugged-field-laptop-computer.webp",
+    "sha256": "5b646fffed5d315a83898f2df191e3907e97d04ab2c398ebbc9a37e0d2fcd1ae"
+  },
+  {
+    "catalogId": "prn-canon-inkjet-mfp",
+    "catalogName": "Canon Multifunction Inkjet Printer",
+    "subcategoryId": "printers-and-supplies",
+    "brand": "CANON",
+    "zipPath": "Products/06-Servers-and-Computing/03-Printers-and-Supplies/canon-multifunction-inkjet-printer.webp",
+    "zipFilename": "canon-multifunction-inkjet-printer.webp",
+    "sha256": "7471e8434ec92014ea6f66f802aef07df4c148e385c2cf9573f5d8fb74e8868e"
+  },
+  {
+    "catalogId": "pwr-rackmount-ups",
+    "catalogName": "Rackmount UPS Unit",
+    "subcategoryId": "ups-and-pdus",
+    "brand": "VERTIV / EATON",
+    "zipPath": "Products/06-Servers-and-Computing/04-UPS-and-PDUs/rackmount-ups-unit.webp",
+    "zipFilename": "rackmount-ups-unit.webp",
+    "sha256": "0cdbbce39f15a302e07a8d7270d7a7f8e0af70536d54e7f229a9c08a1f458abc"
+  },
+  {
+    "catalogId": "pwr-rackmount-pdu",
+    "catalogName": "Rackmount Power Distribution Unit",
+    "subcategoryId": "ups-and-pdus",
+    "brand": "SCHNEIDER ELECTRIC",
+    "zipPath": "Products/06-Servers-and-Computing/04-UPS-and-PDUs/rackmount-power-distribution-unit.webp",
+    "zipFilename": "rackmount-power-distribution-unit.webp",
+    "sha256": "a5f7e7ba5ac8b56a538c62d19877f093acb60b7c6e9187579ca6ce717a542ba7"
+  },
+  {
+    "catalogId": "pwr-vertical-pdu",
+    "catalogName": "Vertical Rack Power Distribution Unit",
+    "subcategoryId": "ups-and-pdus",
+    "brand": "VERTIV GEIST",
+    "zipPath": "Products/06-Servers-and-Computing/04-UPS-and-PDUs/vertical-rack-power-distribution-unit.webp",
+    "zipFilename": "vertical-rack-power-distribution-unit.webp",
+    "sha256": "8986d3952aa63199b7ef0d7b7de72afbdc045e61edcffc79bfd0e6b94d721a32"
+  },
+  {
+    "catalogId": "srv-tower-dark-bg",
+    "catalogName": "Tower Server on Dark Background",
+    "subcategoryId": "tower-servers",
+    "brand": "LENOVO THINKSERVER",
+    "zipPath": "Products/06-Servers-and-Computing/01-Servers/tower-server-on-dark-background.png",
+    "zipFilename": "tower-server-on-dark-background.png",
+    "sha256": "29f1f59426b14b1900fad5164c4c776c70a1c873a8e6dd82c18e226d772f0cf3"
+  },
+  {
+    "catalogId": "pc-workstation-monitor",
+    "catalogName": "Desktop Workstation with Monitor",
+    "subcategoryId": "desktops-and-laptops",
+    "brand": "HP Z-SERIES / DELL PRECISION",
+    "zipPath": "Products/06-Servers-and-Computing/02-Desktops-and-Laptops/desktop-workstation-with-monitor.jpg",
+    "zipFilename": "desktop-workstation-with-monitor.jpg",
+    "sha256": "adb4c5a1bf780062c52cab31045c5c21f2f9fc67df41d55e777b0fc237fe5609"
+  },
+  {
+    "catalogId": "srv-datacenter-racks",
+    "catalogName": "Data-Center Server Racks",
+    "subcategoryId": "rack-servers",
+    "brand": "DELL / HPE / CISCO UCS",
+    "zipPath": "Products/06-Servers-and-Computing/01-Servers/data-center-server-racks-environment.jpeg",
+    "zipFilename": "data-center-server-racks-environment.jpeg",
+    "sha256": "1854440f10b661d3e44cf169a446582300b936d2e5749111c291d042bc859046"
+  },
+  {
+    "catalogId": "prn-laser-color-printer",
+    "catalogName": "Laser Color Printer",
+    "subcategoryId": "printers-and-supplies",
+    "brand": "HP COLOR LASERJET",
+    "zipPath": "Products/06-Servers-and-Computing/03-Printers-and-Supplies/laser-color-printer.jpeg",
+    "zipFilename": "laser-color-printer.jpeg",
+    "sha256": "70757545c6ee633d4a1f12c0310eee9d2fbe8a9d27bb2d0ae44663a47b9bce21"
+  },
+  {
+    "catalogId": "ind-cab-shielded-control",
+    "catalogName": "Shielded Industrial Control Cable",
+    "subcategoryId": "control-cables",
+    "brand": "BELDEN",
+    "zipPath": "Products/07-Industrial-Automation/02-Control-Cables/shielded-industrial-control-cable.webp",
+    "zipFilename": "shielded-industrial-control-cable.webp",
+    "sha256": "1958e0c5d385ef971a947a6963b3ccc93a179395772aee2ebc575bdd57324221"
+  },
+  {
+    "catalogId": "ind-ins-pressure-transmitter",
+    "catalogName": "Industrial Pressure Transmitter",
+    "subcategoryId": "instrumentation",
+    "brand": "ABB / HONEYWELL",
+    "zipPath": "Products/07-Industrial-Automation/03-Instrumentation/industrial-pressure-transmitter.webp",
+    "zipFilename": "industrial-pressure-transmitter.webp",
+    "sha256": "0a391da1961d9ac92d64a9e99ac42d65aee73596686fd2a16ed3ad18f8f8c56c"
+  },
+  {
+    "catalogId": "ind-cab-multicore-control",
+    "catalogName": "Multicore Industrial Control Cable",
+    "subcategoryId": "control-cables",
+    "brand": "NEXANS / BELDEN",
+    "zipPath": "Products/07-Industrial-Automation/02-Control-Cables/industrial-control-cable-multicore.webp",
+    "zipFilename": "industrial-control-cable-multicore.webp",
+    "sha256": "ab54d59e12340f5b74e56523df42e62162ccd6a4632d5dabbf98e2525b18b9db"
+  },
+  {
+    "catalogId": "ind-cab-armoured-multicore",
+    "catalogName": "Armoured Multicore Industrial Cable",
+    "subcategoryId": "control-cables",
+    "brand": "NEXANS",
+    "zipPath": "Products/07-Industrial-Automation/02-Control-Cables/armoured-multicore-industrial-cable.webp",
+    "zipFilename": "armoured-multicore-industrial-cable.webp",
+    "sha256": "8b56a201f092732c7cbc16a600804d496f7c136562cfeaf943e85b24bad7c537"
+  },
+  {
+    "catalogId": "ind-cab-power-cable",
+    "catalogName": "Multicore Industrial Power Cable",
+    "subcategoryId": "control-cables",
+    "brand": "ABB / SCHNEIDER",
+    "zipPath": "Products/07-Industrial-Automation/02-Control-Cables/multicore-industrial-power-cable.webp",
+    "zipFilename": "multicore-industrial-power-cable.webp",
+    "sha256": "c8f1b562278de6513b3fe4425a9a587570a41cf489cbb3d9de104e89541beb1e"
+  },
+  {
+    "catalogId": "ind-ins-wall-temp-controller",
+    "catalogName": "Wall-Mounted Digital Temperature Controller",
+    "subcategoryId": "instrumentation",
+    "brand": "SIEMENS",
+    "zipPath": "Products/07-Industrial-Automation/03-Instrumentation/wall-mounted-digital-temperature-controller.webp",
+    "zipFilename": "wall-mounted-digital-temperature-controller.webp",
+    "sha256": "dccf1f8cd76067faabafd0a1d56896ab8b931e01f9b04cb6fa16394804b391a1"
+  },
+  {
+    "catalogId": "ind-ins-flow-meter",
+    "catalogName": "Inline Digital Flow Meter",
+    "subcategoryId": "instrumentation",
+    "brand": "ABB",
+    "zipPath": "Products/07-Industrial-Automation/03-Instrumentation/inline-digital-flow-meter.webp",
+    "zipFilename": "inline-digital-flow-meter.webp",
+    "sha256": "27538e9d3b045255c6e8e0a6c644c75c5136877609ca91b0d848bd760a819c3a"
+  },
+  {
+    "catalogId": "ind-ins-temp-probes",
+    "catalogName": "Industrial Temperature Probes",
+    "subcategoryId": "instrumentation",
+    "brand": "HONEYWELL / ABB",
+    "zipPath": "Products/07-Industrial-Automation/03-Instrumentation/industrial-temperature-probes.jpg",
+    "zipFilename": "industrial-temperature-probes.jpg",
+    "sha256": "2042ec4efedf74781db777e24441456a84630802e5c54e0e153c8a6629a59aa3"
+  },
+  {
+    "catalogId": "ind-ins-process-temp-controller",
+    "catalogName": "Digital Process Temperature Controller",
+    "subcategoryId": "instrumentation",
+    "brand": "PHOENIX CONTACT / SIEMENS",
+    "zipPath": "Products/07-Industrial-Automation/03-Instrumentation/digital-process-temperature-controller.jpg",
+    "zipFilename": "digital-process-temperature-controller.jpg",
+    "sha256": "ad8294bec054cc7b30520d52087ff1678c17e8bf5898df82f374ddcf9f4f38aa"
+  },
+  {
+    "catalogId": "fs-emg-exit-sign",
+    "catalogName": "Illuminated Emergency Exit Sign",
+    "subcategoryId": "emergency-and-fire-safety",
+    "brand": "COMMERCIAL SAFETY",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/03-Emergency-and-Fire-Safety/illuminated-emergency-exit-sign.webp",
+    "zipFilename": "illuminated-emergency-exit-sign.webp",
+    "sha256": "d0e6c392a75ee6028f31c71796ee28394a4ad8c75489dd455e04086b5735efd9"
+  },
+  {
+    "catalogId": "fs-emg-lighting-units",
+    "catalogName": "Emergency Lighting Units",
+    "subcategoryId": "emergency-and-fire-safety",
+    "brand": "NAFFCO / PHILIPS",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/03-Emergency-and-Fire-Safety/emergency-lighting-units.webp",
+    "zipFilename": "emergency-lighting-units.webp",
+    "sha256": "f0e8a31216913d83c055b0164c44a680a99aded582eaf684e4e089925bf0d3ba"
+  },
+  {
+    "catalogId": "fs-emg-safety-blanket",
+    "catalogName": "Fire Safety Blanket",
+    "subcategoryId": "emergency-and-fire-safety",
+    "brand": "NAFFCO SAFETY",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/03-Emergency-and-Fire-Safety/fire-safety-blanket.webp",
+    "zipFilename": "fire-safety-blanket.webp",
+    "sha256": "9088ebb1788a721c1afa9e7efc9deaeac45aa653bc986a4a94523a04bba7a1f3"
+  },
+  {
+    "catalogId": "fs-det-fire-panel",
+    "catalogName": "Fire Alarm Control Panel",
+    "subcategoryId": "fire-detection-and-alarm",
+    "brand": "NOTIFIER / EDWARDS",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/01-Fire-Detection-and-Alarm/fire-alarm-control-panel.webp",
+    "zipFilename": "fire-alarm-control-panel.webp",
+    "sha256": "af626b2d4593581b1ce559be2de9c9b67a1a254ec3d3fbfa60a5e67050fde34b"
+  },
+  {
+    "catalogId": "fs-det-smoke-detector",
+    "catalogName": "Smoke Detector",
+    "subcategoryId": "fire-detection-and-alarm",
+    "brand": "APOLLO / KIDDE",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/01-Fire-Detection-and-Alarm/smoke-detector.webp",
+    "zipFilename": "smoke-detector.webp",
+    "sha256": "4db030c2b2e97943191c70a4574c537a50ae0827bf50c0518daf98035d1bd616"
+  },
+  {
+    "catalogId": "fs-sup-extinguisher-set",
+    "catalogName": "Fire Extinguisher Set",
+    "subcategoryId": "fire-suppression",
+    "brand": "NAFFCO",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/02-Fire-Suppression/fire-extinguisher-set.webp",
+    "zipFilename": "fire-extinguisher-set.webp",
+    "sha256": "327b299a62eee8cb346aaaf04ef70037a47bda810883f0f14fa884cd054025aa"
+  },
+  {
+    "catalogId": "fs-sup-cylinder-bank",
+    "catalogName": "Fire Suppression Cylinder Bank",
+    "subcategoryId": "fire-suppression",
+    "brand": "ANSUL / KIDDE",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/02-Fire-Suppression/fire-suppression-cylinder-bank.webp",
+    "zipFilename": "fire-suppression-cylinder-bank.webp",
+    "sha256": "2858a2a25afc27f75e4e065ed6d729ed0dd054c947131d7c123e0f76ee06ff3c"
+  },
+  {
+    "catalogId": "fs-emg-hose-reel",
+    "catalogName": "Fire Hose Reel",
+    "subcategoryId": "emergency-and-fire-safety",
+    "brand": "NAFFCO",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/03-Emergency-and-Fire-Safety/fire-hose-reel.webp",
+    "zipFilename": "fire-hose-reel.webp",
+    "sha256": "73735f9118be85ee0142cc30621d78e6f1bdbda81f8c41dccfcbca567f78c258"
+  },
+  {
+    "catalogId": "fs-det-red-call-point",
+    "catalogName": "Red Manual Fire Alarm Call Point",
+    "subcategoryId": "fire-detection-and-alarm",
+    "brand": "APOLLO / NOTIFIER",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/01-Fire-Detection-and-Alarm/red-manual-fire-alarm-call-point.jpg",
+    "zipFilename": "red-manual-fire-alarm-call-point.jpg",
+    "sha256": "2af24a568f90c8bf9be82e562ee6cbe411e6d13da2b629d7e8ec7099a84e3003"
+  },
+  {
+    "catalogId": "fs-sup-clean-agent-system",
+    "catalogName": "Clean-Agent Fire Suppression System for Server Rooms",
+    "subcategoryId": "fire-suppression",
+    "brand": "ANSUL INERGEN",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/02-Fire-Suppression/clean-agent-fire-suppression-server-room.jpg",
+    "zipFilename": "clean-agent-fire-suppression-server-room.jpg",
+    "sha256": "889256fc82947f886e7d8c8660502409fd28a0777f1e665f62fd6f910c0fa379"
+  },
+  {
+    "catalogId": "fs-emg-red-hydrant",
+    "catalogName": "Red Fire Hydrant",
+    "subcategoryId": "emergency-and-fire-safety",
+    "brand": "NAFFCO / MUELLER",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/03-Emergency-and-Fire-Safety/red-fire-hydrant.webp",
+    "zipFilename": "red-fire-hydrant.webp",
+    "sha256": "9e5abc1d4e34412f4f18da95e5001ba2bdf3c702373f39010db6861197a4d9e5"
+  },
+  {
+    "catalogId": "fs-det-call-point-v2",
+    "catalogName": "Manual Fire Alarm Call Point — Variant 2",
+    "subcategoryId": "fire-detection-and-alarm",
+    "brand": "KIDDE / EDWARDS",
+    "zipPath": "Products/08-Fire-and-Safety-Systems/01-Fire-Detection-and-Alarm/manual-fire-alarm-call-point.avif",
+    "zipFilename": "manual-fire-alarm-call-point.avif",
+    "sha256": "bf9d3b92706aab1e56d6421dfa68bc085bb6fe406034876e99aa3b36b4cbfbe5"
+  }
+]

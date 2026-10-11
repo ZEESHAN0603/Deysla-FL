@@ -237,8 +237,12 @@ export const ProductDetailPage: React.FC = () => {
                   className="w-full h-full object-contain object-center drop-shadow-2xl group-hover:scale-105 transition-transform duration-500 cursor-zoom-in"
                   onClick={() => setIsZoomModalOpen(true)}
                   onError={(e) => {
-                    const fallback = product.image || "/assets/products/network-switches.webp";
-                    (e.target as HTMLImageElement).src = fallback;
+                    const target = e.target as HTMLImageElement;
+                    if (activeModel && !target.src.endsWith(activeModel.image)) {
+                      target.src = activeModel.image;
+                    } else {
+                      target.src = "/assets/placeholder-product.svg";
+                    }
                   }}
                 />
 
@@ -311,7 +315,12 @@ export const ProductDetailPage: React.FC = () => {
                               alt={m.name}
                               className="w-full h-full object-contain group-hover/btn:scale-105 transition-transform"
                               onError={(e) => {
-                                (e.target as HTMLImageElement).src = product.image;
+                                const target = e.target as HTMLImageElement;
+                                if (!target.src.endsWith(m.image)) {
+                                  target.src = m.image;
+                                } else {
+                                  target.src = "/assets/placeholder-product.svg";
+                                }
                               }}
                             />
                           </div>
@@ -921,7 +930,12 @@ export const ProductDetailPage: React.FC = () => {
                         referrerPolicy="no-referrer"
                         className="w-full h-full max-h-full max-w-full object-contain object-center group-hover/card:scale-105 transition-transform duration-300"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = product.image;
+                          const target = e.target as HTMLImageElement;
+                          if (!target.src.endsWith(item.image)) {
+                            target.src = item.image;
+                          } else {
+                            target.src = "/assets/placeholder-product.svg";
+                          }
                         }}
                       />
                       <div className="absolute top-2.5 start-2.5 flex items-center gap-1.5 z-10">
