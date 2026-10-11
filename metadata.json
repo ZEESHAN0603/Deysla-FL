@@ -1,0 +1,8 @@
+{
+  "name": "Remix DEYSLA IT Solutions",
+  "description": "Leading enterprise IT solutions, infrastructure, cybersecurity, cloud, enterprise networking, and technology partner in KSA, Bahrain, and USA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

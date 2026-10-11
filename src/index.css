@@ -1,0 +1,420 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Libre Baskerville", Georgia, serif;
+  --font-sans: "IBM Plex Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "IBM Plex Serif", Georgia, serif;
+  --font-body: "IBM Plex Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --color-theme-black: #000000;
+  --color-theme-white: #ffffff;
+  --color-theme-dark: #0a0a0a;
+  --color-theme-gray-dark: #262626;
+  --color-theme-gray: #737373;
+  --color-theme-gray-light: #e5e5e5;
+  --color-theme-gray-soft: #f5f5f5;
+}
+
+:root {
+  --theme-gradient-start: #000000;
+  --theme-gradient-mid: #262626;
+  --theme-gradient-end: #000000;
+}
+
+/* IBM Plex Serif: CSS classes */
+.ibm-plex-serif-thin {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.ibm-plex-serif-extralight {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.ibm-plex-serif-light {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ibm-plex-serif-regular {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ibm-plex-serif-medium {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.ibm-plex-serif-semibold {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.ibm-plex-serif-bold {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ibm-plex-serif-thin-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.ibm-plex-serif-extralight-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.ibm-plex-serif-light-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.ibm-plex-serif-regular-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ibm-plex-serif-medium-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.ibm-plex-serif-semibold-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.ibm-plex-serif-bold-italic {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Libre Baskerville: CSS classes */
+.libre-baskerville-regular {
+  font-family: "Libre Baskerville", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-baskerville-medium {
+  font-family: "Libre Baskerville", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.libre-baskerville-semibold {
+  font-family: "Libre Baskerville", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.libre-baskerville-bold {
+  font-family: "Libre Baskerville", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.libre-baskerville-regular-italic {
+  font-family: "Libre Baskerville", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.libre-baskerville-bold-italic {
+  font-family: "Libre Baskerville", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Global Font Defaults:
+   IBM Plex Serif Static for normal text
+   Libre Baskerville for bold text & headings
+*/
+html,
+body,
+input,
+textarea,
+select,
+button {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b,
+th,
+.font-bold,
+.font-semibold,
+.font-extrabold,
+.font-black,
+.font-heading {
+  font-family: "Libre Baskerville", serif;
+  letter-spacing: 0.015em;
+}
+
+/* Arabic RTL Typography: Tajawal & IBM Plex Sans Arabic */
+html[dir="rtl"],
+[dir="rtl"] body,
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select,
+[dir="rtl"] button {
+  font-family: "IBM Plex Sans Arabic", "Tajawal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: 0;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] strong,
+[dir="rtl"] b,
+[dir="rtl"] th,
+[dir="rtl"] .font-bold,
+[dir="rtl"] .font-semibold,
+[dir="rtl"] .font-extrabold,
+[dir="rtl"] .font-black,
+[dir="rtl"] .font-heading {
+  font-family: "Tajawal", "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* RTL Helpers */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+.isolate-ltr {
+  direction: ltr !important;
+  unicode-bidi: isolate;
+  display: inline-block;
+}
+
+/* Enterprise Smooth Scrolling & Containment */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+  min-height: 100vh;
+}
+
+/* Touch momentum scrolling for scrollable containers */
+.overflow-x-auto,
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Global utility for hiding scrollbars while maintaining scroll functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Hide all intrusive sidebars/scrollbars in mobile view */
+@media (max-width: 1024px) {
+  ::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  * {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.03);
+  }
+}
+
+.animate-orbit-slow {
+  animation: orbit-spin 90s linear infinite;
+  transform-origin: 0px 0px;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 4s ease-in-out infinite;
+  transform-origin: 0px 0px;
+}
+
+/* ==========================================================================
+   ARCHITECTURAL MONOCHROME WHITE & BLACK THEME
+   - Primary Surface: Pure White (#FFFFFF) & Crisp Light Grays (#FAFAFA, #F5F5F5)
+   - Accents & Core: Deep Obsidian Black (#000000) & Rich Jet (#0A0A0A)
+   - Secondary Borders: Architectural Neutral Grays (#E5E5E5, #D4D4D4, #262626)
+   ========================================================================== */
+
+/* Clean Pristine Monochrome Page Background */
+.theme-mesh-bg {
+  background-color: #ffffff;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.02) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(0, 0, 0, 0.015) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+.theme-mesh-subtle {
+  background-color: #fafafa;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.015) 0%, transparent 50%);
+}
+
+.theme-mesh-hero-overlay {
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.4) 0%, transparent 70%),
+    radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
+}
+
+/* Signature Solid Black Theme Bar */
+.theme-gradient-bar {
+  background: #000000;
+}
+
+/* Subtle Architectural Diagonal Tone */
+.theme-gradient-diagonal {
+  background: linear-gradient(135deg, #000000 0%, #262626 50%, #404040 100%);
+}
+
+/* Translucent Monochrome Element Fill */
+.theme-gradient-soft-bg {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.05) 100%);
+}
+
+/* Bold Architectural Text Gradient */
+.theme-text-gradient {
+  background: linear-gradient(135deg, #000000 0%, #171717 40%, #525252 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Luminous White Text Gradient for Dark Backgrounds */
+.theme-text-gradient-light {
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #a3a3a3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* High-Contrast Pure Black Action Button */
+.theme-button-primary {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.theme-button-primary:hover {
+  background: #262626;
+  color: #ffffff;
+  border-color: #262626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.25);
+}
+
+.theme-card-ambient {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+}
+
+.theme-card-ambient:hover {
+  border-color: #000000;
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.08);
+}
+
+/* Executive Minimalist Luminous Themed Hero Section */
+.theme-hero-luminous {
+  position: relative;
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Technical micro-grid pattern in clean monochrome */
+.theme-grid-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 0.8px, transparent 0.8px);
+  background-size: 24px 24px;
+}
+
+/* Executive Twilight Themed Hero for Video & Immersive Sections */
+.theme-hero-twilight {
+  position: relative;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Themed subtle indicator badge */
+.theme-pill-gradient {
+  background: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  color: #000000;
+}
+
+
