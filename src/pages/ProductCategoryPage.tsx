@@ -9,6 +9,7 @@ import { getCatalogItemsByCategory } from "../data/productCatalogItems";
 import { useCart } from "../context/CartContext";
 import { usePosterImages } from "../context/PosterImagesContext";
 import { useLanguage } from "../context/LanguageContext";
+import { useCatalog } from "../context/CatalogContext";
 import { CATEGORY_TRANSLATIONS, SERVICE_TRANSLATIONS } from "../i18n/translations";
 
 export const ProductCategoryPage: React.FC = () => {
@@ -16,10 +17,11 @@ export const ProductCategoryPage: React.FC = () => {
   const { addItem, setIsEnquiryModalOpen } = useCart();
   const { getProductImage } = usePosterImages();
   const { dict, lang, formatPath } = useLanguage();
+  const { products, brands, categories, getCatalogItemsByCategory } = useCatalog();
   const [selectedSubcategoryFilter, setSelectedSubcategoryFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const category = PRODUCT_CATEGORIES.find((c) => c.slug === categorySlug);
+  const category = categories.find((c) => c.slug === categorySlug);
 
   if (!category) {
     return <Navigate to={formatPath("/products")} replace />;
@@ -28,8 +30,8 @@ export const ProductCategoryPage: React.FC = () => {
   const categoryName = CATEGORY_TRANSLATIONS[lang]?.[category.id]?.name || category.name;
   const categoryDesc = CATEGORY_TRANSLATIONS[lang]?.[category.id]?.description || category.description;
 
-  const categoryProducts = PRODUCTS_DATA.filter((p) => p.categoryId === category.id);
-  const relevantBrands = BRANDS_DATA.filter((b) => b.categoryIds.includes(category.id));
+  const categoryProducts = products.filter((p) => p.categoryId === category.id);
+  const relevantBrands = brands.filter((b) => b.categoryIds.includes(category.id));
   const relatedServices = SERVICES_DATA.filter((s) => s.relevantCategories.includes(category.id));
   const categoryCatalogItems = getCatalogItemsByCategory(category.id);
 

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "DEY-RFQ-009682",
+    "name": "Sultan Al-Otaibi",
+    "email": "sultan@saudi-datacenter.com",
+    "phone": "+966 54 987 6543",
+    "companyName": "Saudi Cloud Dynamics",
+    "city": "Riyadh",
+    "projectTimeline": "Within 1 Month",
+    "items": [
+      {
+        "id": "cisco-cat9300-48p",
+        "title": "Cisco Catalyst 9300 48-Port PoE+",
+        "brand": "Cisco",
+        "sku": "C9300-48P-A",
+        "quantity": 4,
+        "notes": "Requires rackmount kit"
+      }
+    ],
+    "status": "Pending",
+    "submittedAt": "2026-10-11T16:36:20.100Z",
+    "updatedAt": "2026-10-11T16:36:20.100Z"
+  }
+]

@@ -35,16 +35,16 @@ export const HomeServices: React.FC = () => {
             <Link
               key={service.id}
               to={`/services/${service.slug}`}
-              className="p-5 rounded-2xl border border-neutral-200 bg-white hover:border-black hover:shadow-md transition-all duration-200 flex flex-col justify-between group h-full"
+              className="p-5 rounded-2xl border border-orange-200/50 bg-white hover:border-[#ff8c3a] hover:shadow-md transition-all duration-200 flex flex-col justify-between group h-full"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-mono font-bold text-black bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded-md">
+                  <span className="text-xs font-mono font-bold text-orange-600 bg-orange-50/80 border border-orange-200/60 px-2 py-0.5 rounded-md">
                     {service.number}
                   </span>
-                  <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-black group-hover:translate-x-1 transition-all" />
+                  <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-orange-600 group-hover:translate-x-1 transition-all" />
                 </div>
-                <h3 className="text-sm font-bold text-neutral-900 group-hover:text-black transition-colors mb-2 leading-snug">
+                <h3 className="text-sm font-bold text-neutral-900 group-hover:text-orange-600 transition-colors mb-2 leading-snug">
                   {service.title}
                 </h3>
                 <p className="text-xs text-neutral-600 line-clamp-3 leading-relaxed">
@@ -52,7 +52,7 @@ export const HomeServices: React.FC = () => {
                 </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-neutral-100 flex items-center justify-between text-[11px] font-semibold text-black group-hover:underline">
+              <div className="pt-4 mt-4 border-t border-orange-100 flex items-center justify-between text-[11px] font-semibold text-orange-600 group-hover:underline">
                 <span>View Service</span>
                 <span className="text-neutral-400 font-mono text-[10px]">
                   {service.subServices.length} sub-services

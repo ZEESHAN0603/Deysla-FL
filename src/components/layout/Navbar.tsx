@@ -24,10 +24,9 @@ import { useCart } from "../../context/CartContext";
 import { useLanguage } from "../../context/LanguageContext";
 import { LanguageSwitcher } from "../common/LanguageSwitcher";
 import { CATEGORY_TRANSLATIONS, SERVICE_TRANSLATIONS } from "../../i18n/translations";
-import { PRODUCT_CATEGORIES } from "../../data/productCategories";
-import { PRODUCTS_DATA } from "../../data/products";
-import { BRANDS_DATA } from "../../data/brands";
 import { SERVICES_DATA } from "../../data/services";
+import { PRODUCT_CATEGORIES } from "../../data/productCategories";
+import { useCatalog } from "../../context/CatalogContext";
 
 interface NavbarProps {
   onOpenSearch: () => void;
@@ -118,18 +117,20 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   // Filtered brands for active category in mega menu
-  const brandsForActiveCategory = BRANDS_DATA.filter((b) =>
+  const { products, brands, categories } = useCatalog();
+
+  const brandsForActiveCategory = brands.filter((b) =>
     b.categoryIds.includes(activeBrandCategory)
   );
 
   // Active product category details
-  const selectedProductCat = PRODUCT_CATEGORIES.find((c) => c.id === activeProductCategory) || PRODUCT_CATEGORIES[0];
-  const productsForActiveCategory = PRODUCTS_DATA.filter((p) => p.categoryId === activeProductCategory);
+  const selectedProductCat = categories.find((c) => c.id === activeProductCategory) || categories[0];
+  const productsForActiveCategory = products.filter((p) => p.categoryId === activeProductCategory);
 
   return (
     <header
       ref={dropdownRef}
-      className={`sticky top-0 z-40 w-full transition-all duration-200 bg-white/95 backdrop-blur-md border-b ${
+      className={`sticky top-0 z-40 w-full transition-all duration-200 bg-white/80 backdrop-blur-md border-b ${
         isScrolled
           ? "border-slate-200/90 shadow-xs"
           : "border-slate-200/80"
@@ -176,15 +177,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onMouseEnter={() => setActiveDropdown(link.hasDropdown)}
                     className={`inline-flex items-center justify-center gap-1 h-9 xl:h-10 px-2 xl:px-2.5 2xl:px-3 text-[13px] xl:text-[13.5px] 2xl:text-[14.5px] font-semibold rounded-lg transition-all whitespace-nowrap focus:outline-hidden cursor-pointer ${
                       isActive || isDropdownOpen
-                        ? "text-black bg-neutral-100 font-bold border border-neutral-300 shadow-2xs"
-                        : "text-neutral-700 hover:text-black hover:bg-neutral-100/70"
+                        ? "text-[#ff5e00] bg-orange-50/80 font-bold border border-orange-200/70 shadow-2xs"
+                        : "text-neutral-700 hover:text-[#ff5e00] hover:bg-orange-50/40"
                     }`}
                     aria-expanded={isDropdownOpen}
                   >
                     <span>{link.label}</span>
                     <ChevronDown
                       className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        isDropdownOpen ? "rotate-180 text-black" : "text-neutral-400 group-hover:text-black"
+                        isDropdownOpen ? "rotate-180 text-[#ff5e00]" : "text-neutral-400 group-hover:text-[#ff5e00]"
                       }`}
                     />
                   </button>
@@ -199,8 +200,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onMouseEnter={() => setActiveDropdown(null)}
                 className={`inline-flex items-center justify-center h-9 xl:h-10 px-2 xl:px-2.5 2xl:px-3 text-[13px] xl:text-[13.5px] 2xl:text-[14.5px] font-semibold rounded-lg transition-all whitespace-nowrap ${
                   isActive
-                    ? "text-black bg-neutral-100 font-bold border border-neutral-300 shadow-2xs"
-                    : "text-neutral-700 hover:text-black hover:bg-neutral-100/70"
+                    ? "text-[#ff5e00] bg-orange-50/80 font-bold border border-orange-200/70 shadow-2xs"
+                    : "text-neutral-700 hover:text-[#ff5e00] hover:bg-orange-50/40"
                 }`}
               >
                 {link.label}
@@ -214,7 +215,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Global Search Button */}
           <button
             onClick={onOpenSearch}
-            className="inline-flex items-center justify-center gap-1.5 h-9 sm:h-10 px-2.5 sm:px-3 lg:px-2.5 xl:px-3 text-xs sm:text-sm font-medium text-neutral-800 hover:text-black bg-neutral-100 hover:bg-neutral-200 hover:border-neutral-300 rounded-xl transition-all border border-neutral-200 shadow-2xs focus:outline-hidden cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 h-9 sm:h-10 px-2.5 sm:px-3 lg:px-2.5 xl:px-3 text-xs sm:text-sm font-medium text-neutral-800 hover:text-[#ff5e00] bg-neutral-100 hover:bg-orange-50/60 hover:border-orange-200 rounded-xl transition-all border border-neutral-200 shadow-2xs focus:outline-hidden cursor-pointer"
             title={dict.nav.search}
             aria-label={dict.nav.search}
           >
@@ -239,7 +240,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="hidden lg:inline xl:hidden">{dict.nav.requestQuote}</span>
             <span className="sm:hidden">{dict.nav.requestQuote}</span>
             {totalItemsCount > 0 && (
-              <span className="inline-flex items-center justify-center min-w-[18px] sm:min-w-[20px] h-4.5 sm:h-5 px-1 sm:px-1.5 bg-white text-black text-[11px] sm:text-xs font-black rounded-full tabular-nums shadow-xs border border-neutral-300">
+              <span className="inline-flex items-center justify-center min-w-[18px] sm:min-w-[20px] h-4.5 sm:h-5 px-1 sm:px-1.5 bg-white text-[#ff5e00] text-[11px] sm:text-xs font-black rounded-full tabular-nums shadow-xs border border-orange-200">
                 {totalItemsCount}
               </span>
             )}
@@ -303,13 +304,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => setActiveBrandCategory(cat.id)}
                     className={`w-full flex items-center justify-between px-3 py-2 text-xs font-semibold rounded-lg text-left transition-colors cursor-pointer ${
                       activeBrandCategory === cat.id
-                        ? "bg-neutral-100 text-black font-bold border-l-2 border-black"
+                        ? "bg-orange-50/70 text-orange-600 font-bold border-l-2 border-[#ff8c3a]"
                         : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                     }`}
                   >
                     <span>{getCatName(cat.id, cat.name)}</span>
                     <span className="text-[10px] text-slate-400 tabular-nums">
-                      {BRANDS_DATA.filter((b) => b.categoryIds.includes(cat.id)).length}
+                      {brands.filter((b) => b.categoryIds.includes(cat.id)).length}
                     </span>
                   </button>
                 ))}
@@ -332,7 +333,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       key={brand.id}
                       to={formatPath(`/brands/${brand.slug}`)}
                       onClick={() => setActiveDropdown(null)}
-                      className="group p-3 rounded-xl border border-slate-200/80 hover:border-black hover:bg-neutral-50 transition-all flex flex-col justify-between h-28 bg-white shadow-2xs"
+                      className="group p-3 rounded-xl border border-slate-200/80 hover:border-[#ff8c3a] hover:bg-orange-50/40 transition-all flex flex-col justify-between h-28 bg-white shadow-2xs"
                     >
                       <div className="h-12 w-full flex items-center justify-center p-1 bg-white">
                         <img
@@ -400,14 +401,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => setActiveProductCategory(cat.id)}
                     className={`w-full flex items-center gap-3 px-3 py-2.5 text-xs font-semibold rounded-lg text-left transition-colors cursor-pointer ${
                       activeProductCategory === cat.id
-                        ? "bg-neutral-100 text-black font-bold border-l-2 border-black"
+                        ? "bg-orange-50/70 text-orange-600 font-bold border-l-2 border-[#ff8c3a]"
                         : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
                     }`}
                   >
                     <img src={cat.icon} alt="" className="w-5 h-5 object-contain shrink-0" />
                     <span className="truncate flex-1">{getCatName(cat.id, cat.name)}</span>
                     <span className="text-[10px] text-slate-400 tabular-nums">
-                      {PRODUCTS_DATA.filter((p) => p.categoryId === cat.id).length} types
+                      {products.filter((p) => p.categoryId === cat.id).length} types
                     </span>
                   </button>
                 ))}
@@ -440,7 +441,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       key={prod.id}
                       to={formatPath(`/products/${selectedProductCat.slug}/${prod.slug}`)}
                       onClick={() => setActiveDropdown(null)}
-                      className="group p-3 rounded-xl border border-slate-200/80 hover:border-black hover:bg-neutral-50 transition-all flex items-start gap-3 bg-white"
+                      className="group p-3 rounded-xl border border-slate-200/80 hover:border-[#ff8c3a] hover:bg-orange-50/40 transition-all flex items-start gap-3 bg-white"
                     >
                       <div className="w-10 h-10 rounded-lg bg-slate-50 border border-slate-100 p-1 flex items-center justify-center shrink-0 overflow-hidden">
                         <img
@@ -506,7 +507,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   key={svc.id}
                   to={formatPath(`/services/${svc.slug}`)}
                   onClick={() => setActiveDropdown(null)}
-                  className="p-3.5 rounded-xl border border-slate-200/80 hover:border-black hover:bg-neutral-50 transition-all flex flex-col justify-between group bg-white"
+                  className="p-3.5 rounded-xl border border-slate-200/80 hover:border-[#ff8c3a] hover:bg-orange-50/40 transition-all flex flex-col justify-between group bg-white"
                 >
                   <div>
                     <span className="text-[10px] font-mono font-bold text-black bg-neutral-100 px-1.5 py-0.5 rounded">
@@ -636,11 +637,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setMobileMenuOpen(false)}
                 className={`flex items-center gap-3 px-3.5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-colors ${
                   location.pathname === "/" || location.pathname === "/en" || location.pathname === "/ar"
-                    ? "bg-neutral-100 text-black font-bold border-l-2 border-black shadow-2xs"
+                    ? "bg-orange-50/70 text-orange-600 font-bold border-l-2 border-[#ff8c3a] shadow-2xs"
                     : "text-neutral-800 hover:bg-neutral-50"
                 }`}
               >
-                <Home className="w-4 h-4 text-black shrink-0" />
+                <Home className="w-4 h-4 text-[#ff8c3a] shrink-0" />
                 <span>{dict.nav.home}</span>
               </Link>
 
@@ -649,11 +650,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setMobileMenuOpen(false)}
                 className={`flex items-center gap-3 px-3.5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-colors ${
                   location.pathname.includes("/about")
-                    ? "bg-neutral-100 text-black font-bold border-l-2 border-black shadow-2xs"
+                    ? "bg-orange-50/70 text-orange-600 font-bold border-l-2 border-[#ff8c3a] shadow-2xs"
                     : "text-neutral-800 hover:bg-neutral-50"
                 }`}
               >
-                <Building2 className="w-4 h-4 text-black shrink-0" />
+                <Building2 className="w-4 h-4 text-[#ff8c3a] shrink-0" />
                 <span>{dict.nav.about}</span>
               </Link>
 
@@ -767,7 +768,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </span>
                   <div className="flex items-center gap-1.5">
                     <span className="text-[10px] font-mono font-bold text-neutral-600 bg-neutral-100 px-1.5 py-0.5 rounded-full border border-neutral-200">
-                      {BRANDS_DATA.length}
+                      {brands.length}
                     </span>
                     <ChevronDown
                       className={`w-4 h-4 text-neutral-400 transition-transform duration-200 ${
@@ -787,7 +788,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <ArrowRight className="w-3 h-3 rtl-flip" />
                     </Link>
                     <div className="grid grid-cols-2 gap-1.5 py-1">
-                      {BRANDS_DATA.slice(0, 12).map((b) => (
+                      {brands.slice(0, 12).map((b) => (
                         <Link
                           key={b.id}
                           to={formatPath(`/brands/${b.slug}`)}
@@ -807,11 +808,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setMobileMenuOpen(false)}
                 className={`flex items-center gap-3 px-3.5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-colors ${
                   location.pathname.includes("/projects")
-                    ? "bg-neutral-100 text-black font-bold border-l-2 border-black shadow-2xs"
+                    ? "bg-orange-50/70 text-orange-600 font-bold border-l-2 border-[#ff8c3a] shadow-2xs"
                     : "text-neutral-800 hover:bg-neutral-50"
                 }`}
               >
-                <Briefcase className="w-4 h-4 text-black shrink-0" />
+                <Briefcase className="w-4 h-4 text-[#ff8c3a] shrink-0" />
                 <span>{dict.nav.projects}</span>
               </Link>
 
@@ -820,11 +821,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setMobileMenuOpen(false)}
                 className={`flex items-center gap-3 px-3.5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-colors ${
                   location.pathname.includes("/gallery")
-                    ? "bg-neutral-100 text-black font-bold border-l-2 border-black shadow-2xs"
+                    ? "bg-orange-50/70 text-orange-600 font-bold border-l-2 border-[#ff8c3a] shadow-2xs"
                     : "text-neutral-800 hover:bg-neutral-50"
                 }`}
               >
-                <ImageIcon className="w-4 h-4 text-black shrink-0" />
+                <ImageIcon className="w-4 h-4 text-[#ff8c3a] shrink-0" />
                 <span>{dict.nav.gallery}</span>
               </Link>
 
@@ -833,11 +834,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setMobileMenuOpen(false)}
                 className={`flex items-center gap-3 px-3.5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-colors ${
                   location.pathname.includes("/contact")
-                    ? "bg-neutral-100 text-black font-bold border-l-2 border-black shadow-2xs"
+                    ? "bg-orange-50/70 text-orange-600 font-bold border-l-2 border-[#ff8c3a] shadow-2xs"
                     : "text-neutral-800 hover:bg-neutral-50"
                 }`}
               >
-                <PhoneCall className="w-4 h-4 text-black shrink-0" />
+                <PhoneCall className="w-4 h-4 text-[#ff8c3a] shrink-0" />
                 <span>{dict.nav.contact}</span>
               </Link>
             </div>
@@ -848,16 +849,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="flex items-center justify-center gap-2">
               <a
                 href="tel:+966544553670"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-neutral-300 text-xs font-semibold text-neutral-800 hover:text-black hover:border-black shadow-2xs transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-neutral-300 text-xs font-semibold text-neutral-800 hover:text-orange-600 hover:border-[#ff8c3a] shadow-2xs transition-colors"
               >
-                <PhoneCall className="w-3.5 h-3.5 text-black" />
+                <PhoneCall className="w-3.5 h-3.5 text-[#ff8c3a]" />
                 <span className="isolate-ltr">+966 54 455 3670</span>
               </a>
               <a
                 href="mailto:info@deysla.com"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-neutral-300 text-xs font-semibold text-neutral-800 hover:text-black hover:border-black shadow-2xs transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-neutral-300 text-xs font-semibold text-neutral-800 hover:text-orange-600 hover:border-[#ff8c3a] shadow-2xs transition-colors"
               >
-                <Mail className="w-3.5 h-3.5 text-black" />
+                <Mail className="w-3.5 h-3.5 text-[#ff8c3a]" />
                 <span className="isolate-ltr">info@deysla.com</span>
               </a>
             </div>
@@ -875,17 +876,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Floating Toast Notification when an item is added to Quote */}
       {lastAddedItem && (
-        <div className={`fixed bottom-20 ${isRTL ? "left-6" : "right-6"} z-50 bg-black text-white px-4 py-3 rounded-xl shadow-xl border border-neutral-700 flex items-center gap-3 animate-in slide-in-from-bottom duration-200`}>
-          <div className="w-6 h-6 rounded-full bg-white/20 text-white flex items-center justify-center">
+        <div className={`fixed bottom-20 ${isRTL ? "left-6" : "right-6"} z-50 bg-white/95 backdrop-blur-md text-slate-900 px-4 py-3 rounded-xl shadow-xl border border-orange-200/80 flex items-center gap-3 animate-in slide-in-from-bottom duration-200`}>
+          <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-600 flex items-center justify-center">
             <Check className="w-4 h-4" />
           </div>
           <div>
-            <p className="text-xs font-semibold">{dict.cart.addedToQuote}</p>
-            <p className="text-[11px] text-neutral-300 truncate max-w-xs">{lastAddedItem}</p>
+            <p className="text-xs font-semibold text-slate-900">{dict.cart.addedToQuote}</p>
+            <p className="text-[11px] text-slate-500 truncate max-w-xs">{lastAddedItem}</p>
           </div>
           <button
             onClick={() => setIsEnquiryModalOpen(true)}
-            className="ms-2 text-xs text-white font-bold hover:underline cursor-pointer"
+            className="ms-2 text-xs text-[#ff8c3a] font-bold hover:underline cursor-pointer"
           >
             {dict.cart.reviewQuote}
           </button>

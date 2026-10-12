@@ -7,6 +7,7 @@ import {
   buildQuoteEmail,
   QuoteItem,
 } from '../../../src/server/mail/mailer.ts';
+import { recordQuote } from '../../../src/server/db/database.ts';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -87,29 +88,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // 5. Verify SMTP configuration
-    if (!isSmtpConfigured()) {
-      return Response.json(
-        {
-          success: false,
-          error:
-            'Email server (SMTP) is not configured yet. Please configure SMTP_HOST, SMTP_USER, and SMTP_PASS in the server environment variables.',
-        },
-        { status: 503 }
-      );
-    }
-
-    const config = getSmtpConfig();
-    const transporter = createTransporter();
-
-    // 6. Generate Official RFQ Reference Code
+    // 5. Generate Official RFQ Reference Code
     const rfqReference = `DEY-RFQ-${Date.now().toString().slice(-4)}${Math.floor(10 + Math.random() * 90)}`;
-
-    const submittedAt = new Intl.DateTimeFormat('en-GB', {
-      dateStyle: 'full',
-      timeStyle: 'medium',
-      timeZone: 'Asia/Riyadh',
-    }).format(new Date()) + ' (Saudi Arabia Time)';
 
     // Sanitize items list
     const sanitizedItems: QuoteItem[] = Array.isArray(items)
@@ -125,7 +105,8 @@ export async function POST(request: Request) {
         }))
       : [];
 
-    const emailContent = buildQuoteEmail({
+    // 6. Persist to Database immediately
+    const savedQuote = recordQuote({
       rfqReference,
       name: name.trim(),
       email: email.trim(),
@@ -135,24 +116,58 @@ export async function POST(request: Request) {
       projectTimeline: String(projectTimeline).trim(),
       notes: notes ? String(notes).trim() : undefined,
       items: sanitizedItems,
-      submittedAt,
     });
 
-    // 7. Send via Nodemailer with Reply-To
-    const mailResult = await transporter.sendMail({
-      from: config.from,
-      to: config.contactEmail,
-      replyTo: `"${name.trim()}" <${email.trim()}>`,
-      subject: `[RFQ ${rfqReference}] ${companyName.trim()} - ${sanitizedItems.length} Products Requested`,
-      text: emailContent.text,
-      html: emailContent.html,
-    });
+    // 7. Send via Nodemailer if SMTP configured
+    let mailSent = false;
+    let mailMessageId: string | undefined = undefined;
+
+    if (isSmtpConfigured()) {
+      try {
+        const config = getSmtpConfig();
+        const transporter = createTransporter();
+
+        const submittedAt = new Intl.DateTimeFormat('en-GB', {
+          dateStyle: 'full',
+          timeStyle: 'medium',
+          timeZone: 'Asia/Riyadh',
+        }).format(new Date()) + ' (Saudi Arabia Time)';
+
+        const emailContent = buildQuoteEmail({
+          rfqReference,
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim(),
+          companyName: companyName.trim(),
+          city: String(city).trim(),
+          projectTimeline: String(projectTimeline).trim(),
+          notes: notes ? String(notes).trim() : undefined,
+          items: sanitizedItems,
+          submittedAt,
+        });
+
+        const mailResult = await transporter.sendMail({
+          from: config.from,
+          to: config.contactEmail,
+          replyTo: `"${name.trim()}" <${email.trim()}>`,
+          subject: `[RFQ ${rfqReference}] ${companyName.trim()} - ${sanitizedItems.length} Products Requested`,
+          text: emailContent.text,
+          html: emailContent.html,
+        });
+
+        mailSent = true;
+        mailMessageId = mailResult.messageId;
+      } catch (smtpErr: any) {
+        console.warn('[Quote] Smtp notification dispatch failed (record preserved in DB):', smtpErr?.message);
+      }
+    }
 
     return Response.json({
       success: true,
-      rfqReference,
-      message: `Quotation request ${rfqReference} successfully received. Our commercial desk will review and dispatch the BOQ proposal shortly.`,
-      messageId: mailResult.messageId,
+      rfqReference: savedQuote.id,
+      message: `Quotation request ${savedQuote.id} successfully received. Our commercial desk will review and dispatch the BOQ proposal shortly.`,
+      messageId: mailMessageId,
+      mailSent,
     });
   } catch (error: any) {
     console.error('Error handling /api/quote:', error);

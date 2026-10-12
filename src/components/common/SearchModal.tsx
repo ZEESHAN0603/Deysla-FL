@@ -2,11 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, X, Layers, ShieldCheck, Box, Briefcase, ChevronRight, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
+import { useCatalog } from "../../context/CatalogContext";
 import { CATEGORY_TRANSLATIONS, SERVICE_TRANSLATIONS } from "../../i18n/translations";
 import { SERVICES_DATA } from "../../data/services";
-import { PRODUCT_CATEGORIES } from "../../data/productCategories";
-import { PRODUCTS_DATA } from "../../data/products";
-import { BRANDS_DATA } from "../../data/brands";
 import { PROJECTS_DATA } from "../../data/projects";
 
 interface SearchModalProps {
@@ -19,6 +17,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const { language, dict, formatPath } = useLanguage();
+  const { products, brands, categories } = useCatalog();
 
   useEffect(() => {
     if (isOpen) {
@@ -62,7 +61,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
     : [];
 
   const matchingCategories = q
-    ? PRODUCT_CATEGORIES.filter((c) => {
+    ? categories.filter((c) => {
         const arName = CATEGORY_TRANSLATIONS.ar?.[c.id]?.name || "";
         const arDesc = CATEGORY_TRANSLATIONS.ar?.[c.id]?.description || "";
         return (
@@ -75,7 +74,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
     : [];
 
   const matchingProducts = q
-    ? PRODUCTS_DATA.filter(
+    ? products.filter(
         (p) =>
           p.name.toLowerCase().includes(q) ||
           p.description.toLowerCase().includes(q) ||
@@ -84,12 +83,13 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
     : [];
 
   const matchingBrands = q
-    ? BRANDS_DATA.filter(
+    ? brands.filter(
         (b) =>
           b.name.toLowerCase().includes(q) ||
           b.description.toLowerCase().includes(q)
       )
     : [];
+
 
   const matchingProjects = q
     ? PROJECTS_DATA.filter(
@@ -200,7 +200,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       <button
                         key={cat.id}
                         onClick={() => handleSelect(`/products/${cat.slug}`)}
-                        className="flex items-center gap-3 p-2.5 rounded-lg border border-slate-100 hover:border-black hover:bg-neutral-50 transition-colors text-start group cursor-pointer"
+                        className="flex items-center gap-3 p-2.5 rounded-lg border border-slate-100 hover:border-[#ff8c3a] hover:bg-orange-50/40 transition-colors text-start group cursor-pointer"
                       >
                         <img src={cat.icon} alt="" className="w-8 h-8 object-contain shrink-0" />
                         <div className="min-w-0 flex-1">
@@ -264,7 +264,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       <button
                         key={brand.id}
                         onClick={() => handleSelect(`/brands/${brand.slug}`)}
-                        className="flex items-center gap-2.5 p-2 rounded-lg border border-slate-100 hover:border-black hover:bg-neutral-50 transition-colors text-left group"
+                        className="flex items-center gap-2.5 p-2 rounded-lg border border-slate-100 hover:border-[#ff8c3a] hover:bg-orange-50/40 transition-colors text-left group"
                       >
                         <div className="w-10 h-8 bg-white border border-slate-100 rounded flex items-center justify-center p-1 shrink-0">
                           <img

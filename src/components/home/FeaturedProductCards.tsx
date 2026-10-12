@@ -149,11 +149,11 @@ export const FeaturedProductCards: React.FC = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-20 lg:py-24 bg-white border-b border-neutral-200">
+    <section className="py-12 sm:py-20 lg:py-24 bg-transparent border-b border-neutral-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
         {/* Section Heading with theme gradient bar underneath */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-[#ff5e00] text-xs font-semibold">
             <Award className="w-3.5 h-3.5" />
             <span>{lang === 'ar' ? 'شراكات المصنعين المعتمدة (OEM)' : 'OEM PARTNERSHIP SHOWCASE'}</span>
           </div>
@@ -177,8 +177,8 @@ export const FeaturedProductCards: React.FC = () => {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? "bg-slate-900 text-white shadow-xs"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  ? "theme-pill-active text-white shadow-xs"
+                  : "bg-white text-slate-600 hover:bg-orange-50/50 hover:text-slate-900 border border-slate-200/80"
               }`}
             >
               {lang === 'ar' ? cat.labelAr : cat.labelEn}
@@ -197,11 +197,11 @@ export const FeaturedProductCards: React.FC = () => {
               <Link
                 key={card.id}
                 to={formatPath(card.link)}
-                className="group rounded-2xl border border-neutral-200 bg-white shadow-2xs hover:shadow-xl hover:border-blue-500 transition-all duration-300 overflow-hidden flex flex-col justify-between"
+                className="group rounded-2xl border border-orange-200/50 bg-white shadow-2xs hover:shadow-xl hover:border-[#ff8c3a] transition-all duration-300 overflow-hidden flex flex-col justify-between"
               >
                 <div>
                   {/* Brand Image Showcase Container */}
-                  <div className="w-full h-44 sm:h-48 bg-white border-b border-neutral-200 p-4 sm:p-6 relative flex items-center justify-center overflow-hidden group-hover:bg-slate-50/50 transition-colors">
+                  <div className="w-full h-44 sm:h-48 bg-white border-b border-orange-200/40 p-4 sm:p-6 relative flex items-center justify-center overflow-hidden group-hover:bg-orange-50/20 transition-colors">
                     {/* Authorized Tag */}
                     <div className="absolute top-2.5 end-2.5 bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded-md border border-neutral-200 shadow-2xs z-10 flex items-center gap-1">
                       <ShieldCheck className="w-3 h-3 text-emerald-600 shrink-0" />

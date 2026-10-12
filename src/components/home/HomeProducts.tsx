@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronRight, Layers, Box } from "lucide-react";
-import { PRODUCT_CATEGORIES } from "../../data/productCategories";
-import { PRODUCTS_DATA } from "../../data/products";
+import { useCatalog } from "../../context/CatalogContext";
 
 export const HomeProducts: React.FC = () => {
+  const { products, categories } = useCatalog();
+
   return (
     <section className="py-20 lg:py-24 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,16 +33,16 @@ export const HomeProducts: React.FC = () => {
 
         {/* 8 Product Categories Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {PRODUCT_CATEGORIES.map((cat) => {
-            const types = PRODUCTS_DATA.filter((p) => p.categoryId === cat.id);
+          {categories.map((cat) => {
+            const types = products.filter((p) => p.categoryId === cat.id);
             return (
               <div
                 key={cat.id}
-                className="p-6 rounded-2xl border border-neutral-200 bg-white hover:border-black hover:shadow-lg transition-all duration-200 flex flex-col justify-between group"
+                className="p-6 rounded-2xl border border-orange-200/50 bg-white hover:border-[#ff8c3a] hover:shadow-lg transition-all duration-200 flex flex-col justify-between group"
               >
                 <div>
                   {/* Realistic Hardware Product Photo Showcase */}
-                  <div className="relative w-full h-48 sm:h-52 bg-white rounded-xl border border-neutral-200 overflow-hidden flex items-center justify-center p-4 mb-4 group-hover:bg-neutral-50/50 transition-colors">
+                  <div className="relative w-full h-48 sm:h-52 bg-white rounded-xl border border-orange-200/40 overflow-hidden flex items-center justify-center p-4 mb-4 group-hover:bg-orange-50/30 transition-colors">
                     <img
                       src={cat.featuredImage}
                       alt={cat.name}
@@ -51,16 +52,16 @@ export const HomeProducts: React.FC = () => {
                         (e.currentTarget as HTMLElement).style.display = "none";
                       }}
                     />
-                    <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md border border-neutral-200 shadow-2xs">
+                    <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md border border-orange-200/50 shadow-2xs">
                       <img src={cat.icon} alt="" className="w-3.5 h-3.5 object-contain" />
                       <span className="text-[10px] font-mono font-bold uppercase text-neutral-900">{cat.name}</span>
                     </div>
-                    <span className="absolute bottom-2.5 right-2.5 text-[10px] font-mono font-bold text-slate-800 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded shadow-2xs">
+                    <span className="absolute bottom-2.5 right-2.5 text-[10px] font-mono font-bold text-orange-700 bg-orange-50/80 border border-orange-200/60 px-2 py-0.5 rounded shadow-2xs">
                       {types.length} Types
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-neutral-900 group-hover:text-black transition-colors mb-2">
+                  <h3 className="text-base font-bold text-neutral-900 group-hover:text-orange-600 transition-colors mb-2">
                     {cat.name}
                   </h3>
 
@@ -77,9 +78,9 @@ export const HomeProducts: React.FC = () => {
                       <Link
                         key={t.id}
                         to={`/products/${cat.slug}/${t.slug}`}
-                        className="text-xs text-slate-600 hover:text-black block truncate transition-colors flex items-center gap-1.5"
+                        className="text-xs text-slate-600 hover:text-orange-600 block truncate transition-colors flex items-center gap-1.5"
                       >
-                        <span className="w-1 h-1 rounded-full bg-black shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#ff8c3a] shrink-0" />
                         <span className="truncate">{t.name}</span>
                       </Link>
                     ))}

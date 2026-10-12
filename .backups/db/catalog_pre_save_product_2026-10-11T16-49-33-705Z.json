@@ -1,0 +1,5070 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-10-11T16:34:51.680Z",
+  "products": [
+    {
+      "id": "network-switches",
+      "name": "Network Switches",
+      "slug": "network-switches",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "description": "High-speed managed and unmanaged enterprise switches designed for continuous throughput, low latency, and scalable campus or data center connectivity.",
+      "subcategories": [
+        "Managed Switches",
+        "Unmanaged Switches",
+        "PoE Switch",
+        "Gigabit Switch",
+        "10G Switch",
+        "Layer 2 Switch",
+        "Layer 3 Switch"
+      ],
+      "keyApplications": [
+        "Enterprise Campus LAN",
+        "IP CCTV Camera Power & Data Aggregation",
+        "Data Center Top-of-Rack Switching",
+        "VoIP Phone Deployment with PoE+"
+      ],
+      "image": "/assets/products/network-switches.webp",
+      "imageAlt": "Enterprise Managed Gigabit and 10G Network Switches in Data Center Rack",
+      "brandIds": [
+        "cisco",
+        "netgear",
+        "huawei",
+        "aruba",
+        "ruijie",
+        "mikrotik"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "routers",
+      "name": "Routers",
+      "slug": "routers",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "description": "Secure edge routing platforms delivering robust wide area networking, encrypted site-to-site VPN tunnels, and high-availability dual-WAN redundancy.",
+      "subcategories": [
+        "Enterprise Routers",
+        "Branch Routers",
+        "Industrial Routers",
+        "VPN Routers",
+        "4G/5G Routers"
+      ],
+      "keyApplications": [
+        "Corporate Headquarter WAN Termination",
+        "Branch Office Multi-Site Interconnect",
+        "Remote Industrial SCADA Backhaul",
+        "High-Speed Cellular Redundant Failover"
+      ],
+      "image": "/assets/products/routers.webp",
+      "imageAlt": "Enterprise Edge Routing Gateway and WAN Infrastructure",
+      "brandIds": [
+        "cisco",
+        "huawei",
+        "mikrotik",
+        "ruijie"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "wireless-solutions",
+      "name": "Wireless Solutions",
+      "slug": "wireless-solutions",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "description": "Enterprise-grade Wi-Fi 6 access points, wireless controllers, outdoor long-range point-to-point wireless bridges, and guest management portals.",
+      "subcategories": [
+        "Wireless Access Points",
+        "Indoor Access Point",
+        "Outdoor Access Points",
+        "WiFi Bridges and P2P"
+      ],
+      "keyApplications": [
+        "High-Density Office Wi-Fi",
+        "Campus Outdoor Wireless Coverage",
+        "Warehouse High-Bay RF Connectivity",
+        "Inter-Building Gigabit Wireless Links"
+      ],
+      "image": "/assets/products/wireless-solutions.webp",
+      "imageAlt": "Enterprise High-Density Wi-Fi 6 Access Points & Wireless Architecture",
+      "brandIds": [
+        "cisco",
+        "aruba",
+        "ruijie",
+        "huawei"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "media-converters",
+      "name": "Media Converters",
+      "slug": "media-converters",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "description": "Reliable copper-to-fiber protocol media converters extending Ethernet distances over single-mode and multi-mode optical fiber lines.",
+      "subcategories": [
+        "Ethernet to Fiber Converters",
+        "Gigabit Media Converters",
+        "PoE Media Converter",
+        "Managed Media Converters"
+      ],
+      "keyApplications": [
+        "Long-Distance Perimeter Camera Extensions",
+        "Electrical Isolation in Industrial Environments",
+        "Inter-Building Backbone Connections"
+      ],
+      "image": "/assets/products/media-converters.webp",
+      "imageAlt": "Industrial Optical Copper-to-Fiber Gigabit Media Converters",
+      "brandIds": [
+        "cisco",
+        "netgear",
+        "ruijie"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "industrial-networking",
+      "name": "Industrial Networking",
+      "slug": "industrial-networking",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "description": "Hardened DIN-rail Ethernet switches engineered for extreme temperature variances, vibration resistance, and electromagnetic immunity in factories and utilities.",
+      "subcategories": [
+        "Managed Industrial Switches",
+        "Unmanaged Industrial Switches",
+        "PoE Industrial Switches",
+        "Gigabit Industrial Switches",
+        "DIN Rail Switches",
+        "Fibre Industrial Switches"
+      ],
+      "keyApplications": [
+        "Manufacturing Plant Floor Automation",
+        "Substation Automation & SCADA Networks",
+        "Traffic Control & ITS Transportation Systems",
+        "Oil & Gas Pipeline Telemetry"
+      ],
+      "image": "/assets/products/industrial-networking.webp",
+      "imageAlt": "DEYSLA Hardened DIN-Rail Industrial Networking and Control Enclosure",
+      "brandIds": [
+        "schneider",
+        "advantech",
+        "hirschmann",
+        "phoenix-contact"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "transceivers",
+      "name": "Transceivers",
+      "slug": "transceivers",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "description": "High-compatibility optical transceivers delivering seamless multi-gigabit uplinks across short-range (SR) and long-range (LR) optical fiber spans.",
+      "subcategories": [
+        "SFP Transceivers",
+        "SFP+ Transceivers",
+        "SFP28 Transceivers",
+        "QSFP Transceivers",
+        "QSFP28 Transceivers",
+        "BiDi Transceivers"
+      ],
+      "keyApplications": [
+        "Switch Core-to-Distribution 10G/40G/100G Uplinks",
+        "Storage Area Network (SAN) Optical Interfaces",
+        "Single-Strand Bi-Directional Fiber Utilization"
+      ],
+      "image": "/assets/products/transceivers.webp",
+      "imageAlt": "High-Speed SFP, SFP+, and QSFP Optical Transceivers for Enterprise Uplinks",
+      "brandIds": [
+        "cisco",
+        "huawei",
+        "ruijie"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cctv-surveillance",
+      "name": "CCTV Surveillance",
+      "slug": "cctv-surveillance",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "description": "High-definition IP surveillance cameras, AI-powered smart video analytics, network video recorders (NVR), and centralized video management software (VMS).",
+      "subcategories": [
+        "IP Dome Cameras",
+        "Bullet Cameras",
+        "PTZ High-Speed Domes",
+        "Thermal Imaging Cameras",
+        "Network Video Recorders (NVR)",
+        "Video Management Software (VMS)"
+      ],
+      "keyApplications": [
+        "Corporate Headquarters Perimeter Security",
+        "Industrial Facility Monitoring",
+        "Commercial Retail Asset Protection",
+        "License Plate Recognition (ANPR) Gate Systems"
+      ],
+      "image": "/assets/products/cctv-surveillance.webp",
+      "imageAlt": "Commercial Optical IP CCTV Surveillance Dome and Bullet Cameras",
+      "brandIds": [
+        "hikvision",
+        "axis",
+        "bosch",
+        "hanwha-vision",
+        "honeywell"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "access-control",
+      "name": "Access Control Systems",
+      "slug": "access-control",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "description": "Integrated biometric facial recognition terminals, smart card readers, speed turnstiles, and enterprise multi-door access controllers.",
+      "subcategories": [
+        "Biometric Terminals",
+        "RFID & Smart Card Readers",
+        "Pedestrian Speed Turnstiles & Flap Barriers",
+        "Multi-Door IP Controllers",
+        "Time & Attendance Software"
+      ],
+      "keyApplications": [
+        "Restricted Data Center Access",
+        "Corporate Office Employee Turnstiles",
+        "Multi-Tenant Commercial Building Gates",
+        "Time and Attendance Payroll Synchronization"
+      ],
+      "image": "/assets/products/access-control.webp",
+      "imageAlt": "DEYSLA Pedestrian Speed Turnstiles and Biometric Access Control Terminal",
+      "brandIds": [
+        "zkteco",
+        "hid",
+        "suprema",
+        "honeywell",
+        "hikvision"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "security-cabling",
+      "name": "Security Cabling",
+      "slug": "security-cabling",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "description": "Specialized shielded and flame-retardant cabling engineered for high-integrity transmission across IP video, sensor loops, and alarm signals.",
+      "subcategories": [
+        "Shielded Security Cabling",
+        "Access Control Composite Cable",
+        "Alarm Multicore Cable",
+        "Coaxial Cable with Power"
+      ],
+      "keyApplications": [
+        "Perimeter IP Surveillance Cabling",
+        "Access Control Door Lock Loops",
+        "Intruder Alarm Sensor Bus"
+      ],
+      "image": "/assets/products/security-cabling.webp",
+      "imageAlt": "Precision Shielded Security Cabling Spools and Access Control Wiring",
+      "brandIds": [
+        "commscope",
+        "panduit",
+        "excel-cabling"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cybersecurity-systems",
+      "name": "Cybersecurity Systems",
+      "slug": "cybersecurity-systems",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "description": "Enterprise Next-Generation Firewalls (NGFW), Intrusion Prevention Systems (IPS), and secure remote access gateways safeguarding business networks.",
+      "subcategories": [
+        "Next-Gen Firewalls (NGFW)",
+        "Intrusion Prevention Systems (IPS)",
+        "Secure VPN Gateways",
+        "Email & Web Security Gateways"
+      ],
+      "keyApplications": [
+        "Enterprise Perimeter Threat Prevention",
+        "Zero Trust Branch Network Access",
+        "Encrypted Multi-Site VPN Connectivity"
+      ],
+      "image": "/assets/products/cybersecurity-systems.webp",
+      "imageAlt": "Enterprise Next-Generation Firewall and Cybersecurity Telemetry Operations",
+      "brandIds": [
+        "fortinet",
+        "cisco"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "antivirus-edr",
+      "name": "Antivirus & EDR Solutions",
+      "slug": "antivirus-edr",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "description": "Centralized endpoint detection, endpoint response (EDR), server protection suites, and proactive malware defense for distributed enterprise fleets.",
+      "subcategories": [
+        "Endpoint Protection Platforms",
+        "Server Edition Antivirus",
+        "Endpoint Detection and Response (EDR)",
+        "Central Cloud Management Consoles"
+      ],
+      "keyApplications": [
+        "Corporate Workstation Fleet Protection",
+        "Data Center Hypervisor & Server Shielding",
+        "Ransomware Isolation and Automated Remediation"
+      ],
+      "image": "/assets/products/antivirus-edr.webp",
+      "imageAlt": "Enterprise Endpoint Detection and Response EDR Defense Console",
+      "brandIds": [
+        "fortinet"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "ip-pbx-systems",
+      "name": "IP PBX Systems",
+      "slug": "ip-pbx-systems",
+      "categoryId": "communications",
+      "categoryName": "Communications",
+      "description": "Scalable on-premises and hybrid IP PBX platforms supporting unified voice, video, interactive voice response (IVR), and call center queuing.",
+      "subcategories": [
+        "On-Premises Appliance IP PBX",
+        "Hybrid IP PBX Systems",
+        "Cloud PBX Solutions",
+        "Call Center Management Modules"
+      ],
+      "keyApplications": [
+        "Multi-Branch Corporate Telephony",
+        "Customer Support Call Center Queues",
+        "Unified Communications Interconnect"
+      ],
+      "image": "/assets/products/ip-pbx-systems.webp",
+      "imageAlt": "Enterprise Unified IP PBX Telephony System and Voice Gateway",
+      "brandIds": [
+        "grandstream",
+        "yeastar",
+        "panasonic"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "ip-phones",
+      "name": "IP Phones",
+      "slug": "ip-phones",
+      "categoryId": "communications",
+      "categoryName": "Communications",
+      "description": "Executive HD color IP desktop phones, wireless cordless DECT handsets, and conference room speakerphones engineered for acoustic clarity.",
+      "subcategories": [
+        "Executive Color IP Phones",
+        "Enterprise Gigabit Desktop Phones",
+        "Cordless DECT Handsets & Base Stations",
+        "Conference Room Speakerphones"
+      ],
+      "keyApplications": [
+        "Executive Boardroom Teleconferencing",
+        "Front-Desk & Reception Call Management",
+        "Warehouse Mobile Cordless Communications"
+      ],
+      "image": "/assets/products/ip-phones.webp",
+      "imageAlt": "Modern Executive Gigabit Desktop IP Telephone with Color Screen and HD Audio",
+      "brandIds": [
+        "grandstream",
+        "fanvil",
+        "panasonic"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "audio-solutions",
+      "name": "Audio Solutions",
+      "slug": "audio-solutions",
+      "categoryId": "communications",
+      "categoryName": "Communications",
+      "description": "Commercial Public Address (PA) amplifiers, ceiling and horn speakers, enterprise audio mixers, and unified paging microphones.",
+      "subcategories": [
+        "Public Address (PA) Amplifiers",
+        "Ceiling Speakers",
+        "Outdoor Weatherproof Horn Speakers",
+        "Audio Mixers & Zone Selectors",
+        "Professional Noise-Canceling Headsets"
+      ],
+      "keyApplications": [
+        "Shopping Mall Background Music & Paging",
+        "Industrial Plant Evacuation Voice Broadcast",
+        "Corporate Town Hall Acoustic Sound Reinforcement"
+      ],
+      "image": "/assets/products/audio-solutions.webp",
+      "imageAlt": "Commercial PA Acoustic Speakers, Sound Amplifiers & Conference Audio",
+      "brandIds": [
+        "toa",
+        "bosch",
+        "jabra"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "copper-cables",
+      "name": "Copper Cables",
+      "slug": "copper-cables",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "description": "Verified solid bare copper data cables compliant with TIA/EIA-568 standards for high-bandwidth 1G/10G Ethernet transmission.",
+      "subcategories": [
+        "Cat5e UTP Cables",
+        "Cat6 UTP / FTP Cables",
+        "Cat6A Shielded SFTP Cables",
+        "Cat7 S/FTP Cables",
+        "LSZH Low-Smoke Zero-Halogen Jackets"
+      ],
+      "keyApplications": [
+        "Enterprise Horizontal Office Cabling",
+        "High-Density Data Center Copper Links",
+        "Industrial Interference-Shielded Data Runs"
+      ],
+      "image": "/assets/products/copper-cables.webp",
+      "imageAlt": "High-Bandwidth Bare Copper Cat6A Data Cable Spools and Ethernet Wire Reels",
+      "brandIds": [
+        "commscope",
+        "corning",
+        "panduit",
+        "legrand",
+        "excel-cabling",
+        "nexans",
+        "schneider"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "fiber-optic-cables",
+      "name": "Fiber Optic Cables",
+      "slug": "fiber-optic-cables",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "description": "High-tensile single-mode (OS2) and multi-mode (OM3/OM4/OM5) optical cables engineered for high-bandwidth backbone transmission.",
+      "subcategories": [
+        "Single-Mode (OS2) Fiber Cable",
+        "Multi-Mode (OM3/OM4) Fiber Cable",
+        "Armoured Underground Fiber Cable",
+        "Indoor & Outdoor LSZH Fiber Cable",
+        "ADSS Aerial Self-Supporting Cable"
+      ],
+      "keyApplications": [
+        "Campus Backbone Inter-Building Connections",
+        "Industrial Plant Underground Trench Cabling",
+        "Data Center Core Optical Trunks"
+      ],
+      "image": "/assets/products/fiber-optic-cables.webp",
+      "imageAlt": "Single-Mode and Multimode High-Bandwidth Fiber Optic Backbone Cables",
+      "brandIds": [
+        "corning",
+        "commscope",
+        "panduit",
+        "nexans",
+        "randm"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "patch-panels",
+      "name": "Patch Panels",
+      "slug": "patch-panels",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "description": "High-density 24-port and 48-port copper patch panels, sliding fiber optic patch panels (ODF), and modular unloaded keystone frames.",
+      "subcategories": [
+        "Cat5e, Cat6, Cat6A Patch Panels",
+        "Fiber Optic Patch Panels (ODF)",
+        "Modular Keystone Patch Panels",
+        "Pre-Loaded & Shielded Patch Panels"
+      ],
+      "keyApplications": [
+        "Structured Cabling Cross-Connect Racks",
+        "Fiber Splice Distribution Enclosures",
+        "Clean Cable Management Closets"
+      ],
+      "image": "/assets/products/patch-panels.webp",
+      "imageAlt": "DEYSLA Precision High-Density 24-Port and 48-Port Patch Panels",
+      "brandIds": [
+        "commscope",
+        "panduit",
+        "excel-cabling",
+        "legrand"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "keystone-jacks",
+      "name": "Keystone Jacks & Accessories",
+      "slug": "keystone-jacks",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "description": "Tool-less RJ45 keystone jacks, fiber optic couplers, faceplates, backboxes, and multimedia snap-in modules.",
+      "subcategories": [
+        "Cat6 & Cat6A Tool-less Keystone Jacks",
+        "Shielded Die-Cast RJ45 Jacks",
+        "Fiber Optic Couplers & Adapters",
+        "Dual & Quad Port Faceplates"
+      ],
+      "keyApplications": [
+        "Workstation Wall Outlet Terminations",
+        "Floor Box Network Connection Drops",
+        "Server Rack Cable Interconnects"
+      ],
+      "image": "/assets/products/keystone-jacks.webp",
+      "imageAlt": "Modular RJ45 Keystone Jacks, Faceplates, and Patch Connection Blocks",
+      "brandIds": [
+        "commscope",
+        "panduit",
+        "excel-cabling",
+        "legrand"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "network-cabinets",
+      "name": "Network Cabinets & Racks",
+      "slug": "network-cabinets",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "description": "Heavy-duty 19-inch equipment racks, server enclosures, wall-mount swing frames, and IP55 weatherproof outdoor telecom cabinets.",
+      "subcategories": [
+        "Wall Mount Cabinets (6U - 18U)",
+        "Floor Standing Server Cabinets (24U - 47U)",
+        "Open Frame 2-Post & 4-Post Racks",
+        "IP55 Weatherproof Outdoor Cabinets"
+      ],
+      "keyApplications": [
+        "Enterprise Main Distribution Frames (MDF)",
+        "Data Center Server Enclosures",
+        "Outdoor Perimeter Telecommunications Housing"
+      ],
+      "image": "/assets/products/network-cabinets.webp",
+      "imageAlt": "DEYSLA Heavy-Duty 19-Inch 42U Server Racks and Network Cabinets",
+      "brandIds": [
+        "legrand",
+        "schneider",
+        "vertiv",
+        "panduit"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "led-displays",
+      "name": "LED Displays & Video Walls",
+      "slug": "led-displays",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "description": "Fine pixel pitch indoor LED displays, high-brightness outdoor billboards, and bezel-less video walls for command centers and lobbies.",
+      "subcategories": [
+        "Indoor Fine Pixel Pitch LED Walls",
+        "Outdoor High-Brightness LED Billboards",
+        "Ultra-Narrow Bezel LCD Video Walls",
+        "Curved & Architectural LED Displays"
+      ],
+      "keyApplications": [
+        "Control Room Monitoring Video Walls",
+        "Corporate Headquarters Reception Lobbies",
+        "Outdoor Retail & Commercial Billboards"
+      ],
+      "image": "/assets/products/led-displays.webp",
+      "imageAlt": "Fine Pixel Pitch Ultra-HD Commercial LED Video Wall and Display System",
+      "brandIds": [
+        "samsung",
+        "lg",
+        "philips",
+        "viewsonic"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "digital-signage",
+      "name": "Digital Signage Displays",
+      "slug": "digital-signage",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "description": "24/7 commercial-grade digital signage displays, freestanding digital totems, and cloud-managed media player hardware.",
+      "subcategories": [
+        "Commercial 24/7 Display Screens",
+        "Freestanding Advertising Totems",
+        "Touch-Enabled Interactive Signage",
+        "Signage Media Players"
+      ],
+      "keyApplications": [
+        "Retail Digital Product Showcases",
+        "Wayfinding Kiosks in Commercial Centers",
+        "Corporate Internal Communication Boards"
+      ],
+      "image": "/assets/products/digital-signage.webp",
+      "imageAlt": "DEYSLA Commercial Ultra-Narrow Bezel Digital Signage and Customer Kiosks",
+      "brandIds": [
+        "samsung",
+        "lg",
+        "philips",
+        "viewsonic"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "interactive-displays",
+      "name": "Interactive Displays",
+      "slug": "interactive-displays",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "description": "4K multi-touch interactive flat panels designed for corporate boardrooms, collaborative meeting spaces, and smart educational classrooms.",
+      "subcategories": [
+        "4K Multi-Touch Flat Panels",
+        "Digital Interactive Whiteboards",
+        "Wireless Screen Sharing Systems",
+        "Mobile Motorized Display Stands"
+      ],
+      "keyApplications": [
+        "Executive Meeting Room Collaboration",
+        "Higher Education Smart Lecture Halls",
+        "Design & Engineering Review Sessions"
+      ],
+      "image": "/assets/products/interactive-displays.webp",
+      "imageAlt": "Corporate Boardroom 4K Multi-Touch Interactive Collaboration Smart Board",
+      "brandIds": [
+        "samsung",
+        "lg",
+        "viewsonic"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "kiosk-accessories",
+      "name": "Kiosks & Accessories",
+      "slug": "kiosk-accessories",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "description": "Self-service transactional kiosks, industrial thermal receipt printers, QR/barcode scanners, and secure payment mounting enclosures.",
+      "subcategories": [
+        "Self-Service Touch Kiosks",
+        "Integrated Thermal Printers",
+        "1D/2D Barcode & QR Scanners",
+        "Card Reader Mounts & Enclosures"
+      ],
+      "keyApplications": [
+        "Government Customer Service Queue Terminals",
+        "Healthcare Patient Check-In Stations",
+        "Retail Self-Checkout Kiosks"
+      ],
+      "image": "/assets/products/kiosk-accessories.webp",
+      "imageAlt": "Commercial Self-Service Touch Kiosks, Barcode Scanners and POS Terminals",
+      "brandIds": [
+        "zebra",
+        "samsung"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "rack-servers",
+      "name": "Rack Servers",
+      "slug": "rack-servers",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "description": "High-density 1U/2U/4U enterprise rack servers engineered for high virtualization density, database computing, and mission-critical enterprise workloads.",
+      "subcategories": [
+        "1U High-Density Compute Servers",
+        "2U Scalable Storage & Compute Servers",
+        "4U High-Availability Enterprise Servers",
+        "Hyper-Converged Infrastructure Nodes"
+      ],
+      "keyApplications": [
+        "Enterprise VMware / Hyper-V Virtualization",
+        "Database & ERP Backend Hosting",
+        "Private Cloud Infrastructure Deployment"
+      ],
+      "image": "/assets/products/rack-servers.webp",
+      "imageAlt": "DEYSLA High-Density Enterprise 1U/2U Rackmount Compute Servers in Datacenter",
+      "brandIds": [
+        "dell",
+        "hp",
+        "lenovo"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "tower-servers",
+      "name": "Tower Servers",
+      "slug": "tower-servers",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "description": "Quiet, compact, and expandable tower servers designed for branch offices, remote sites, and distributed commercial operations.",
+      "subcategories": [
+        "Single-Socket Tower Servers",
+        "Dual-Socket Expandable Tower Servers",
+        "Rack-Convertible Tower Systems"
+      ],
+      "keyApplications": [
+        "Branch Office Local Domain & File Server",
+        "Small Business Centralized ERP Hosting",
+        "Remote Site Data Staging & Backup"
+      ],
+      "image": "/assets/products/tower-servers.webp",
+      "imageAlt": "Enterprise Quiet Tower Server Chassis and Scalable Compute Workstation",
+      "brandIds": [
+        "dell",
+        "hp",
+        "lenovo"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "desktops-and-laptops",
+      "name": "Desktops and Laptops",
+      "slug": "desktops-and-laptops",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "description": "Enterprise-grade business workstations, thin clients, and business laptops built for high durability, fleet manageability, and hardware security.",
+      "subcategories": [
+        "Commercial Workstations",
+        "Small Form Factor Enterprise Desktops",
+        "Business Class Laptops",
+        "Ruggedized Field Laptops"
+      ],
+      "keyApplications": [
+        "CAD/CAM Engineering Workstations",
+        "Corporate Office Knowledge Worker Fleets",
+        "Field Service Rugged Mobile Computing"
+      ],
+      "image": "/assets/products/desktops-and-laptops.webp",
+      "imageAlt": "Enterprise Commercial Laptops and Business Computing Workstations",
+      "brandIds": [
+        "dell",
+        "hp",
+        "lenovo"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "printers-and-supplies",
+      "name": "Printers and Supplies",
+      "slug": "printers-and-supplies",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "description": "Heavy-duty industrial thermal barcode printers, enterprise multifunction laser printers, and certified consumable supplies.",
+      "subcategories": [
+        "Industrial Thermal Barcode Printers",
+        "Enterprise Multifunction Laser Printers",
+        "Mobile Handheld Label Printers",
+        "Original Toners & Media Ribbons"
+      ],
+      "keyApplications": [
+        "Warehouse Asset & Shipping Labeling",
+        "Corporate Department Document Printing",
+        "Healthcare Patient ID Wristband Printing"
+      ],
+      "image": "/assets/products/printers-and-supplies.webp",
+      "imageAlt": "Departmental Multifunction Laser Printers and Heavy-Duty Thermal Labeling",
+      "brandIds": [
+        "hp",
+        "zebra"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "ups-and-pdus",
+      "name": "UPS and PDUs",
+      "slug": "ups-and-pdus",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "description": "Online double-conversion uninterruptible power supply (UPS) systems, external battery packs, and rackmount metered/switched PDUs.",
+      "subcategories": [
+        "Online Double-Conversion Rack UPS (1kVA - 20kVA)",
+        "Three-Phase Modular Data Center UPS",
+        "Smart Metered & Switched Rack PDUs",
+        "Automatic Transfer Switches (ATS)"
+      ],
+      "keyApplications": [
+        "Data Center Power Continuity Protection",
+        "Telecom Network Closet Clean Backup Power",
+        "Industrial SCADA System Voltage Stabilization"
+      ],
+      "image": "/assets/products/ups-and-pdus.webp",
+      "imageAlt": "Online Double-Conversion Rackmount UPS Battery Backup and Switched PDUs",
+      "brandIds": [
+        "eaton",
+        "vertiv",
+        "schneider"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "industrial-switches",
+      "name": "Industrial Switches",
+      "slug": "industrial-switches",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "description": "Ruggedized industrial Ethernet switches with wide operating temperatures (-40°C to 75°C), redundant DC power inputs, and DIN-rail mounting.",
+      "subcategories": [
+        "DIN-Rail Managed Switches",
+        "Unmanaged Industrial Switches",
+        "Industrial High-Power PoE+ Switches",
+        "Substation IEC 61850 Switches"
+      ],
+      "keyApplications": [
+        "Factory Automation PLC Interconnection",
+        "Power Utility Substation Control",
+        "Water & Wastewater Treatment SCADA"
+      ],
+      "image": "/assets/products/industrial-switches.webp",
+      "imageAlt": "DEYSLA DIN-Rail Mounted Hardened Industrial Ethernet Switches",
+      "brandIds": [
+        "schneider",
+        "advantech",
+        "hirschmann",
+        "phoenix-contact",
+        "abb"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "control-cables",
+      "name": "Control & Instrumentation Cables",
+      "slug": "control-cables",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "description": "Heavy-duty instrumentation cables, Profibus/Modbus fieldbus cables, and oil-resistant shielded flexible motor control cables.",
+      "subcategories": [
+        "Shielded Instrumentation Cables",
+        "Profibus / Profinet Data Cables",
+        "Flexible Continuous-Flex Control Cables",
+        "Oil & Chemical Resistant Cables"
+      ],
+      "keyApplications": [
+        "PLC to Sensor Signal Transmission",
+        "Variable Frequency Drive (VFD) Connections",
+        "Harsh Chemical Industrial Plant Floor Wiring"
+      ],
+      "image": "/assets/products/control-cables.webp",
+      "imageAlt": "Multi-Conductor Shielded Industrial Automation Control Cables & Wiring",
+      "brandIds": [
+        "schneider",
+        "weidmuller",
+        "phoenix-contact"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "instrumentation",
+      "name": "Industrial Instrumentation",
+      "slug": "instrumentation",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "description": "Industrial sensor interfaces, signal conditioners, protocol gateways, and distributed remote I/O modules for process monitoring.",
+      "subcategories": [
+        "Distributed Remote I/O Modules",
+        "Signal Isolators & Conditioners",
+        "Industrial Protocol Gateways (Modbus/EtherNet/IP)",
+        "Surge Protective Devices for Control Cabinets"
+      ],
+      "keyApplications": [
+        "Industrial SCADA Telemetry Ingestion",
+        "Legacy Fieldbus to Ethernet Bridging",
+        "Critical Equipment Surge & Transient Protection"
+      ],
+      "image": "/assets/products/instrumentation.webp",
+      "imageAlt": "Factory Floor Process Instrumentation, Sensors and PLC Gateways",
+      "brandIds": [
+        "schneider",
+        "advantech",
+        "weidmuller",
+        "abb",
+        "phoenix-contact"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "fire-detection-and-alarm",
+      "name": "Fire Detection and Alarm",
+      "slug": "fire-detection-and-alarm",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "description": "Addressable fire alarm control panels, intelligent optical smoke sensors, heat sensors, manual call points, and visual strobe alarms.",
+      "subcategories": [
+        "Intelligent Addressable Fire Panels",
+        "Optical Smoke Detectors",
+        "Rate-of-Rise Heat Detectors",
+        "Manual Break-Glass Call Points",
+        "Audio-Visual Flashing Sounder Strobes"
+      ],
+      "keyApplications": [
+        "Commercial Tower Fire Safety Code Compliance",
+        "Industrial Facility Early Smoke Warning",
+        "Hotel & Residential Complex Evacuation Alerts"
+      ],
+      "image": "/assets/products/fire-detection-and-alarm.webp",
+      "imageAlt": "Addressable Fire Alarm Control Panels, Optical Smoke Detectors & Strobes",
+      "brandIds": [
+        "honeywell",
+        "notifier",
+        "bosch",
+        "apollo",
+        "edwards",
+        "eaton"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "fire-suppression",
+      "name": "Fire Suppression Systems",
+      "slug": "fire-suppression",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "description": "Clean-agent fire extinguishing systems (FM-200, Novec 1230), kitchen hood suppression systems, and deluge valves protecting critical electronic assets.",
+      "subcategories": [
+        "Clean Agent Total Flooding Systems (FM-200 / Novec 1230)",
+        "CO2 Gaseous Extinguishing Systems",
+        "Commercial Kitchen Wet Chemical Suppression",
+        "Automatic Pre-Action Sprinkler Valves"
+      ],
+      "keyApplications": [
+        "Server Room & Data Center Clean Agent Shielding",
+        "Electrical Switchgear Room Protection",
+        "Commercial Kitchen Grease Duct Suppression"
+      ],
+      "image": "/assets/products/fire-suppression.webp",
+      "imageAlt": "Data Center Clean Agent Total Flooding Fire Suppression Cylinder Bank",
+      "brandIds": [
+        "kidde",
+        "ansul",
+        "naffco"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "emergency-and-fire-safety",
+      "name": "Emergency and Fire Safety",
+      "slug": "emergency-and-fire-safety",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "description": "Self-contained emergency exit illumination luminaires, central battery systems, voice evacuation sound systems, and certified fire extinguishers.",
+      "subcategories": [
+        "LED Emergency Exit Signs",
+        "Central Battery Emergency Lighting Systems",
+        "Voice Alarm Evacuation (EVAC) Audio Systems",
+        "Certified Portable Fire Extinguishers"
+      ],
+      "keyApplications": [
+        "Building Safe Egress Pathway Illumination",
+        "Audible Voice Evacuation Directions in High-Rises",
+        "Civil Defense Compliant Rapid Response Safety"
+      ],
+      "image": "/assets/products/emergency-and-fire-safety.webp",
+      "imageAlt": "Certified Commercial Emergency Exit Illumination Signs & Life Safety Stations",
+      "brandIds": [
+        "naffco",
+        "eaton",
+        "bosch"
+      ],
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    }
+  ],
+  "catalogItems": [
+    {
+      "id": "net-sw-compact",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "network-switches",
+      "subcategoryName": "Network Switches",
+      "name": "Compact Ethernet Switch",
+      "brand": "CISCO / DEYSLA",
+      "badge": "8-Port Fast Ethernet",
+      "specs": [
+        "8x 10/100Base-TX Ports",
+        "Fanless Silent Metal Chassis",
+        "Auto-MDI/MDIX Plug & Play"
+      ],
+      "image": "/assets/catalog/net-sw-compact.png",
+      "imageWebp": "/assets/catalog/net-sw-compact.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-sw-dlink",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "network-switches",
+      "subcategoryName": "Network Switches",
+      "name": "D-Link Ethernet Switch",
+      "brand": "D-LINK",
+      "badge": "16-Port Gigabit",
+      "specs": [
+        "16x Gigabit RJ45 Ports",
+        "D-Link Green Technology",
+        "QoS 802.1p Traffic Prioritization"
+      ],
+      "image": "/assets/catalog/net-sw-dlink.png",
+      "imageWebp": "/assets/catalog/net-sw-dlink.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-sw-hikvision",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "network-switches",
+      "subcategoryName": "Network Switches",
+      "name": "Hikvision Ethernet Switch",
+      "brand": "HIKVISION",
+      "badge": "PoE+ Surveillance Switch",
+      "specs": [
+        "8x PoE+ Ports (30W/port)",
+        "Long-Range 250m Transmission",
+        "6KV Lightning Surge Protection"
+      ],
+      "image": "/assets/catalog/net-sw-hikvision.png",
+      "imageWebp": "/assets/catalog/net-sw-hikvision.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-sw-compact-v2",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "network-switches",
+      "subcategoryName": "Network Switches",
+      "name": "Compact Network Switch — Variant 2",
+      "brand": "NETGEAR / CISCO",
+      "badge": "5-Port Metal Housing",
+      "specs": [
+        "5x Gigabit 10/100/1000Mbps",
+        "Rugged Steel Desktop Enclosure",
+        "Energy Efficient Ethernet"
+      ],
+      "image": "/assets/catalog/net-sw-compact-v2.png",
+      "imageWebp": "/assets/catalog/net-sw-compact-v2.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-sw-rackmount",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "network-switches",
+      "subcategoryName": "Network Switches",
+      "name": "Rackmount Network Switch",
+      "brand": "CISCO Catalyst",
+      "badge": "24-Port 1U Enterprise",
+      "specs": [
+        "24x 10/100/1000Mbps GbE Ports",
+        "19-Inch 1U Standard Rackmount",
+        "Layer 2+ Managed Switching"
+      ],
+      "image": "/assets/catalog/net-sw-rackmount.png",
+      "imageWebp": "/assets/catalog/net-sw-rackmount.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-sw-rackmount-uplink",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "network-switches",
+      "subcategoryName": "Network Switches",
+      "name": "Rackmount Network Switch with Uplink Ports",
+      "brand": "HUAWEI / ARUBA",
+      "badge": "48-Port + 4x 10G SFP+",
+      "specs": [
+        "48x Gigabit PoE+ Ports (740W)",
+        "4x 10G SFP+ Optical Uplinks",
+        "Stackable Redundant Power"
+      ],
+      "image": "/assets/catalog/net-sw-rackmount-uplink.png",
+      "imageWebp": "/assets/catalog/net-sw-rackmount-uplink.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-sw-desktop-v1",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "network-switches",
+      "subcategoryName": "Network Switches",
+      "name": "Desktop Ethernet Switch — Variant 1",
+      "brand": "RUIJIE / REYEE",
+      "badge": "8-Port Desktop Unmanaged",
+      "specs": [
+        "8x 10/100/1000Mbps Ports",
+        "Plastic Anti-Static Shell",
+        "Status LED Link Activity"
+      ],
+      "image": "/assets/catalog/net-sw-desktop-v1.png",
+      "imageWebp": "/assets/catalog/net-sw-desktop-v1.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-sw-desktop-v2",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "network-switches",
+      "subcategoryName": "Network Switches",
+      "name": "Desktop Ethernet Switch — Variant 2",
+      "brand": "MIKROTIK",
+      "badge": "5-Port Smart Switch",
+      "specs": [
+        "Dual-Boot SwOS/RouterOS",
+        "5x Gigabit Ethernet Ports",
+        "Compact Modern Form Factor"
+      ],
+      "image": "/assets/catalog/net-sw-desktop-v2.png",
+      "imageWebp": "/assets/catalog/net-sw-desktop-v2.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-sw-netgear-gs108",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "network-switches",
+      "subcategoryName": "Network Switches",
+      "name": "NETGEAR GS108 Unmanaged Switch",
+      "brand": "NETGEAR",
+      "badge": "8-Port Gigabit ProSAFE",
+      "specs": [
+        "8x 10/100/1000 Mbps Gigabit Ports",
+        "Durable Rugged Metal Enclosure",
+        "Lifetime Warranty & Fanless Silent"
+      ],
+      "image": "/assets/catalog/net-sw-netgear-gs108.png",
+      "imageWebp": "/assets/catalog/net-sw-netgear-gs108.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-rtr-cisco-897vaw",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "routers",
+      "subcategoryName": "Routers",
+      "name": "Cisco 897VAW Wireless Router",
+      "brand": "CISCO",
+      "badge": "VDSL2/ADSL2+ Integrated Services",
+      "specs": [
+        "Gigabit WAN & 8-Port Managed Switch",
+        "Integrated 802.11a/b/g/n WLAN",
+        "Hardware IPsec Acceleration"
+      ],
+      "image": "/assets/catalog/net-rtr-cisco-897vaw.png",
+      "imageWebp": "/assets/catalog/net-rtr-cisco-897vaw.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-rtr-enterprise-appliance",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "routers",
+      "subcategoryName": "Routers",
+      "name": "Enterprise Network Appliance — Exact model unconfirmed",
+      "brand": "CISCO / HUAWEI",
+      "badge": "Dual-WAN Enterprise Gateway",
+      "specs": [
+        "Multi-Gigabit Fiber WAN SFP",
+        "Hardware Deep Packet Inspection",
+        "High-Availability VRRP Failover"
+      ],
+      "image": "/assets/catalog/net-rtr-enterprise-appliance.png",
+      "imageWebp": "/assets/catalog/net-rtr-enterprise-appliance.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-rtr-wireless-antennas",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "routers",
+      "subcategoryName": "Routers",
+      "name": "Wireless Router with External Antennas",
+      "brand": "MIKROTIK / HUAWEI",
+      "badge": "High-Gain Dual-Band Wi-Fi",
+      "specs": [
+        "4x High-Gain 5dBi External Antennas",
+        "MU-MIMO Beamforming Technology",
+        "Gigabit Ethernet LAN/WAN Ports"
+      ],
+      "image": "/assets/catalog/net-rtr-wireless-antennas.png",
+      "imageWebp": "/assets/catalog/net-rtr-wireless-antennas.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-rtr-huawei-5g-cpe-pro",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "routers",
+      "subcategoryName": "Routers",
+      "name": "Huawei 5G CPE Pro Router",
+      "brand": "HUAWEI",
+      "badge": "Balong 5000 5G Gateway",
+      "specs": [
+        "Sub-6GHz 5G Ultra-Fast DL up to 2.3Gbps",
+        "Wi-Fi 6 Plus (802.11ax) Dual-Band",
+        "Dual Gigabit Ethernet Interfaces"
+      ],
+      "image": "/assets/catalog/net-rtr-huawei-5g-cpe-pro.png",
+      "imageWebp": "/assets/catalog/net-rtr-huawei-5g-cpe-pro.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-wl-white-ap",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "wireless-solutions",
+      "subcategoryName": "Wireless Solutions",
+      "name": "White Wireless Access Point",
+      "brand": "ARUBA / CISCO",
+      "badge": "Wi-Fi 6 Enterprise AP",
+      "specs": [
+        "Dual-Radio 2.4/5GHz 802.11ax",
+        "PoE 802.3af Powered",
+        "High-Density Campus Indoor Mounting"
+      ],
+      "image": "/assets/catalog/net-wl-white-ap.png",
+      "imageWebp": "/assets/catalog/net-wl-white-ap.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-wl-ceiling-mount-ap",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "wireless-solutions",
+      "subcategoryName": "Wireless Solutions",
+      "name": "Ceiling-Mount Wireless Access Point",
+      "brand": "RUIJIE / ARUBA",
+      "badge": "Slim Ceiling Circular AP",
+      "specs": [
+        "360° Omnidirectional RF Pattern",
+        "Integrated BLE Beacon & IoT Radio",
+        "Seamless Fast Roaming 802.11k/v/r"
+      ],
+      "image": "/assets/catalog/net-wl-ceiling-mount-ap.png",
+      "imageWebp": "/assets/catalog/net-wl-ceiling-mount-ap.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-wl-outdoor-bridge-pair",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "wireless-solutions",
+      "subcategoryName": "Wireless Solutions",
+      "name": "Outdoor Wireless Bridge Pair",
+      "brand": "MIKROTIK / UBIQUITI",
+      "badge": "5GHz 10km Point-to-Point",
+      "specs": [
+        "IP67 Weatherproof Rated Housing",
+        "High-Gain 23dBi Directional Dish",
+        "Inter-Building Gigabit Link"
+      ],
+      "image": "/assets/catalog/net-wl-outdoor-bridge-pair.png",
+      "imageWebp": "/assets/catalog/net-wl-outdoor-bridge-pair.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-mc-compact-fiber",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "media-converters",
+      "subcategoryName": "Media Converters",
+      "name": "Compact Ethernet-to-Fiber Media Converter",
+      "brand": "COMMERCIAL SERIES",
+      "badge": "10/100/1000Base-T to Fiber",
+      "specs": [
+        "RJ45 to SC/LC Optical Conversion",
+        "Single-Mode 1310nm up to 20km",
+        "External 5V DC Power Adapter"
+      ],
+      "image": "/assets/catalog/net-mc-compact-fiber.png",
+      "imageWebp": "/assets/catalog/net-mc-compact-fiber.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-mc-variant-2",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "media-converters",
+      "subcategoryName": "Media Converters",
+      "name": "Ethernet-to-Fiber Media Converter — Variant 2",
+      "brand": "TPLINK / CISCO",
+      "badge": "Multi-Mode 850nm Duplex",
+      "specs": [
+        "SC Duplex 550m Range",
+        "Link Fault Pass-Through (LFP)",
+        "Full/Half-Duplex Auto-Negotiation"
+      ],
+      "image": "/assets/catalog/net-mc-variant-2.png",
+      "imageWebp": "/assets/catalog/net-mc-variant-2.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-mc-blue-gigabit",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "media-converters",
+      "subcategoryName": "Media Converters",
+      "name": "Blue Gigabit Media Converter",
+      "brand": "TRANSCEIVER SERIES",
+      "badge": "1000Mbps Single-Mode SFP",
+      "specs": [
+        "Standard SFP Cage Slot",
+        "Blue Anodized Metal Shell",
+        "LED Optical Link Status Panel"
+      ],
+      "image": "/assets/catalog/net-mc-blue-gigabit.png",
+      "imageWebp": "/assets/catalog/net-mc-blue-gigabit.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-mc-industrial-fiber",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "media-converters",
+      "subcategoryName": "Media Converters",
+      "name": "Industrial Ethernet-to-Fiber Media Converter",
+      "brand": "ADVANTECH / HIRSCHMANN",
+      "badge": "DIN-Rail Rugged IP40",
+      "specs": [
+        "-40°C to +75°C Extreme Temperatures",
+        "Dual Redundant 12-48V DC Inputs",
+        "DIN-Rail & Wall Mounting"
+      ],
+      "image": "/assets/catalog/net-mc-industrial-fiber.png",
+      "imageWebp": "/assets/catalog/net-mc-industrial-fiber.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-ind-managed-switch",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "industrial-networking",
+      "subcategoryName": "Industrial Networking",
+      "name": "Managed Industrial Ethernet Switch",
+      "brand": "HIRSCHMANN",
+      "badge": "DIN-Rail Managed IP30",
+      "specs": [
+        "8x Fast Ethernet + 2x Gigabit Combo",
+        "Fast Ring Redundancy <20ms",
+        "PROFINET & Modbus TCP Supported"
+      ],
+      "image": "/assets/catalog/net-ind-managed-switch.png",
+      "imageWebp": "/assets/catalog/net-ind-managed-switch.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-ind-tk525l-switch",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "industrial-networking",
+      "subcategoryName": "Industrial Networking",
+      "name": "TK525L Industrial Network Switch",
+      "brand": "WELOTEC",
+      "badge": "TK500 Series 4G/LTE Router",
+      "specs": [
+        "5x 10/100Base-TX RJ45 Ports (1 WAN, 4 LAN)",
+        "Rugged Aluminum Housing with Red Bezel",
+        "Integrated Firewall, OpenVPN, IPsec & DIN Mount"
+      ],
+      "image": "/assets/catalog/net-ind-tk525l-switch.png",
+      "imageWebp": "/assets/catalog/net-ind-tk525l-switch.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-ind-switch-v1",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "industrial-networking",
+      "subcategoryName": "Industrial Networking",
+      "name": "Industrial Ethernet Switch — Variant 1",
+      "brand": "ADVANTECH",
+      "badge": "5-Port Unmanaged DIN-Rail",
+      "specs": [
+        "5x 10/100 Mbps RJ45 Ports",
+        "Broadcast Storm Protection",
+        "Reverse Polarity DC Protection"
+      ],
+      "image": "/assets/catalog/net-ind-switch-v1.png",
+      "imageWebp": "/assets/catalog/net-ind-switch-v1.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-ind-multiport-switch",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "industrial-networking",
+      "subcategoryName": "Industrial Networking",
+      "name": "Multiport Industrial Ethernet Switch",
+      "brand": "PHOENIX CONTACT",
+      "badge": "16-Port Gigabit Heavy-Duty",
+      "specs": [
+        "16x Gigabit RJ45 Ports",
+        "Ruggedized IP40 Enclosure",
+        "UL 61010 Industrial Certified"
+      ],
+      "image": "/assets/catalog/net-ind-multiport-switch.png",
+      "imageWebp": "/assets/catalog/net-ind-multiport-switch.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-ind-managed-poe-fiber",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "industrial-networking",
+      "subcategoryName": "Industrial Networking",
+      "name": "Managed PoE Industrial Fiber Switch",
+      "brand": "WEIDMÜLLER / HIRSCHMANN",
+      "badge": "PoE+ Gigabit + SFP Slots",
+      "specs": [
+        "8x PoE+ (240W Power Budget)",
+        "2x Gigabit SFP Fiber Uplinks",
+        "Hardened High-EMC Protection"
+      ],
+      "image": "/assets/catalog/net-ind-managed-poe-fiber.png",
+      "imageWebp": "/assets/catalog/net-ind-managed-poe-fiber.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-trx-40g-qsfp",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "transceivers",
+      "subcategoryName": "Transceivers",
+      "name": "40GBASE QSFP Optical Transceiver",
+      "brand": "CISCO COMPATIBLE",
+      "badge": "40GBASE-SR4 MPO/MTP",
+      "specs": [
+        "40 Gbps Quad SFP+ Module",
+        "850nm VCSEL Multi-Mode MPO-12",
+        "Digital Optical Monitoring (DOM)"
+      ],
+      "image": "/assets/catalog/net-trx-40g-qsfp.png",
+      "imageWebp": "/assets/catalog/net-trx-40g-qsfp.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-trx-module-v1",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "transceivers",
+      "subcategoryName": "Transceivers",
+      "name": "Optical Transceiver Module — Variant 1",
+      "brand": "HUAWEI / FINISAR",
+      "badge": "10G SFP+ 1310nm 10km",
+      "specs": [
+        "10GBASE-LR Duplex LC",
+        "DFB Laser Single-Mode Optical",
+        "Hot-Pluggable SFP+ Footprint"
+      ],
+      "image": "/assets/catalog/net-trx-module-v1.png",
+      "imageWebp": "/assets/catalog/net-trx-module-v1.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-trx-module-v2",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "transceivers",
+      "subcategoryName": "Transceivers",
+      "name": "Optical Transceiver Module — Variant 2",
+      "brand": "CISCO",
+      "badge": "10G SFP+ 850nm SR",
+      "specs": [
+        "10GBASE-SR Multi-Mode 300m",
+        "Duplex LC Ceramic Connector",
+        "Low Power Consumption <1W"
+      ],
+      "image": "/assets/catalog/net-trx-module-v2.png",
+      "imageWebp": "/assets/catalog/net-trx-module-v2.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-trx-module-v3",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "transceivers",
+      "subcategoryName": "Transceivers",
+      "name": "Optical Transceiver Module — Variant 3",
+      "brand": "EXCEL / OEM",
+      "badge": "1.25G Gigabit SFP 1000Base-SX",
+      "specs": [
+        "1000Base-SX 850nm 550m OM3",
+        "Metal Casing for Lower EMI",
+        "Laser Safety Class 1 Compliant"
+      ],
+      "image": "/assets/catalog/net-trx-module-v3.png",
+      "imageWebp": "/assets/catalog/net-trx-module-v3.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-trx-module-v4",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "transceivers",
+      "subcategoryName": "Transceivers",
+      "name": "Optical Transceiver Module — Variant 4",
+      "brand": "CORNING",
+      "badge": "1000Base-T Copper RJ45 SFP",
+      "specs": [
+        "SFP to RJ45 Copper Transceiver",
+        "Cat5e/Cat6 Cable up to 100m",
+        "Auto-Negotiation SGMII Interface"
+      ],
+      "image": "/assets/catalog/net-trx-module-v4.png",
+      "imageWebp": "/assets/catalog/net-trx-module-v4.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "net-trx-highspeed-module",
+      "categoryId": "networking",
+      "categoryName": "Networking",
+      "subcategoryId": "transceivers",
+      "subcategoryName": "Transceivers",
+      "name": "High-Speed Optical Transceiver Module",
+      "brand": "BROCADE / CISCO",
+      "badge": "100G QSFP28 100GBASE-LR4",
+      "specs": [
+        "100 Gbps CWDM4 1310nm 10km",
+        "Dual LC Optical Receptacle",
+        "Built-in Digital Diagnostic Monitor"
+      ],
+      "image": "/assets/catalog/net-trx-highspeed-module.png",
+      "imageWebp": "/assets/catalog/net-trx-highspeed-module.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cctv-hikvision-dome",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "cctv-surveillance",
+      "subcategoryName": "CCTV Surveillance",
+      "name": "Hikvision Dome CCTV Camera",
+      "brand": "HIKVISION",
+      "badge": "4K Ultra HD Vandal Dome",
+      "specs": [
+        "8MP (3840x2160) @ 30fps",
+        "DarkFighter Color Night Vision",
+        "IK10 Vandal-Proof & IP67 Rated"
+      ],
+      "image": "/assets/catalog/sec-cctv-hikvision-dome.png",
+      "imageWebp": "/assets/catalog/sec-cctv-hikvision-dome.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cctv-dahua-dome",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "cctv-surveillance",
+      "subcategoryName": "CCTV Surveillance",
+      "name": "Dahua Dome CCTV Camera",
+      "brand": "DAHUA",
+      "badge": "WizSense AI Dome Camera",
+      "specs": [
+        "5MP Full-Color Starlight Sensor",
+        "SMD 4.0 Human/Vehicle Classification",
+        "Built-in Mic & Two-Way Audio"
+      ],
+      "image": "/assets/catalog/sec-cctv-dahua-dome.png",
+      "imageWebp": "/assets/catalog/sec-cctv-dahua-dome.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cctv-hikvision-bullet",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "cctv-surveillance",
+      "subcategoryName": "CCTV Surveillance",
+      "name": "Hikvision Bullet CCTV Camera",
+      "brand": "HIKVISION",
+      "badge": "Outdoor Motorized Varifocal",
+      "specs": [
+        "2.8-12mm Motorized Optical Zoom",
+        "EXIR 2.0 Smart IR up to 60m",
+        "AcuSense False-Alarm Reduction"
+      ],
+      "image": "/assets/catalog/sec-cctv-hikvision-bullet.png",
+      "imageWebp": "/assets/catalog/sec-cctv-hikvision-bullet.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cctv-ptz-speed-dome",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "cctv-surveillance",
+      "subcategoryName": "CCTV Surveillance",
+      "name": "PTZ Speed Dome CCTV Camera",
+      "brand": "AXIS / HIKVISION",
+      "badge": "36x Optical Zoom High-Speed PTZ",
+      "specs": [
+        "360° Endless Pan / -15° to 90° Tilt",
+        "Auto-Tracking with Laser IR 200m",
+        "Electronic Image Stabilization (EIS)"
+      ],
+      "image": "/assets/catalog/sec-cctv-ptz-speed-dome.png",
+      "imageWebp": "/assets/catalog/sec-cctv-ptz-speed-dome.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cctv-nvr",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "cctv-surveillance",
+      "subcategoryName": "CCTV Surveillance",
+      "name": "Network Video Recorder (NVR)",
+      "brand": "HIKVISION / DAHUA",
+      "badge": "32-Channel 4K PoE NVR",
+      "specs": [
+        "320 Mbps Incoming Bandwidth",
+        "4x SATA HDDs up to 40TB Storage",
+        "H.265+ High Efficiency Recording"
+      ],
+      "image": "/assets/catalog/sec-cctv-nvr.png",
+      "imageWebp": "/assets/catalog/sec-cctv-nvr.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cctv-monitoring-display",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "cctv-surveillance",
+      "subcategoryName": "CCTV Surveillance",
+      "name": "Multi-Camera Monitoring Display",
+      "brand": "SAMSUNG / LG COMMERCIAL",
+      "badge": "Security Operations Control",
+      "specs": [
+        "55\" 24/7 Surveillance Grade Monitor",
+        "Multi-Split Screen Real-Time Matrix",
+        "Ultra-Low Latency HDMI/BNC Inputs"
+      ],
+      "image": "/assets/catalog/sec-cctv-monitoring-display.png",
+      "imageWebp": "/assets/catalog/sec-cctv-monitoring-display.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cctv-cpplus-nvr",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "cctv-surveillance",
+      "subcategoryName": "CCTV Surveillance",
+      "name": "CP Plus Network Video Recorder (NVR)",
+      "brand": "CP PLUS",
+      "badge": "16-Channel HD NVR",
+      "specs": [
+        "16-Ch Simultaneous Playback",
+        "Smart Phone Remote Monitoring App",
+        "Dual HDMI/VGA Video Output"
+      ],
+      "image": "/assets/catalog/sec-cctv-cpplus-nvr.png",
+      "imageWebp": "/assets/catalog/sec-cctv-cpplus-nvr.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-ac-biometric-terminal",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "access-control",
+      "subcategoryName": "Access Control Systems",
+      "name": "Biometric Time Attendance Terminal",
+      "brand": "ZKTECO / SUPREMA",
+      "badge": "Visible Light Facial + Fingerprint",
+      "specs": [
+        "<0.2s High-Speed Facial Verification",
+        "Touchscreen Interactive UI with RFID",
+        "TCP/IP, Wi-Fi & Wiegand Interfaces"
+      ],
+      "image": "/assets/catalog/sec-ac-biometric-terminal.png",
+      "imageWebp": "/assets/catalog/sec-ac-biometric-terminal.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-ac-card-reader",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "access-control",
+      "subcategoryName": "Access Control Systems",
+      "name": "Access Card Reader Terminal",
+      "brand": "HID GLOBAL",
+      "badge": "iCLASS SE / RFID Contactless",
+      "specs": [
+        "13.56 MHz High Frequency Smart Card",
+        "Bluetooth & NFC Smartphone Access",
+        "IP65 Weatherproof Mullion Design"
+      ],
+      "image": "/assets/catalog/sec-ac-card-reader.png",
+      "imageWebp": "/assets/catalog/sec-ac-card-reader.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-ac-fingerprint-reader",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "access-control",
+      "subcategoryName": "Access Control Systems",
+      "name": "Fingerprint Access Control Reader",
+      "brand": "SUPREMA",
+      "badge": "BioLite Outdoor Biometric",
+      "specs": [
+        "Patented Fake Fingerprint Detection",
+        "Standalone Door Controller Relay",
+        "IP67 Rugged Vandal Resistant"
+      ],
+      "image": "/assets/catalog/sec-ac-fingerprint-reader.png",
+      "imageWebp": "/assets/catalog/sec-ac-fingerprint-reader.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-ac-door-keypad",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "access-control",
+      "subcategoryName": "Access Control Systems",
+      "name": "Door Access Control Keypad",
+      "brand": "ZKTECO / HID",
+      "badge": "Illuminated Zinc Alloy Keypad",
+      "specs": [
+        "Backlit Numeric PIN + Proximity Card",
+        "Anti-Tamper Sensor and Alarm Output",
+        "Stainless Steel Metallic Construction"
+      ],
+      "image": "/assets/catalog/sec-ac-door-keypad.png",
+      "imageWebp": "/assets/catalog/sec-ac-door-keypad.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-ac-boom-barrier",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "access-control",
+      "subcategoryName": "Access Control Systems",
+      "name": "Automatic Boom Barrier Parking Access System",
+      "brand": "CAME / FAAC / ZKTECO",
+      "badge": "0.6s High-Speed Toll Barrier",
+      "specs": [
+        "Brushless DC Motor (10M Cycles)",
+        "Anti-Smashing Pressure Wave Sensor",
+        "Automatic ANPR / RFID Integration"
+      ],
+      "image": "/assets/catalog/sec-ac-boom-barrier.png",
+      "imageWebp": "/assets/catalog/sec-ac-boom-barrier.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cab-coaxial-connectors",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "security-cabling",
+      "subcategoryName": "Security Cabling",
+      "name": "Coaxial Video Cable Connectors",
+      "brand": "BELDEN / COMMSCOPE",
+      "badge": "BNC Compression Connectors",
+      "specs": [
+        "Precision 75-Ohm Gold-Plated Pin",
+        "Weatherproof O-Ring Compression Seal",
+        "Professional CCTV Video Termination"
+      ],
+      "image": "/assets/catalog/sec-cab-coaxial-connectors.png",
+      "imageWebp": "/assets/catalog/sec-cab-coaxial-connectors.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cab-security-reel",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "security-cabling",
+      "subcategoryName": "Security Cabling",
+      "name": "Coaxial Security Cable Reel",
+      "brand": "BELDEN",
+      "badge": "305m Wooden Spool Drum",
+      "specs": [
+        "Solid Bare Copper Center Conductor",
+        "95% Bare Copper Braid Shielding",
+        "Sequential Foot Markers on Jacket"
+      ],
+      "image": "/assets/catalog/sec-cab-security-reel.png",
+      "imageWebp": "/assets/catalog/sec-cab-security-reel.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cab-rg59-siamese",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "security-cabling",
+      "subcategoryName": "Security Cabling",
+      "name": "RG59 Siamese CCTV Cable",
+      "brand": "BELDEN / COMMSCOPE",
+      "badge": "Coax + 18/2 Integrated Power",
+      "specs": [
+        "RG59 Coaxial Video + 2x 18AWG DC Wire",
+        "CCTV Video & Power in Single Pull",
+        "Flame Retardant PVC/LSZH Jacket"
+      ],
+      "image": "/assets/catalog/sec-cab-rg59-siamese.png",
+      "imageWebp": "/assets/catalog/sec-cab-rg59-siamese.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cs-fortinet-firewall",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "cybersecurity-systems",
+      "subcategoryName": "Cybersecurity Systems",
+      "name": "Fortinet Enterprise Firewall",
+      "brand": "FORTINET",
+      "badge": "FortiGate NGFW Appliance",
+      "specs": [
+        "AI-Powered FortiGuard Threat Defense",
+        "Multi-Gigabit IPS & SSL Decryption",
+        "Integrated SD-WAN & ZTNA Controller"
+      ],
+      "image": "/assets/catalog/sec-cs-fortinet-firewall.png",
+      "imageWebp": "/assets/catalog/sec-cs-fortinet-firewall.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-cs-gateprotect-firewall",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "cybersecurity-systems",
+      "subcategoryName": "Cybersecurity Systems",
+      "name": "Gateprotect Network Firewall Appliance",
+      "brand": "GATEPROTECT / ROHDE & SCHWARZ",
+      "badge": "Unified Threat Management (UTM)",
+      "specs": [
+        "Patented eGUI Ergonomic Management",
+        "Layer 7 Application Control & Antivirus",
+        "High-Throughput VPN Site-to-Site"
+      ],
+      "image": "/assets/catalog/sec-cs-gateprotect-firewall.png",
+      "imageWebp": "/assets/catalog/sec-cs-gateprotect-firewall.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-av-eset-endpoint",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "antivirus-edr",
+      "subcategoryName": "Antivirus & EDR Solutions",
+      "name": "ESET Endpoint Antivirus",
+      "brand": "ESET",
+      "badge": "Multi-Layered Endpoint Security",
+      "specs": [
+        "Ransomware Shield & Exploit Blocker",
+        "Cloud-Powered LiveGrid Scanning Engine",
+        "Ultra-Lightweight System Footprint"
+      ],
+      "image": "/assets/catalog/sec-av-eset-endpoint.png",
+      "imageWebp": "/assets/catalog/sec-av-eset-endpoint.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-av-quickheal-server",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "antivirus-edr",
+      "subcategoryName": "Antivirus & EDR Solutions",
+      "name": "Quick Heal Server Edition Antivirus",
+      "brand": "QUICK HEAL",
+      "badge": "Enterprise Server Edition 1-Yr",
+      "specs": [
+        "Windows Server Workload Protection",
+        "Data Theft Protection & Anti-Keylogger",
+        "Central Web Management Console"
+      ],
+      "image": "/assets/catalog/sec-av-quickheal-server.png",
+      "imageWebp": "/assets/catalog/sec-av-quickheal-server.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "sec-thm-thermal-camera",
+      "categoryId": "security-systems",
+      "categoryName": "Security Systems",
+      "subcategoryId": "cctv-surveillance",
+      "subcategoryName": "CCTV Surveillance",
+      "name": "Handheld Thermal Imaging Camera",
+      "brand": "FLIR / HIKMICRO",
+      "badge": "Industrial Infrared Thermography",
+      "specs": [
+        "Uncooled Focal Plane Array Sensor",
+        "Temperature Range -20°C to 550°C",
+        "High-Resolution Visual & Thermal Blending"
+      ],
+      "image": "/assets/catalog/sec-thm-thermal-camera.png",
+      "imageWebp": "/assets/catalog/sec-thm-thermal-camera.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-cu-cat6-white",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "copper-cables",
+      "subcategoryName": "Copper Cables",
+      "name": "Cat6 Ethernet Patch Cable — White",
+      "brand": "EXCEL / COMMSCOPE",
+      "badge": "Molded Snagless Boot",
+      "specs": [
+        "Cat6 250MHz 24AWG Stranded Copper",
+        "Molded Snagless RJ45 Strain Relief",
+        "Pure White Commercial Jacket"
+      ],
+      "image": "/assets/catalog/cbl-cu-cat6-white.png",
+      "imageWebp": "/assets/catalog/cbl-cu-cat6-white.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-cu-cat6a-shielded",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "copper-cables",
+      "subcategoryName": "Copper Cables",
+      "name": "Cat6A Shielded Copper Cable",
+      "brand": "PANDUIT / CORNING",
+      "badge": "S/FTP 10G 500MHz Bulk Reel",
+      "specs": [
+        "Individual Foil Pairs + Overall Braid",
+        "23AWG Solid Bare Copper Conductors",
+        "Low Smoke Zero Halogen (LSZH) Jacket"
+      ],
+      "image": "/assets/catalog/cbl-cu-cat6a-shielded.png",
+      "imageWebp": "/assets/catalog/cbl-cu-cat6a-shielded.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-cu-cat6a-blue-patch",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "copper-cables",
+      "subcategoryName": "Copper Cables",
+      "name": "Cat6A Blue Ethernet Patch Cable",
+      "brand": "EXCEL CABLING",
+      "badge": "Slim 10G Shielded Patch Cord",
+      "specs": [
+        "10 Gbps High-Density Server Patching",
+        "Gold-Plated 50 Micron RJ45 Contacts",
+        "Vibrant Signal Blue Identification"
+      ],
+      "image": "/assets/catalog/cbl-cu-cat6a-blue-patch.png",
+      "imageWebp": "/assets/catalog/cbl-cu-cat6a-blue-patch.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-cu-cat5e-blue",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "copper-cables",
+      "subcategoryName": "Copper Cables",
+      "name": "Cat5e Blue Ethernet Cable",
+      "brand": "COMMSCOPE",
+      "badge": "100MHz 305m Pull-Box",
+      "specs": [
+        "Cat5e U/UTP 24AWG 4-Pair Twisted",
+        "Easy-Pull REELEX Dispenser Box",
+        "Standard Voice and 1Gbps Data Links"
+      ],
+      "image": "/assets/catalog/cbl-cu-cat5e-blue.png",
+      "imageWebp": "/assets/catalog/cbl-cu-cat5e-blue.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-cu-black-patch-cables",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "copper-cables",
+      "subcategoryName": "Copper Cables",
+      "name": "Black Ethernet Patch Cables",
+      "brand": "LEGRAND",
+      "badge": "Matte Black Server Cords",
+      "specs": [
+        "High-Flexibility Stranded Patch Cords",
+        "Discreet Rack Infrastructure Routing",
+        "Component-Level Certified Performance"
+      ],
+      "image": "/assets/catalog/cbl-cu-black-patch-cables.png",
+      "imageWebp": "/assets/catalog/cbl-cu-black-patch-cables.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-cu-twisted-pair",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "copper-cables",
+      "subcategoryName": "Copper Cables",
+      "name": "Copper Twisted-Pair Cable",
+      "brand": "3A CORNING",
+      "badge": "Precision Differential Pairs",
+      "specs": [
+        "Tight Consistent Twist Pitch",
+        "Zero Near-End Crosstalk (NEXT)",
+        "Solid 23/24AWG Electrolytic Copper"
+      ],
+      "image": "/assets/catalog/cbl-cu-twisted-pair.png",
+      "imageWebp": "/assets/catalog/cbl-cu-twisted-pair.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-cu-shielded-ethernet",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "copper-cables",
+      "subcategoryName": "Copper Cables",
+      "name": "Shielded Ethernet Cable",
+      "brand": "R&M / PANDUIT",
+      "badge": "F/UTP Foil Screened",
+      "specs": [
+        "AL-Mylar Foil EMI Protection",
+        "Integrated Tinned Copper Drain Wire",
+        "Industrial Plant & Medical Grade"
+      ],
+      "image": "/assets/catalog/cbl-cu-shielded-ethernet.png",
+      "imageWebp": "/assets/catalog/cbl-cu-shielded-ethernet.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-fo-yellow-patch-cord",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "fiber-optic-cables",
+      "subcategoryName": "Fiber Optic Cables",
+      "name": "Yellow Fiber Optic Patch Cord",
+      "brand": "CORNING",
+      "badge": "OS2 Single-Mode 9/125 Duplex LC",
+      "specs": [
+        "Ultra-Low Insertion Loss <0.2dB",
+        "Yellow Telecom Standard Jacket",
+        "UPC Ceramic Polish Finish"
+      ],
+      "image": "/assets/catalog/cbl-fo-yellow-patch-cord.png",
+      "imageWebp": "/assets/catalog/cbl-fo-yellow-patch-cord.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-fo-orange-patch-cable",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "fiber-optic-cables",
+      "subcategoryName": "Fiber Optic Cables",
+      "name": "Orange Fiber Optic Patch Cable",
+      "brand": "COMMSCOPE",
+      "badge": "OM2 Multi-Mode 50/125",
+      "specs": [
+        "Orange Legacy OM2 Multi-Mode",
+        "Duplex SC to LC Connectors",
+        "Low-Bend Sensitivity Graded Core"
+      ],
+      "image": "/assets/catalog/cbl-fo-orange-patch-cable.png",
+      "imageWebp": "/assets/catalog/cbl-fo-orange-patch-cable.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-fo-multicore-cable",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "fiber-optic-cables",
+      "subcategoryName": "Fiber Optic Cables",
+      "name": "Multicore Fiber Optic Cable",
+      "brand": "CORNING",
+      "badge": "12/24/48 Core Backbone",
+      "specs": [
+        "Color-Coded Fiber Strands in Gel Tubes",
+        "Aramid Yarn Strength Member",
+        "High-Density Campus Interconnect"
+      ],
+      "image": "/assets/catalog/cbl-fo-multicore-cable.png",
+      "imageWebp": "/assets/catalog/cbl-fo-multicore-cable.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-fo-black-cable",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "fiber-optic-cables",
+      "subcategoryName": "Fiber Optic Cables",
+      "name": "Black Fiber Optic Cable",
+      "brand": "NEXANS",
+      "badge": "Outdoor UV Resistant Duct",
+      "specs": [
+        "Heavy-Duty Black Polyethylene (PE) Jacket",
+        "Water-Blocking Swellable Tape",
+        "Direct Burial & Conduit Pulling"
+      ],
+      "image": "/assets/catalog/cbl-fo-black-cable.png",
+      "imageWebp": "/assets/catalog/cbl-fo-black-cable.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.682Z",
+      "updatedAt": "2026-10-11T16:34:51.682Z"
+    },
+    {
+      "id": "cbl-fo-industrial-cable",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "fiber-optic-cables",
+      "subcategoryName": "Fiber Optic Cables",
+      "name": "Industrial Fiber Optic Cable",
+      "brand": "BELDEN / PHOENIX CONTACT",
+      "badge": "Corrugated Steel Tape Armored",
+      "specs": [
+        "Rodent-Proof Steel Armoring",
+        "High Crush Resistance up to 3000N",
+        "Extreme Chemical & Oil Resistance"
+      ],
+      "image": "/assets/catalog/cbl-fo-industrial-cable.png",
+      "imageWebp": "/assets/catalog/cbl-fo-industrial-cable.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-pp-cat6a-management",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "patch-panels",
+      "subcategoryName": "Patch Panels",
+      "name": "Cat6A Patch Panel with Cable Management",
+      "brand": "PANDUIT",
+      "badge": "1U 24-Port with Rear Bar",
+      "specs": [
+        "Integral Rear Cable Management Bar",
+        "Numbered Label Fields with Clear Covers",
+        "Certified 10G Cat6A Component Level"
+      ],
+      "image": "/assets/catalog/cbl-pp-cat6a-management.png",
+      "imageWebp": "/assets/catalog/cbl-pp-cat6a-management.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-pp-cat6a-shielded-24p",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "patch-panels",
+      "subcategoryName": "Patch Panels",
+      "name": "Cat6A Shielded 24-Port Patch Panel",
+      "brand": "EXCEL CABLING",
+      "badge": "Full Die-Cast Zinc Housing",
+      "specs": [
+        "360° Shielding Grounding Lug",
+        "Toolless Keystone Snap-In Frame",
+        "19\" 1U Compact High-Density"
+      ],
+      "image": "/assets/catalog/cbl-pp-cat6a-shielded-24p.png",
+      "imageWebp": "/assets/catalog/cbl-pp-cat6a-shielded-24p.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-pp-rackmount-panel",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "patch-panels",
+      "subcategoryName": "Patch Panels",
+      "name": "Rackmount Network Patch Panel",
+      "brand": "COMMSCOPE",
+      "badge": "2U 48-Port High-Density",
+      "specs": [
+        "48 Ports in Standard 2U Rack Space",
+        "Dual IDC 110/Krone Punch-down",
+        "T568A & T568B Universal Color Wiring"
+      ],
+      "image": "/assets/catalog/cbl-pp-rackmount-panel.png",
+      "imageWebp": "/assets/catalog/cbl-pp-rackmount-panel.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-cab-36u-outdoor",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "network-cabinets",
+      "subcategoryName": "Network Cabinets & Racks",
+      "name": "Weatherproof 36U Outdoor Telecom Cabinet",
+      "brand": "GREAT LAKES",
+      "badge": "IP55 Outdoor Weatherproof",
+      "specs": [
+        "Double-Wall Insulated Aluminum",
+        "Integrated 1500W Air Conditioning Unit",
+        "3-Point Locking High-Security Door"
+      ],
+      "image": "/assets/catalog/cbl-cab-36u-outdoor.png",
+      "imageWebp": "/assets/catalog/cbl-cab-36u-outdoor.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-cab-great-lakes-wall",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "network-cabinets",
+      "subcategoryName": "Network Cabinets & Racks",
+      "name": "Great Lakes Wall-Mount Network Cabinet",
+      "brand": "GREAT LAKES",
+      "badge": "9U/12U Swing-Out Wall Box",
+      "specs": [
+        "Toughened Glass Front Door",
+        "Swing-Out Rear Access for Easy Service",
+        "Removable Side Panels with Locks"
+      ],
+      "image": "/assets/catalog/cbl-cab-great-lakes-wall.png",
+      "imageWebp": "/assets/catalog/cbl-cab-great-lakes-wall.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-cab-floor-standing",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "network-cabinets",
+      "subcategoryName": "Network Cabinets & Racks",
+      "name": "Floor-Standing Network Cabinet",
+      "brand": "TOTEN / VERTIV",
+      "badge": "42U 800x1000 Server Rack",
+      "specs": [
+        "High Airflow Mesh Hexagonal Doors",
+        "1000kg Static Load Capacity",
+        "Adjustable 19-Inch Mounting Rails"
+      ],
+      "image": "/assets/catalog/cbl-cab-floor-standing.png",
+      "imageWebp": "/assets/catalog/cbl-cab-floor-standing.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-cab-open-frame-rack",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "network-cabinets",
+      "subcategoryName": "Network Cabinets & Racks",
+      "name": "Open-Frame Network Rack",
+      "brand": "PANDUIT / CHATSWORTH",
+      "badge": "2-Post / 4-Post Telecom Rack",
+      "specs": [
+        "Heavy-Gauge Extruded Aluminum",
+        "Unrestricted Airflow and Cable Access",
+        "Integrated Vertical Cable Channels"
+      ],
+      "image": "/assets/catalog/cbl-cab-open-frame-rack.png",
+      "imageWebp": "/assets/catalog/cbl-cab-open-frame-rack.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-cab-datacenter-install",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "network-cabinets",
+      "subcategoryName": "Network Cabinets & Racks",
+      "name": "Data-Center Rack Cabinet Installation",
+      "brand": "VERTIV / SCHNEIDER",
+      "badge": "Aisle Containment Data Row",
+      "specs": [
+        "Hot/Cold Aisle Containment Pod",
+        "Integrated Overhead Fiber Raceway",
+        "Seismic Zone 4 Certified Structure"
+      ],
+      "image": "/assets/catalog/cbl-cab-datacenter-install.png",
+      "imageWebp": "/assets/catalog/cbl-cab-datacenter-install.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-ks-ethernet-jacks",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "keystone-jacks",
+      "subcategoryName": "Keystone Jacks & Accessories",
+      "name": "Ethernet Keystone Jacks",
+      "brand": "PANDUIT / LEGRAND",
+      "badge": "Cat6A Toolless Zinc Keystone",
+      "specs": [
+        "180° Shielded Die-Cast Zinc Housing",
+        "Toolless Butterfly Latch Termination",
+        "Gold-Plated Contact Pins 50u\""
+      ],
+      "image": "/assets/catalog/cbl-ks-ethernet-jacks.png",
+      "imageWebp": "/assets/catalog/cbl-ks-ethernet-jacks.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-adp-hdmi-coupler",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "keystone-jacks",
+      "subcategoryName": "Keystone Jacks & Accessories",
+      "name": "HDMI Female-to-Female Coupler",
+      "brand": "COMMERCIAL SERIES",
+      "badge": "Keystone Snap-in HDMI 2.0",
+      "specs": [
+        "4K @ 60Hz Ultra HD Pass-through",
+        "Standard Snap-in Keystone Format",
+        "Gold-Plated Female HDMI Ports"
+      ],
+      "image": "/assets/catalog/cbl-adp-hdmi-coupler.png",
+      "imageWebp": "/assets/catalog/cbl-adp-hdmi-coupler.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-adp-blue-fiber-adapter",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "keystone-jacks",
+      "subcategoryName": "Keystone Jacks & Accessories",
+      "name": "Blue Fiber Optic Adapter",
+      "badge": "SC Simplex Single-Mode Blue",
+      "brand": "CORNING",
+      "specs": [
+        "Ceramic Alignment Precision Sleeve",
+        "Snap-in or Screw Flange Mount",
+        "Insertion Loss <= 0.2dB"
+      ],
+      "image": "/assets/catalog/cbl-adp-blue-fiber-adapter.png",
+      "imageWebp": "/assets/catalog/cbl-adp-blue-fiber-adapter.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-adp-rj45-couplers",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "keystone-jacks",
+      "subcategoryName": "Keystone Jacks & Accessories",
+      "name": "RJ45 Modular Jack Couplers",
+      "brand": "EXCEL CABLING",
+      "badge": "Inline Feed-Through Coupler",
+      "specs": [
+        "Shielded Metal Housing Cat6A",
+        "Female-to-Female Straight-Through",
+        "Plug & Play Cable Extension"
+      ],
+      "image": "/assets/catalog/cbl-adp-rj45-couplers.png",
+      "imageWebp": "/assets/catalog/cbl-adp-rj45-couplers.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "cbl-acc-splice-tray",
+      "categoryId": "structured-cabling",
+      "categoryName": "Structured Cabling",
+      "subcategoryId": "fiber-optic-cables",
+      "subcategoryName": "Fiber Optic Cables",
+      "name": "Fiber Optic Splice Tray",
+      "brand": "CORNING / COMMSCOPE",
+      "badge": "24-Fiber Fusion Splice Tray",
+      "specs": [
+        "Flame-Retardant ABS Plastic Body",
+        "Snap-on Clear Transparent Protective Lid",
+        "Integrated Fiber Routing Mandrels"
+      ],
+      "image": "/assets/catalog/cbl-acc-splice-tray.png",
+      "imageWebp": "/assets/catalog/cbl-acc-splice-tray.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-touchscreen-kiosk",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "digital-signage",
+      "subcategoryName": "Digital Signage Displays",
+      "name": "Digital Information Touchscreen Kiosk",
+      "brand": "COMMERCIAL SERIES",
+      "badge": "43\" Interactive Wayfinding",
+      "specs": [
+        "10-Point PCAP Multi-Touch Screen",
+        "Anti-Glare 4K UHD Commercial Panel",
+        "Internal Windows/Android Media PC"
+      ],
+      "image": "/assets/catalog/disp-touchscreen-kiosk.png",
+      "imageWebp": "/assets/catalog/disp-touchscreen-kiosk.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-doit-vision-led-wall",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "led-displays",
+      "subcategoryName": "LED Displays & Video Walls",
+      "name": "DOIT-VISION Fine-Pitch LED Video Wall",
+      "brand": "DOIT-VISION",
+      "badge": "P1.25 Seamless Fine Pitch",
+      "specs": [
+        "Ultra-High 3840Hz Refresh Rate",
+        "Front-Service Magnetic Modules",
+        "Die-Cast Aluminum Cabinet 600x337.5mm"
+      ],
+      "image": "/assets/catalog/disp-doit-vision-led-wall.png",
+      "imageWebp": "/assets/catalog/disp-doit-vision-led-wall.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-large-led-wall",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "led-displays",
+      "subcategoryName": "LED Displays & Video Walls",
+      "name": "Large-Format LED Video Wall",
+      "brand": "SAMSUNG / LG",
+      "badge": "Cinema & Auditorium LED Wall",
+      "specs": [
+        "HDR10+ Dynamic Contrast Enhancement",
+        "Zero Optical Bezels Matrix Alignment",
+        "Dual Power & Signal Redundancy"
+      ],
+      "image": "/assets/catalog/disp-large-led-wall.png",
+      "imageWebp": "/assets/catalog/disp-large-led-wall.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-floor-standing-signage",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "digital-signage",
+      "subcategoryName": "Digital Signage Displays",
+      "name": "Floor-Standing Digital Signage Displays",
+      "brand": "LG COMMERCIAL",
+      "badge": "55\" Ultra-Slim Free-Standing",
+      "specs": [
+        "700 nits High Brightness Commercial Display",
+        "Curved Modern Enclosure with Base Plate",
+        "Central Cloud Content Management (CMS)"
+      ],
+      "image": "/assets/catalog/disp-floor-standing-signage.png",
+      "imageWebp": "/assets/catalog/disp-floor-standing-signage.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-outdoor-billboard",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "led-displays",
+      "subcategoryName": "LED Displays & Video Walls",
+      "name": "Outdoor Digital Billboard Display",
+      "brand": "COMMERCIAL OUTDOOR",
+      "badge": "IP65 High-Nit P3.9 / P6",
+      "specs": [
+        "7500 nits Sunlight Readable Brightness",
+        "Weatherproof Sealed Front & Rear Cabinet",
+        "Auto-Dimming Environmental Sensor"
+      ],
+      "image": "/assets/catalog/disp-outdoor-billboard.png",
+      "imageWebp": "/assets/catalog/disp-outdoor-billboard.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-self-service-collection",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "kiosk-accessories",
+      "subcategoryName": "Kiosks & Accessories",
+      "name": "Self-Service Kiosk Terminal Collection",
+      "brand": "ZEBRA / CUSTOM POS",
+      "badge": "Retail & Quick Service Kiosks",
+      "specs": [
+        "Integrated Payment Terminal & Printer",
+        "Modular Peripherals: Scanner, RFID, Camera",
+        "Ergonomic Wheelchair Accessible Height"
+      ],
+      "image": "/assets/catalog/disp-self-service-collection.png",
+      "imageWebp": "/assets/catalog/disp-self-service-collection.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-floor-kiosk-v1",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "kiosk-accessories",
+      "subcategoryName": "Kiosks & Accessories",
+      "name": "Floor-Standing Self-Service Kiosk",
+      "brand": "CUSTOM KIOSK",
+      "badge": "32\" Ordering & Check-in Totem",
+      "specs": [
+        "Commercial 24/7 IPS Capacitive Panel",
+        "High-Speed 80mm Auto-Cutter Receipt Print",
+        "Thermal Overheat Protection Fan"
+      ],
+      "image": "/assets/catalog/disp-floor-kiosk-v1.png",
+      "imageWebp": "/assets/catalog/disp-floor-kiosk-v1.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-interactive-touch",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "interactive-displays",
+      "subcategoryName": "Interactive Displays",
+      "name": "Touchscreen Interactive Display",
+      "brand": "VIEWSONIC",
+      "badge": "65\" 4K Touch Flat Panel",
+      "specs": [
+        "20-Point Touch Ultra Fine Pen Writing",
+        "Anti-Glare 7H Hardness Tempered Glass",
+        "Wireless Screen Share from Any Device"
+      ],
+      "image": "/assets/catalog/disp-interactive-touch.png",
+      "imageWebp": "/assets/catalog/disp-interactive-touch.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-indoor-led-installation",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "led-displays",
+      "subcategoryName": "LED Displays & Video Walls",
+      "name": "Indoor LED Video Wall Installation",
+      "brand": "SAMSUNG THE WALL",
+      "badge": "MicroLED Architecture",
+      "specs": [
+        "Black Seal Technology Deep Blacks",
+        "Seamless Bezel-Free Wall Mounting",
+        "Engineered Commercial Rigging Frame"
+      ],
+      "image": "/assets/catalog/disp-indoor-led-installation.png",
+      "imageWebp": "/assets/catalog/disp-indoor-led-installation.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-floor-kiosk-v2",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "kiosk-accessories",
+      "subcategoryName": "Kiosks & Accessories",
+      "name": "Floor-Standing Self-Service Kiosk — Variant 2",
+      "brand": "COMMERCIAL SERIES",
+      "badge": "Slim Metallic Totem Station",
+      "specs": [
+        "Front-Opening Service Door with Key",
+        "2D Barcode & QR High-Speed Scanner",
+        "NFC Contactless Card Reader"
+      ],
+      "image": "/assets/catalog/disp-floor-kiosk-v2.png",
+      "imageWebp": "/assets/catalog/disp-floor-kiosk-v2.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-conference-display",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "interactive-displays",
+      "subcategoryName": "Interactive Displays",
+      "name": "Interactive Conference-Room Display",
+      "brand": "VIEWSONIC / LG",
+      "badge": "86\" Boardroom Collaboration",
+      "specs": [
+        "Integrated 4K AI Auto-Framing Camera",
+        "8-Array Beamforming Microphones",
+        "Native Microsoft Teams & Zoom Rooms"
+      ],
+      "image": "/assets/catalog/disp-conference-display.png",
+      "imageWebp": "/assets/catalog/disp-conference-display.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "disp-facade-led",
+      "categoryId": "digital-displays-and-kiosks",
+      "categoryName": "Digital Displays and Kiosks",
+      "subcategoryId": "led-displays",
+      "subcategoryName": "LED Displays & Video Walls",
+      "name": "Building-Facade LED Display",
+      "brand": "DOIT-VISION / ARCHITECTURAL",
+      "badge": "Transparent Mesh LED Glass",
+      "specs": [
+        "70% Transparency High Natural Light",
+        "Ultra-Lightweight 8kg/sqm Cabinet",
+        "Architectural Landmark Integration"
+      ],
+      "image": "/assets/catalog/disp-facade-led.png",
+      "imageWebp": "/assets/catalog/disp-facade-led.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "srv-dell-t550",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "tower-servers",
+      "subcategoryName": "Tower Servers",
+      "name": "Dell PowerEdge T550 Tower Server",
+      "brand": "DELL TECHNOLOGIES",
+      "badge": "Dual Intel Xeon Scalable",
+      "specs": [
+        "Up to 2x 3rd Gen Intel Xeon Scalable",
+        "8x 3.5\" or 16x 2.5\" SAS/SATA/NVMe Drives",
+        "iDRAC9 Enterprise Remote Management"
+      ],
+      "image": "/assets/catalog/srv-dell-t550.png",
+      "imageWebp": "/assets/catalog/srv-dell-t550.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "srv-rackmount-appliance",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "rack-servers",
+      "subcategoryName": "Rack Servers",
+      "name": "Rackmount Server Appliance",
+      "brand": "HPE PROLIANT",
+      "badge": "1U DL360 Gen10 Plus",
+      "specs": [
+        "Dual Xeon Silver/Gold High Compute",
+        "32x DDR4 ECC Registered Memory Slots",
+        "Redundant 800W Titanium Power Supplies"
+      ],
+      "image": "/assets/catalog/srv-rackmount-appliance.png",
+      "imageWebp": "/assets/catalog/srv-rackmount-appliance.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "srv-rackmount-chassis",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "rack-servers",
+      "subcategoryName": "Rack Servers",
+      "name": "Rackmount Server Chassis",
+      "brand": "DELL POWEREDGE R750",
+      "badge": "2U Dual-Socket NVMe Compute",
+      "specs": [
+        "24x 2.5\" Direct-Attach NVMe SSD Bays",
+        "PCIe Gen4 Expansion for Enterprise GPUs",
+        "Active Front Airflow Mesh Bezel"
+      ],
+      "image": "/assets/catalog/srv-rackmount-chassis.png",
+      "imageWebp": "/assets/catalog/srv-rackmount-chassis.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "srv-tower-dark-bg",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "tower-servers",
+      "subcategoryName": "Tower Servers",
+      "name": "Tower Server on Dark Background",
+      "brand": "LENOVO THINKSERVER",
+      "badge": "Quiet Office Workgroup Server",
+      "specs": [
+        "Whisper-Quiet Acoustics <28dB",
+        "Hot-Swap Redundant Fans and PSU",
+        "Hardware RAID 0/1/5/10 Controller"
+      ],
+      "image": "/assets/catalog/srv-tower-dark-bg.png",
+      "imageWebp": "/assets/catalog/srv-tower-dark-bg.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "srv-datacenter-racks",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "rack-servers",
+      "subcategoryName": "Rack Servers",
+      "name": "Data-Center Server Racks",
+      "brand": "DELL / HPE / CISCO UCS",
+      "badge": "High-Density Multi-Rack Compute",
+      "specs": [
+        "Scalable Hyper-Converged Infrastructure",
+        "Dual 100G RoCE Top-of-Rack Network",
+        "Precision Cooling & Power Monitoring"
+      ],
+      "image": "/assets/catalog/srv-datacenter-racks.png",
+      "imageWebp": "/assets/catalog/srv-datacenter-racks.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "pc-mini-computer",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "desktops-and-laptops",
+      "subcategoryName": "Desktops and Laptops",
+      "name": "Compact Mini PC Computer",
+      "brand": "HP / LENOVO THINKCENTRE",
+      "badge": "1L Ultra-Compact Tiny Desktop",
+      "specs": [
+        "Intel Core i7 vPro 16-Core Processor",
+        "32GB DDR5 RAM & 1TB PCIe NVMe SSD",
+        "VESA Mount Behind Monitor Support"
+      ],
+      "image": "/assets/catalog/pc-mini-computer.png",
+      "imageWebp": "/assets/catalog/pc-mini-computer.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "pc-laptop-computer",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "desktops-and-laptops",
+      "subcategoryName": "Desktops and Laptops",
+      "name": "Laptop Computer",
+      "brand": "DELL LATITUDE / THINKPAD",
+      "badge": "14\" Business Ultrabook",
+      "specs": [
+        "FHD+ 400 nits Anti-Glare Display",
+        "All-Day 14-Hour Battery with Fast Charge",
+        "MIL-STD-810H Military Durability"
+      ],
+      "image": "/assets/catalog/pc-laptop-computer.png",
+      "imageWebp": "/assets/catalog/pc-laptop-computer.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "pc-rugged-field-laptop",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "desktops-and-laptops",
+      "subcategoryName": "Desktops and Laptops",
+      "name": "Rugged Field Laptop Computer",
+      "brand": "PANASONIC TOUGHBOOK",
+      "badge": "Fully Rugged IP65 Certified",
+      "specs": [
+        "1000 nits Sunlight-Readable Touchscreen",
+        "6-Foot Drop Tested & Sealed Ports",
+        "Hot-Swappable Dual Battery System"
+      ],
+      "image": "/assets/catalog/pc-rugged-field-laptop.png",
+      "imageWebp": "/assets/catalog/pc-rugged-field-laptop.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "pc-workstation-monitor",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "desktops-and-laptops",
+      "subcategoryName": "Desktops and Laptops",
+      "name": "Desktop Workstation with Monitor",
+      "brand": "HP Z-SERIES / DELL PRECISION",
+      "badge": "Professional CAD & Engineering PC",
+      "specs": [
+        "NVIDIA RTX Professional GPU",
+        "Dual 27\" 4K IPS Color-Calibrated Displays",
+        "Thunderbolt 4 High-Speed Expansion"
+      ],
+      "image": "/assets/catalog/pc-workstation-monitor.png",
+      "imageWebp": "/assets/catalog/pc-workstation-monitor.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "prn-thermal-label",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "printers-and-supplies",
+      "subcategoryName": "Printers and Supplies",
+      "name": "Thermal Label Printer",
+      "brand": "ZEBRA",
+      "badge": "Industrial Barcode & Shipping",
+      "specs": [
+        "Direct Thermal & Thermal Transfer Print",
+        "300 DPI High-Precision Barcode Printing",
+        "Heavy-Duty Metal Print Mechanism"
+      ],
+      "image": "/assets/catalog/prn-thermal-label.png",
+      "imageWebp": "/assets/catalog/prn-thermal-label.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "prn-thermal-receipt",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "printers-and-supplies",
+      "subcategoryName": "Printers and Supplies",
+      "name": "Thermal Receipt Printer",
+      "brand": "EPSON",
+      "badge": "TM-T88 POS Receipt Printer",
+      "specs": [
+        "350 mm/sec High-Speed Quiet Printing",
+        "Automatic Guillotine Paper Cutter",
+        "Ethernet, USB & Serial Triple Interface"
+      ],
+      "image": "/assets/catalog/prn-thermal-receipt.png",
+      "imageWebp": "/assets/catalog/prn-thermal-receipt.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "prn-colorworks-cartridges",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "printers-and-supplies",
+      "subcategoryName": "Printers and Supplies",
+      "name": "ColorWorks SJIC35P Ink Cartridges",
+      "brand": "EPSON COLORWORKS",
+      "badge": "UltraChrome DL Pigment Ink",
+      "specs": [
+        "OEM Individual Ink Cartridges (CMYK)",
+        "BS5609 Certified Chemical Resistant Ink",
+        "High-Yield Smudge-Proof Label Ink"
+      ],
+      "image": "/assets/catalog/prn-colorworks-cartridges.png",
+      "imageWebp": "/assets/catalog/prn-colorworks-cartridges.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "prn-canon-inkjet-mfp",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "printers-and-supplies",
+      "subcategoryName": "Printers and Supplies",
+      "name": "Canon Multifunction Inkjet Printer",
+      "brand": "CANON",
+      "badge": "High-Volume MegaTank MFP",
+      "specs": [
+        "Print, Scan, Copy & Fax All-in-One",
+        "Refillable Ink Tank Low Cost per Page",
+        "Auto Document Feeder (ADF) & Duplex"
+      ],
+      "image": "/assets/catalog/prn-canon-inkjet-mfp.png",
+      "imageWebp": "/assets/catalog/prn-canon-inkjet-mfp.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "prn-laser-color-printer",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "printers-and-supplies",
+      "subcategoryName": "Printers and Supplies",
+      "name": "Laser Color Printer",
+      "brand": "HP COLOR LASERJET",
+      "badge": "Enterprise Department Duplex",
+      "specs": [
+        "40 ppm Crisp Color & B&W Printing",
+        "Automatic Dual-Sided Printing Standard",
+        "HP Wolf Enterprise Security Protection"
+      ],
+      "image": "/assets/catalog/prn-laser-color-printer.png",
+      "imageWebp": "/assets/catalog/prn-laser-color-printer.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "pwr-tower-ups-unit",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "ups-and-pdus",
+      "subcategoryName": "UPS and PDUs",
+      "name": "Tower UPS Unit",
+      "brand": "EATON / APC",
+      "badge": "Line-Interactive Sine Wave",
+      "specs": [
+        "1000VA / 700W Reliable Battery Backup",
+        "Automatic Voltage Regulation (AVR)",
+        "Battery Hot-Swap Maintenance"
+      ],
+      "image": "/assets/catalog/pwr-tower-ups-unit.png",
+      "imageWebp": "/assets/catalog/pwr-tower-ups-unit.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "pwr-tower-ups-lcd",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "ups-and-pdus",
+      "subcategoryName": "UPS and PDUs",
+      "name": "Tower UPS with LCD Display",
+      "brand": "VERTIV LIEBERT",
+      "badge": "Intuitive Real-Time LCD Panel",
+      "specs": [
+        "Live Power Load & Runtime Readout",
+        "Eco-Mode Efficiency up to 98%",
+        "USB and RS232 Network Monitoring"
+      ],
+      "image": "/assets/catalog/pwr-tower-ups-lcd.png",
+      "imageWebp": "/assets/catalog/pwr-tower-ups-lcd.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "pwr-500c-1500va-ups",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "ups-and-pdus",
+      "subcategoryName": "UPS and PDUs",
+      "name": "500C 1500VA Desktop UPS",
+      "brand": "APC BY SCHNEIDER",
+      "badge": "Desktop & Workstation Backup",
+      "specs": [
+        "1500VA / 900W Pure Sine Wave Battery",
+        "Surge-Protected Outlets with Data Line Guard",
+        "Audible Alarm and Self-Test Diagnostics"
+      ],
+      "image": "/assets/catalog/pwr-500c-1500va-ups.png",
+      "imageWebp": "/assets/catalog/pwr-500c-1500va-ups.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "pwr-rackmount-ups",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "ups-and-pdus",
+      "subcategoryName": "UPS and PDUs",
+      "name": "Rackmount UPS Unit",
+      "brand": "VERTIV / EATON",
+      "badge": "3kVA 2U Online Double-Conversion",
+      "specs": [
+        "Zero Millisecond Transfer to Battery",
+        "Power Factor 1.0 (3000W Output)",
+        "External Battery Pack Scalable Runtime"
+      ],
+      "image": "/assets/catalog/pwr-rackmount-ups.png",
+      "imageWebp": "/assets/catalog/pwr-rackmount-ups.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "pwr-rackmount-pdu",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "ups-and-pdus",
+      "subcategoryName": "UPS and PDUs",
+      "name": "Rackmount Power Distribution Unit",
+      "brand": "SCHNEIDER ELECTRIC",
+      "badge": "1U Horizontal 8x C13 Sockets",
+      "specs": [
+        "16A 230V High-Reliability PDU",
+        "Built-in Surge Protection & Circuit Breaker",
+        "Heavy-Duty 3m Input Power Cord"
+      ],
+      "image": "/assets/catalog/pwr-rackmount-pdu.png",
+      "imageWebp": "/assets/catalog/pwr-rackmount-pdu.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "pwr-vertical-pdu",
+      "categoryId": "servers-and-computing",
+      "categoryName": "Servers and Computing",
+      "subcategoryId": "ups-and-pdus",
+      "subcategoryName": "UPS and PDUs",
+      "name": "Vertical Rack Power Distribution Unit",
+      "brand": "VERTIV GEIST",
+      "badge": "0U Vertical Intelligent Metered",
+      "specs": [
+        "24x C13 + 6x C19 Locking Outlets",
+        "Per-Phase Real-Time Current Display",
+        "IP Remote Web Management & SNMP Alerts"
+      ],
+      "image": "/assets/catalog/pwr-vertical-pdu.png",
+      "imageWebp": "/assets/catalog/pwr-vertical-pdu.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "ind-cab-shielded-control",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "subcategoryId": "control-cables",
+      "subcategoryName": "Control & Instrumentation Cables",
+      "name": "Shielded Industrial Control Cable",
+      "brand": "BELDEN",
+      "badge": "Multi-Core Screened Flexible",
+      "specs": [
+        "Tinned Copper Braid Shielding >85%",
+        "Oil & Abrasion Resistant Grey PVC",
+        "VFD & Motor Drive Harmonic Immunity"
+      ],
+      "image": "/assets/catalog/ind-cab-shielded-control.png",
+      "imageWebp": "/assets/catalog/ind-cab-shielded-control.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "ind-cab-multicore-control",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "subcategoryId": "control-cables",
+      "subcategoryName": "Control & Instrumentation Cables",
+      "name": "Multicore Industrial Control Cable",
+      "brand": "NEXANS / BELDEN",
+      "badge": "7-Core / 12-Core 1.5mm²",
+      "specs": [
+        "Numbered Black Cores with Green/Yellow Earth",
+        "Fine Wire Stranded Pure Copper Class 5",
+        "Flame Retardant to IEC 60332-1"
+      ],
+      "image": "/assets/catalog/ind-cab-multicore-control.png",
+      "imageWebp": "/assets/catalog/ind-cab-multicore-control.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "ind-cab-armoured-multicore",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "subcategoryId": "control-cables",
+      "subcategoryName": "Control & Instrumentation Cables",
+      "name": "Armoured Multicore Industrial Cable",
+      "brand": "NEXANS",
+      "badge": "Steel Wire Armored (SWA)",
+      "specs": [
+        "Galvanized Steel Wire Heavy Armoring",
+        "Direct Burial & Hazardous Plant Routing",
+        "High Tensile & Mechanical Impact Defense"
+      ],
+      "image": "/assets/catalog/ind-cab-armoured-multicore.png",
+      "imageWebp": "/assets/catalog/ind-cab-armoured-multicore.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "ind-cab-power-cable",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "subcategoryId": "control-cables",
+      "subcategoryName": "Control & Instrumentation Cables",
+      "name": "Multicore Industrial Power Cable",
+      "brand": "ABB / SCHNEIDER",
+      "badge": "0.6/1kV Heavy Duty Factory",
+      "specs": [
+        "XLPE Insulation for 90°C Temperature",
+        "Low Smoke Zero Halogen (LSZH) Sheath",
+        "Factory Motor & Substation Feeders"
+      ],
+      "image": "/assets/catalog/ind-cab-power-cable.png",
+      "imageWebp": "/assets/catalog/ind-cab-power-cable.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "ind-ins-pressure-transmitter",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "subcategoryId": "instrumentation",
+      "subcategoryName": "Industrial Instrumentation",
+      "name": "Industrial Pressure Transmitter",
+      "brand": "ABB / HONEYWELL",
+      "badge": "4-20mA HART Intelligent Sensor",
+      "specs": [
+        "316L Stainless Steel Flush Diaphragm",
+        "0.04% High Measurement Accuracy",
+        "Explosion-Proof ATEX & IECEx Certified"
+      ],
+      "image": "/assets/catalog/ind-ins-pressure-transmitter.png",
+      "imageWebp": "/assets/catalog/ind-ins-pressure-transmitter.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "ind-ins-wall-temp-controller",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "subcategoryId": "instrumentation",
+      "subcategoryName": "Industrial Instrumentation",
+      "name": "Wall-Mounted Digital Temperature Controller",
+      "brand": "SIEMENS",
+      "badge": "PID Dual Display Controller",
+      "specs": [
+        "Bright Red/Green Dual Process LED Display",
+        "Universal Thermocouple & PT100 Input",
+        "Relay & SSR Drive Dual Output Modes"
+      ],
+      "image": "/assets/catalog/ind-ins-wall-temp-controller.png",
+      "imageWebp": "/assets/catalog/ind-ins-wall-temp-controller.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "ind-ins-flow-meter",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "subcategoryId": "instrumentation",
+      "subcategoryName": "Industrial Instrumentation",
+      "name": "Inline Digital Flow Meter",
+      "brand": "ABB",
+      "badge": "Electromagnetic Flow Sensor",
+      "specs": [
+        "Bi-Directional High-Accuracy Flow Rate",
+        "No Moving Parts Zero Pressure Drop",
+        "Modbus RTU / Profibus DP Communication"
+      ],
+      "image": "/assets/catalog/ind-ins-flow-meter.png",
+      "imageWebp": "/assets/catalog/ind-ins-flow-meter.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "ind-ins-temp-probes",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "subcategoryId": "instrumentation",
+      "subcategoryName": "Industrial Instrumentation",
+      "name": "Industrial Temperature Probes",
+      "brand": "HONEYWELL / ABB",
+      "badge": "RTD PT100 Thermowell Probe",
+      "specs": [
+        "Class A Platinum Resistance Element",
+        "Heavy-Duty Stainless Steel Protection Tube",
+        "Quick-Disconnect Terminal Head IP68"
+      ],
+      "image": "/assets/catalog/ind-ins-temp-probes.png",
+      "imageWebp": "/assets/catalog/ind-ins-temp-probes.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "ind-ins-process-temp-controller",
+      "categoryId": "industrial-automation",
+      "categoryName": "Industrial Automation",
+      "subcategoryId": "instrumentation",
+      "subcategoryName": "Industrial Instrumentation",
+      "name": "Digital Process Temperature Controller",
+      "brand": "PHOENIX CONTACT / SIEMENS",
+      "badge": "1/16 DIN Panel Mount PID",
+      "specs": [
+        "Self-Tuning Auto-Adaptive Algorithm",
+        "High/Low Temperature Alarm Relays",
+        "Front Panel IP66 Washdown Resistant"
+      ],
+      "image": "/assets/catalog/ind-ins-process-temp-controller.png",
+      "imageWebp": "/assets/catalog/ind-ins-process-temp-controller.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-det-belden-alarm-cable",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "fire-detection-and-alarm",
+      "subcategoryName": "Fire Detection and Alarm",
+      "name": "Belden Fire-Alarm Cable Family",
+      "brand": "BELDEN",
+      "badge": "FPLR / FPLP Certified Red Cable",
+      "specs": [
+        "Solid Bare Copper 14/16/18 AWG",
+        "Shielded Foil with Drain Wire (Shielded Red)",
+        "UL Listed Fire Alarm System Circuit"
+      ],
+      "image": "/assets/catalog/fs-det-belden-alarm-cable.png",
+      "imageWebp": "/assets/catalog/fs-det-belden-alarm-cable.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-det-fire-panel",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "fire-detection-and-alarm",
+      "subcategoryName": "Fire Detection and Alarm",
+      "name": "Fire Alarm Control Panel",
+      "brand": "NOTIFIER / EDWARDS",
+      "badge": "Addressable 4-Loop Control Panel",
+      "specs": [
+        "Supports up to 1000 Addressable Points",
+        "Integrated LCD Touchscreen & Keypad",
+        "EN54 & UL 864 10th Edition Compliant"
+      ],
+      "image": "/assets/catalog/fs-det-fire-panel.png",
+      "imageWebp": "/assets/catalog/fs-det-fire-panel.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-det-smoke-detector",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "fire-detection-and-alarm",
+      "subcategoryName": "Fire Detection and Alarm",
+      "name": "Smoke Detector",
+      "brand": "APOLLO / KIDDE",
+      "badge": "Optical Photoelectric Smoke Sensor",
+      "specs": [
+        "360° Smoke Chamber Responsive Sampling",
+        "Built-in Isolator & Drift Compensation",
+        "Sleek Low-Profile White Ceiling Base"
+      ],
+      "image": "/assets/catalog/fs-det-smoke-detector.png",
+      "imageWebp": "/assets/catalog/fs-det-smoke-detector.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-det-red-call-point",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "fire-detection-and-alarm",
+      "subcategoryName": "Fire Detection and Alarm",
+      "name": "Red Manual Fire Alarm Call Point",
+      "brand": "APOLLO / NOTIFIER",
+      "badge": "Break-Glass Emergency Station",
+      "specs": [
+        "High-Visibility Red Fire Station",
+        "Resettable Element with Key Release",
+        "LED Status Confirmation Indicator"
+      ],
+      "image": "/assets/catalog/fs-det-red-call-point.png",
+      "imageWebp": "/assets/catalog/fs-det-red-call-point.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-det-call-point-v2",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "fire-detection-and-alarm",
+      "subcategoryName": "Fire Detection and Alarm",
+      "name": "Manual Fire Alarm Call Point — Variant 2",
+      "brand": "KIDDE / EDWARDS",
+      "badge": "Dual-Action Pull Station",
+      "specs": [
+        "Push-In & Pull-Down Accidental Defense",
+        "Key Lock Reset for Authorized Crews",
+        "Cast Aluminum Outdoor Weatherproof Option"
+      ],
+      "image": "/assets/catalog/fs-det-call-point-v2.png",
+      "imageWebp": "/assets/catalog/fs-det-call-point-v2.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-sup-extinguisher-set",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "fire-suppression",
+      "subcategoryName": "Fire Suppression Systems",
+      "name": "Fire Extinguisher Set",
+      "brand": "NAFFCO",
+      "badge": "CO2, Foam & Dry Powder Set",
+      "specs": [
+        "Color-Coded Body & Pressure Gauges",
+        "Class A, B, C & Electrical Fire Defense",
+        "Durable Wall Brackets & Inspection Tags"
+      ],
+      "image": "/assets/catalog/fs-sup-extinguisher-set.png",
+      "imageWebp": "/assets/catalog/fs-sup-extinguisher-set.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-sup-cylinder-bank",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "fire-suppression",
+      "subcategoryName": "Fire Suppression Systems",
+      "name": "Fire Suppression Cylinder Bank",
+      "brand": "ANSUL / KIDDE",
+      "badge": "FM-200 / Novec 1230 Manifold",
+      "specs": [
+        "Multi-Cylinder High-Pressure Manifold",
+        "Electric Solenoid & Pneumatic Actuators",
+        "Continuous Liquid Level Pressure Monitoring"
+      ],
+      "image": "/assets/catalog/fs-sup-cylinder-bank.png",
+      "imageWebp": "/assets/catalog/fs-sup-cylinder-bank.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-sup-clean-agent-system",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "fire-suppression",
+      "subcategoryName": "Fire Suppression Systems",
+      "name": "Clean-Agent Fire Suppression System for Server Rooms",
+      "brand": "ANSUL INERGEN",
+      "badge": "Zero Residue Gas Flooding",
+      "specs": [
+        "Electrically Non-Conductive Safe for IT",
+        "Extinguishes Fire in Less than 10 Seconds",
+        "Zero Ozone Depletion & Safe for Humans"
+      ],
+      "image": "/assets/catalog/fs-sup-clean-agent-system.png",
+      "imageWebp": "/assets/catalog/fs-sup-clean-agent-system.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-emg-exit-sign",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "emergency-and-fire-safety",
+      "subcategoryName": "Emergency and Fire Safety",
+      "name": "Illuminated Emergency Exit Sign",
+      "brand": "COMMERCIAL SAFETY",
+      "badge": "LED High-Efficiency Green Exit",
+      "specs": [
+        "3-Hour Emergency Ni-Cd Battery Backup",
+        "Edge-Lit Acrylic Double-Sided Face",
+        "Ceiling, Wall or End-Mount Universal Bracket"
+      ],
+      "image": "/assets/catalog/fs-emg-exit-sign.png",
+      "imageWebp": "/assets/catalog/fs-emg-exit-sign.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-emg-lighting-units",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "emergency-and-fire-safety",
+      "subcategoryName": "Emergency and Fire Safety",
+      "name": "Emergency Lighting Units",
+      "brand": "NAFFCO / PHILIPS",
+      "badge": "Twin-Spot Adjustable Floodlight",
+      "specs": [
+        "High-Output Dual LED Swivel Heads",
+        "Automatic Instant Mains Failure Switchover",
+        "Self-Testing Automated Diagnostics"
+      ],
+      "image": "/assets/catalog/fs-emg-lighting-units.png",
+      "imageWebp": "/assets/catalog/fs-emg-lighting-units.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-emg-safety-blanket",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "emergency-and-fire-safety",
+      "subcategoryName": "Emergency and Fire Safety",
+      "name": "Fire Safety Blanket",
+      "brand": "NAFFCO SAFETY",
+      "badge": "Woven Fiberglass Quick-Release",
+      "specs": [
+        "Withstands Temperatures up to 550°C",
+        "Quick-Release Pull Straps Red Hard Case",
+        "Complies with EN 1869:1997 Standards"
+      ],
+      "image": "/assets/catalog/fs-emg-safety-blanket.png",
+      "imageWebp": "/assets/catalog/fs-emg-safety-blanket.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-emg-hose-reel",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "emergency-and-fire-safety",
+      "subcategoryName": "Emergency and Fire Safety",
+      "name": "Fire Hose Reel",
+      "brand": "NAFFCO",
+      "badge": "Manual / Automatic 30m Swing Reel",
+      "specs": [
+        "30-Meter Heavy-Duty Semi-Rigid Hose",
+        "Brass Jet/Spray Shut-Off Nozzle",
+        "12 Bar Maximum Working Pressure"
+      ],
+      "image": "/assets/catalog/fs-emg-hose-reel.png",
+      "imageWebp": "/assets/catalog/fs-emg-hose-reel.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fs-emg-red-hydrant",
+      "categoryId": "fire-and-safety-systems",
+      "categoryName": "Fire and Safety Systems",
+      "subcategoryId": "emergency-and-fire-safety",
+      "subcategoryName": "Emergency and Fire Safety",
+      "name": "Red Fire Hydrant",
+      "brand": "NAFFCO / MUELLER",
+      "badge": "UL/FM Certified Pillar Hydrant",
+      "specs": [
+        "Ductile Iron Body with 250 PSI Rating",
+        "2x 2.5\" Hose Nozzles + 1x 4.5\" Pumper",
+        "Traffic Flange Breakaway Safety Design"
+      ],
+      "image": "/assets/catalog/fs-emg-red-hydrant.png",
+      "imageWebp": "/assets/catalog/fs-emg-red-hydrant.webp",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    }
+  ],
+  "brands": [
+    {
+      "id": "cisco",
+      "name": "Cisco Systems",
+      "slug": "cisco",
+      "logo": "/assets/brands/cisco-logo-0-2048x2048-1-1536x1536-1.png",
+      "categoryIds": [
+        "networking",
+        "security-systems"
+      ],
+      "description": "Global leader in enterprise routing, switching, wireless architecture, and core network security solutions.",
+      "productIds": [
+        "network-switches",
+        "routers",
+        "wireless-solutions",
+        "media-converters",
+        "transceivers",
+        "cybersecurity-systems"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/network-switches.webp",
+      "imageAlt": "Cisco Systems Enterprise Core Routing & Switching Infrastructure",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "aruba",
+      "name": "Aruba Networks (HPE)",
+      "slug": "aruba",
+      "logo": "/assets/brands/aruba-networks-logo.png",
+      "categoryIds": [
+        "networking"
+      ],
+      "description": "Next-generation enterprise Wi-Fi 6 access points, campus edge switching, and intelligent cloud-managed mobility.",
+      "productIds": [
+        "network-switches",
+        "wireless-solutions"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/network-switches.webp",
+      "imageAlt": "Aruba Networks Enterprise Wi-Fi 6 & Edge Campus Switching",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "huawei",
+      "name": "Huawei Enterprise",
+      "slug": "huawei",
+      "logo": "/assets/brands/Huawei-logo-scaled.jpg",
+      "categoryIds": [
+        "networking",
+        "communications"
+      ],
+      "description": "High-capacity enterprise campus switching, enterprise routers, cellular 5G CPE gateways, and optical transmission.",
+      "productIds": [
+        "network-switches",
+        "routers",
+        "wireless-solutions",
+        "transceivers"
+      ],
+      "origin": "Global",
+      "image": "/assets/products/network-switches.webp",
+      "imageAlt": "Huawei Enterprise Campus Switching & Optical Networks",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "netgear",
+      "name": "Netgear Business",
+      "slug": "netgear",
+      "logo": "/assets/brands/Netgear-Logo-scaled.jpg",
+      "categoryIds": [
+        "networking"
+      ],
+      "description": "High-reliability ProAV and enterprise unmanaged/smart-managed switches with full PoE+ multi-gigabit capabilities.",
+      "productIds": [
+        "network-switches",
+        "media-converters"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/network-switches.webp",
+      "imageAlt": "Netgear Business Multi-Gigabit Managed PoE Switches",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "ruijie",
+      "name": "Ruijie Networks",
+      "slug": "ruijie",
+      "logo": "/assets/brands/Ruijie-Da-nang-scaled.png",
+      "categoryIds": [
+        "networking"
+      ],
+      "description": "Enterprise cloud-managed switches, Wi-Fi 6 access points, and high-performance commercial routing platforms.",
+      "productIds": [
+        "network-switches",
+        "routers",
+        "wireless-solutions",
+        "media-converters",
+        "transceivers"
+      ],
+      "origin": "Global",
+      "image": "/assets/products/network-switches.webp",
+      "imageAlt": "Ruijie Networks Cloud-Managed Switching & Wireless",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "mikrotik",
+      "name": "MikroTik",
+      "slug": "mikrotik",
+      "logo": "/assets/brands/mikrotik-logo.png",
+      "categoryIds": [
+        "networking"
+      ],
+      "description": "Carrier-grade RouterBOARD hardware, high-throughput VPN edge routers, and versatile Layer 2/3 network switches.",
+      "productIds": [
+        "routers",
+        "network-switches"
+      ],
+      "origin": "Latvia / EU",
+      "image": "/assets/products/network-switches.webp",
+      "imageAlt": "MikroTik RouterBOARD & Carrier-Grade Edge Routing",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "hikvision",
+      "name": "Hikvision",
+      "slug": "hikvision",
+      "logo": "/assets/brands/Hikvision-Logo-scaled.png",
+      "categoryIds": [
+        "security-systems"
+      ],
+      "description": "World-leading provider of AI-powered IP surveillance cameras, network video recorders, and biometric access terminals.",
+      "productIds": [
+        "cctv-surveillance",
+        "access-control"
+      ],
+      "origin": "Global",
+      "image": "/assets/products/cctv-surveillance.webp",
+      "imageAlt": "Hikvision AI-Powered IP Surveillance & NVR Systems",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "axis",
+      "name": "Axis Communications",
+      "slug": "axis",
+      "logo": "/assets/brands/Axis-Communications-Logo-scaled.png",
+      "categoryIds": [
+        "security-systems"
+      ],
+      "description": "Pioneer in high-definition enterprise network video surveillance, thermal imaging cameras, and perimeter radar detection.",
+      "productIds": [
+        "cctv-surveillance"
+      ],
+      "origin": "Sweden",
+      "image": "/assets/products/cctv-surveillance.webp",
+      "imageAlt": "Axis Communications Precision Optical Network Cameras",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "bosch",
+      "name": "Bosch Security Systems",
+      "slug": "bosch",
+      "logo": "/assets/brands/Bosch-Logo-1-scaled.png",
+      "categoryIds": [
+        "security-systems",
+        "communications",
+        "fire-and-safety-systems"
+      ],
+      "description": "Engineering excellence across commercial IP video, public address evacuation audio, and certified fire detection.",
+      "productIds": [
+        "cctv-surveillance",
+        "audio-solutions",
+        "fire-detection-and-alarm",
+        "emergency-and-fire-safety"
+      ],
+      "origin": "Germany",
+      "image": "/assets/products/cctv-surveillance.webp",
+      "imageAlt": "Bosch Commercial IP Video & Evacuation Sound Systems",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "hanwha-vision",
+      "name": "Hanwha Vision",
+      "slug": "hanwha-vision",
+      "logo": "/assets/brands/hanwha-vision_logo_umbraco_2023-scaled.png",
+      "categoryIds": [
+        "security-systems"
+      ],
+      "description": "NDAA-compliant optical surveillance cameras, multi-sensor 360-degree cameras, and advanced video AI analytics.",
+      "productIds": [
+        "cctv-surveillance"
+      ],
+      "origin": "South Korea",
+      "image": "/assets/products/cctv-surveillance.webp",
+      "imageAlt": "Hanwha Vision NDAA Multi-Sensor Surveillance Cameras",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "zkteco",
+      "name": "ZKTeco",
+      "slug": "zkteco",
+      "logo": "/assets/brands/Zkteco-Logo-Vector.svg-.png",
+      "categoryIds": [
+        "security-systems"
+      ],
+      "description": "Biometric verification technologies, facial recognition speed gates, turnstiles, and enterprise time-attendance systems.",
+      "productIds": [
+        "access-control"
+      ],
+      "origin": "Global",
+      "image": "/assets/products/cctv-surveillance.webp",
+      "imageAlt": "ZKTeco Biometric Flap Speed Gates & Facial Recognition Turnstiles",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "hid",
+      "name": "HID Global",
+      "slug": "hid",
+      "logo": "/assets/brands/hid-logo-pr-db.webp",
+      "categoryIds": [
+        "security-systems"
+      ],
+      "description": "Trusted identity solutions, RFID smart cards, multiCLASS SE mobile credentials, and physical access controllers.",
+      "productIds": [
+        "access-control"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/cctv-surveillance.webp",
+      "imageAlt": "HID Global RFID Access Control & Mobile Credentials",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "suprema",
+      "name": "Suprema",
+      "slug": "suprema",
+      "logo": "/assets/brands/suprema-logos.webp",
+      "categoryIds": [
+        "security-systems"
+      ],
+      "description": "Premium biometric access control terminals, fingerprint readers, mobile access platforms, and IP door controllers.",
+      "productIds": [
+        "access-control"
+      ],
+      "origin": "South Korea",
+      "image": "/assets/products/cctv-surveillance.webp",
+      "imageAlt": "Suprema Biometric Access Control & IP Door Controllers",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fortinet",
+      "name": "Fortinet",
+      "slug": "fortinet",
+      "logo": "/assets/brands/fortinet_logo.png",
+      "categoryIds": [
+        "security-systems"
+      ],
+      "description": "Industry-leading FortiGate Next-Generation Firewalls (NGFW), FortiClient EDR, secure SD-WAN, and unified threat protection.",
+      "productIds": [
+        "cybersecurity-systems",
+        "antivirus-edr"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/cctv-surveillance.webp",
+      "imageAlt": "Fortinet FortiGate Next-Generation Firewalls & Threat Protection",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "grandstream",
+      "name": "Grandstream Networks",
+      "slug": "grandstream",
+      "logo": "/assets/brands/Grandstream-logo-for-web.webp",
+      "categoryIds": [
+        "communications"
+      ],
+      "description": "Unified IP voice and video communications, enterprise UCM IP PBX appliances, and high-definition VoIP desktop phones.",
+      "productIds": [
+        "ip-pbx-systems",
+        "ip-phones"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/ip-pbx-systems.webp",
+      "imageAlt": "Grandstream Enterprise IP PBX & VoIP Telephony",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "yeastar",
+      "name": "Yeastar",
+      "slug": "yeastar",
+      "logo": "/assets/brands/Yeastar-Logo-Vector.svg-.png",
+      "categoryIds": [
+        "communications"
+      ],
+      "description": "Award-winning P-Series appliance and cloud PBX phone systems delivering unified communications for growing businesses.",
+      "productIds": [
+        "ip-pbx-systems"
+      ],
+      "origin": "Global",
+      "image": "/assets/products/ip-pbx-systems.webp",
+      "imageAlt": "Yeastar P-Series Appliance & Cloud PBX Solutions",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "fanvil",
+      "name": "Fanvil",
+      "slug": "fanvil",
+      "logo": "/assets/brands/fanvil-technology-logo.png",
+      "categoryIds": [
+        "communications"
+      ],
+      "description": "Developer of enterprise SIP desktop phones, hotel VoIP phones, door access intercoms, and industrial paging terminals.",
+      "productIds": [
+        "ip-phones"
+      ],
+      "origin": "Global",
+      "image": "/assets/products/ip-pbx-systems.webp",
+      "imageAlt": "Fanvil Enterprise SIP Desktop Phones & Intercom Terminals",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "jabra",
+      "name": "Jabra",
+      "slug": "jabra",
+      "logo": "/assets/brands/jabra-logo-vector.png",
+      "categoryIds": [
+        "communications"
+      ],
+      "description": "Engineered noise-canceling enterprise communication headsets, portable speakerphones, and intelligent video bars.",
+      "productIds": [
+        "audio-solutions"
+      ],
+      "origin": "Denmark",
+      "image": "/assets/products/ip-pbx-systems.webp",
+      "imageAlt": "Jabra Noise-Canceling Enterprise Headsets & Speakerphones",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "panasonic",
+      "name": "Panasonic Business",
+      "slug": "panasonic",
+      "logo": "/assets/brands/panasonic-logo-scaled-1.jpg",
+      "categoryIds": [
+        "communications"
+      ],
+      "description": "Hybrid PBX telephone systems, digital proprietary telephone sets, and commercial audiovisual technologies.",
+      "productIds": [
+        "ip-pbx-systems",
+        "ip-phones"
+      ],
+      "origin": "Japan",
+      "image": "/assets/products/ip-pbx-systems.webp",
+      "imageAlt": "Panasonic Hybrid PBX Telephone Systems",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "toa",
+      "name": "TOA Electronics",
+      "slug": "toa",
+      "logo": "/assets/brands/toa.jpg",
+      "categoryIds": [
+        "communications"
+      ],
+      "description": "Commercial public address systems, EN-54 certified voice evacuation audio, digital mixers, and horn loudspeakers.",
+      "productIds": [
+        "audio-solutions"
+      ],
+      "origin": "Japan",
+      "image": "/assets/products/ip-pbx-systems.webp",
+      "imageAlt": "TOA Public Address & Certified Voice Evacuation Systems",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "commscope",
+      "name": "CommScope (SYSTIMAX / NETCONNECT)",
+      "slug": "commscope",
+      "logo": "/assets/brands/Commscope-Logo-2011-scaled.png",
+      "categoryIds": [
+        "structured-cabling",
+        "security-systems"
+      ],
+      "description": "World-class enterprise cabling architectures, SYSTIMAX copper Cat6A systems, high-density fiber panels, and trunks.",
+      "productIds": [
+        "copper-cables",
+        "fiber-optic-cables",
+        "patch-panels",
+        "keystone-jacks",
+        "security-cabling"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/patch-panels.webp",
+      "imageAlt": "CommScope SYSTIMAX High-Density Structured Cabling & Fiber",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "corning",
+      "name": "Corning Optical Communications",
+      "slug": "corning",
+      "logo": "/assets/brands/3A-Corning-Logo-Blue-01.jpg",
+      "categoryIds": [
+        "structured-cabling"
+      ],
+      "description": "Global leader in fiber optic innovation, pre-terminated optical trunking, high-density housing, and splice closures.",
+      "productIds": [
+        "fiber-optic-cables",
+        "copper-cables"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/patch-panels.webp",
+      "imageAlt": "Corning Optical Communications Pre-Terminated Fiber",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "panduit",
+      "name": "Panduit",
+      "slug": "panduit",
+      "logo": "/assets/brands/Logo_of_Panduit_Corporation.svg.webp",
+      "categoryIds": [
+        "structured-cabling",
+        "security-systems"
+      ],
+      "description": "Physical infrastructure solutions including PanNet Cat6A copper, Opti-Cam fiber termination, and pathway management.",
+      "productIds": [
+        "copper-cables",
+        "fiber-optic-cables",
+        "patch-panels",
+        "keystone-jacks",
+        "network-cabinets",
+        "security-cabling"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/patch-panels.webp",
+      "imageAlt": "Panduit PanNet Cat6A Copper & Opti-Cam Fiber Cabling",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "legrand",
+      "name": "Legrand",
+      "slug": "legrand",
+      "logo": "/assets/brands/Legrand_logo_freelogovectors.net_-scaled.png",
+      "categoryIds": [
+        "structured-cabling"
+      ],
+      "description": "LCS3 structured cabling systems, server racks, intelligent cable routing pathways, and floor distribution boxes.",
+      "productIds": [
+        "copper-cables",
+        "patch-panels",
+        "keystone-jacks",
+        "network-cabinets"
+      ],
+      "origin": "France",
+      "image": "/assets/products/patch-panels.webp",
+      "imageAlt": "Legrand LCS3 Enterprise Racks & Cabling Pathways",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "nexans",
+      "name": "Nexans",
+      "slug": "nexans",
+      "logo": "/assets/brands/NEX.PA_BIG-a8c03607.png",
+      "categoryIds": [
+        "structured-cabling"
+      ],
+      "description": "Advanced LANmark copper and LANsense intelligent cabling systems designed for mission-critical enterprise networks.",
+      "productIds": [
+        "copper-cables",
+        "fiber-optic-cables"
+      ],
+      "origin": "France",
+      "image": "/assets/products/patch-panels.webp",
+      "imageAlt": "Nexans LANmark High-Performance Shielded Copper & Fiber",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "randm",
+      "name": "R&M (Reichle & De-Massari)",
+      "slug": "randm",
+      "logo": "/assets/brands/R_M_USA_Logo.jpg",
+      "categoryIds": [
+        "structured-cabling"
+      ],
+      "description": "Swiss quality cabling systems, modular optical distribution frames, and Cat6/Cat6A field-installable connections.",
+      "productIds": [
+        "fiber-optic-cables",
+        "copper-cables"
+      ],
+      "origin": "Switzerland",
+      "image": "/assets/products/patch-panels.webp",
+      "imageAlt": "R&M Swiss Quality Modular Optical Distribution Frames",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "excel-cabling",
+      "name": "Excel Cabling",
+      "slug": "excel-cabling",
+      "logo": "/assets/brands/Excel-Cabling-logo.png",
+      "categoryIds": [
+        "structured-cabling",
+        "security-systems"
+      ],
+      "description": "Certified end-to-end copper and fiber infrastructure systems backed by a comprehensive 25-year warranty program.",
+      "productIds": [
+        "copper-cables",
+        "patch-panels",
+        "keystone-jacks",
+        "security-cabling"
+      ],
+      "origin": "UK",
+      "image": "/assets/products/patch-panels.webp",
+      "imageAlt": "Excel Cabling Certified End-to-End Enterprise Structured Cabling",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung Display",
+      "slug": "samsung",
+      "logo": "/assets/brands/Samsung-Logo-scaled.png",
+      "categoryIds": [
+        "digital-displays-and-kiosks"
+      ],
+      "description": "Enterprise SMART Signage displays, The Wall micro-LED video walls, interactive flip whiteboards, and retail totems.",
+      "productIds": [
+        "led-displays",
+        "digital-signage",
+        "interactive-displays",
+        "kiosk-accessories"
+      ],
+      "origin": "South Korea",
+      "image": "/assets/products/led-displays.webp",
+      "imageAlt": "Samsung Commercial SMART Signage & Micro-LED Video Walls",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "lg",
+      "name": "LG Commercial Displays",
+      "slug": "lg",
+      "logo": "/assets/brands/LG-Symbol-scaled.png",
+      "categoryIds": [
+        "digital-displays-and-kiosks"
+      ],
+      "description": "Ultra-narrow bezel commercial video walls, OLED signage, high-brightness window displays, and touch screens.",
+      "productIds": [
+        "led-displays",
+        "digital-signage",
+        "interactive-displays"
+      ],
+      "origin": "South Korea",
+      "image": "/assets/products/led-displays.webp",
+      "imageAlt": "LG Commercial Ultra-Narrow Bezel Video Walls & OLED Signage",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "philips",
+      "name": "Philips Professional Displays",
+      "slug": "philips",
+      "logo": "/assets/brands/philips-logo-1-scaled.png",
+      "categoryIds": [
+        "digital-displays-and-kiosks"
+      ],
+      "description": "Android-powered commercial displays, Q-Line digital signage, and high-impact digital hospitality screens.",
+      "productIds": [
+        "led-displays",
+        "digital-signage"
+      ],
+      "origin": "Netherlands",
+      "image": "/assets/products/led-displays.webp",
+      "imageAlt": "Philips Professional Android-Powered Digital Displays",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "viewsonic",
+      "name": "ViewSonic",
+      "slug": "viewsonic",
+      "logo": "/assets/brands/viewsonic-logo-png_seeklogo-149057.png",
+      "categoryIds": [
+        "digital-displays-and-kiosks"
+      ],
+      "description": "ViewBoard 4K interactive flat panels, commercial presentation displays, and collaborative conference technologies.",
+      "productIds": [
+        "led-displays",
+        "digital-signage",
+        "interactive-displays"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/led-displays.webp",
+      "imageAlt": "ViewSonic ViewBoard 4K Interactive Flat Panels",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "zebra",
+      "name": "Zebra Technologies",
+      "slug": "zebra",
+      "logo": "/assets/brands/ZEBRA.jpg",
+      "categoryIds": [
+        "digital-displays-and-kiosks",
+        "servers-and-computing"
+      ],
+      "description": "Enterprise thermal barcode printers, OEM kiosk print engines, 1D/2D scanning modules, and mobile RFID computers.",
+      "productIds": [
+        "kiosk-accessories",
+        "printers-and-supplies"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/led-displays.webp",
+      "imageAlt": "Zebra Technologies Thermal Barcode & OEM Kiosk Printers",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "dell",
+      "name": "Dell Technologies",
+      "slug": "dell",
+      "logo": "/assets/brands/dell-logo-transparent-free-png.webp",
+      "categoryIds": [
+        "servers-and-computing"
+      ],
+      "description": "Industry-standard PowerEdge rack and tower servers, Precision engineering workstations, and OptiPlex enterprise desktops.",
+      "productIds": [
+        "rack-servers",
+        "tower-servers",
+        "desktops-and-laptops"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/rack-servers.webp",
+      "imageAlt": "Dell Technologies PowerEdge Enterprise Server Racks",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "hp",
+      "name": "HPE / HP Enterprise",
+      "slug": "hp",
+      "logo": "/assets/brands/HP-Logo-1979-scaled.png",
+      "categoryIds": [
+        "servers-and-computing"
+      ],
+      "description": "ProLiant scalable rack servers, enterprise storage arrays, commercial EliteBook laptops, and heavy-duty LaserJet printers.",
+      "productIds": [
+        "rack-servers",
+        "tower-servers",
+        "desktops-and-laptops",
+        "printers-and-supplies"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/rack-servers.webp",
+      "imageAlt": "HPE ProLiant Scalable Compute & Storage Arrays",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "lenovo",
+      "name": "Lenovo Enterprise",
+      "slug": "lenovo",
+      "logo": "/assets/brands/Lenovo-Logo-scaled.png",
+      "categoryIds": [
+        "servers-and-computing"
+      ],
+      "description": "ThinkSystem enterprise rack servers, ThinkStation workstations, and secure ThinkPad commercial business computers.",
+      "productIds": [
+        "rack-servers",
+        "tower-servers",
+        "desktops-and-laptops"
+      ],
+      "origin": "Global",
+      "image": "/assets/products/rack-servers.webp",
+      "imageAlt": "Lenovo ThinkSystem Enterprise Rack Compute Architecture",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "eaton",
+      "name": "Eaton Power Quality",
+      "slug": "eaton",
+      "logo": "/assets/brands/Eaton-Logo-scaled.png",
+      "categoryIds": [
+        "servers-and-computing",
+        "fire-and-safety-systems"
+      ],
+      "description": "High-efficiency online double-conversion UPS systems, critical power distribution units (PDU), and life safety emergency lighting.",
+      "productIds": [
+        "ups-and-pdus",
+        "fire-detection-and-alarm",
+        "emergency-and-fire-safety"
+      ],
+      "origin": "USA / Ireland",
+      "image": "/assets/products/rack-servers.webp",
+      "imageAlt": "Eaton Online Double-Conversion UPS & Power Distribution",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "vertiv",
+      "name": "Vertiv",
+      "slug": "vertiv",
+      "logo": "/assets/brands/Vertiv_logo.svg-scaled.webp",
+      "categoryIds": [
+        "servers-and-computing",
+        "structured-cabling"
+      ],
+      "description": "Liebert critical UPS power continuity, thermal management precision cooling, and integrated modular data center racks.",
+      "productIds": [
+        "ups-and-pdus",
+        "network-cabinets"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/rack-servers.webp",
+      "imageAlt": "Vertiv Liebert Critical Power Continuity & Data Center Racks",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "schneider",
+      "name": "Schneider Electric / APC",
+      "slug": "schneider",
+      "logo": "/assets/brands/schneider-electric-logo-png-transparent-1.png",
+      "categoryIds": [
+        "servers-and-computing",
+        "industrial-automation",
+        "structured-cabling",
+        "networking"
+      ],
+      "description": "APC Smart-UPS, Modicon industrial automation PLCs, hardened industrial switches, and integrated building management systems.",
+      "productIds": [
+        "ups-and-pdus",
+        "network-cabinets",
+        "industrial-switches",
+        "control-cables",
+        "instrumentation",
+        "copper-cables"
+      ],
+      "origin": "France",
+      "image": "/assets/products/rack-servers.webp",
+      "imageAlt": "Schneider Electric / APC Smart-UPS & Modicon Industrial Systems",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "phoenix-contact",
+      "name": "Phoenix Contact",
+      "slug": "phoenix-contact",
+      "logo": "/assets/brands/Phoenix-Contact-Logo-Vector.svg-.png",
+      "categoryIds": [
+        "industrial-automation",
+        "networking"
+      ],
+      "description": "Industrial Ethernet networking hardware, surge protection modules, terminal blocks, and automation signal conditioners.",
+      "productIds": [
+        "industrial-switches",
+        "control-cables",
+        "instrumentation"
+      ],
+      "origin": "Germany",
+      "image": "/assets/products/industrial-switches.webp",
+      "imageAlt": "Phoenix Contact Industrial Ethernet & DIN-Rail Surge Protection",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "advantech",
+      "name": "Advantech",
+      "slug": "advantech",
+      "logo": "/assets/brands/Advantech-logo.webp",
+      "categoryIds": [
+        "industrial-automation"
+      ],
+      "description": "Rugged industrial computers, ADAM distributed data acquisition modules, and harsh-environment automation gateways.",
+      "productIds": [
+        "industrial-switches",
+        "instrumentation"
+      ],
+      "origin": "Taiwan",
+      "image": "/assets/products/industrial-switches.webp",
+      "imageAlt": "Advantech Rugged Industrial IoT Automation Gateways",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "hirschmann",
+      "name": "Hirschmann (Belden)",
+      "slug": "hirschmann",
+      "logo": "/assets/brands/hirschmann-logo-png-transparent.png",
+      "categoryIds": [
+        "industrial-automation",
+        "networking"
+      ],
+      "description": "Mission-critical industrial Ethernet switches, redundant ring topologies, and high-vibration railway certified networking.",
+      "productIds": [
+        "industrial-switches"
+      ],
+      "origin": "Germany",
+      "image": "/assets/products/industrial-switches.webp",
+      "imageAlt": "Hirschmann Hardened Industrial Ethernet Switches & Redundant Rings",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "weidmuller",
+      "name": "Weidmüller",
+      "slug": "weidmuller",
+      "logo": "/assets/brands/weidmuller-gruppe-vector-logo_900x500.png",
+      "categoryIds": [
+        "industrial-automation"
+      ],
+      "description": "Smart industrial connectivity, surge protection barriers, industrial Ethernet interfaces, and control cabinet cabling.",
+      "productIds": [
+        "control-cables",
+        "instrumentation"
+      ],
+      "origin": "Germany",
+      "image": "/assets/products/industrial-switches.webp",
+      "imageAlt": "Weidmüller Smart Industrial Connectivity & Cabinet Cabling",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "abb",
+      "name": "ABB",
+      "slug": "abb",
+      "logo": "/assets/brands/abb-logo-0-2048x2048-1.png",
+      "categoryIds": [
+        "industrial-automation"
+      ],
+      "description": "Global power and automation engineering, industrial drive interfaces, low-voltage control systems, and instrumentation.",
+      "productIds": [
+        "industrial-switches",
+        "instrumentation"
+      ],
+      "origin": "Switzerland",
+      "image": "/assets/products/industrial-switches.webp",
+      "imageAlt": "ABB Industrial Power, Drive Automation & Control Systems",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "honeywell",
+      "name": "Honeywell Life Safety",
+      "slug": "honeywell",
+      "logo": "/assets/brands/Honeywell-Logo.wine_-scaled.png",
+      "categoryIds": [
+        "fire-and-safety-systems",
+        "security-systems"
+      ],
+      "description": "Intelligent addressable fire alarm systems, smoke and aspirating detection, and integrated building security solutions.",
+      "productIds": [
+        "fire-detection-and-alarm",
+        "cctv-surveillance",
+        "access-control"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/fire-detection-and-alarm.webp",
+      "imageAlt": "Honeywell Intelligent Addressable Fire Alarm Panels",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "notifier",
+      "name": "Notifier by Honeywell",
+      "slug": "notifier",
+      "logo": "/assets/brands/notifier-logo-png_seeklogo-100881.png",
+      "categoryIds": [
+        "fire-and-safety-systems"
+      ],
+      "description": "Premier manufacturer of commercial addressable fire alarm panels, emergency voice evacuation, and intelligent smoke sensors.",
+      "productIds": [
+        "fire-detection-and-alarm"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/fire-detection-and-alarm.webp",
+      "imageAlt": "Notifier by Honeywell Commercial Fire Control Panels",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "edwards",
+      "name": "Edwards (Kidde Commercial)",
+      "slug": "edwards",
+      "logo": "/assets/brands/edwards_logo_redblack.jpg",
+      "categoryIds": [
+        "fire-and-safety-systems"
+      ],
+      "description": "Life safety fire detection panels, EST series emergency communications, and multi-sensor signature detectors.",
+      "productIds": [
+        "fire-detection-and-alarm"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/fire-detection-and-alarm.webp",
+      "imageAlt": "Edwards Life Safety Fire Detection & Voice Communications",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "apollo",
+      "name": "Apollo Fire Detectors",
+      "slug": "apollo",
+      "logo": "/assets/brands/Apollo_Fire_Detectors_Fire_Detectors_giants-egypt-2.jpg",
+      "categoryIds": [
+        "fire-and-safety-systems"
+      ],
+      "description": "Certified conventional and analogue addressable smoke detectors, heat detectors, and manual fire call points.",
+      "productIds": [
+        "fire-detection-and-alarm"
+      ],
+      "origin": "UK",
+      "image": "/assets/products/fire-detection-and-alarm.webp",
+      "imageAlt": "Apollo Fire Detectors Analogue Addressable Smoke Sensors",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "kidde",
+      "name": "Kidde Fire Systems",
+      "slug": "kidde",
+      "logo": "/assets/brands/kidde-2-logo-png-transparent.png",
+      "categoryIds": [
+        "fire-and-safety-systems"
+      ],
+      "description": "Engineered clean agent gaseous fire suppression systems (FM-200 / ECS-500) and optical detection technologies.",
+      "productIds": [
+        "fire-suppression"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/fire-detection-and-alarm.webp",
+      "imageAlt": "Kidde Engineered Clean Agent Gaseous Fire Suppression",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "naffco",
+      "name": "NAFFCO",
+      "slug": "naffco",
+      "logo": "/assets/brands/NAFFCO_Logo-1.png",
+      "categoryIds": [
+        "fire-and-safety-systems"
+      ],
+      "description": "Global leader in civil defense approved fire firefighting equipment, UL/FM fire suppression systems, and emergency evacuation.",
+      "productIds": [
+        "fire-detection-and-alarm",
+        "fire-suppression",
+        "emergency-and-fire-safety"
+      ],
+      "origin": "UAE / Regional",
+      "image": "/assets/products/fire-detection-and-alarm.webp",
+      "imageAlt": "NAFFCO Civil Defense Certified Firefighting & Suppression Equipment",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    },
+    {
+      "id": "ansul",
+      "name": "Ansul (Johnson Controls)",
+      "slug": "ansul",
+      "logo": "/assets/brands/Ansul-Logo.png",
+      "categoryIds": [
+        "fire-and-safety-systems"
+      ],
+      "description": "Special hazard fire protection, INERGEN inert gas suppression systems, and commercial restaurant kitchen fire systems.",
+      "productIds": [
+        "fire-suppression"
+      ],
+      "origin": "USA",
+      "image": "/assets/products/fire-detection-and-alarm.webp",
+      "imageAlt": "Ansul INERGEN Clean Agent Hazard Fire Suppression Systems",
+      "status": "active",
+      "createdAt": "2026-10-11T16:34:51.683Z",
+      "updatedAt": "2026-10-11T16:34:51.683Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "networking",
+      "name": "Networking",
+      "slug": "networking",
+      "headline": "High-Performance Enterprise Connectivity & Switching",
+      "description": "Build reliable, high-performance networks with scalable connectivity solutions designed for modern businesses. Complete switching, routing, wireless, and optical transceiver infrastructure.",
+      "icon": "/assets/cable_2292144.png",
+      "featuredImage": "/assets/products/network-switches.webp",
+      "productTypeIds": [
+        "network-switches",
+        "routers",
+        "wireless-solutions",
+        "media-converters",
+        "industrial-networking",
+        "transceivers"
+      ]
+    },
+    {
+      "id": "security-systems",
+      "name": "Security Systems",
+      "slug": "security-systems",
+      "headline": "Intelligent Physical & Cyber Protection for Facilities",
+      "description": "Enterprise surveillance, biometric access control, unified security cabling, and next-generation cybersecurity architectures engineered to safeguard assets, personnel, and data.",
+      "icon": "/assets/action-camera_1560280.png",
+      "featuredImage": "/assets/products/cctv-surveillance.webp",
+      "productTypeIds": [
+        "cctv-surveillance",
+        "access-control",
+        "security-cabling",
+        "cybersecurity-systems",
+        "antivirus-edr"
+      ]
+    },
+    {
+      "id": "communications",
+      "name": "Communications",
+      "slug": "communications",
+      "headline": "Unified Enterprise IP Telephony & Collaboration",
+      "description": "Seamless communication systems connecting modern workplaces. Enterprise IP PBX platforms, executive VoIP phones, SIP trunking, and high-fidelity commercial audio systems.",
+      "icon": "/assets/landline_9723090.png",
+      "featuredImage": "/assets/products/ip-pbx-systems.webp",
+      "productTypeIds": [
+        "ip-pbx-systems",
+        "ip-phones",
+        "audio-solutions"
+      ]
+    },
+    {
+      "id": "structured-cabling",
+      "name": "Structured Cabling",
+      "slug": "structured-cabling",
+      "headline": "Certified Copper & Fiber Physical Layer Infrastructure",
+      "description": "End-to-end data transmission infrastructure engineered to international standards. High-performance Cat6/6A copper, single/multi-mode fiber optics, modular patch panels, and server cabinets.",
+      "icon": "/assets/cable_16690844.png",
+      "featuredImage": "/assets/products/patch-panels.webp",
+      "productTypeIds": [
+        "copper-cables",
+        "fiber-optic-cables",
+        "patch-panels",
+        "keystone-jacks",
+        "network-cabinets"
+      ]
+    },
+    {
+      "id": "digital-displays-and-kiosks",
+      "name": "Digital Displays and Kiosks",
+      "slug": "digital-displays-and-kiosks",
+      "headline": "Interactive Visual Technology & Commercial Kiosks",
+      "description": "Engage audiences and streamline operations with commercial LED video walls, digital signage totems, interactive flat panels, and self-service transactional kiosks.",
+      "icon": "/assets/interactiv-kiosk_103817.png",
+      "featuredImage": "/assets/products/led-displays.webp",
+      "productTypeIds": [
+        "led-displays",
+        "digital-signage",
+        "interactive-displays",
+        "kiosk-accessories"
+      ]
+    },
+    {
+      "id": "servers-and-computing",
+      "name": "Servers and Computing",
+      "slug": "servers-and-computing",
+      "headline": "Mission-Critical Compute, Storage & Power Protection",
+      "description": "Scalable enterprise compute architectures for modern workloads. High-density rack servers, tower servers, commercial workstations, enterprise UPS backups, and intelligent PDUs.",
+      "icon": "/assets/hosting_3848790.png",
+      "featuredImage": "/assets/products/rack-servers.webp",
+      "productTypeIds": [
+        "rack-servers",
+        "tower-servers",
+        "desktops-and-laptops",
+        "printers-and-supplies",
+        "ups-and-pdus"
+      ]
+    },
+    {
+      "id": "industrial-automation",
+      "name": "Industrial Automation",
+      "slug": "industrial-automation",
+      "headline": "Ruggedized Operational Technology & Process Control",
+      "description": "Harsh-environment networking and automation hardware for factories, utilities, and plants. Hardened DIN-rail switches, industrial control cabling, and precision instrumentation.",
+      "icon": "/assets/robotic-machine_5815583.png",
+      "featuredImage": "/assets/products/industrial-switches.webp",
+      "productTypeIds": [
+        "industrial-switches",
+        "control-cables",
+        "instrumentation"
+      ]
+    },
+    {
+      "id": "fire-and-safety-systems",
+      "name": "Fire and Safety Systems",
+      "slug": "fire-and-safety-systems",
+      "headline": "Certified Life Safety, Detection & Gas Suppression",
+      "description": "Compliant life-safety solutions protecting personnel and critical assets. Intelligent addressable fire alarm panels, clean-agent suppression, emergency voice evacuation, and sensors.",
+      "icon": "/assets/fire-prevention_12299025.png",
+      "featuredImage": "/assets/products/fire-detection-and-alarm.webp",
+      "productTypeIds": [
+        "fire-detection-and-alarm",
+        "fire-suppression",
+        "emergency-and-fire-safety"
+      ]
+    }
+  ],
+  "brandEquipmentItems": [
+    {
+      "id": "cisco-cat9300-48p",
+      "brandId": "cisco",
+      "model": "Catalyst 9300-48P",
+      "name": "48-Port PoE+ Managed Gigabit & 10G Switch",
+      "category": "Networking",
+      "image": "/assets/products/network-switches.webp",
+      "specs": [
+        "48x 10/100/1000 PoE+ Ports (740W)",
+        "Modular 4x 10G SFP+ Uplinks",
+        "StackWise-480 High-Speed Stacking",
+        "Cisco DNA Ready Security"
+      ]
+    },
+    {
+      "id": "cisco-isr-4331",
+      "brandId": "cisco",
+      "model": "ISR 4331/K9",
+      "name": "Integrated Multi-Service Edge Router",
+      "category": "Networking",
+      "image": "/assets/products/routers.webp",
+      "specs": [
+        "100Mbps to 300Mbps Aggregated WAN",
+        "3x Gigabit Ethernet Ports (SFP+)",
+        "Integrated Hardware IPSec Cryptography",
+        "Dual Power Supply Redundancy"
+      ]
+    },
+    {
+      "id": "fortinet-fg-100f",
+      "brandId": "fortinet",
+      "model": "FortiGate 100F",
+      "name": "Next-Generation Enterprise Firewall (NGFW)",
+      "category": "Security Systems",
+      "image": "/assets/products/cybersecurity-systems.webp",
+      "specs": [
+        "10 Gbps Firewall Throughput",
+        "1 Gbps Threat Protection Throughput",
+        "2x 10G SFP+ Dedicated Slots",
+        "AI-Powered Advanced Malware Sandboxing"
+      ]
+    },
+    {
+      "id": "fortinet-edr",
+      "brandId": "fortinet",
+      "model": "FortiClient EDR Server",
+      "name": "Endpoint Detection & Automated Incident Response",
+      "category": "Security Systems",
+      "image": "/assets/products/antivirus-edr.webp",
+      "specs": [
+        "Real-Time Pre- & Post-Infection Protection",
+        "Behavior-Based Anomaly Detection",
+        "Automated Rollback & Remediation",
+        "Central FortiCloud Fabric Telemetry"
+      ]
+    },
+    {
+      "id": "commscope-systimax-cat6a",
+      "brandId": "commscope",
+      "model": "SYSTIMAX GigaSPEED X10D",
+      "name": "Cat6A F/UTP 23AWG Solid Copper LSZH Cable",
+      "category": "Structured Cabling",
+      "image": "/assets/products/copper-cables.webp",
+      "specs": [
+        "10GBASE-T 500MHz High Bandwidth",
+        "Low Smoke Zero Halogen (LSZH)",
+        "305m Spool Precision Pull Box",
+        "Certified 25-Year System Warranty"
+      ]
+    },
+    {
+      "id": "commscope-patch-panel-24p",
+      "brandId": "commscope",
+      "model": "SYSTIMAX 1100GS3-24",
+      "name": "24-Port 1U Cat6A Shielded Patch Panel",
+      "category": "Structured Cabling",
+      "image": "/assets/products/patch-panels.webp",
+      "specs": [
+        "24-Port 1U Standard 19\" Rack Mount",
+        "Rear Cable Management Support Bar",
+        "T568A/B Universal Wiring Latch",
+        "50-Microinch Gold-Plated RJ45 Pins"
+      ]
+    },
+    {
+      "id": "corning-edge-trunk",
+      "brandId": "corning",
+      "model": "EDGE Pretium Trunk",
+      "name": "12-Fiber MTP Single-Mode OS2 Optical Trunk",
+      "category": "Structured Cabling",
+      "image": "/assets/products/fiber-optic-cables.webp",
+      "specs": [
+        "12-Fiber High-Density MTP Connectors",
+        "Corning Ultra-Bend Insensitive Glass",
+        "Factory Terminated & 100% Optical QA Tested",
+        "High-Density Data Center Backbone"
+      ]
+    },
+    {
+      "id": "panduit-patch-panel",
+      "brandId": "panduit",
+      "model": "Mini-Com CPP24FMWBLY",
+      "name": "24-Port All-Metal Modular Patch Panel",
+      "category": "Structured Cabling",
+      "image": "/assets/products/patch-panels.webp",
+      "specs": [
+        "24-Port 1U Flush-Mount Metal Frame",
+        "Accepts All Mini-Com Shielded Modules",
+        "Integrated Pre-Printed Identification Labels",
+        "Bonding Stud for Ground Continuity"
+      ]
+    },
+    {
+      "id": "hikvision-4k-acusense",
+      "brandId": "hikvision",
+      "model": "DS-2CD2186G2-ISU",
+      "name": "4K AcuSense Deep Learning IR Dome Camera",
+      "category": "Security Systems",
+      "image": "/assets/products/cctv-surveillance.webp",
+      "specs": [
+        "8MP 4K Ultra-HD Resolution",
+        "AcuSense Human & Vehicle Target Classification",
+        "DarkFighter Low-Light Color Sensitivity",
+        "IP67 Weatherproof & IK10 Vandal-Resistant"
+      ]
+    },
+    {
+      "id": "zkteco-speed-gate",
+      "brandId": "zkteco",
+      "model": "ProBG3000 / Mars Pro",
+      "name": "Automatic High-Speed Boom Barrier & Gate",
+      "category": "Security Systems",
+      "image": "/assets/products/access-control.webp",
+      "specs": [
+        "High-Efficiency Brushless DC Motor",
+        "0.9s High-Speed Boom Raise Velocity",
+        "Integrated Loop Detector & Anti-Smash",
+        "LPR Camera & RFID Direct Interconnect"
+      ]
+    },
+    {
+      "id": "dell-r760-rack",
+      "brandId": "dell",
+      "model": "PowerEdge R760",
+      "name": "2U Dual-Socket Enterprise Rackmount Server",
+      "category": "Servers & Computing",
+      "image": "/assets/products/rack-servers.webp",
+      "specs": [
+        "Dual 5th Gen Intel Xeon Scalable CPUs",
+        "Up to 8TB DDR5-5600 Registered ECC RAM",
+        "24x 2.5\" Direct NVMe All-Flash Drive Bays",
+        "iDRAC9 Enterprise Remote Management"
+      ]
+    },
+    {
+      "id": "dell-t550-tower",
+      "brandId": "dell",
+      "model": "PowerEdge T550",
+      "name": "Enterprise Scalable Multi-Core Tower Server",
+      "category": "Servers & Computing",
+      "image": "/assets/products/tower-servers.webp",
+      "specs": [
+        "Intel Xeon Scalable Enterprise Processor",
+        "Up to 8x 3.5\" SAS/SATA Hot-Plug Storage",
+        "Acoustically Quiet (<28dB) Office Enclosure",
+        "Dual Redundant Hot-Plug Titanium PSUs"
+      ]
+    },
+    {
+      "id": "samsung-qmb-75",
+      "brandId": "samsung",
+      "model": "SMART Signage QM75B",
+      "name": "75-Inch 4K Commercial Digital Signage Display",
+      "category": "Audiovisual & Displays",
+      "image": "/assets/products/digital-signage.webp",
+      "specs": [
+        "4K UHD 3840x2160 Non-Glare 500-Nit Panel",
+        "24/7 Commercial Continuous Duty Rating",
+        "Tizen 6.5 Integrated SoC Media Player Engine",
+        "Ultra-Slim 28.5mm Depth Symmetrical Bezel"
+      ]
+    },
+    {
+      "id": "viewsonic-ifp7550",
+      "brandId": "viewsonic",
+      "model": "ViewBoard IFP7550 Gen 5",
+      "name": "75-Inch 4K Interactive Conference Display",
+      "category": "Audiovisual & Displays",
+      "image": "/assets/products/interactive-displays.webp",
+      "specs": [
+        "40-Point Ultra-Fine Touch IR Sensor",
+        "4K UHD Anti-Glare Shatterproof Glass",
+        "Integrated 48MP AI Auto-Tracking Camera Bar",
+        "Wireless BYOD Screen Sharing App Included"
+      ]
+    },
+    {
+      "id": "vertiv-gxt5-3000",
+      "brandId": "vertiv",
+      "model": "Liebert GXT5-3000IRT2UXL",
+      "name": "3000VA / 3000W Online Double-Conversion UPS",
+      "category": "Servers & Computing",
+      "image": "/assets/products/ups-and-pdus.webp",
+      "specs": [
+        "Unity Power Factor (3000VA / 3000W Output)",
+        "Online Double-Conversion 0ms Transfer Speed",
+        "Hot-Swappable Scalable External Battery Packs",
+        "Integrated SNMP RDU-Web Network Interface"
+      ]
+    },
+    {
+      "id": "hirschmann-rsp20",
+      "brandId": "hirschmann",
+      "model": "RSP20 Railway Series",
+      "name": "Hardened Managed Industrial Gigabit Switch",
+      "category": "Industrial Automation",
+      "image": "/assets/products/industrial-switches.webp",
+      "specs": [
+        "DIN-Rail Heavy-Duty Aluminum Enclosure IP40",
+        "-40°C to +70°C Operating Temperature Class",
+        "Zero-Loss PRP & HSR Seamless Ring Redundancy",
+        "Substation IEC 61850-3 & IEEE 1613 Approved"
+      ]
+    },
+    {
+      "id": "honeywell-fire-panel",
+      "brandId": "honeywell",
+      "model": "Morley-IAS Max",
+      "name": "Multi-Loop Intelligent Addressable Fire Panel",
+      "category": "Fire & Life Safety",
+      "image": "/assets/products/fire-detection-and-alarm.webp",
+      "specs": [
+        "1 to 4 Loops Supporting 792 Devices",
+        "7-Inch Full Color Ergonomic Touchscreen",
+        "Certified EN 54-2, EN 54-4 by LPCB",
+        "Civil Defense Approved GCC Integration"
+      ]
+    },
+    {
+      "id": "kidde-ecs-500",
+      "brandId": "kidde",
+      "model": "ECS-500 Clean Agent",
+      "name": "Engineered Gaseous Fire Suppression System",
+      "category": "Fire & Life Safety",
+      "image": "/assets/products/fire-suppression.webp",
+      "specs": [
+        "FK-5-1-12 / FM-200 Clean Gas Suppression",
+        "10-Second High-Pressure Discharge Nozzle",
+        "Zero Ozone Depletion & Safe for Personnel",
+        "UL Listed & FM Approved Steel Cylinder Array"
+      ]
+    },
+    {
+      "id": "naffco-fire-hydrant",
+      "brandId": "naffco",
+      "model": "NF-HYD-WB-250",
+      "name": "UL/FM Wet Barrel Heavy-Duty Fire Hydrant",
+      "category": "Fire & Life Safety",
+      "image": "/assets/products/emergency-and-fire-safety.webp",
+      "specs": [
+        "Ductile Iron High-Strength Barrel 250 PSI",
+        "Dual 2.5\" Hose Nozzles & 4.5\" Pumper Port",
+        "UL Listed & FM Approved Civil Defense Rating",
+        "Corrosion-Resistant Epoxy Exterior Finish"
+      ]
+    }
+  ]
+}

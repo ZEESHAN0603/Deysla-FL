@@ -8,7 +8,8 @@ export async function handleNodeRequest(
   try {
     const protocol = (req.socket as any)?.encrypted ? 'https' : 'http';
     const host = req.headers.host || 'localhost:3000';
-    const url = new URL(req.url || '/', `${protocol}://${host}`);
+    const rawPath = (req as any).originalUrl || req.url || '/';
+    const url = new URL(rawPath, `${protocol}://${host}`);
 
     const headers = new Headers();
     for (const [key, val] of Object.entries(req.headers)) {

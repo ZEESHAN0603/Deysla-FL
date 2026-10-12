@@ -8,7 +8,7 @@ export const CompanyIntro: React.FC = () => {
   const { lang, formatPath } = useLanguage();
 
   return (
-    <section className="py-12 sm:py-20 lg:py-24 bg-white border-b border-neutral-200 text-neutral-900">
+    <section className="py-12 sm:py-20 lg:py-24 bg-transparent border-b border-neutral-200/80 text-neutral-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           {/* Left Column: DEYSLA IT Solutions Overview */}

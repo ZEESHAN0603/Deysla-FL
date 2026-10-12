@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronRight, Search, ShieldCheck, Layers, Building, Sparkles } from "lucide-react";
-import { BRANDS_DATA, Brand } from "../data/brands";
-import { PRODUCT_CATEGORIES } from "../data/productCategories";
-import { PRODUCTS_DATA } from "../data/products";
+import { Brand } from "../data/brands";
 import { useLanguage } from "../context/LanguageContext";
+import { useCatalog } from "../context/CatalogContext";
 
 export const BrandsCatalogPage: React.FC = () => {
   const { language, formatPath } = useLanguage();
+  const { brands, products } = useCatalog();
   const isAr = language === "ar";
 
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -25,7 +25,7 @@ export const BrandsCatalogPage: React.FC = () => {
     { id: "fire-and-safety-systems", label: isAr ? "أنظمة السلامة والحرائق" : "Fire & Safety" },
   ];
 
-  const filteredBrands = BRANDS_DATA.filter((brand) => {
+  const filteredBrands = brands.filter((brand) => {
     const matchesCategory =
       selectedCategory === "all" || brand.categoryIds.includes(selectedCategory);
     const matchesSearch =
@@ -33,6 +33,7 @@ export const BrandsCatalogPage: React.FC = () => {
       brand.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
 
   return (
     <div className="w-full bg-slate-50 min-h-screen">
@@ -142,15 +143,15 @@ export const BrandsCatalogPage: React.FC = () => {
             </div>
             <span className="text-xs font-mono text-slate-500">
               {isAr
-                ? `عرض ${filteredBrands.length} من أصل ${BRANDS_DATA.length} شريكاً معتمداً`
-                : `Showing ${filteredBrands.length} of ${BRANDS_DATA.length} partners`}
+                ? `عرض ${filteredBrands.length} من أصل ${brands.length} شريكاً معتمداً`
+                : `Showing ${filteredBrands.length} of ${brands.length} partners`}
             </span>
           </div>
 
           {/* Brand Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {filteredBrands.map((brand) => {
-              const supportedProducts = PRODUCTS_DATA.filter((p) =>
+              const supportedProducts = products.filter((p) =>
                 brand.productIds.includes(p.id)
               );
 

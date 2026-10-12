@@ -48,7 +48,7 @@ export const AboutPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-white text-slate-900">
+    <div className="w-full bg-transparent text-slate-900">
       {/* 01. PROFESSIONAL HERO BANNER */}
       <section className="relative w-full min-h-[220px] sm:min-h-[260px] lg:min-h-[290px] flex items-center justify-center overflow-hidden bg-slate-950 text-white border-b border-slate-800">
         {/* Top Brand Iridescent Theme Gradient Bar */}
@@ -77,7 +77,7 @@ export const AboutPage: React.FC = () => {
         {/* Hero Content */}
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 pb-12 sm:pb-14 text-center space-y-2.5 sm:space-y-3">
           {/* Top Kicker */}
-          <div className="inline-flex items-center gap-2 text-[9px] sm:text-[11px] font-mono font-bold uppercase tracking-widest text-slate-200 bg-black/60 border border-white/20 px-3 py-1 rounded-full shadow-2xs backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 text-[9px] sm:text-[11px] font-mono font-bold uppercase tracking-widest text-white bg-white/20 border border-white/35 px-3 py-1 rounded-full shadow-2xs backdrop-blur-md">
             <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
             <span>{lang === 'ar' ? 'المملكة العربية السعودية · حلول تقنية المعلومات المعتمدة' : 'Kingdom of Saudi Arabia · Tier-1 IT Solutions'}</span>
           </div>
@@ -100,7 +100,7 @@ export const AboutPage: React.FC = () => {
           <div className="pt-1">
             <nav
               aria-label="Breadcrumb"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 border border-white/20 text-[11px] font-semibold text-slate-300 shadow-2xs backdrop-blur-md"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 border border-white/35 text-[11px] font-semibold text-white shadow-2xs backdrop-blur-md"
             >
               <Link
                 to={formatPath("/")}
@@ -108,8 +108,8 @@ export const AboutPage: React.FC = () => {
               >
                 {dict.nav.home}
               </Link>
-              <span className="text-slate-500 font-bold">/</span>
-              <span className="text-cyan-400 font-bold uppercase tracking-wider">
+              <span className="text-white/60 font-bold">/</span>
+              <span className="text-cyan-300 font-bold uppercase tracking-wider">
                 {dict.nav.about}
               </span>
             </nav>
@@ -117,7 +117,7 @@ export const AboutPage: React.FC = () => {
         </div>
 
         {/* Bottom Strip: Key Telemetry Accents */}
-        <div className="absolute bottom-0 inset-x-0 z-10 border-t border-slate-800 bg-black/80 backdrop-blur-md">
+        <div className="absolute bottom-0 inset-x-0 z-10 border-t border-white/20 bg-white/10 backdrop-blur-md">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3">
             <div className="flex flex-wrap items-center justify-center sm:justify-between gap-3 sm:gap-4 text-xs font-mono text-slate-300">
               <span className="flex items-center gap-2">

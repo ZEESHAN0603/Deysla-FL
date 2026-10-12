@@ -79,51 +79,51 @@ export const HomeGlobalPresence: React.FC = () => {
 
   return (
     <section className="mt-4 sm:mt-8 mb-8 sm:mb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Compact, sleek, unified card container */}
-      <div className="relative rounded-2xl bg-black border border-neutral-800 shadow-xl overflow-hidden p-4 sm:p-8">
+      {/* Compact, sleek, unified card container - Light Version */}
+      <div className="relative rounded-2xl bg-white/90 border border-orange-200/70 shadow-xl overflow-hidden p-4 sm:p-8 backdrop-blur-md">
         {/* Top subtle theme gradient line */}
         <div className="absolute top-0 left-0 right-0 h-1 theme-gradient-bar" />
 
         {/* Subtle header badge */}
         <div className="flex items-center gap-2 mb-4 sm:mb-6">
-          <Globe2 className="w-3.5 h-3.5 text-white" />
-          <span className="text-[11px] font-bold text-neutral-300 uppercase tracking-wider font-mono">
+          <Globe2 className="w-3.5 h-3.5 text-[#ff7a1a]" />
+          <span className="text-[11px] font-bold text-slate-800 uppercase tracking-wider font-mono">
             {lang === 'ar' ? 'حضورنا الإقليمي والدولي' : 'Global Presence'}
           </span>
         </div>
 
         {/* 3 Compact Regional Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-5 lg:gap-8 pb-5 sm:pb-6 border-b border-neutral-800">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-5 lg:gap-8 pb-5 sm:pb-6 border-b border-orange-100">
           {COMPANY_DATA.offices.map((office) => (
             <div
               key={office.region}
-              className="p-3.5 sm:p-5 rounded-xl bg-neutral-950 border border-neutral-800 space-y-2.5 sm:space-y-3"
+              className="p-3.5 sm:p-5 rounded-xl bg-white/95 border border-orange-100 shadow-2xs space-y-2.5 sm:space-y-3"
             >
               {/* Region Heading */}
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
-                <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ff7a1a] shrink-0" />
+                <h3 className="text-sm sm:text-base font-bold text-slate-900 uppercase tracking-wider">
                   {getRegionTitle(office.region)}
                 </h3>
               </div>
 
               {/* Compact Details List */}
-              <ul className="space-y-2 text-xs text-neutral-300">
+              <ul className="space-y-2 text-xs text-slate-600">
                 <li className="flex items-start gap-2.5">
-                  <MapPin className="w-3.5 h-3.5 text-white shrink-0 mt-0.5" />
-                  <span className="leading-snug text-neutral-200">{getLocationText(office.location)}</span>
+                  <MapPin className="w-3.5 h-3.5 text-[#ff7a1a] shrink-0 mt-0.5" />
+                  <span className="leading-snug text-slate-700">{getLocationText(office.location)}</span>
                 </li>
 
                 <li className="flex items-center gap-2.5">
-                  <Clock className="w-3.5 h-3.5 text-neutral-400 shrink-0" />
+                  <Clock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                   <span>{getHoursText(office.hours)}</span>
                 </li>
 
                 <li className="flex items-center gap-2.5">
-                  <Phone className="w-3.5 h-3.5 text-white shrink-0" />
+                  <Phone className="w-3.5 h-3.5 text-[#ff7a1a] shrink-0" />
                   <a
                     href={`tel:${office.phoneRaw}`}
-                    className="hover:text-white transition-colors font-mono tracking-tight isolate-ltr"
+                    className="hover:text-[#0052cc] transition-colors font-mono tracking-tight text-slate-700 isolate-ltr"
                     dir="ltr"
                   >
                     {office.phone}
@@ -131,10 +131,10 @@ export const HomeGlobalPresence: React.FC = () => {
                 </li>
 
                 <li className="flex items-center gap-2.5">
-                  <AtSign className="w-3.5 h-3.5 text-white shrink-0" />
+                  <AtSign className="w-3.5 h-3.5 text-[#ff7a1a] shrink-0" />
                   <a
                     href={`mailto:${office.email}`}
-                    className="hover:text-white transition-colors font-mono text-neutral-300 truncate isolate-ltr"
+                    className="hover:text-[#0052cc] transition-colors font-mono text-slate-700 truncate isolate-ltr"
                     dir="ltr"
                   >
                     {office.email}
@@ -147,7 +147,7 @@ export const HomeGlobalPresence: React.FC = () => {
 
         {/* Compact Common Social Channels Bar */}
         <div className="pt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <span className="text-[11px] font-semibold text-slate-400">
+          <span className="text-[11px] font-semibold text-slate-500">
             {lang === 'ar' ? 'تواصل معنا عبر القنوات الرسمية:' : 'Connect across all regions:'}
           </span>
 
@@ -160,12 +160,12 @@ export const HomeGlobalPresence: React.FC = () => {
                   href={ch.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex items-center justify-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-950/80 border border-slate-800 text-xs text-slate-300 transition-all ${ch.hoverColor}`}
+                  className={`inline-flex items-center justify-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-xs text-slate-700 hover:text-[#ff7a1a] hover:border-orange-300 shadow-2xs transition-all ${ch.hoverColor}`}
                   title={ch.name}
                 >
                   <Icon className="w-3.5 h-3.5 shrink-0" />
                   <span className="font-medium text-[11px] truncate">{ch.name}</span>
-                  <ExternalLink className="w-2.5 h-2.5 text-slate-500 opacity-60 shrink-0 rtl-flip" />
+                  <ExternalLink className="w-2.5 h-2.5 text-slate-400 opacity-60 shrink-0 rtl-flip" />
                 </a>
               );
             })}

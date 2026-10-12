@@ -7,6 +7,7 @@ import { POST as contactHandler } from '../../app/api/contact/route.ts';
 import { POST as quoteHandler } from '../../app/api/quote/route.ts';
 import { POST as careersHandler } from '../../app/api/careers/route.ts';
 import { GET as verifySmtpHandler } from '../../app/api/verify-smtp/route.ts';
+import { handleAdminApiRequest } from './adminApiHandler.ts';
 
 // Load .env and .env.local
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
@@ -16,6 +17,14 @@ export function smtpApiPlugin(): Plugin {
   return {
     name: 'smtp-api-plugin',
     configureServer(server: ViteDevServer) {
+      server.middlewares.use('/api/catalog', (req: IncomingMessage, res: ServerResponse) => {
+        handleNodeRequest(req, res, handleAdminApiRequest);
+      });
+
+      server.middlewares.use('/api/admin', (req: IncomingMessage, res: ServerResponse) => {
+        handleNodeRequest(req, res, handleAdminApiRequest);
+      });
+
       server.middlewares.use('/api/contact', (req: IncomingMessage, res: ServerResponse) => {
         if (req.method !== 'POST') {
           res.statusCode = 405;
@@ -54,3 +63,4 @@ export function smtpApiPlugin(): Plugin {
     },
   };
 }
+

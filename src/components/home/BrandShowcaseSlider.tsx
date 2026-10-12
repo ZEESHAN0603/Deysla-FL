@@ -78,7 +78,7 @@ export const BrandShowcaseSlider: React.FC = () => {
   const slideBrands = BRANDS_DATA.filter((b) => currentSlide.brandIds.includes(b.id));
 
   return (
-    <section className="py-10 sm:py-16 lg:py-20 bg-white/50 backdrop-blur-xs border-b border-slate-200/80">
+    <section className="py-10 sm:py-16 lg:py-20 bg-transparent border-b border-neutral-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Card Container with Left/Right split */}
         <div className="theme-card-ambient rounded-2xl overflow-hidden p-4 sm:p-8 lg:p-12 relative">
@@ -107,7 +107,7 @@ export const BrandShowcaseSlider: React.FC = () => {
                   <Link
                     key={brand.id}
                     to={formatPath(`/brands/${brand.slug}`)}
-                    className="h-14 sm:h-16 p-2 rounded-lg bg-white border border-neutral-200 shadow-2xs hover:border-black hover:shadow-xs transition-all flex items-center justify-center group"
+                    className="h-14 sm:h-16 p-2 rounded-lg bg-white border border-orange-200/50 shadow-2xs hover:border-[#ff8c3a] hover:shadow-xs transition-all flex items-center justify-center group"
                   >
                     <img
                       src={brand.logo}
@@ -140,7 +140,7 @@ export const BrandShowcaseSlider: React.FC = () => {
               <div className="pt-2 flex items-center gap-4">
                 <Link
                   to={formatPath(currentSlide.link)}
-                  className="inline-flex items-center gap-2 text-xs font-bold text-black hover:text-neutral-600 uppercase tracking-wider group"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-[#ff5e00] hover:text-[#0052cc] uppercase tracking-wider group transition-colors"
                 >
                   <span>{lang === 'ar' ? 'استكشف المنتجات' : 'Explore Range'}</span>
                   <ArrowRight className="w-3.5 h-3.5 rtl-flip group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
@@ -152,7 +152,7 @@ export const BrandShowcaseSlider: React.FC = () => {
                       key={idx}
                       onClick={() => setCurrentSlideIndex(idx)}
                       className={`h-2 rounded-full transition-all cursor-pointer ${
-                        currentSlideIndex === idx ? "w-6 bg-black shadow-xs" : "w-2 bg-neutral-300"
+                        currentSlideIndex === idx ? "w-6 bg-gradient-to-r from-[#ff5e00] to-[#0052cc] shadow-xs" : "w-2 bg-neutral-300"
                       }`}
                       aria-label={`Slide ${idx + 1}`}
                     />

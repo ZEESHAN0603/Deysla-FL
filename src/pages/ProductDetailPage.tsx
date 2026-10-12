@@ -34,6 +34,7 @@ import { getCatalogItemsBySubcategory, CatalogItem } from "../data/productCatalo
 import { useCart } from "../context/CartContext";
 import { usePosterImages } from "../context/PosterImagesContext";
 import { useLanguage } from "../context/LanguageContext";
+import { useCatalog } from "../context/CatalogContext";
 import { CATEGORY_TRANSLATIONS } from "../i18n/translations";
 
 export const ProductDetailPage: React.FC = () => {
@@ -42,6 +43,7 @@ export const ProductDetailPage: React.FC = () => {
   const { addItem, setIsEnquiryModalOpen } = useCart();
   const { getProductImage } = usePosterImages();
   const { language, formatPath } = useLanguage();
+  const { products, brands, categories, getCatalogItemsBySubcategory } = useCatalog();
   const isAr = language === "ar";
 
   const [selectedBrand, setSelectedBrand] = useState<string>("");
@@ -53,8 +55,8 @@ export const ProductDetailPage: React.FC = () => {
   const [backdropMode, setBackdropMode] = useState<"light" | "dark">("light");
   const [isZoomModalOpen, setIsZoomModalOpen] = useState<boolean>(false);
 
-  const product = PRODUCTS_DATA.find((p) => p.slug === productSlug);
-  const category = PRODUCT_CATEGORIES.find((c) => c.slug === categorySlug);
+  const product = products.find((p) => p.slug === productSlug || p.id === productSlug);
+  const category = categories.find((c) => c.slug === categorySlug || c.id === categorySlug);
 
   if (!product || !category) {
     return <Navigate to={formatPath("/products")} replace />;
@@ -64,10 +66,11 @@ export const ProductDetailPage: React.FC = () => {
   const catalogModels = getCatalogItemsBySubcategory(product.id);
   const [activeModel, setActiveModel] = useState<CatalogItem | null>(() => catalogModels[0] || null);
 
-  const availableBrands = BRANDS_DATA.filter((b) => product.brandIds.includes(b.id));
-  const otherProductsInCategory = PRODUCTS_DATA.filter(
+  const availableBrands = brands.filter((b) => product.brandIds.includes(b.id));
+  const otherProductsInCategory = products.filter(
     (p) => p.categoryId === product.categoryId && p.id !== product.id
   );
+
 
   // Sync with searchParams on mount or param change
   useEffect(() => {

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronRight, Layers } from "lucide-react";
-import { BRANDS_DATA, Brand } from "../../data/brands";
-import { PRODUCT_CATEGORIES } from "../../data/productCategories";
+import { Brand } from "../../data/brands";
+import { useCatalog } from "../../context/CatalogContext";
 
 export const HomeBrands: React.FC = () => {
+  const { brands } = useCatalog();
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const filterTabs = [
@@ -20,8 +21,9 @@ export const HomeBrands: React.FC = () => {
 
   const filteredBrands =
     selectedCategory === "all"
-      ? BRANDS_DATA.slice(0, 16)
-      : BRANDS_DATA.filter((b) => b.categoryIds.includes(selectedCategory)).slice(0, 16);
+      ? brands.slice(0, 16)
+      : brands.filter((b) => b.categoryIds.includes(selectedCategory)).slice(0, 16);
+
 
   return (
     <section className="py-20 lg:py-24 bg-slate-50 border-b border-slate-200">
@@ -43,7 +45,7 @@ export const HomeBrands: React.FC = () => {
             to="/brands"
             className="text-xs font-bold text-black hover:text-neutral-700 flex items-center gap-1.5 whitespace-nowrap self-start md:self-end group"
           >
-            <span>View All {BRANDS_DATA.length} Brands</span>
+            <span>View All {brands.length} Brands</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -54,10 +56,10 @@ export const HomeBrands: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setSelectedCategory(tab.id)}
-              className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap ${
+              className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap cursor-pointer ${
                 selectedCategory === tab.id
-                  ? "bg-black text-white shadow-xs"
-                  : "bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80"
+                  ? "theme-pill-active text-white shadow-xs"
+                  : "bg-white text-slate-600 hover:bg-orange-50/50 hover:text-slate-900 border border-slate-200/80"
               }`}
             >
               {tab.label}
@@ -71,7 +73,7 @@ export const HomeBrands: React.FC = () => {
             <Link
               key={brand.id}
               to={`/brands/${brand.slug}`}
-              className="p-4 rounded-xl border border-neutral-200 bg-white hover:border-black hover:shadow-md transition-all group flex flex-col justify-between h-40"
+              className="p-4 rounded-xl border border-orange-200/50 bg-white hover:border-[#ff8c3a] hover:shadow-md transition-all group flex flex-col justify-between h-40"
             >
               <div className="h-16 w-full flex items-center justify-center p-2">
                 <img

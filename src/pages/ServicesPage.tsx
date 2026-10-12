@@ -185,7 +185,7 @@ export const ServicesPage: React.FC = () => {
                     {/* Header Content */}
                     <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-between">
                       <div className="flex items-center justify-between">
-                        <span className="text-[11px] font-mono font-bold text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/20 isolate-ltr">
+                        <span className="text-[11px] font-mono font-bold text-white bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/35 isolate-ltr">
                           {lang === 'ar' ? `المجال ${service.number}` : `PRACTICE ${service.number}`}
                         </span>
                         <span className="text-[10px] font-semibold text-cyan-300 bg-sky-950/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-sky-500/30">

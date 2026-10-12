@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronRight, Search } from "lucide-react";
-import { PRODUCT_CATEGORIES } from "../data/productCategories";
-import { PRODUCTS_DATA } from "../data/products";
 import { useLanguage } from "../context/LanguageContext";
+import { useCatalog } from "../context/CatalogContext";
 import { CATEGORY_TRANSLATIONS } from "../i18n/translations";
 
 export const ProductsCatalogPage: React.FC = () => {
   const { dict, lang, formatPath } = useLanguage();
+  const { products, categories } = useCatalog();
   const [searchTerm, setSearchTerm] = useState("");
 
   const getCatName = (catId: string, fallback: string) => {
@@ -18,16 +18,17 @@ export const ProductsCatalogPage: React.FC = () => {
     return CATEGORY_TRANSLATIONS[lang]?.[catId]?.description || fallback;
   };
 
-  const filteredCategories = PRODUCT_CATEGORIES.filter((cat) => {
+  const filteredCategories = categories.filter((cat) => {
     const term = searchTerm.toLowerCase();
     const catName = getCatName(cat.id, cat.name).toLowerCase();
     const inName = catName.includes(term) || cat.name.toLowerCase().includes(term);
     const inDesc = getCatDesc(cat.id, cat.description).toLowerCase().includes(term);
-    const inTypes = PRODUCTS_DATA.some(
+    const inTypes = products.some(
       (p) => p.categoryId === cat.id && p.name.toLowerCase().includes(term)
     );
     return inName || inDesc || inTypes;
   });
+
 
   return (
     <div className="w-full bg-white/70 backdrop-blur-xs">
@@ -77,7 +78,7 @@ export const ProductsCatalogPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {filteredCategories.map((cat) => {
-              const types = PRODUCTS_DATA.filter((p) => p.categoryId === cat.id);
+              const types = products.filter((p) => p.categoryId === cat.id);
               const catName = getCatName(cat.id, cat.name);
               const catDesc = getCatDesc(cat.id, cat.description);
 

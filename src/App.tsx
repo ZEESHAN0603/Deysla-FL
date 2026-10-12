@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "r
 import { CartProvider } from "./context/CartContext";
 import { PosterImagesProvider } from "./context/PosterImagesContext";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
+import { AdminAuthProvider } from "./context/AdminAuthContext";
+import { CatalogProvider } from "./context/CatalogContext";
+import { AdminProtectedRoute } from "./components/admin/AdminProtectedRoute";
+import { AdminDashboardPage } from "./pages/admin/AdminDashboardPage";
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
 import { WhatsAppButton } from "./components/common/WhatsAppButton";
@@ -85,7 +89,7 @@ function MainLayout() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col theme-mesh-bg text-neutral-900 font-sans selection:bg-black selection:text-white relative">
+    <div className="min-h-screen flex flex-col theme-mesh-bg text-neutral-900 font-sans selection:bg-[#ff5e00] selection:text-white relative">
       {quotaExceeded && (
         <div className="bg-neutral-100 border-b border-neutral-300 text-neutral-900 px-4 py-2.5 text-xs md:text-sm text-center sticky top-0 z-50 shadow-sm">
           <span>
@@ -154,17 +158,51 @@ function MainLayout() {
   );
 }
 
-export default function App() {
+function AppRoutes() {
   return (
-    <CartProvider>
-      <PosterImagesProvider>
-        <Router>
-          <LanguageProvider>
-            <ScrollToTop />
-            <MainLayout />
-          </LanguageProvider>
-        </Router>
-      </PosterImagesProvider>
-    </CartProvider>
+    <Routes>
+      {/* Dedicated Admin Portal Routes */}
+      <Route
+        path="/admin"
+        element={
+          <AdminProtectedRoute>
+            <AdminDashboardPage />
+          </AdminProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/*"
+        element={
+          <AdminProtectedRoute>
+            <AdminDashboardPage />
+          </AdminProtectedRoute>
+        }
+      />
+      <Route path="/:lang/admin" element={<Navigate to="/admin" replace />} />
+      <Route path="/:lang/admin/*" element={<Navigate to="/admin" replace />} />
+
+      {/* Public Storefront Layout */}
+      <Route path="/*" element={<MainLayout />} />
+    </Routes>
   );
 }
+
+export default function App() {
+  return (
+    <AdminAuthProvider>
+      <CatalogProvider>
+        <CartProvider>
+          <PosterImagesProvider>
+            <Router>
+              <LanguageProvider>
+                <ScrollToTop />
+                <AppRoutes />
+              </LanguageProvider>
+            </Router>
+          </PosterImagesProvider>
+        </CartProvider>
+      </CatalogProvider>
+    </AdminAuthProvider>
+  );
+}
+

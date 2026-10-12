@@ -1,0 +1,110 @@
+[
+  {
+    "id": "audit-1791739539626-2fzl",
+    "timestamp": "2026-10-11T17:25:39.626Z",
+    "user": "admin",
+    "action": "STATUS_CHANGE",
+    "entity": "PRODUCT",
+    "entityId": "routers",
+    "details": "Toggled product status to inactive"
+  },
+  {
+    "id": "audit-1791737467399-fvmx",
+    "timestamp": "2026-10-11T16:51:07.399Z",
+    "user": "admin",
+    "action": "UPDATE",
+    "entity": "COMPLAINT",
+    "entityId": "CMP-556986-811",
+    "details": "Updated complaint status to \"In Progress\" with notes: \"Assigned to senior network engineer Tariq for site survey.\""
+  },
+  {
+    "id": "audit-1791737467250-fa2a",
+    "timestamp": "2026-10-11T16:51:07.250Z",
+    "user": "admin",
+    "action": "CREATE",
+    "entity": "CATALOG_ITEM",
+    "entityId": "sku-test-switch-1791737467113-48p",
+    "details": "Created new sub-product SKU: Core Switch X1 48-Port 10G SFP+"
+  },
+  {
+    "id": "audit-1791737467211-inhe",
+    "timestamp": "2026-10-11T16:51:07.211Z",
+    "user": "admin",
+    "action": "STATUS_CHANGE",
+    "entity": "PRODUCT",
+    "entityId": "test-switch-1791737467113",
+    "details": "Toggled product status to active"
+  },
+  {
+    "id": "audit-1791737467179-msw8",
+    "timestamp": "2026-10-11T16:51:07.179Z",
+    "user": "admin",
+    "action": "STATUS_CHANGE",
+    "entity": "PRODUCT",
+    "entityId": "test-switch-1791737467113",
+    "details": "Toggled product status to inactive"
+  },
+  {
+    "id": "audit-1791737467135-2nz8",
+    "timestamp": "2026-10-11T16:51:07.135Z",
+    "user": "admin",
+    "action": "CREATE",
+    "entity": "PRODUCT",
+    "entityId": "test-switch-1791737467113",
+    "details": "Created new product: DEYSLA Enterprise Core Switch X1"
+  },
+  {
+    "id": "audit-1791737373916-piwg",
+    "timestamp": "2026-10-11T16:49:33.916Z",
+    "user": "admin",
+    "action": "UPDATE",
+    "entity": "COMPLAINT",
+    "entityId": "CMP-556986-811",
+    "details": "Updated complaint status to \"In Progress\" with notes: \"Assigned to senior network engineer Tariq for site survey.\""
+  },
+  {
+    "id": "audit-1791737373868-n40n",
+    "timestamp": "2026-10-11T16:49:33.868Z",
+    "user": "admin",
+    "action": "CREATE",
+    "entity": "CATALOG_ITEM",
+    "entityId": "sku-test-switch-1791737373693-48p",
+    "details": "Created new sub-product SKU: Core Switch X1 48-Port 10G SFP+"
+  },
+  {
+    "id": "audit-1791737373836-3mop",
+    "timestamp": "2026-10-11T16:49:33.836Z",
+    "user": "admin",
+    "action": "STATUS_CHANGE",
+    "entity": "PRODUCT",
+    "entityId": "test-switch-1791737373693",
+    "details": "Toggled product status to active"
+  },
+  {
+    "id": "audit-1791737373813-khrl",
+    "timestamp": "2026-10-11T16:49:33.813Z",
+    "user": "admin",
+    "action": "STATUS_CHANGE",
+    "entity": "PRODUCT",
+    "entityId": "test-switch-1791737373693",
+    "details": "Toggled product status to inactive"
+  },
+  {
+    "id": "audit-1791737373770-y34p",
+    "timestamp": "2026-10-11T16:49:33.770Z",
+    "user": "admin",
+    "action": "UPDATE",
+    "entity": "PRODUCT",
+    "entityId": "test-switch-1791737373693",
+    "details": "Updated product: Duplicate Item"
+  },
+  {
+    "id": "audit-1791737373722-yho7",
+    "timestamp": "2026-10-11T16:49:33.722Z",
+    "user": "admin",
+    "action": "CREATE",
+    "entity": "PRODUCT",
+    "entityId": "test-switch-1791737373693",
+    "details": "Created new product: DEYSLA Enterprise Core Switch X1"
+  }
+]

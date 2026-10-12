@@ -6,6 +6,7 @@ import { POST as contactHandler } from './app/api/contact/route';
 import { POST as quoteHandler } from './app/api/quote/route';
 import { POST as careersHandler } from './app/api/careers/route';
 import { GET as verifySmtpHandler } from './app/api/verify-smtp/route';
+import { handleAdminApiRequest } from './src/server/adminApiHandler';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
@@ -14,6 +15,14 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // API Routes
+app.all('/api/catalog', (req, res) => {
+  handleNodeRequest(req, res, handleAdminApiRequest);
+});
+
+app.all('/api/admin*', (req, res) => {
+  handleNodeRequest(req, res, handleAdminApiRequest);
+});
+
 app.post('/api/contact', (req, res) => {
   handleNodeRequest(req, res, contactHandler);
 });
@@ -29,6 +38,7 @@ app.post('/api/careers', (req, res) => {
 app.get('/api/verify-smtp', (req, res) => {
   handleNodeRequest(req, res, verifySmtpHandler);
 });
+
 
 // Serve frontend static build
 const distPath = path.resolve(process.cwd(), 'dist');

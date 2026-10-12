@@ -6,6 +6,7 @@ import {
   isValidEmail,
   buildContactEmail,
 } from '../../../src/server/mail/mailer.ts';
+import { recordComplaint } from '../../../src/server/db/database.ts';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -83,52 +84,65 @@ export async function POST(request: Request) {
       );
     }
 
-    // 5. Verify SMTP configuration
-    if (!isSmtpConfigured()) {
-      return Response.json(
-        {
-          success: false,
-          error:
-            'Email server (SMTP) is not configured yet. Please configure SMTP_HOST, SMTP_USER, and SMTP_PASS in the server environment variables.',
-        },
-        { status: 503 }
-      );
-    }
-
-    const config = getSmtpConfig();
-    const transporter = createTransporter();
-
-    // 6. Build branded email
-    const submittedAt = new Intl.DateTimeFormat('en-GB', {
-      dateStyle: 'full',
-      timeStyle: 'medium',
-      timeZone: 'Asia/Riyadh',
-    }).format(new Date()) + ' (Saudi Arabia Time)';
-
-    const emailContent = buildContactEmail({
+    // 5. Persist inquiry/complaint to database immediately
+    const complaintRecord = recordComplaint({
       name: name.trim(),
       email: email.trim(),
-      contact: contact ? contact.trim() : 'Not provided',
+      contact: contact ? contact.trim() : undefined,
       companyName: companyName ? String(companyName).trim() : undefined,
       message: message.trim(),
-      submittedAt,
     });
 
-    // 7. Send via Nodemailer with Reply-To
-    const mailResult = await transporter.sendMail({
-      from: config.from,
-      to: config.contactEmail,
-      replyTo: `"${name.trim()}" <${email.trim()}>`,
-      subject: `New Customer Enquiry - DEYSLA: ${name.trim()}${companyName ? ` (${companyName.trim()})` : ''}`,
-      text: emailContent.text,
-      html: emailContent.html,
-    });
+    // 6. Verify SMTP configuration and send email notification
+    let mailSent = false;
+    let mailError: string | null = null;
+    let mailMessageId: string | undefined = undefined;
+
+    if (isSmtpConfigured()) {
+      try {
+        const config = getSmtpConfig();
+        const transporter = createTransporter();
+
+        const submittedAt = new Intl.DateTimeFormat('en-GB', {
+          dateStyle: 'full',
+          timeStyle: 'medium',
+          timeZone: 'Asia/Riyadh',
+        }).format(new Date()) + ' (Saudi Arabia Time)';
+
+        const emailContent = buildContactEmail({
+          name: name.trim(),
+          email: email.trim(),
+          contact: contact ? contact.trim() : 'Not provided',
+          companyName: companyName ? String(companyName).trim() : undefined,
+          message: message.trim(),
+          submittedAt,
+        });
+
+        const mailResult = await transporter.sendMail({
+          from: config.from,
+          to: config.contactEmail,
+          replyTo: `"${name.trim()}" <${email.trim()}>`,
+          subject: `[${complaintRecord.id}] New Customer Enquiry - DEYSLA: ${name.trim()}${companyName ? ` (${companyName.trim()})` : ''}`,
+          text: emailContent.text,
+          html: emailContent.html,
+        });
+
+        mailSent = true;
+        mailMessageId = mailResult.messageId;
+      } catch (smtpErr: any) {
+        console.warn('[Contact] Smtp notification dispatch failed (record preserved in DB):', smtpErr?.message);
+        mailError = smtpErr?.message;
+      }
+    }
 
     return Response.json({
       success: true,
+      complaintId: complaintRecord.id,
       message: 'Thank you! Your message has been sent successfully to the DEYSLA support team.',
-      messageId: mailResult.messageId,
+      messageId: mailMessageId,
+      mailSent,
     });
+
   } catch (error: any) {
     console.error('Error handling /api/contact:', error);
     const errorMessage =

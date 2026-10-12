@@ -1,14 +1,12 @@
 import React from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { ArrowRight, ChevronRight, CheckCircle2, ShieldCheck, Box, ShoppingCart, ExternalLink, Globe } from "lucide-react";
-import { BRANDS_DATA } from "../data/brands";
-import { PRODUCTS_DATA } from "../data/products";
-import { PRODUCT_CATEGORIES } from "../data/productCategories";
 import { SERVICES_DATA } from "../data/services";
 import { getBrandEquipmentItems } from "../data/brandProducts";
 import { useCart } from "../context/CartContext";
 import { usePosterImages } from "../context/PosterImagesContext";
 import { useLanguage } from "../context/LanguageContext";
+import { useCatalog } from "../context/CatalogContext";
 import { CATEGORY_TRANSLATIONS, SERVICE_TRANSLATIONS } from "../i18n/translations";
 
 export const BrandDetailPage: React.FC = () => {
@@ -16,9 +14,10 @@ export const BrandDetailPage: React.FC = () => {
   const { addItem, setIsEnquiryModalOpen } = useCart();
   const { getProductImage } = usePosterImages();
   const { language, formatPath } = useLanguage();
+  const { brands, products, categories } = useCatalog();
   const isAr = language === "ar";
 
-  const brand = BRANDS_DATA.find((b) => b.slug === brandSlug);
+  const brand = brands.find((b) => b.slug === brandSlug || b.id === brandSlug);
 
   if (!brand) {
     return <Navigate to={formatPath("/brands")} replace />;
@@ -27,13 +26,14 @@ export const BrandDetailPage: React.FC = () => {
   const brandEquipment = getBrandEquipmentItems(brand.id);
 
   // Cross-linked products supported strictly by DEYSLA
-  const supportedProducts = PRODUCTS_DATA.filter((p) =>
+  const supportedProducts = products.filter((p) =>
     brand.productIds.includes(p.id)
   );
 
-  const supportedCategories = PRODUCT_CATEGORIES.filter((c) =>
+  const supportedCategories = categories.filter((c) =>
     brand.categoryIds.includes(c.id)
   );
+
 
   const relatedServices = SERVICES_DATA.filter((s) =>
     s.relevantBrandIds.includes(brand.id)
@@ -186,7 +186,7 @@ export const BrandDetailPage: React.FC = () => {
                           referrerPolicy="no-referrer"
                           className="max-h-36 w-auto object-contain group-hover:scale-106 transition-transform duration-300 drop-shadow-sm"
                         />
-                        <span className="absolute top-3 start-3 px-2.5 py-1 rounded-md text-[11px] font-mono font-bold bg-black text-white shadow-xs isolate-ltr" dir="ltr">
+                        <span className="absolute top-3 start-3 px-2.5 py-1 rounded-md text-[11px] font-mono font-bold bg-gradient-to-r from-[#ff8c3a] to-[#6ea4f7] text-white shadow-xs isolate-ltr" dir="ltr">
                           {item.model}
                         </span>
                         <span className="absolute bottom-3 end-3 text-[10px] font-mono text-neutral-800 bg-neutral-200 px-2 py-0.5 rounded font-semibold">

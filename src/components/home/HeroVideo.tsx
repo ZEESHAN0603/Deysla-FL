@@ -8,7 +8,7 @@ export const HeroVideo: React.FC = () => {
   const { lang, formatPath } = useLanguage();
 
   return (
-    <section className="relative w-full min-h-[500px] sm:min-h-[580px] lg:min-h-[660px] flex flex-col justify-between overflow-hidden bg-slate-950 text-white selection:bg-cyan-500 selection:text-white">
+    <section className="relative w-full min-h-[500px] sm:min-h-[580px] lg:min-h-[660px] flex flex-col justify-between overflow-hidden bg-slate-950 text-white selection:bg-[#ff5e00] selection:text-white">
       {/* Top Brand Iridescent Theme Gradient Bar with Cyan Data Flow */}
       <div className="absolute top-0 left-0 right-0 h-1 theme-gradient-bar z-30" />
 
@@ -47,10 +47,10 @@ export const HeroVideo: React.FC = () => {
           className="absolute inset-0 pointer-events-none opacity-25 bg-[radial-gradient(rgba(56,189,248,0.25)_1px,transparent_1px)] bg-[size:22px_22px]" 
         />
 
-        {/* IT Solution Layer 3: Enterprise Cloud & Data Center Radial Glows */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(14,165,233,0.22),transparent_75%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_70%,rgba(59,130,246,0.18),transparent_50%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_30%,rgba(6,182,212,0.16),transparent_50%)] pointer-events-none" />
+        {/* Theme Radial Atmosphere: Sunset Orange (top-left) & Royal Cobalt Blue (bottom-right) */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_15%_10%,rgba(255,94,0,0.38),transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_85%,rgba(0,82,204,0.42),transparent_65%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,94,0,0.20)_0%,transparent_50%,rgba(0,82,204,0.25)_100%)] pointer-events-none" />
 
         {/* Cinematic Contrast Gradients for Content Legibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/75 pointer-events-none" />
@@ -83,8 +83,8 @@ export const HeroVideo: React.FC = () => {
 
       {/* Main Content Area - Center Aligned Matching Screenshot Hero Format */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-24 lg:pt-28 pb-8 sm:pb-14 w-full my-auto text-center space-y-4 sm:space-y-6">
-        {/* Executive Theme Kicker Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-black/85 border border-white/20 text-neutral-100 text-[11px] sm:text-xs font-medium tracking-wide shadow-md backdrop-blur-xs">
+        {/* Executive Theme Kicker Badge - Light Luminous Version */}
+        <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/20 border border-white/35 text-white text-[11px] sm:text-xs font-semibold tracking-wide shadow-md backdrop-blur-md">
           <span className="w-2 h-2 rounded-full bg-white animate-pulse shrink-0" />
           <span>
             {lang === 'ar'
@@ -119,27 +119,27 @@ export const HeroVideo: React.FC = () => {
         <div className="pt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <Link
             to={formatPath("/about")}
-            className="inline-block px-7 sm:px-9 py-3 sm:py-3.5 bg-white text-black hover:bg-neutral-200 text-xs sm:text-sm font-black uppercase tracking-wider rounded-xl shadow-xl hover:scale-[1.02] transition-all cursor-pointer"
+            className="inline-block px-7 sm:px-9 py-3 sm:py-3.5 theme-button-primary text-xs sm:text-sm font-black uppercase tracking-wider rounded-xl shadow-xl hover:scale-[1.02] transition-all cursor-pointer"
           >
             {lang === 'ar' ? 'تعرف على ديسلا' : 'LEARN MORE'}
           </Link>
         </div>
       </div>
 
-      {/* Bottom Credibility Strip */}
-      <div className="relative z-10 w-full border-t border-neutral-800 bg-black/90 backdrop-blur-md">
+      {/* Bottom Credibility Strip - Light Luminous Glass Version */}
+      <div className="relative z-10 w-full border-t border-white/20 bg-white/10 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-5">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5 sm:divide-x rtl:sm:divide-x-reverse divide-neutral-800 text-center sm:text-start">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5 sm:divide-x rtl:sm:divide-x-reverse divide-white/20 text-center sm:text-start">
             {/* Item 1: 15+ Years */}
             <div className="flex items-center justify-center sm:justify-start gap-3 sm:gap-3.5 sm:pe-6">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/15 border border-white/30 flex items-center justify-center shrink-0 text-white shadow-xs">
                 <Award className="w-5 h-5 text-white" />
               </div>
               <div className="space-y-0.5 text-start">
                 <p className="text-sm sm:text-base font-bold text-white leading-tight tracking-tight isolate-ltr">
                   {lang === 'ar' ? '+15 عاماً' : '15+ Years'}
                 </p>
-                <p className="text-[11px] sm:text-xs text-neutral-400 font-normal leading-tight">
+                <p className="text-[11px] sm:text-xs text-slate-200 font-normal leading-tight">
                   {lang === 'ar' ? 'خدمة متميزة بالمملكة' : 'Service across Saudi Arabia'}
                 </p>
               </div>
@@ -147,14 +147,14 @@ export const HeroVideo: React.FC = () => {
 
             {/* Item 2: 500+ Projects */}
             <div className="flex items-center justify-center sm:justify-start gap-3 sm:gap-3.5 sm:px-6">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/15 border border-white/30 flex items-center justify-center shrink-0 text-white shadow-xs">
                 <Users className="w-5 h-5 text-white" />
               </div>
               <div className="space-y-0.5 text-start">
                 <p className="text-sm sm:text-base font-bold text-white leading-tight tracking-tight isolate-ltr">
                   {lang === 'ar' ? '+500 مشروع' : '500+ Projects'}
                 </p>
-                <p className="text-[11px] sm:text-xs text-neutral-400 font-normal leading-tight">
+                <p className="text-[11px] sm:text-xs text-slate-200 font-normal leading-tight">
                   {lang === 'ar' ? 'للمؤسسات والقطاع الصناعي' : 'Enterprise & industrial clients'}
                 </p>
               </div>
@@ -162,14 +162,14 @@ export const HeroVideo: React.FC = () => {
 
             {/* Item 3: 24/7 Support */}
             <div className="flex items-center justify-center sm:justify-start gap-3 sm:gap-3.5 sm:ps-6">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/15 border border-white/30 flex items-center justify-center shrink-0 text-white shadow-xs">
                 <Headphones className="w-5 h-5 text-white" />
               </div>
               <div className="space-y-0.5 text-start">
                 <p className="text-sm sm:text-base font-bold text-white leading-tight tracking-tight isolate-ltr">
                   {lang === 'ar' ? 'دعم فني 24/7' : '24/7 Support'}
                 </p>
-                <p className="text-[11px] sm:text-xs text-neutral-400 font-normal leading-tight">
+                <p className="text-[11px] sm:text-xs text-slate-200 font-normal leading-tight">
                   {lang === 'ar' ? 'مهندسون محليون معتمدون' : 'Dedicated local SLA engineering'}
                 </p>
               </div>

@@ -139,11 +139,11 @@ export const ContactLocationsMap: React.FC = () => {
             onClick={handleOverviewToggle}
             className={`px-3 py-2 text-xs font-semibold rounded-xl border transition-all inline-flex items-center gap-1.5 cursor-pointer ${
               isOverviewMode
-                ? "bg-black text-white border-black shadow-xs"
-                : "bg-white text-neutral-800 border-neutral-300 hover:border-black hover:bg-neutral-50"
+                ? "theme-button-primary text-white shadow-xs"
+                : "bg-white text-slate-800 border-orange-200/60 hover:border-[#ff8c3a] hover:bg-orange-50/50"
             }`}
           >
-            <Compass className="w-3.5 h-3.5 text-black" />
+            <Compass className={`w-3.5 h-3.5 ${isOverviewMode ? "text-white" : "text-[#ff8c3a]"}`} />
             <span>Regional Overview</span>
           </button>
         </div>
@@ -167,15 +167,15 @@ export const ContactLocationsMap: React.FC = () => {
                   }}
                   className={`p-4 rounded-2xl border text-left cursor-pointer transition-all ${
                     isSelected
-                      ? "bg-neutral-100 border-black shadow-xs ring-1 ring-black/20"
-                      : "bg-white border-neutral-200 hover:border-black hover:shadow-xs"
+                      ? "bg-orange-50/70 border-orange-300 shadow-xs ring-1 ring-orange-300/40"
+                      : "bg-white border-orange-200/50 hover:border-[#ff8c3a] hover:shadow-xs"
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <div className="flex items-center gap-2">
                       <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neutral-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff8c3a]"></span>
                       </span>
                       <h3 className="text-xs font-extrabold text-neutral-900 uppercase tracking-wide">
                         {loc.region}
@@ -184,8 +184,8 @@ export const ContactLocationsMap: React.FC = () => {
                     <span
                       className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                         isSelected
-                          ? "bg-black text-white"
-                          : "bg-neutral-100 text-neutral-800 border border-neutral-300"
+                          ? "theme-button-primary text-white"
+                          : "bg-orange-50/60 text-slate-700 border border-orange-200/50"
                       }`}
                     >
                       {loc.badge}
@@ -196,7 +196,7 @@ export const ContactLocationsMap: React.FC = () => {
 
                   <div className="space-y-1 text-[11px] text-neutral-600">
                     <div className="flex items-start gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-black shrink-0 mt-0.5" />
+                      <MapPin className="w-3.5 h-3.5 text-[#ff8c3a] shrink-0 mt-0.5" />
                       <span className="line-clamp-1">{loc.address}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
@@ -248,7 +248,7 @@ export const ContactLocationsMap: React.FC = () => {
                 <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 z-10 pointer-events-none max-w-[calc(100%-20px)]">
                   <div className="pointer-events-auto bg-white/95 backdrop-blur-xs border border-slate-200/90 shadow-md px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs">
                     <span className="relative flex h-2 w-2 shrink-0">
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff8c3a]"></span>
                     </span>
                     <span className="font-bold text-neutral-900 truncate">
                       {isOverviewMode ? "Regional View (GCC)" : selectedHub.name}
@@ -359,17 +359,17 @@ export const ContactLocationsMap: React.FC = () => {
               </APIProvider>
             ) : (
               /* Fallback view if API key is not present */
-              <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-black text-white">
-                <MapPin className="w-10 h-10 text-white mb-3 animate-pulse" />
+              <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-white/95 text-slate-900 border border-orange-200/60">
+                <MapPin className="w-10 h-10 text-[#ff8c3a] mb-3 animate-pulse" />
                 <h3 className="text-base font-bold mb-1">DEYSLA Facilities Location Map</h3>
-                <p className="text-xs text-neutral-400 max-w-md mb-4">
+                <p className="text-xs text-slate-600 max-w-md mb-4">
                   Explore our verified regional hubs in Dammam (Saudi Arabia), BIW Business Park (Bahrain), and Charleston (USA).
                 </p>
                 <a
                   href={selectedHub.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-white text-black hover:bg-neutral-200 text-xs font-bold rounded-xl transition-colors inline-flex items-center gap-1.5"
+                  className="px-4 py-2 theme-button-primary text-white text-xs font-bold rounded-xl transition-colors inline-flex items-center gap-1.5 shadow-sm"
                 >
                   <span>Open {selectedHub.region} Location in Google Maps</span>
                   <ExternalLink className="w-3.5 h-3.5" />

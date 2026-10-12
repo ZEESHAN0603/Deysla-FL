@@ -171,8 +171,8 @@ export const TrustedPartnersDomainMap: React.FC = () => {
                 onClick={() => setSelectedDomain(domain.id)}
                 className={`px-4 py-2 text-xs font-bold rounded-xl transition-all whitespace-nowrap flex items-center gap-2 cursor-pointer ${
                   isSelected
-                    ? "bg-black text-white shadow-md scale-[1.02]"
-                    : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-100 border border-slate-200/90 shadow-2xs"
+                    ? "theme-pill-active text-white shadow-md scale-[1.02]"
+                    : "bg-white text-slate-700 hover:text-slate-900 hover:bg-orange-50/50 border border-slate-200/90 shadow-2xs"
                 }`}
               >
                 <span>{domain.shortLabel}</span>
@@ -180,7 +180,7 @@ export const TrustedPartnersDomainMap: React.FC = () => {
                   <span
                     className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
                       isSelected
-                        ? "bg-neutral-800 text-white font-bold"
+                        ? "bg-white/25 text-white font-bold"
                         : "bg-slate-100 text-slate-500"
                     }`}
                   >
@@ -193,10 +193,10 @@ export const TrustedPartnersDomainMap: React.FC = () => {
         </div>
 
         {/* Active Domain Overview Spotlight Card */}
-        <div className="p-6 sm:p-7 rounded-2xl bg-white border border-neutral-200 shadow-sm mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="p-6 sm:p-7 rounded-2xl bg-white border border-orange-200/50 shadow-sm mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2.5">
-              <span className="text-xs font-bold text-black uppercase tracking-wider font-mono">
+              <span className="text-xs font-bold text-orange-600 uppercase tracking-wider font-mono">
                 Domain Matrix:
               </span>
               <h3 className="text-lg sm:text-xl font-bold text-slate-900">
@@ -233,7 +233,7 @@ export const TrustedPartnersDomainMap: React.FC = () => {
             <Link
               key={brand.id}
               to={`/brands/${brand.slug}`}
-              className="p-4 sm:p-5 rounded-2xl border border-neutral-200 bg-white hover:border-black hover:shadow-lg transition-all duration-200 group flex flex-col justify-between h-48 sm:h-52"
+              className="p-4 sm:p-5 rounded-2xl border border-orange-200/50 bg-white hover:border-[#ff8c3a] hover:shadow-lg transition-all duration-200 group flex flex-col justify-between h-48 sm:h-52"
             >
               {/* Top Logo Container */}
               <div className="h-20 w-full flex items-center justify-center p-2 rounded-xl bg-neutral-50 group-hover:bg-neutral-100/60 transition-colors">

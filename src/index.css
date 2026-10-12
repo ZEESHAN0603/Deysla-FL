@@ -6,6 +6,12 @@
   --font-serif: "IBM Plex Serif", Georgia, serif;
   --font-body: "IBM Plex Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
+  --color-theme-orange: #ff5e00;
+  --color-theme-orange-dark: #d94e00;
+  --color-theme-orange-light: #fff3ec;
+  --color-theme-blue: #0052cc;
+  --color-theme-blue-dark: #003ea8;
+  --color-theme-blue-light: #edf3fc;
   --color-theme-black: #000000;
   --color-theme-white: #ffffff;
   --color-theme-dark: #0a0a0a;
@@ -16,9 +22,15 @@
 }
 
 :root {
-  --theme-gradient-start: #000000;
-  --theme-gradient-mid: #262626;
-  --theme-gradient-end: #000000;
+  --theme-gradient-start: #ff5e00;
+  --theme-gradient-mid: #ffffff;
+  --theme-gradient-end: #0052cc;
+  --color-theme-orange: #ff5e00;
+  --color-theme-orange-dark: #d94e00;
+  --color-theme-orange-light: #fff3ec;
+  --color-theme-blue: #0052cc;
+  --color-theme-blue-dark: #003ea8;
+  --color-theme-blue-light: #edf3fc;
 }
 
 /* IBM Plex Serif: CSS classes */
@@ -225,20 +237,31 @@ html[dir="rtl"],
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  background-color: #faf7f2;
 }
 
 body {
   overflow-x: hidden;
   max-width: 100vw;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  background-color: #faf7f2;
+  background-image: 
+    radial-gradient(ellipse 65% 55% at 0% 0%, rgba(255, 94, 0, 0.38) 0%, rgba(255, 138, 30, 0.20) 35%, transparent 70%),
+    radial-gradient(ellipse 65% 55% at 100% 100%, rgba(0, 82, 204, 0.40) 0%, rgba(20, 100, 235, 0.20) 35%, transparent 70%),
+    linear-gradient(135deg, rgba(255, 94, 0, 0.22) 0%, rgba(255, 230, 210, 0.60) 28%, rgba(255, 255, 255, 0.82) 50%, rgba(210, 230, 255, 0.60) 72%, rgba(0, 82, 204, 0.26) 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #root {
   overflow-x: hidden;
   max-width: 100vw;
   min-height: 100vh;
+  background: transparent;
 }
 
 /* Touch momentum scrolling for scrollable containers */
@@ -302,119 +325,206 @@ body {
 }
 
 /* ==========================================================================
-   ARCHITECTURAL MONOCHROME WHITE & BLACK THEME
-   - Primary Surface: Pure White (#FFFFFF) & Crisp Light Grays (#FAFAFA, #F5F5F5)
-   - Accents & Core: Deep Obsidian Black (#000000) & Rich Jet (#0A0A0A)
-   - Secondary Borders: Architectural Neutral Grays (#E5E5E5, #D4D4D4, #262626)
+   SUNSET ORANGE & ROYAL COBALT BLUE THEME
+   - Primary Gradient Start: Vibrant Sunset Orange (#FF5E00 / #FF7A00)
+   - Primary Gradient Mid: Luminous Warm Peach & Crisp White (#FFFFFF / #FFF5EE)
+   - Primary Gradient End: Deep Royal Cobalt Blue (#0052CC / #003FA8)
    ========================================================================== */
 
-/* Clean Pristine Monochrome Page Background */
+/* Vibrant Theme Gradient Background for the Whole Website */
 .theme-mesh-bg {
-  background-color: #ffffff;
+  background-color: #faf7f2;
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.02) 0%, transparent 60%),
-    radial-gradient(circle at 100% 100%, rgba(0, 0, 0, 0.015) 0%, transparent 50%);
+    radial-gradient(ellipse 65% 55% at 0% 0%, rgba(255, 94, 0, 0.38) 0%, rgba(255, 138, 30, 0.20) 35%, transparent 70%),
+    radial-gradient(ellipse 65% 55% at 100% 100%, rgba(0, 82, 204, 0.40) 0%, rgba(20, 100, 235, 0.20) 35%, transparent 70%),
+    linear-gradient(135deg, rgba(255, 94, 0, 0.22) 0%, rgba(255, 230, 210, 0.60) 28%, rgba(255, 255, 255, 0.82) 50%, rgba(210, 230, 255, 0.60) 72%, rgba(0, 82, 204, 0.26) 100%);
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .theme-mesh-subtle {
-  background-color: #fafafa;
+  background-color: rgba(255, 255, 255, 0.65);
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.015) 0%, transparent 50%);
+    radial-gradient(circle at 10% 10%, rgba(255, 94, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 90% 90%, rgba(0, 82, 204, 0.15) 0%, transparent 50%);
 }
 
 .theme-mesh-hero-overlay {
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.4) 0%, transparent 70%),
-    radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
+    radial-gradient(circle at 20% 20%, rgba(255, 94, 0, 0.35) 0%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(0, 82, 204, 0.40) 0%, transparent 70%);
 }
 
-/* Signature Solid Black Theme Bar */
+/* Signature Theme Gradient Bar - Light version */
 .theme-gradient-bar {
-  background: #000000;
+  background: linear-gradient(90deg, #ff8c3a 0%, #ffb066 32%, #ffffff 50%, #70aeff 68%, #5ea2ff 100%);
 }
 
 /* Subtle Architectural Diagonal Tone */
 .theme-gradient-diagonal {
-  background: linear-gradient(135deg, #000000 0%, #262626 50%, #404040 100%);
+  background: linear-gradient(135deg, #ff8c3a 0%, #ffa85c 35%, #70aeff 75%, #5ea2ff 100%);
 }
 
-/* Translucent Monochrome Element Fill */
+/* Translucent Theme Element Fill */
 .theme-gradient-soft-bg {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(255, 140, 58, 0.12) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(94, 162, 255, 0.12) 100%);
 }
 
-/* Bold Architectural Text Gradient */
+/* Bold Theme Text Gradient (Orange to Soft Blue) */
 .theme-text-gradient {
-  background: linear-gradient(135deg, #000000 0%, #171717 40%, #525252 100%);
+  background: linear-gradient(135deg, #e66010 0%, #ff822e 38%, #2575fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Luminous White Text Gradient for Dark Backgrounds */
+/* Luminous Theme Text Gradient for Dark Backgrounds */
 .theme-text-gradient-light {
-  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #a3a3a3 100%);
+  background: linear-gradient(135deg, #ffaa66 0%, #ffffff 40%, #70aeff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* High-Contrast Pure Black Action Button */
+/* Light Version Action Button with Luminous Sunset Orange to Soft Sky Blue Gradient */
 .theme-button-primary {
-  background: #000000;
+  background: linear-gradient(135deg, #ff944d 0%, #ffba82 45%, #7eb3ff 100%);
   color: #ffffff;
-  border: 1px solid #000000;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.70);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px 0 rgba(255, 148, 77, 0.25), 0 2px 8px 0 rgba(126, 179, 255, 0.20);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
 .theme-button-primary:hover {
-  background: #262626;
+  background: linear-gradient(135deg, #ffa25b 0%, #ffc494 45%, #8ec0ff 100%);
   color: #ffffff;
-  border-color: #262626;
+  border-color: rgba(255, 255, 255, 0.90);
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 18px 0 rgba(255, 148, 77, 0.32), 0 3px 10px 0 rgba(126, 179, 255, 0.28);
+}
+
+/* Light Version Active Pill / Filter Tab */
+.theme-pill-active {
+  background: linear-gradient(135deg, #ff944d 0%, #ffba82 45%, #7eb3ff 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.80) !important;
+  box-shadow: 0 2px 10px rgba(255, 148, 77, 0.25) !important;
 }
 
 .theme-card-ambient {
-  background: #ffffff;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 185, 135, 0.35);
+  box-shadow: 0 4px 16px rgba(255, 130, 40, 0.04), 0 2px 8px rgba(94, 162, 255, 0.03);
   transition: all 0.25s ease;
 }
 
 .theme-card-ambient:hover {
-  border-color: #000000;
-  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.08);
+  border-color: #ffa15c;
+  box-shadow: 0 10px 25px -3px rgba(94, 162, 255, 0.15), 0 4px 12px -2px rgba(255, 140, 58, 0.15);
 }
 
-/* Executive Minimalist Luminous Themed Hero Section */
+/* Executive Minimalist Luminous Themed Hero Section with Visible Theme Gradient */
 .theme-hero-luminous {
   position: relative;
-  background-color: #ffffff;
   background-image:
+    radial-gradient(ellipse 65% 55% at 0% 0%, rgba(255, 94, 0, 0.35) 0%, rgba(255, 138, 30, 0.18) 35%, transparent 70%),
+    radial-gradient(ellipse 65% 55% at 100% 100%, rgba(0, 82, 204, 0.38) 0%, rgba(20, 100, 235, 0.18) 35%, transparent 70%),
+    linear-gradient(135deg, rgba(255, 94, 0, 0.20) 0%, rgba(255, 230, 210, 0.55) 28%, rgba(255, 255, 255, 0.80) 50%, rgba(210, 230, 255, 0.55) 72%, rgba(0, 82, 204, 0.24) 100%),
     linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-size: auto, auto, auto, 40px 40px, 40px 40px;
 }
 
-/* Technical micro-grid pattern in clean monochrome */
+/* Technical micro-grid pattern in clean theme accent */
 .theme-grid-pattern {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 0.8px, transparent 0.8px);
+  background-image: radial-gradient(rgba(94, 162, 255, 0.15) 0.8px, transparent 0.8px);
   background-size: 24px 24px;
 }
 
 /* Executive Twilight Themed Hero for Video & Immersive Sections */
 .theme-hero-twilight {
   position: relative;
-  background-color: #000000;
+  background-color: #030712;
   color: #ffffff;
 }
 
-/* Themed subtle indicator badge */
+/* Themed subtle indicator badge - Light version */
 .theme-pill-gradient {
-  background: #f5f5f5;
-  border: 1px solid #e5e5e5;
-  color: #000000;
+  background: linear-gradient(135deg, rgba(255, 140, 58, 0.12) 0%, rgba(94, 162, 255, 0.12) 100%);
+  border: 1px solid rgba(255, 160, 80, 0.35);
+  color: #e06000;
+}
+
+/* Ensure the theme gradient background shines through all content sections */
+.theme-mesh-bg section.bg-white,
+.theme-mesh-bg section.bg-slate-50,
+.theme-mesh-bg section.bg-neutral-50,
+.theme-mesh-bg div.bg-slate-50,
+.theme-mesh-bg div.bg-neutral-50 {
+  background-color: transparent !important;
+}
+
+/* Global Light Version Overrides for Dark Buttons */
+button.bg-black,
+button.bg-neutral-900,
+button.bg-slate-900,
+button.bg-neutral-800,
+button.bg-slate-800,
+a.bg-black,
+a.bg-neutral-900,
+a.bg-slate-900 {
+  background: linear-gradient(135deg, #ff944d 0%, #ffba82 45%, #7eb3ff 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  box-shadow: 0 3px 12px rgba(255, 148, 77, 0.25) !important;
+}
+
+button.bg-black:hover,
+button.bg-neutral-900:hover,
+button.bg-slate-900:hover,
+button.hover\:bg-neutral-800:hover,
+button.hover\:bg-neutral-900:hover,
+a.bg-black:hover,
+a.bg-neutral-900:hover,
+a.bg-slate-900:hover {
+  background: linear-gradient(135deg, #ffa25b 0%, #ffc494 45%, #8ec0ff 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 5px 16px rgba(255, 148, 77, 0.32) !important;
+}
+
+/* Global Light Version Overrides for Dark Borders */
+.border-black,
+.hover\:border-black:hover,
+.focus\:border-black:focus,
+.group:hover .group-hover\:border-black,
+.border-neutral-900,
+.border-slate-900,
+.border-neutral-800,
+.border-slate-800,
+.border-neutral-700,
+.border-slate-700 {
+  border-color: rgba(255, 170, 100, 0.45) !important;
+}
+
+.border-neutral-300,
+.border-slate-300 {
+  border-color: rgba(255, 185, 135, 0.38) !important;
+}
+
+.border-neutral-200,
+.border-slate-200 {
+  border-color: rgba(255, 190, 140, 0.30) !important;
+}
+
+/* Soft glowing focus state for inputs */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #ff944d !important;
+  outline-color: #ff944d !important;
+  box-shadow: 0 0 0 3px rgba(255, 148, 77, 0.18) !important;
 }
 
 

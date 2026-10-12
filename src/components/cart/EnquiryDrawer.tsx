@@ -130,9 +130,9 @@ export const EnquiryDrawer: React.FC = () => {
         <div className="h-1 w-full theme-gradient-bar shrink-0" />
 
         {/* Header */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-neutral-200 bg-neutral-50">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-orange-200/50 bg-white/90">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center font-bold text-sm shadow-xs">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#ff944d] to-[#7eb3ff] text-white flex items-center justify-center font-bold text-sm shadow-xs">
               <ShoppingCart className="w-4 h-4" />
             </div>
             <div>
@@ -146,7 +146,7 @@ export const EnquiryDrawer: React.FC = () => {
           </div>
           <button
             onClick={handleClose}
-            className="p-1.5 text-neutral-400 hover:text-black hover:bg-neutral-200 rounded-lg transition-colors cursor-pointer"
+            className="p-1.5 text-neutral-400 hover:text-black hover:bg-neutral-100 rounded-lg transition-colors cursor-pointer"
             aria-label={dict.common.close}
           >
             <X className="w-5 h-5" />
@@ -157,14 +157,14 @@ export const EnquiryDrawer: React.FC = () => {
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 sm:space-y-6">
           {submittedRef ? (
             <div className="py-12 px-4 text-center space-y-4">
-              <div className="w-16 h-16 bg-neutral-100 text-black border border-neutral-300 rounded-full flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 bg-orange-50 text-orange-600 border border-orange-200 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <h3 className="text-xl font-bold text-neutral-900">{dict.cart.successTitle}</h3>
               <p className="text-sm text-neutral-600 max-w-md mx-auto">
                 {dict.cart.successMsg.replace("{name}", formData.name)}
               </p>
-              <div className="inline-block px-4 py-2 bg-neutral-100 rounded-lg font-mono font-bold text-neutral-900 text-base border border-neutral-300 isolate-ltr">
+              <div className="inline-block px-4 py-2 bg-orange-50/80 rounded-lg font-mono font-bold text-orange-700 text-base border border-orange-200 isolate-ltr">
                 {submittedRef}
               </div>
               <p className="text-xs text-neutral-500 max-w-sm mx-auto">
@@ -173,7 +173,7 @@ export const EnquiryDrawer: React.FC = () => {
               <div className="pt-4">
                 <button
                   onClick={handleClose}
-                  className="px-6 py-2.5 bg-black text-white text-xs font-semibold rounded-lg hover:bg-neutral-800 transition-colors cursor-pointer"
+                  className="px-6 py-2.5 theme-button-primary text-white text-xs font-semibold rounded-lg shadow-sm cursor-pointer"
                 >
                   {dict.cart.returnCatalog}
                 </button>
@@ -181,7 +181,7 @@ export const EnquiryDrawer: React.FC = () => {
             </div>
           ) : items.length === 0 ? (
             <div className="py-16 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center mx-auto text-neutral-400">
+              <div className="w-16 h-16 rounded-full bg-orange-50/80 flex items-center justify-center mx-auto text-orange-400">
                 <ShoppingCart className="w-8 h-8" />
               </div>
               <h3 className="text-base font-semibold text-neutral-900">{dict.cart.emptyTitle}</h3>
@@ -191,7 +191,7 @@ export const EnquiryDrawer: React.FC = () => {
               <div className="pt-2">
                 <button
                   onClick={handleClose}
-                  className="px-5 py-2 text-xs font-semibold text-white bg-black hover:bg-neutral-800 rounded-lg transition-colors cursor-pointer"
+                  className="px-5 py-2 text-xs font-semibold text-white theme-button-primary rounded-lg shadow-sm cursor-pointer"
                 >
                   {dict.cart.browseCatalog}
                 </button>

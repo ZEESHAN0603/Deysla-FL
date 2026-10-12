@@ -44,14 +44,14 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
   if (variant === "footer") {
     return (
-      <div className={`inline-flex items-center gap-1.5 p-1 rounded-xl bg-neutral-900 border border-neutral-800 ${className}`}>
+      <div className={`inline-flex items-center gap-1.5 p-1 rounded-xl bg-orange-50/80 border border-orange-200/60 shadow-2xs ${className}`}>
         <button
           type="button"
           onClick={() => handleSelect("en")}
           className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
             language === "en"
-              ? "bg-white text-black shadow-xs font-bold"
-              : "text-neutral-400 hover:text-white hover:bg-neutral-800"
+              ? "theme-button-primary text-white shadow-xs font-bold"
+              : "text-slate-600 hover:text-slate-900 hover:bg-white/80"
           }`}
           aria-label="Switch to English"
         >
@@ -62,8 +62,8 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
           onClick={() => handleSelect("ar")}
           className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
             language === "ar"
-              ? "bg-white text-black shadow-xs font-bold"
-              : "text-neutral-400 hover:text-white hover:bg-neutral-800"
+              ? "theme-button-primary text-white shadow-xs font-bold"
+              : "text-slate-600 hover:text-slate-900 hover:bg-white/80"
           }`}
           aria-label="التبديل إلى اللغة العربية"
         >
@@ -75,18 +75,18 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
   if (variant === "mobile") {
     return (
-      <div className={`w-full flex items-center justify-between p-3 rounded-xl bg-slate-100 border border-slate-200 ${className}`}>
+      <div className={`w-full flex items-center justify-between p-3 rounded-xl bg-white/90 border border-orange-200/60 ${className}`}>
         <div className="flex items-center gap-2 text-slate-800 text-xs font-bold">
-          <Globe className="w-4 h-4 text-sky-600" />
+          <Globe className="w-4 h-4 text-[#ff8c3a]" />
           <span>{t("nav.switchLang", "Language / اللغة")}</span>
         </div>
-        <div className="inline-flex items-center gap-1 bg-white p-1 rounded-lg border border-slate-200 shadow-2xs">
+        <div className="inline-flex items-center gap-1 bg-orange-50/50 p-1 rounded-lg border border-orange-200/50 shadow-2xs">
           <button
             type="button"
             onClick={() => handleSelect("en")}
             className={`px-3 py-1 text-xs font-bold rounded-md transition-colors cursor-pointer ${
               language === "en"
-                ? "bg-slate-900 text-white shadow-xs"
+                ? "theme-button-primary text-white shadow-xs"
                 : "text-slate-600 hover:text-slate-900"
             }`}
           >
@@ -97,7 +97,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             onClick={() => handleSelect("ar")}
             className={`px-3 py-1 text-xs font-bold rounded-md transition-colors cursor-pointer ${
               language === "ar"
-                ? "bg-slate-900 text-white shadow-xs"
+                ? "theme-button-primary text-white shadow-xs"
                 : "text-slate-600 hover:text-slate-900"
             }`}
           >
