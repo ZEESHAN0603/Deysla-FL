@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronRight, Shield, Lock, Database, PhoneCall, Server, Cpu, Cloud, Settings, Code, FileCheck } from "lucide-react";
 import { SERVICES_DATA, Service } from "../../data/services";
+import { useCmsContent } from "../../context/CmsContentContext";
 
 export const HomeServices: React.FC = () => {
+  const { services } = useCmsContent();
   return (
     <section className="py-20 lg:py-24 bg-slate-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,14 +26,14 @@ export const HomeServices: React.FC = () => {
             to="/services"
             className="text-xs font-bold text-black hover:text-neutral-600 flex items-center gap-1.5 whitespace-nowrap self-start md:self-end group"
           >
-            <span>Explore All 10 Services</span>
+            <span>Explore All {services.length} Services</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        {/* 10 Services Grid */}
+        {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-          {SERVICES_DATA.map((service) => (
+          {services.map((service) => (
             <Link
               key={service.id}
               to={`/services/${service.slug}`}

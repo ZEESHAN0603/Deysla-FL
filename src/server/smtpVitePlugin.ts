@@ -21,6 +21,10 @@ export function smtpApiPlugin(): Plugin {
         handleNodeRequest(req, res, handleAdminApiRequest);
       });
 
+      server.middlewares.use('/api/cms', (req: IncomingMessage, res: ServerResponse) => {
+        handleNodeRequest(req, res, handleAdminApiRequest);
+      });
+
       server.middlewares.use('/api/admin', (req: IncomingMessage, res: ServerResponse) => {
         handleNodeRequest(req, res, handleAdminApiRequest);
       });

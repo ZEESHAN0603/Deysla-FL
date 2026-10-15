@@ -5,11 +5,12 @@ import { PosterImagesProvider } from "./context/PosterImagesContext";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 import { AdminAuthProvider } from "./context/AdminAuthContext";
 import { CatalogProvider } from "./context/CatalogContext";
+import { CmsContentProvider } from "./context/CmsContentContext";
 import { AdminProtectedRoute } from "./components/admin/AdminProtectedRoute";
 import { AdminDashboardPage } from "./pages/admin/AdminDashboardPage";
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
-import { WhatsAppButton } from "./components/common/WhatsAppButton";
+import { ChatbotButton } from "./components/common/ChatbotButton";
 import { SearchModal } from "./components/common/SearchModal";
 import { EnquiryDrawer } from "./components/cart/EnquiryDrawer";
 
@@ -150,7 +151,7 @@ function MainLayout() {
       <Footer />
 
       {/* Fixed Affordances */}
-      <WhatsAppButton isHidden={isMobileNavOpen} />
+      <ChatbotButton isHidden={isMobileNavOpen} />
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       <EnquiryDrawer />
       <CookieConsentBanner />
@@ -190,18 +191,20 @@ function AppRoutes() {
 export default function App() {
   return (
     <AdminAuthProvider>
-      <CatalogProvider>
-        <CartProvider>
-          <PosterImagesProvider>
-            <Router>
-              <LanguageProvider>
-                <ScrollToTop />
-                <AppRoutes />
-              </LanguageProvider>
-            </Router>
-          </PosterImagesProvider>
-        </CartProvider>
-      </CatalogProvider>
+      <CmsContentProvider>
+        <CatalogProvider>
+          <CartProvider>
+            <PosterImagesProvider>
+              <Router>
+                <LanguageProvider>
+                  <ScrollToTop />
+                  <AppRoutes />
+                </LanguageProvider>
+              </Router>
+            </PosterImagesProvider>
+          </CartProvider>
+        </CatalogProvider>
+      </CmsContentProvider>
     </AdminAuthProvider>
   );
 }

@@ -1,5 +1,23 @@
 [
   {
+    "id": "audit-1792055475584-enz6",
+    "timestamp": "2026-10-15T09:11:15.584Z",
+    "user": "admin",
+    "action": "UPDATE",
+    "entity": "PRODUCT",
+    "entityId": "sec-home-company_intro",
+    "details": "Updated Page Section: [home] company_intro"
+  },
+  {
+    "id": "audit-1792055425814-riok",
+    "timestamp": "2026-10-15T09:10:25.814Z",
+    "user": "admin",
+    "action": "UPDATE",
+    "entity": "PRODUCT",
+    "entityId": "sec-home-company_intro",
+    "details": "Updated Page Section: [home] company_intro"
+  },
+  {
     "id": "audit-1791739539626-2fzl",
     "timestamp": "2026-10-11T17:25:39.626Z",
     "user": "admin",

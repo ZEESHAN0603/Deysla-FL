@@ -1,0 +1,1117 @@
+{
+  "settings": {
+    "company_name": "DEYSLA IT Solutions",
+    "tagline": "EMPOWERING BUSINESSES THROUGH INNOVATIVE TECHNOLOGY SOLUTIONS",
+    "director_name": "Mr. Dakheel Al Khatami",
+    "director_title": "Director",
+    "director_image": "/assets/director.png",
+    "director_message": "Welcome to DEYSLA IT Solutions. At DEYSLA, we are committed to helping businesses succeed through innovative, secure, and reliable technology solutions. Our focus is on building long-term partnerships by delivering quality, integrity, and exceptional service across every project. As technology continues to evolve, we remain dedicated to driving digital transformation and creating lasting value for our clients. Thank you for your trust—we look forward to being your technology partner for the future.",
+    "contact_phone": "+966544553670",
+    "contact_phone_formatted": "+966-544553670",
+    "contact_email": "enquiry-sa@deysla.com",
+    "contact_primary_location": "Al Khalidiya, Dammam",
+    "contact_primary_city": "Dammam",
+    "contact_primary_country": "Kingdom of Saudi Arabia",
+    "offices_data": [
+      {
+        "region": "USA",
+        "country": "United States",
+        "location": "Charleston, W. Virginia",
+        "hours": "8:00 am – 9:00 pm",
+        "phone": "+1 (215) 827 7344",
+        "phoneRaw": "+12158277344",
+        "email": "enquiry-us@deysla.com"
+      },
+      {
+        "region": "SAUDI ARABIA",
+        "country": "Saudi Arabia",
+        "location": "Al Khalidiya, Dammam",
+        "hours": "8:00 am – 9:00 pm",
+        "phone": "+966-544553670",
+        "phoneRaw": "+966544553670",
+        "email": "enquiry-sa@deysla.com"
+      },
+      {
+        "region": "BAHRAIN",
+        "country": "Bahrain",
+        "location": "BIW Business Park, Al Hidd",
+        "hours": "8:00 am – 9:00 pm",
+        "phone": "+973-33999611",
+        "phoneRaw": "+97333999611",
+        "email": "enquiry-bh@deysla.com"
+      }
+    ],
+    "global_presence_data": [
+      {
+        "country": "United States of America",
+        "code": "USA",
+        "status": "Regional Office",
+        "location": "Charleston, W. Virginia",
+        "hours": "8:00 am – 9:00 pm",
+        "phone": "+1 (215) 827 7344",
+        "email": "enquiry-us@deysla.com",
+        "description": "Charleston, W. Virginia. Technology alliances, hardware procurement & partner management."
+      },
+      {
+        "country": "Kingdom of Saudi Arabia",
+        "code": "SAUDI ARABIA",
+        "status": "Regional Office",
+        "location": "Al Khalidiya, Dammam",
+        "hours": "8:00 am – 9:00 pm",
+        "phone": "+966-544553670",
+        "email": "enquiry-sa@deysla.com",
+        "description": "Al Khalidiya, Dammam. Enterprise IT hardware distribution, deployment & engineering support."
+      },
+      {
+        "country": "Kingdom of Bahrain",
+        "code": "BAHRAIN",
+        "status": "Regional Office",
+        "location": "BIW Business Park, Al Hidd",
+        "hours": "8:00 am – 9:00 pm",
+        "phone": "+973-33999611",
+        "email": "enquiry-bh@deysla.com",
+        "description": "BIW Business Park, Al Hidd. Regional GCC business engagement, data cabling, and enterprise solutions."
+      }
+    ],
+    "company_stats": [
+      {
+        "value": "15+",
+        "label": "Years of Service",
+        "subtext": "Delivering proven enterprise IT infrastructure"
+      },
+      {
+        "value": "500+",
+        "label": "Successful Projects",
+        "subtext": "Across government, industrial & corporate sectors"
+      },
+      {
+        "value": "24/7",
+        "label": "Technical Support",
+        "subtext": "Continuous SLA-backed systems monitoring"
+      }
+    ],
+    "about_data": {
+      "heroHeadline": "ENGINEERING THE FUTURE OF BUSINESS THROUGH TECHNOLOGY",
+      "heroSubtitle": "At DEYSLA IT Solutions, we empower organisations with innovative, secure, and scalable technology solutions that accelerate digital transformation and drive long-term business success.",
+      "vision": "To become the Middle East's most trusted technology partner, enabling organizations to accelerate digital transformation through intelligent automation, innovative solutions, and world-class customer service.",
+      "mission": "Our mission is to empower organizations through innovative, reliable, and scalable technology solutions. By delivering enterprise software, cloud services, IT infrastructure, cybersecurity, industrial automation, and managed IT services, we help businesses improve efficiency, strengthen security, and achieve sustainable growth.",
+      "coreValues": [
+        "Innovation",
+        "Customer Success",
+        "Excellence",
+        "Integrity",
+        "Collaboration",
+        "Continuous Improvement"
+      ],
+      "journey": [
+        {
+          "year": "Foundation",
+          "milestone": "Establishment in Dammam, Eastern Province",
+          "description": "Founded to bridge the enterprise demand for reliable network infrastructure and technical engineering in KSA."
+        },
+        {
+          "year": "Expansion",
+          "milestone": "Infrastructure & Security Portfolio",
+          "description": "Broadened core offerings to include structured cabling, data center computing, access control, and CCTV surveillance."
+        },
+        {
+          "year": "Integration",
+          "milestone": "Enterprise Software & Cloud Practice",
+          "description": "Introduced ERPNext deployments, custom software engineering, and unified communication systems across GCC."
+        },
+        {
+          "year": "Today",
+          "milestone": "Global Technology Ecosystem",
+          "description": "500+ completed projects, trusted partnerships with world-tier OEMs, and active presence in KSA, Bahrain, and the USA."
+        }
+      ],
+      "pillars": [
+        {
+          "title": "Experienced Team",
+          "description": "Certified network architects, cybersecurity specialists, and systems engineers with decades of combined field experience."
+        },
+        {
+          "title": "End-to-End Solutions",
+          "description": "Comprehensive scope spanning design, procurement, physical installation, software integration, and lifecycle maintenance."
+        },
+        {
+          "title": "Quality & Reliability",
+          "description": "Strict adherence to international standards (ISO, BICSI, TIA/EIA) with tier-1 authentic OEM equipment guarantees."
+        },
+        {
+          "title": "Customer Centric",
+          "description": "Tailored commercial agreements, dedicated account managers, responsive local SLA fulfillment, and rapid emergency dispatch."
+        }
+      ],
+      "industries": [
+        {
+          "name": "Healthcare",
+          "description": "High-reliability hospital networks, secure medical data communications, and electronic access systems."
+        },
+        {
+          "name": "Manufacturing",
+          "description": "Industrial Ethernet, automated PLC control cabling, SCADA networks, and facility-wide surveillance."
+        },
+        {
+          "name": "Government",
+          "description": "Mission-critical security governance, high-availability data infrastructure, and strict compliance."
+        },
+        {
+          "name": "Retail",
+          "description": "Interactive kiosks, commercial digital signage, POS structured cabling, and centralized IP surveillance."
+        },
+        {
+          "name": "Construction",
+          "description": "Site telecom mobilization, structured cabling infrastructure, perimeter security, and fire alarm systems."
+        },
+        {
+          "name": "Finance",
+          "description": "Zero-loss data migration, secure branch routers, redundant computing, and audited access controls."
+        },
+        {
+          "name": "Logistics",
+          "description": "Warehouse wireless bridges, barcode scanning stations, ruggedized network switches, and thermal printing."
+        },
+        {
+          "name": "Education",
+          "description": "Campus-wide Wi-Fi 6 coverage, smart interactive flat panels, and campus security infrastructure."
+        },
+        {
+          "name": "Oil and Gas",
+          "description": "Explosion-proof hazardous area enclosures, fiber optic backbones, and ruggedized industrial communications."
+        },
+        {
+          "name": "Hospitality",
+          "description": "Guest Wi-Fi gateways, VoIP telephony, smart digital concierge kiosks, and unified PA audio."
+        }
+      ]
+    }
+  },
+  "pages": [
+    {
+      "id": "page-home",
+      "slug": "home",
+      "title_en": "Home",
+      "title_ar": "الرئيسية",
+      "meta_title": "DEYSLA IT Solutions | Enterprise Infrastructure & Security",
+      "meta_description": "Empowering businesses across KSA, Bahrain, and USA with turnkey enterprise technology solutions.",
+      "is_published": true
+    },
+    {
+      "id": "page-about",
+      "slug": "about",
+      "title_en": "About Us",
+      "title_ar": "من نحن",
+      "meta_title": "About DEYSLA IT Solutions | Vision, Leadership & Heritage",
+      "meta_description": "Learn about our journey, leadership, core pillars, and regional footprint.",
+      "is_published": true
+    },
+    {
+      "id": "page-services",
+      "slug": "services",
+      "title_en": "Services",
+      "title_ar": "خدماتنا",
+      "meta_title": "Enterprise IT Services & Engineering | DEYSLA IT Solutions",
+      "meta_description": "Comprehensive technology solutions from data centers to cybersecurity and industrial automation.",
+      "is_published": true
+    },
+    {
+      "id": "page-products",
+      "slug": "products",
+      "title_en": "Products & Brands",
+      "title_ar": "المنتجات والعلامات التجارية",
+      "meta_title": "Commercial Hardware Catalogue & OEM Partners | DEYSLA",
+      "meta_description": "Procure certified enterprise IT hardware, networking, cabling, and surveillance systems.",
+      "is_published": true
+    },
+    {
+      "id": "page-projects",
+      "slug": "projects",
+      "title_en": "Projects",
+      "title_ar": "مشاريعنا",
+      "meta_title": "Enterprise Technology Case Studies & Turnkey Projects | DEYSLA",
+      "meta_description": "Explore completed data center, cabling, security, and automation projects.",
+      "is_published": true
+    },
+    {
+      "id": "page-gallery",
+      "slug": "gallery",
+      "title_en": "Showcase Gallery",
+      "title_ar": "معرض الأعمال",
+      "meta_title": "Technology Operations & Staging Gallery | DEYSLA",
+      "meta_description": "Field installations, staging benchmarks, and technology deployments.",
+      "is_published": true
+    },
+    {
+      "id": "page-careers",
+      "slug": "careers",
+      "title_en": "Careers",
+      "title_ar": "الوظائف",
+      "meta_title": "Careers & Engineering Opportunities | DEYSLA IT Solutions",
+      "meta_description": "Join our team of technology professionals in Saudi Arabia and regional hubs.",
+      "is_published": true
+    },
+    {
+      "id": "page-contact",
+      "slug": "contact",
+      "title_en": "Contact Us",
+      "title_ar": "اتصل بنا",
+      "meta_title": "Contact Regional Engineering Hubs | DEYSLA IT Solutions",
+      "meta_description": "Get in touch with our offices in Dammam, Bahrain, or the USA.",
+      "is_published": true
+    }
+  ],
+  "sections": [
+    {
+      "id": "sec-home-hero",
+      "page_slug": "home",
+      "section_key": "hero",
+      "title": "Empowering Businesses Through Innovative Technology",
+      "subtitle": "Enterprise IT Infrastructure, Networking, Security & Automation",
+      "content": {
+        "heading": "EMPOWERING BUSINESSES THROUGH INNOVATIVE TECHNOLOGY SOLUTIONS",
+        "tagline": "Leading enterprise hardware distribution, turnkey deployment, and digital engineering across KSA, Bahrain, and USA.",
+        "ctaPrimaryText": "Explore Solutions",
+        "ctaPrimaryLink": "/services",
+        "ctaSecondaryText": "Request Quotation",
+        "ctaSecondaryLink": "/cart",
+        "videoSrc": "/assets/video/hero.mp4"
+      },
+      "sort_order": 1,
+      "is_visible": true
+    },
+    {
+      "id": "sec-home-company_intro",
+      "page_slug": "home",
+      "section_key": "company_intro",
+      "title": "Company Introduction",
+      "subtitle": "ISO Compliant Engineering & OEM Alliances",
+      "content": {
+        "description": "DEYSLA IT Solutions is a premier technology provider operating across Saudi Arabia, the Kingdom of Bahrain, and the United States. We specialize in supply, deployment, and lifecycle maintenance of mission-critical IT infrastructure.",
+        "badge": "ISO Compliant Engineering & OEM Alliances"
+      },
+      "sort_order": 2,
+      "is_visible": true,
+      "updated_at": "2026-10-15T09:11:15.580Z"
+    },
+    {
+      "id": "sec-home-stats",
+      "page_slug": "home",
+      "section_key": "stats",
+      "title": "Proven Scale & Regional Impact",
+      "subtitle": "Key Milestones",
+      "content": [
+        {
+          "value": "15+",
+          "label": "Years of Service",
+          "subtext": "Delivering proven enterprise IT infrastructure"
+        },
+        {
+          "value": "500+",
+          "label": "Successful Projects",
+          "subtext": "Across government, industrial & corporate sectors"
+        },
+        {
+          "value": "24/7",
+          "label": "Technical Support",
+          "subtext": "Continuous SLA-backed systems monitoring"
+        }
+      ],
+      "sort_order": 3,
+      "is_visible": true
+    }
+  ],
+  "services": [
+    {
+      "id": "cyber-security",
+      "number": "01",
+      "title": "Cyber Security",
+      "slug": "cyber-security",
+      "shortDescription": "Proactive cybersecurity solutions that protect systems, data, users, and business operations.",
+      "overview": "In an era of sophisticated digital threats, DEYSLA provides comprehensive cyber protection tailored to corporate and governmental infrastructure. From next-generation firewall deployments to managed endpoint response (EDR), we establish zero-trust perimeter defense and continuous security hygiene.",
+      "image": "/assets/products/cybersecurity-systems.webp",
+      "imageAlt": "DEYSLA Cyber Security Operations & Zero-Trust Threat Defense",
+      "subServices": [
+        "Firewall Installation & Policy Management",
+        "Endpoint Security & Advanced EDR Protection",
+        "Network Intrusion Prevention Systems (IPS)",
+        "Continuous Security Monitoring & Incident Response",
+        "Vulnerability Scanning & Penetration Testing"
+      ],
+      "deliverables": [
+        "Perimeter Next-Gen Firewall Configuration (Fortinet, Cisco)",
+        "Multi-Layered Threat Intelligence Feed Integration",
+        "Real-Time Endpoint Isolation & Malware Defense Protocols",
+        "Executive Security Risk & Compliance Reports"
+      ],
+      "process": [
+        {
+          "step": "01",
+          "title": "Security Assessment",
+          "description": "Audit current network perimeters, open attack surfaces, and user privileges."
+        },
+        {
+          "step": "02",
+          "title": "Architecture Design",
+          "description": "Engineer segmented zero-trust zones, firewall policies, and encrypted tunnels."
+        },
+        {
+          "step": "03",
+          "title": "Deployment & Hardening",
+          "description": "Deploy hardware appliances, install EDR agents, and enforce access controls."
+        },
+        {
+          "step": "04",
+          "title": "Continuous Monitoring",
+          "description": "Maintain proactive telemetry, firmware updates, and 24/7 incident alerting."
+        }
+      ],
+      "relevantCategories": [
+        "security-systems",
+        "networking"
+      ],
+      "relevantBrandIds": [
+        "fortinet",
+        "cisco"
+      ]
+    },
+    {
+      "id": "security-systems",
+      "number": "02",
+      "title": "Security Systems",
+      "slug": "security-systems",
+      "shortDescription": "Enterprise CCTV surveillance, biometric access control, and integrated physical facility protection.",
+      "overview": "DEYSLA engineers robust physical security ecosystems designed to safeguard industrial plants, corporate headquarters, and commercial centers. We combine high-resolution IP optical surveillance with intelligent video analytics, turnstiles, and multi-factor biometric authentication.",
+      "image": "/assets/products/cctv-surveillance.webp",
+      "imageAlt": "DEYSLA Enterprise IP CCTV Surveillance & Biometric Access Systems",
+      "subServices": [
+        "High-Definition IP CCTV Camera Networks",
+        "Biometric Access Control & Facial Recognition",
+        "Pedestrian Speed Turnstiles & Vehicle Flap Barriers",
+        "Intrusion Alarm & Perimeter Protection Systems",
+        "Centralized Video Management Software (VMS)"
+      ],
+      "deliverables": [
+        "Turnkey CCTV Camera & Storage Engineering",
+        "Enterprise Multi-Door Access Control Panels",
+        "Time & Attendance System Integration",
+        "Certified Civil Defense & Municipal Code Compliance"
+      ],
+      "process": [
+        {
+          "step": "01",
+          "title": "Site Survey",
+          "description": "Evaluate perimeter zones, entry gates, lighting, and vulnerable blind spots."
+        },
+        {
+          "step": "02",
+          "title": "System Engineering",
+          "description": "Specify camera focal lengths, NVR storage retention days, and cable routes."
+        },
+        {
+          "step": "03",
+          "title": "Installation & Cabling",
+          "description": "Install certified outdoor/indoor cameras, speed gates, and secure enclosures."
+        },
+        {
+          "step": "04",
+          "title": "VMS Commissioning",
+          "description": "Configure motion alerts, license plate recognition (ANPR), and central control desks."
+        }
+      ],
+      "relevantCategories": [
+        "security-systems",
+        "structured-cabling"
+      ],
+      "relevantBrandIds": [
+        "hikvision",
+        "axis",
+        "bosch",
+        "zkteco",
+        "hid",
+        "suprema",
+        "hanwha-vision"
+      ]
+    },
+    {
+      "id": "data-migration",
+      "number": "03",
+      "title": "Data Migration",
+      "slug": "data-migration",
+      "shortDescription": "Secure, zero-downtime data and database migration between on-premises and cloud environments.",
+      "overview": "Transitioning enterprise data requires meticulous validation, schema mapping, and transactional integrity. DEYSLA plans and executes risk-free data migration across heterogeneous storage systems, SQL databases, and virtualized private/public cloud clusters without business disruption.",
+      "image": "/assets/Picture21.png",
+      "imageAlt": "DEYSLA Enterprise Cloud Data Migration & Database Transfer Pipeline",
+      "subServices": [
+        "Enterprise Database Migration (SQL, PostgreSQL, Oracle)",
+        "On-Premises to Cloud Infrastructure Migration",
+        "Legacy System Modernization & Data Extraction",
+        "Storage Area Network (SAN/NAS) Data Staging",
+        "Post-Migration Integrity Verification & Schema Auditing"
+      ],
+      "deliverables": [
+        "Migration Architecture & Phased Rollout Roadmap",
+        "Automated Parallel Sync Pipelines with Fallback Rollback",
+        "Zero-Data-Loss Validation Checksum Protocols",
+        "Performance Benchmark & Index Optimization Post-Transfer"
+      ],
+      "process": [
+        {
+          "step": "01",
+          "title": "Source Audit",
+          "description": "Catalog schema dependencies, data volumes, network latency, and uptime constraints."
+        },
+        {
+          "step": "02",
+          "title": "Dry-Run Staging",
+          "description": "Execute test migrations in isolated sandbox environments to measure throughput."
+        },
+        {
+          "step": "03",
+          "title": "Live Sync Cutover",
+          "description": "Perform delta-synchronization and orchestrated cutover during planned maintenance."
+        },
+        {
+          "step": "04",
+          "title": "Data Verification",
+          "description": "Perform row-level parity audits and hand over production system credentials."
+        }
+      ],
+      "relevantCategories": [
+        "servers-and-computing"
+      ],
+      "relevantBrandIds": [
+        "dell",
+        "hp",
+        "lenovo"
+      ]
+    },
+    {
+      "id": "voip-communications",
+      "number": "04",
+      "title": "VoIP Communications",
+      "slug": "voip-communications",
+      "shortDescription": "Enterprise IP PBX systems, unified communications, SIP trunking, and commercial audio.",
+      "overview": "Connect teams and clients with crystal-clear digital voice infrastructure. DEYSLA supplies and configures enterprise IP PBX appliances, interactive voice response (IVR) call routing, multi-branch SIP interconnectivity, and executive boardroom audio systems.",
+      "image": "/assets/products/ip-pbx-systems.webp",
+      "imageAlt": "DEYSLA Enterprise IP PBX Telephony & Unified Communications",
+      "subServices": [
+        "Enterprise IP PBX Appliance Installation",
+        "Cloud & Hybrid Telephony Deployment",
+        "Multi-Branch SIP Trunking & Extension Dialing",
+        "Call Center Queuing, Recording & Live Analytics",
+        "Public Address (PA) & Commercial Sound Paging"
+      ],
+      "deliverables": [
+        "Configured PBX Appliance with Custom Voice Menus",
+        "Executive Gigabit Desktop Phones & Wireless DECT Terminals",
+        "Mobile Softphone Client Onboarding for Remote Workers",
+        "Telephony QoS Optimization across LAN & WAN"
+      ],
+      "process": [
+        {
+          "step": "01",
+          "title": "Telephony Discovery",
+          "description": "Audit current trunk lines, extension counts, call volume, and paging zones."
+        },
+        {
+          "step": "02",
+          "title": "PBX Provisioning",
+          "description": "Configure dial plans, auto-attendants, ring groups, and voicemail-to-email."
+        },
+        {
+          "step": "03",
+          "title": "Hardware Deployment",
+          "description": "Deliver and patch IP phones, conference speakerphones, and PA speakers."
+        },
+        {
+          "step": "04",
+          "title": "Testing & Go-Live",
+          "description": "Validate call clarity, failover routing, emergency numbers, and user orientation."
+        }
+      ],
+      "relevantCategories": [
+        "communications"
+      ],
+      "relevantBrandIds": [
+        "grandstream",
+        "yeastar",
+        "fanvil",
+        "panasonic",
+        "toa",
+        "jabra"
+      ]
+    },
+    {
+      "id": "it-infrastructure",
+      "number": "05",
+      "title": "IT Infrastructure",
+      "slug": "it-infrastructure",
+      "shortDescription": "End-to-end data center compute, enterprise switching, structured cabling, and server architecture.",
+      "overview": "Your IT physical and logical layer forms the backbone of all operational productivity. DEYSLA designs, builds, and maintains full-stack enterprise infrastructure including high-density server racks, resilient core switches, certified structured cabling, and clean online UPS power protection.",
+      "image": "/assets/products/network-cabinets.webp",
+      "imageAlt": "DEYSLA Data Center Server Racks & High-Density Infrastructure",
+      "subServices": [
+        "Data Center Design & Server Rack Assembly",
+        "Core & Distribution Switching Layer Architecture",
+        "Certified Cat6A Copper & Fiber Optic Backbone",
+        "Virtualization Cluster Setup (VMware, Proxmox, Hyper-V)",
+        "Uninterruptible Power Supply (UPS) & Clean Power Backups"
+      ],
+      "deliverables": [
+        "Turnkey Rackmount Compute & Storage Enclosures",
+        "Calibrated Fluke Cable Certification Test Reports",
+        "Redundant Power Distribution & Battery Backup Bank",
+        "Comprehensive As-Built Network Topology Diagrams"
+      ],
+      "process": [
+        {
+          "step": "01",
+          "title": "Capacity Planning",
+          "description": "Calculate workload compute cores, RAM, storage IOPS, and network bandwidth."
+        },
+        {
+          "step": "02",
+          "title": "Physical Layout",
+          "description": "Engineer rack elevation, airflow paths, cable trays, and electrical specs."
+        },
+        {
+          "step": "03",
+          "title": "Hardware Build",
+          "description": "Mount chassis, patch structured cabling, install UPS units, and cable label."
+        },
+        {
+          "step": "04",
+          "title": "Commissioning & Burn-In",
+          "description": "Perform stress tests, benchmark storage throughput, and verify failover."
+        }
+      ],
+      "relevantCategories": [
+        "networking",
+        "structured-cabling",
+        "servers-and-computing"
+      ],
+      "relevantBrandIds": [
+        "cisco",
+        "dell",
+        "hp",
+        "commscope",
+        "panduit",
+        "eaton",
+        "vertiv",
+        "schneider"
+      ]
+    },
+    {
+      "id": "erpnext-solutions",
+      "number": "06",
+      "title": "ERPNext – Enterprise ERP",
+      "slug": "erpnext-solutions",
+      "shortDescription": "Custom ERPNext implementation, business process automation, accounting, and supply chain.",
+      "overview": "Unify accounting, inventory, human resources, manufacturing, and customer relationship management into a single sovereign platform. DEYSLA provides turnkey ERPNext implementation, customized workflows, role-based access security, and local GCC tax/e-invoicing compliance.",
+      "image": "/assets/products/desktops-and-laptops.webp",
+      "imageAlt": "DEYSLA ERPNext Solutions & Enterprise Resource Planning Dashboards",
+      "subServices": [
+        "ERPNext Full Lifecycle Deployment & Hosting",
+        "Financial Accounting, ZATCA e-Invoicing & Tax Setup",
+        "Supply Chain, Procurement & Multi-Warehouse Tracking",
+        "Human Resource Management & WPS Payroll Processing",
+        "Custom DocType, Scripting & API Integrations"
+      ],
+      "deliverables": [
+        "Configured Production ERPNext Instance with Daily Backups",
+        "Tailored Role-Based User Access Matrix",
+        "Automated PDF Invoicing & Purchase Order Templates",
+        "Admin & Departmental Staff Training Documentation"
+      ],
+      "process": [
+        {
+          "step": "01",
+          "title": "Business Process Mapping",
+          "description": "Document charts of accounts, approval hierarchies, and inventory stages."
+        },
+        {
+          "step": "02",
+          "title": "Customization & Schema",
+          "description": "Configure custom fields, validation rules, print formats, and tax modules."
+        },
+        {
+          "step": "03",
+          "title": "Data Migration & UAT",
+          "description": "Migrate customers, items, balances, and conduct user acceptance testing."
+        },
+        {
+          "step": "04",
+          "title": "Go-Live & Support",
+          "description": "Supervise production cutover, provide real-time floor support, and SLA maintenance."
+        }
+      ],
+      "relevantCategories": [
+        "servers-and-computing"
+      ],
+      "relevantBrandIds": [
+        "dell",
+        "hp",
+        "lenovo"
+      ]
+    },
+    {
+      "id": "cloud-solutions",
+      "number": "07",
+      "title": "Cloud Solutions",
+      "slug": "cloud-solutions",
+      "shortDescription": "Scalable public, private, and hybrid cloud architectures, automated backups, and disaster recovery.",
+      "overview": "Modernize business applications with agile cloud architectures built for speed, elastic scalability, and cost efficiency. DEYSLA architects hybrid cloud environments combining localized on-prem storage with secure cloud compute, automated geo-redundant backups, and disaster recovery protocols.",
+      "image": "/assets/products/rack-servers.webp",
+      "imageAlt": "DEYSLA Hybrid Cloud Computing & Scalable Infrastructure",
+      "subServices": [
+        "Public, Private & Hybrid Cloud Architecture",
+        "Automated Cloud Backup & Disaster Recovery (DR)",
+        "Secure Cloud Storage & Virtual Server Provisioning",
+        "Cloud Cost Optimization & Workload Right-Sizing",
+        "Multi-Cloud VPN Interconnect & Identity Integration"
+      ],
+      "deliverables": [
+        "Engineered Cloud Infrastructure Topology",
+        "Automated Encrypted Offsite Backup Schedules",
+        "Tested Disaster Recovery Recovery-Time (RTO/RPO) Plans",
+        "Centralized Cloud Governance & Access Dashboards"
+      ],
+      "process": [
+        {
+          "step": "01",
+          "title": "Workload Assessment",
+          "description": "Evaluate application dependencies, storage patterns, and sovereignty needs."
+        },
+        {
+          "step": "02",
+          "title": "Cloud Blueprint",
+          "description": "Architect virtual private clouds (VPCs), subnets, security groups, and storage tiers."
+        },
+        {
+          "step": "03",
+          "title": "Deployment & Sync",
+          "description": "Deploy virtual machines, configure replication, and establish encrypted VPNs."
+        },
+        {
+          "step": "04",
+          "title": "Disaster Simulation",
+          "description": "Execute mock failovers to verify business continuity without data loss."
+        }
+      ],
+      "relevantCategories": [
+        "servers-and-computing",
+        "networking"
+      ],
+      "relevantBrandIds": [
+        "dell",
+        "hp",
+        "cisco",
+        "fortinet"
+      ]
+    },
+    {
+      "id": "industrial-automation",
+      "number": "08",
+      "title": "Industrial Automation",
+      "slug": "industrial-automation",
+      "shortDescription": "SCADA networking, PLC control wiring, ruggedized industrial switching, and instrumentation.",
+      "overview": "Bridging the physical plant floor with enterprise intelligence. DEYSLA provides rugged industrial networking, hardened DIN-rail switches, process control instrumentation, and SCADA fieldbus wiring designed to endure high heat, humidity, vibration, and electrical noise.",
+      "image": "/assets/products/industrial-switches.webp",
+      "imageAlt": "DEYSLA Industrial Automation, PLC Control & SCADA Networks",
+      "subServices": [
+        "Harsh-Environment Industrial Switch Deployment",
+        "PLC to SCADA Network Architecture & Fieldbus Cabling",
+        "Industrial IoT Remote Telemetry & Gateway Setup",
+        "Control Panel Wiring, Terminals & Surge Protection",
+        "Process Instrumentation & Sensor Interfacing"
+      ],
+      "deliverables": [
+        "Hardened DIN-Rail Switch Cabinets with Redundant DC Power",
+        "Shielded Profinet / Modbus Industrial Cabling Links",
+        "Signal Conditioners & Isolated Remote I/O Racks",
+        "Industrial Cybersecurity & Air-Gapped Network Zones"
+      ],
+      "process": [
+        {
+          "step": "01",
+          "title": "Plant Environment Survey",
+          "description": "Measure thermal conditions, ingress protection (IP rating), and EMI noise."
+        },
+        {
+          "step": "02",
+          "title": "Industrial Blueprint",
+          "description": "Select hardened hardware, redundant ring topologies (MRP), and fiber paths."
+        },
+        {
+          "step": "03",
+          "title": "Panel Assembly",
+          "description": "Wire DIN-rail components, surge protectors, power supplies, and field cables."
+        },
+        {
+          "step": "04",
+          "title": "Loop Testing & Handover",
+          "description": "Verify signal latency, packet loss, failover time (<20ms), and sensor reads."
+        }
+      ],
+      "relevantCategories": [
+        "industrial-automation",
+        "structured-cabling"
+      ],
+      "relevantBrandIds": [
+        "schneider",
+        "phoenix-contact",
+        "advantech",
+        "hirschmann",
+        "weidmuller",
+        "abb"
+      ]
+    },
+    {
+      "id": "software-development",
+      "number": "09",
+      "title": "Software Development",
+      "slug": "software-development",
+      "shortDescription": "Custom enterprise software, internal business portals, API integrations, and workflow engines.",
+      "overview": "When off-the-shelf software fails to match your operational requirements, DEYSLA develops bespoke, high-performance web applications, administrative portals, and system integration middleware. Engineered with modern TypeScript, microservices, and secure relational databases.",
+      "image": "/assets/Picture10.png",
+      "imageAlt": "DEYSLA Custom Software Development, APIs & Enterprise Portals",
+      "subServices": [
+        "Custom Web Applications & Enterprise Dashboards",
+        "Internal Business Portals & Workflow Engines",
+        "REST & GraphQL API Integration Middleware",
+        "Mobile Companion Apps for Field Personnel",
+        "Database Optimization & Legacy Code Refactoring"
+      ],
+      "deliverables": [
+        "Production-Ready Custom Application Codebase",
+        "Role-Based Authentication & Audit Logging Systems",
+        "Documented API Endpoints & Developer Reference",
+        "Automated CI/CD Pipeline & Containerized Deployment"
+      ],
+      "process": [
+        {
+          "step": "01",
+          "title": "Requirements Discovery",
+          "description": "Define user personas, functional specifications, and data models."
+        },
+        {
+          "step": "02",
+          "title": "UX Design & Architecture",
+          "description": "Create responsive interactive mockups and technical system architecture."
+        },
+        {
+          "step": "03",
+          "title": "Agile Development",
+          "description": "Build iterative sprint deliverables with continuous client review demos."
+        },
+        {
+          "step": "04",
+          "title": "Deployment & QA",
+          "description": "Conduct security audits, stress testing, and deploy to production servers."
+        }
+      ],
+      "relevantCategories": [
+        "servers-and-computing"
+      ],
+      "relevantBrandIds": [
+        "dell",
+        "hp",
+        "lenovo"
+      ]
+    },
+    {
+      "id": "governance-and-audit",
+      "number": "10",
+      "title": "Governance and Audit",
+      "slug": "governance-and-audit",
+      "shortDescription": "IT compliance assessments, cybersecurity audits, risk management, and regulatory advisory.",
+      "overview": "Align IT operations with recognized international standards and regional regulatory frameworks. DEYSLA provides independent security posture audits, IT asset documentation, risk assessment frameworks, and disaster recovery validation to ensure institutional compliance.",
+      "image": "/assets/products/antivirus-edr.webp",
+      "imageAlt": "DEYSLA IT Governance, Cybersecurity Audit & Regulatory Compliance",
+      "subServices": [
+        "Cybersecurity Framework Audits & Gap Analysis",
+        "IT Infrastructure Health & Performance Auditing",
+        "Data Protection & Access Privilege Governance",
+        "Disaster Recovery & Business Continuity Plan Auditing",
+        "Formal Audit Reporting & Remediation Roadmaps"
+      ],
+      "deliverables": [
+        "Executive Gap Analysis & Risk Matrix Report",
+        "Prioritized Remediation Roadmap with Estimated Impact",
+        "Formal IT Policy & Procedure Template Suite",
+        "Post-Remediation Verification & Attestation Statement"
+      ],
+      "process": [
+        {
+          "step": "01",
+          "title": "Scope Definition",
+          "description": "Establish audit boundaries, regulatory mandates, and stakeholder interviews."
+        },
+        {
+          "step": "02",
+          "title": "Technical Evidence Review",
+          "description": "Inspect firewall rules, password policies, backup logs, and physical access."
+        },
+        {
+          "step": "03",
+          "title": "Risk Analysis",
+          "description": "Score findings by severity, probability, and business disruption potential."
+        },
+        {
+          "step": "04",
+          "title": "Executive Briefing",
+          "description": "Deliver comprehensive audit findings and actionable remediation plans."
+        }
+      ],
+      "relevantCategories": [
+        "security-systems",
+        "servers-and-computing"
+      ],
+      "relevantBrandIds": [
+        "fortinet",
+        "cisco"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-datacenter-infrastructure",
+      "slug": "enterprise-datacenter-infrastructure",
+      "title": "High-Density Campus Data Center Modernization",
+      "category": "IT Infrastructure & Cabling",
+      "clientSector": "Industrial Manufacturing Sector",
+      "location": "Dammam, Eastern Province, KSA",
+      "shortDescription": "Turnkey deployment of tier-3 compute racks, Cat6A shielded cabling, and online double-conversion UPS power protection.",
+      "scopeOfWork": [
+        "Structured Cabling Backbone (Cat6A SFTP & OM4 Fiber)",
+        "High-Density Compute & Server Rack Enclosures",
+        "Redundant Online UPS Battery Systems",
+        "Precision Airflow & Cold Aisle Containment"
+      ],
+      "technologiesUsed": [
+        "Cisco",
+        "CommScope",
+        "Schneider Electric",
+        "Dell Technologies"
+      ],
+      "image": "/assets/Picture21.png",
+      "isPlaceholder": false
+    },
+    {
+      "id": "proj-surveillance-access",
+      "slug": "perimeter-surveillance-biometric-access",
+      "title": "Facility-Wide IP Surveillance & Speed Gate Access Control",
+      "category": "Security Systems",
+      "clientSector": "Commercial Corporate Facility",
+      "location": "Eastern Province, KSA",
+      "shortDescription": "Integrated 120+ IP camera surveillance network with AI video analytics and multi-door biometric turnstile access control.",
+      "scopeOfWork": [
+        "High-Definition Optical IP Cameras & NVR Storage Arrays",
+        "Pedestrian Flap Speed Turnstiles with Facial Recognition",
+        "Centralized Security Operations Monitoring Desk",
+        "Perimeter Infrared Beam Intruder Detection"
+      ],
+      "technologiesUsed": [
+        "Hikvision",
+        "ZKTeco",
+        "Axis Communications",
+        "Excel Cabling"
+      ],
+      "image": "/assets/Picture23.png",
+      "isPlaceholder": false
+    },
+    {
+      "id": "proj-industrial-scada",
+      "slug": "industrial-automation-scada-networking",
+      "title": "Harsh-Environment Industrial Ethernet & SCADA Backbone",
+      "category": "Industrial Automation",
+      "clientSector": "Utilities & Processing Plant",
+      "location": "Al Khobar / Dammam, KSA",
+      "shortDescription": "Hardened DIN-rail ring network topology interconnecting distributed PLCs to centralized SCADA telemetry consoles.",
+      "scopeOfWork": [
+        "DIN-Rail Managed Industrial Switches with Fast Failover Ring",
+        "Shielded Instrumentation & Fieldbus Control Cabling",
+        "Surge Protection Barriers for Harsh Electrical Environments",
+        "Isolated Industrial Control Panel Assembly"
+      ],
+      "technologiesUsed": [
+        "Schneider Electric",
+        "Phoenix Contact",
+        "Advantech",
+        "Hirschmann"
+      ],
+      "image": "/assets/Picture25.png",
+      "isPlaceholder": false
+    },
+    {
+      "id": "proj-cloud-voip",
+      "slug": "corporate-cloud-voip-communications",
+      "title": "Multi-Branch Enterprise VoIP & Secure Cloud Migration",
+      "category": "VoIP & Communications",
+      "clientSector": "Financial & Corporate Services",
+      "location": "Riyadh & Eastern Province, KSA",
+      "shortDescription": "Unified IP PBX telephony deployment with high-availability SIP trunks, cloud disaster recovery, and multi-branch encrypted VPN routing.",
+      "scopeOfWork": [
+        "Enterprise IP PBX Telephony Servers & SIP Trunking",
+        "Executive Gigabit Desktop IP Phone Fleet Provisioning",
+        "Hybrid Cloud Backup & Disaster Recovery Architecture",
+        "Multi-Site Encrypted Site-to-Site VPN Connectivity"
+      ],
+      "technologiesUsed": [
+        "Grandstream",
+        "Cisco",
+        "Fortinet",
+        "Yeastar"
+      ],
+      "image": "/assets/products/ip-pbx-systems.webp",
+      "isPlaceholder": false
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gal-1",
+      "title": "Data Center Infrastructure & Compute Assembly",
+      "category": "Infrastructure",
+      "image": "/assets/Picture21.png",
+      "description": "High-density server rack mounting and cable dressing in enterprise facilities."
+    },
+    {
+      "id": "gal-2",
+      "title": "Security & Biometric Speed Turnstile Access",
+      "category": "Security",
+      "image": "/assets/Picture23.png",
+      "description": "Pedestrian entrance turnstiles integrated with facial recognition access terminals."
+    },
+    {
+      "id": "gal-3",
+      "title": "Industrial Automation & DIN-Rail Network Enclosures",
+      "category": "Automation",
+      "image": "/assets/Picture25.png",
+      "description": "Hardened Ethernet switches and surge-protected industrial control cabinets."
+    },
+    {
+      "id": "gal-4",
+      "title": "Structured Cabling & High-Density Patch Panels",
+      "category": "Cabling",
+      "image": "/assets/Picture26.png",
+      "description": "Precision Cat6A terminations, optical distribution frames, and trunking."
+    },
+    {
+      "id": "gal-5",
+      "title": "Commercial Digital Signage & Interactive Display",
+      "category": "Displays",
+      "image": "/assets/Picture27.png",
+      "description": "Ultra-narrow bezel commercial displays and customer touch kiosks."
+    },
+    {
+      "id": "gal-6",
+      "title": "Enterprise Technology Engineering Operations",
+      "category": "Operations",
+      "image": "/assets/Picture8.png",
+      "description": "Technical staging, device provisioning, and network QA benchmarks."
+    },
+    {
+      "id": "gal-7",
+      "title": "Hardware Integration & Systems Staging",
+      "category": "Hardware",
+      "image": "/assets/Picture9.png",
+      "description": "Certified hardware procurement and pre-deployment configuration."
+    },
+    {
+      "id": "gal-8",
+      "title": "Field Deployment & Client Systems Delivery",
+      "category": "Field Engineering",
+      "image": "/assets/Picture10.png",
+      "description": "On-site engineering, commissioning, and handover to client teams."
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-1",
+      "clientName": "Fahad Al-Ghamdi",
+      "clientRole": "IT Infrastructure Director",
+      "companyName": "Leading Manufacturing Corp",
+      "industry": "Manufacturing & Utilities",
+      "quote": "DEYSLA delivered our entire campus structured cabling and server rack migration ahead of schedule. Their technical precision, certified OTDR testing documentation, and local SLA support are second to none in the Eastern Province.",
+      "rating": 5,
+      "projectRef": "enterprise-datacenter-infrastructure",
+      "isPlaceholder": false
+    },
+    {
+      "id": "rev-2",
+      "clientName": "Tariq Al-Mansoor",
+      "clientRole": "Head of Facility Security",
+      "companyName": "Commercial Real Estate Holdings",
+      "industry": "Commercial Facility",
+      "quote": "The biometric turnstiles and AI IP surveillance system deployed by DEYSLA gave us seamless central control over access rights and parking gates across four commercial buildings.",
+      "rating": 5,
+      "projectRef": "perimeter-surveillance-biometric-access",
+      "isPlaceholder": false
+    },
+    {
+      "id": "rev-3",
+      "clientName": "Sultan Al-Otaibi",
+      "clientRole": "SCADA & Telemetry Lead",
+      "companyName": "Energy & Petrochemical Utilities",
+      "industry": "Industrial Automation",
+      "quote": "DEYSLA's industrial networking and DIN-rail enclosure deployment maintained uninterrupted operations in harsh factory environments. Zero packet loss across critical PLC automation loops.",
+      "rating": 5,
+      "projectRef": "industrial-automation-scada-networking",
+      "isPlaceholder": false
+    },
+    {
+      "id": "rev-4",
+      "clientName": "Majed Al-Zahrani",
+      "clientRole": "VP of Digital Operations",
+      "companyName": "Regional Enterprise Group",
+      "industry": "Enterprise Communications",
+      "quote": "Migrating 800+ IP telephony extensions and multi-branch network routing with DEYSLA was frictionless. Their engineers provided continuous on-site staging and 24/7 handover support.",
+      "rating": 5,
+      "projectRef": "corporate-cloud-voip-communications",
+      "isPlaceholder": false
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-1",
+      "category": "General",
+      "question_en": "What core enterprise technology solutions does DEYSLA provide?",
+      "question_ar": "ما هي حلول التكنولوجيا المؤسسية الأساسية التي تقدمها ديسلا؟",
+      "answer_en": "DEYSLA delivers turnkey enterprise IT infrastructure, structured cabling (Cat6A & Fiber), data center staging, cybersecurity & next-gen firewalls, CCTV IP surveillance, biometric speed gates, industrial automation networking, and business telephony.",
+      "answer_ar": "تقدم ديسلا بنية تحتية متكاملة لتقنية المعلومات، التمديدات الهيكلية، تجهيز مراكز البيانات، الأمن السيبراني، المراقبة بالكاميرات، البوابات الأمنية، وشبكات الأتمتة الصناعية.",
+      "sort_order": 1,
+      "is_active": true
+    },
+    {
+      "id": "faq-2",
+      "category": "Procurement",
+      "question_en": "Are your hardware products and brand alliances genuine OEM components?",
+      "question_ar": "هل منتجات الأجهزة والماركات الشريكة أصلية ومعتمدة؟",
+      "answer_en": "Yes. All hardware supplied by DEYSLA is 100% genuine OEM certified equipment sourced directly through authorized regional and global distribution channels, complete with manufacturer warranty and serial verification.",
+      "answer_ar": "نعم. جميع الأجهزة الموردة من ديسلا أصلية ومعتمدة 100% من المصنعين مباشرة مع ضمان رسمي وتوثيق بالأرقام التسلسلية.",
+      "sort_order": 2,
+      "is_active": true
+    },
+    {
+      "id": "faq-3",
+      "category": "Support",
+      "question_en": "Where are your regional support offices located?",
+      "question_ar": "أين تقع مكاتب الدعم الإقليمية الخاصة بكم؟",
+      "answer_en": "DEYSLA operates certified regional facilities in Al Khalidiya, Dammam (Kingdom of Saudi Arabia), BIW Business Park, Al Hidd (Bahrain), and Charleston, West Virginia (United States).",
+      "answer_ar": "تعمل مكاتب ديسلا الإقليمية في الخالدية بالدمام (المملكة العربية السعودية)، مجمع البحرين الاستثماري (البحرين)، وتشارلستون في فرجينيا الغربية (الولايات المتحدة).",
+      "sort_order": 3,
+      "is_active": true
+    },
+    {
+      "id": "faq-4",
+      "category": "Services",
+      "question_en": "How can I request a formal Quotation (RFQ) for an infrastructure project?",
+      "question_ar": "كيف يمكنني طلب عرض أسعار رسمي لمشروع بنية تحتية؟",
+      "answer_en": "You can build your Bill of Quantities (BOQ) directly on our website via the commercial catalog and submit an RFQ, or reach our regional engineering desk at enquiry-sa@deysla.com or +966-544553670.",
+      "answer_ar": "يمكنك إعداد قائمة الكميات الخاصة بك مباشرة عبر موقعنا وتقديم طلب عرض أسعار أو التواصل مع مكتبنا الهندسي عبر enquiry-sa@deysla.com.",
+      "sort_order": 4,
+      "is_active": true
+    }
+  ]
+}

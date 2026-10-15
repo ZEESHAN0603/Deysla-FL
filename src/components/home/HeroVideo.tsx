@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Play, Award, Users, Headphones } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
+import { useCmsContent } from "../../context/CmsContentContext";
 
 export const HeroVideo: React.FC = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const { lang, formatPath } = useLanguage();
+  const { getSectionContent } = useCmsContent();
+  const heroContent = getSectionContent<any>('home', 'hero', {});
 
   return (
     <section className="relative w-full min-h-[500px] sm:min-h-[580px] lg:min-h-[660px] flex flex-col justify-between overflow-hidden bg-slate-950 text-white selection:bg-[#ff5e00] selection:text-white">
@@ -112,16 +115,16 @@ export const HeroVideo: React.FC = () => {
         <p className="text-xs sm:text-sm lg:text-base text-neutral-200 font-normal leading-relaxed max-w-2xl mx-auto px-2 drop-shadow-sm">
           {lang === 'ar'
             ? 'توفير حلول تقنية متكاملة للمؤسسات، والشبكات السحابية، والأنظمة الأمنية، وكابلات الألياف الضوئية في جميع أنحاء المملكة ودول الخليج.'
-            : 'Delivering end-to-end IT Solutions, Enterprise Software, Networking, Security Systems, and Structured Cabling throughout Saudi Arabia and the GCC.'}
+            : (heroContent?.tagline || 'Delivering end-to-end IT Solutions, Enterprise Software, Networking, Security Systems, and Structured Cabling throughout Saudi Arabia and the GCC.')}
         </p>
 
         {/* Executive Action Buttons */}
         <div className="pt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <Link
-            to={formatPath("/about")}
+            to={formatPath(heroContent?.ctaPrimaryLink || "/about")}
             className="inline-block px-7 sm:px-9 py-3 sm:py-3.5 theme-button-primary text-xs sm:text-sm font-black uppercase tracking-wider rounded-xl shadow-xl hover:scale-[1.02] transition-all cursor-pointer"
           >
-            {lang === 'ar' ? 'تعرف على ديسلا' : 'LEARN MORE'}
+            {lang === 'ar' ? 'تعرف على ديسلا' : (heroContent?.ctaPrimaryText || 'LEARN MORE')}
           </Link>
         </div>
       </div>

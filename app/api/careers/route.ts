@@ -6,6 +6,7 @@ import {
   isValidEmail,
   buildCareersEmail,
 } from '../../../src/server/mail/mailer.ts';
+import { recordCareerApplication } from '../../../src/server/db/cmsStore.ts';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -208,16 +209,32 @@ export async function POST(request: Request) {
       );
     }
 
-    // 5. Verify SMTP configuration
+    // 5. Persist application to Database (MySQL / JSON fallback) BEFORE email delivery
+    let savedApplicationId = '';
+    try {
+      const applicationRecord = await recordCareerApplication({
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+        position: position.trim(),
+        experience: experience ? experience.trim() : undefined,
+        noticePeriod: noticePeriod ? noticePeriod.trim() : undefined,
+        portfolioUrl: portfolioUrl ? portfolioUrl.trim() : undefined,
+        coverLetter: coverLetter ? coverLetter.trim() : undefined,
+        resumeFilename: resumeFileName,
+      });
+      savedApplicationId = applicationRecord.id;
+    } catch (dbErr) {
+      console.error('[Careers DB Error] Failed to persist career record:', dbErr);
+    }
+
+    // 6. Verify SMTP configuration and send notification email
     if (!isSmtpConfigured()) {
-      return Response.json(
-        {
-          success: false,
-          error:
-            'Email server (SMTP) is not configured yet. Please configure SMTP_HOST, SMTP_USER, and SMTP_PASS in the server environment variables.',
-        },
-        { status: 503 }
-      );
+      return Response.json({
+        success: true,
+        applicationId: savedApplicationId,
+        message: `Your application for "${position}" has been received and saved (Application ID: ${savedApplicationId}).`,
+      });
     }
 
     const config = getSmtpConfig();
@@ -243,7 +260,7 @@ export async function POST(request: Request) {
       submittedAt,
     });
 
-    // 6. Assemble Nodemailer payload
+    // Assemble Nodemailer payload
     const mailOptions: any = {
       from: config.from,
       to: config.contactEmail,
@@ -263,13 +280,22 @@ export async function POST(request: Request) {
       ];
     }
 
-    const mailResult = await transporter.sendMail(mailOptions);
-
-    return Response.json({
-      success: true,
-      message: `Your application for "${position}" has been received along with your CV. Our recruitment team will review your profile.`,
-      messageId: mailResult.messageId,
-    });
+    try {
+      const mailResult = await transporter.sendMail(mailOptions);
+      return Response.json({
+        success: true,
+        applicationId: savedApplicationId,
+        message: `Your application for "${position}" has been received along with your CV. Our recruitment team will review your profile.`,
+        messageId: mailResult.messageId,
+      });
+    } catch (smtpErr: any) {
+      console.warn('[Careers SMTP Warning] Email failed but application saved in DB:', smtpErr?.message);
+      return Response.json({
+        success: true,
+        applicationId: savedApplicationId,
+        message: `Your application for "${position}" has been safely recorded in our system.`,
+      });
+    }
   } catch (error: any) {
     console.error('Error handling /api/careers:', error);
     const errorMessage =

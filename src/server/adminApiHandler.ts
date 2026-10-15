@@ -14,6 +14,26 @@ import {
   createCatalogBackup,
 } from './db/database.ts';
 import {
+  getPublicCmsContent,
+  updateCmsSetting,
+  savePageSection,
+  saveCmsService,
+  deleteCmsService,
+  saveCmsProject,
+  deleteCmsProject,
+  saveCmsGalleryItem,
+  deleteCmsGalleryItem,
+  saveCmsReview,
+  deleteCmsReview,
+  saveCmsFaq,
+  deleteCmsFaq,
+  getCareerApplications,
+  updateCareerApplicationStatus,
+} from './db/cmsStore.ts';
+import { checkMysqlConnection, getDatabaseConfig } from './db/mysql.ts';
+import { seedMysqlDatabase } from './db/seedMysql.ts';
+import { runMigrations } from './db/migrations/runMigrations.ts';
+import {
   authenticateAdminCredentials,
   requireAdmin,
   extractTokenFromRequest,
@@ -29,6 +49,18 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
   const url = new URL(request.url);
   const pathname = url.pathname;
   const method = request.method;
+
+  // --------------------------------------------------------------------------
+  // Public CMS Content Endpoint
+  // --------------------------------------------------------------------------
+  if (pathname === '/api/cms/content' && method === 'GET') {
+    try {
+      const cmsData = await getPublicCmsContent();
+      return Response.json({ success: true, ...cmsData });
+    } catch (err: any) {
+      return Response.json({ success: false, error: err?.message }, { status: 500 });
+    }
+  }
 
   // --------------------------------------------------------------------------
   // Public Catalog Endpoint
@@ -311,6 +343,209 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
         });
       } catch (err: any) {
         return Response.json({ success: false, error: err?.message }, { status: 500 });
+      }
+    }
+
+    // ------------------------------------------------------------------------
+    // 11. CMS Global Content & Database Connectivity
+    // ------------------------------------------------------------------------
+    if (pathname === '/api/admin/cms/content' && method === 'GET') {
+      try {
+        const data = await getPublicCmsContent();
+        return Response.json({ success: true, ...data });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 500 });
+      }
+    }
+
+    if (pathname === '/api/admin/cms/db-status' && method === 'GET') {
+      const conn = await checkMysqlConnection(true);
+      const config = getDatabaseConfig();
+      return Response.json({
+        success: true,
+        connected: conn.connected,
+        error: conn.error,
+        dbName: conn.dbName || config.database,
+        host: config.host,
+        user: config.user,
+      });
+    }
+
+    if (pathname === '/api/admin/cms/migrate-seed' && method === 'POST') {
+      try {
+        const seedResult = await seedMysqlDatabase();
+        return Response.json({ ...seedResult });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 500 });
+      }
+    }
+
+    // Settings
+    if (pathname === '/api/admin/cms/settings' && method === 'POST') {
+      try {
+        const { key, value } = await request.json();
+        if (!key) {
+          return Response.json({ success: false, error: 'Setting key is required.' }, { status: 400 });
+        }
+        await updateCmsSetting(key, value, adminUser);
+        return Response.json({ success: true, message: `Setting "${key}" updated.` });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    // Sections
+    if (pathname === '/api/admin/cms/sections' && method === 'POST') {
+      try {
+        const sectionData = await request.json();
+        if (!sectionData.page_slug || !sectionData.section_key) {
+          return Response.json({ success: false, error: 'Page slug and section key are required.' }, { status: 400 });
+        }
+        const updated = await savePageSection(sectionData, adminUser);
+        return Response.json({ success: true, section: updated });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    // Services CRUD
+    if (pathname === '/api/admin/cms/services' && method === 'POST') {
+      try {
+        const serviceData = await request.json();
+        if (!serviceData.title) {
+          return Response.json({ success: false, error: 'Service title is required.' }, { status: 400 });
+        }
+        const saved = await saveCmsService(serviceData, adminUser);
+        return Response.json({ success: true, service: saved });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    if (pathname.match(/^\/api\/admin\/cms\/services\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/cms/services/', '');
+        await deleteCmsService(decodeURIComponent(id), adminUser);
+        return Response.json({ success: true, message: `Service "${id}" deleted.` });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    // Projects CRUD
+    if (pathname === '/api/admin/cms/projects' && method === 'POST') {
+      try {
+        const projectData = await request.json();
+        if (!projectData.title) {
+          return Response.json({ success: false, error: 'Project title is required.' }, { status: 400 });
+        }
+        const saved = await saveCmsProject(projectData, adminUser);
+        return Response.json({ success: true, project: saved });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    if (pathname.match(/^\/api\/admin\/cms\/projects\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/cms/projects/', '');
+        await deleteCmsProject(decodeURIComponent(id), adminUser);
+        return Response.json({ success: true, message: `Project "${id}" deleted.` });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    // Gallery CRUD
+    if (pathname === '/api/admin/cms/gallery' && method === 'POST') {
+      try {
+        const galleryData = await request.json();
+        if (!galleryData.title || !galleryData.image) {
+          return Response.json({ success: false, error: 'Title and image are required.' }, { status: 400 });
+        }
+        const saved = await saveCmsGalleryItem(galleryData, adminUser);
+        return Response.json({ success: true, item: saved });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    if (pathname.match(/^\/api\/admin\/cms\/gallery\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/cms/gallery/', '');
+        await deleteCmsGalleryItem(decodeURIComponent(id), adminUser);
+        return Response.json({ success: true, message: `Gallery item "${id}" deleted.` });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    // Reviews CRUD
+    if (pathname === '/api/admin/cms/reviews' && method === 'POST') {
+      try {
+        const reviewData = await request.json();
+        if (!reviewData.clientName || !reviewData.quote) {
+          return Response.json({ success: false, error: 'Client name and review quote are required.' }, { status: 400 });
+        }
+        const saved = await saveCmsReview(reviewData, adminUser);
+        return Response.json({ success: true, review: saved });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    if (pathname.match(/^\/api\/admin\/cms\/reviews\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/cms/reviews/', '');
+        await deleteCmsReview(decodeURIComponent(id), adminUser);
+        return Response.json({ success: true, message: `Review "${id}" deleted.` });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    // FAQs CRUD
+    if (pathname === '/api/admin/cms/faqs' && method === 'POST') {
+      try {
+        const faqData = await request.json();
+        if (!faqData.question_en || !faqData.answer_en) {
+          return Response.json({ success: false, error: 'Question and answer in English are required.' }, { status: 400 });
+        }
+        const saved = await saveCmsFaq(faqData, adminUser);
+        return Response.json({ success: true, faq: saved });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    if (pathname.match(/^\/api\/admin\/cms\/faqs\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/cms/faqs/', '');
+        await deleteCmsFaq(decodeURIComponent(id), adminUser);
+        return Response.json({ success: true, message: `FAQ "${id}" deleted.` });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    // Careers
+    if (pathname === '/api/admin/cms/careers' && method === 'GET') {
+      try {
+        const applications = await getCareerApplications();
+        return Response.json({ success: true, applications });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 500 });
+      }
+    }
+
+    if (pathname.match(/^\/api\/admin\/cms\/careers\/[^/]+$/) && (method === 'PATCH' || method === 'PUT')) {
+      try {
+        const id = pathname.replace('/api/admin/cms/careers/', '');
+        const { status } = await request.json();
+        const updated = await updateCareerApplicationStatus(decodeURIComponent(id), status, adminUser);
+        return Response.json({ success: true, application: updated });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
       }
     }
   }

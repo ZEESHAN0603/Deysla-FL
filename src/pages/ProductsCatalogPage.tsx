@@ -33,18 +33,19 @@ export const ProductsCatalogPage: React.FC = () => {
   return (
     <div className="w-full bg-white/70 backdrop-blur-xs">
       {/* Page Hero */}
-      <section className="relative theme-hero-luminous text-slate-900 py-8 sm:py-10 lg:py-12 border-b border-slate-200/80 overflow-hidden">
+      <section className="relative theme-hero-luminous text-slate-900 py-10 sm:py-14 lg:py-16 border-b border-slate-200/80 overflow-hidden">
         {/* Top Brand Iridescent Theme Gradient Bar */}
         <div className="absolute top-0 left-0 right-0 h-1 theme-gradient-bar z-20" />
 
         {/* Ambient Grid Pattern */}
         <div className="absolute inset-0 theme-grid-pattern opacity-30 pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2.5 sm:space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/95 border border-slate-200 text-slate-800 text-xs font-semibold shadow-2xs backdrop-blur-md">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 sm:space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-slate-200 text-slate-800 text-xs font-semibold shadow-2xs backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
             <span>{lang === 'ar' ? 'الأجهزة والمعدات والبنية التحتية الفيزيائية' : 'HARDWARE & PHYSICAL INFRASTRUCTURE'}</span>
           </div>
+
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 max-w-3xl leading-tight">
             {lang === 'ar' ? (
               <>كتالوج منتجات <span className="theme-text-gradient">ديسلا</span> المعتمدة</>
@@ -52,23 +53,40 @@ export const ProductsCatalogPage: React.FC = () => {
               <>DEYSLA <span className="theme-text-gradient">Products</span> Catalogue</>
             )}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
+
+          <p className="text-xs sm:text-sm lg:text-base text-slate-600 max-w-2xl leading-relaxed">
             {dict.products.subtitle}
           </p>
 
           {/* Quick Search */}
-          <div className="pt-2 max-w-md">
+          <div className="pt-1 max-w-md">
             <div className="relative">
-              <Search className="w-4 h-4 text-slate-400 absolute start-3.5 top-3" />
+              <Search className="w-4 h-4 text-slate-400 absolute start-3.5 top-3.5" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder={lang === 'ar' ? 'البحث عن فئة أو نوع المعدات...' : 'Filter by product category or hardware type...'}
-                className="w-full bg-white text-slate-900 text-xs ps-10 pe-4 py-2.5 rounded-xl border border-slate-200 shadow-2xs focus:outline-hidden focus:border-sky-500 focus:ring-2 focus:ring-sky-200/60"
+                className="w-full bg-white text-slate-900 text-xs sm:text-sm ps-10 pe-4 py-3 rounded-xl border border-slate-200 shadow-2xs focus:outline-hidden focus:border-sky-500 focus:ring-2 focus:ring-sky-200/60 transition-all"
                 dir="auto"
               />
             </div>
+          </div>
+
+          {/* Quality Badges */}
+          <div className="pt-2 flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-medium text-slate-600">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              {lang === 'ar' ? 'أجهزة أصلية معتمدة 100%' : '100% Genuine OEM Hardware'}
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
+              {lang === 'ar' ? 'مطابق لمواصفات ساسو وهيئة الاتصالات' : 'SASO & CITC Compliant'}
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+              {lang === 'ar' ? 'ضمان المصنع المعتمد' : 'Official Warranty'}
+            </span>
           </div>
         </div>
       </section>

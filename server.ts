@@ -19,6 +19,10 @@ app.all('/api/catalog', (req, res) => {
   handleNodeRequest(req, res, handleAdminApiRequest);
 });
 
+app.all('/api/cms*', (req, res) => {
+  handleNodeRequest(req, res, handleAdminApiRequest);
+});
+
 app.all('/api/admin*', (req, res) => {
   handleNodeRequest(req, res, handleAdminApiRequest);
 });

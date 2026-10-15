@@ -4,11 +4,13 @@ import { ArrowRight, ChevronRight, CheckCircle2, ShieldCheck } from "lucide-reac
 import { SERVICES_DATA } from "../data/services";
 import { useCart } from "../context/CartContext";
 import { useLanguage } from "../context/LanguageContext";
+import { useCmsContent } from "../context/CmsContentContext";
 import { SERVICE_TRANSLATIONS } from "../i18n/translations";
 
 export const ServicesPage: React.FC = () => {
   const { addItem, setIsEnquiryModalOpen } = useCart();
   const { dict, lang, formatPath } = useLanguage();
+  const { services } = useCmsContent();
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
 
   const categories = [
@@ -28,9 +30,9 @@ export const ServicesPage: React.FC = () => {
     return SERVICE_TRANSLATIONS[lang]?.[id]?.shortDescription || fallback;
   };
 
-  const filteredServices = SERVICES_DATA.filter((service) => {
+  const filteredServices = services.filter((service) => {
     if (selectedFilter === "all") return true;
-    return service.relevantCategories.includes(selectedFilter);
+    return service.relevantCategories && service.relevantCategories.includes(selectedFilter);
   });
 
   return (

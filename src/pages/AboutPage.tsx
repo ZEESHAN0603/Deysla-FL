@@ -50,7 +50,7 @@ export const AboutPage: React.FC = () => {
   return (
     <div className="w-full bg-transparent text-slate-900">
       {/* 01. PROFESSIONAL HERO BANNER */}
-      <section className="relative w-full min-h-[220px] sm:min-h-[260px] lg:min-h-[290px] flex items-center justify-center overflow-hidden bg-slate-950 text-white border-b border-slate-800">
+      <section className="relative w-full min-h-[380px] sm:min-h-[480px] lg:min-h-[540px] flex items-center justify-center overflow-hidden bg-slate-950 text-white border-b border-slate-800">
         {/* Top Brand Iridescent Theme Gradient Bar */}
         <div className="absolute top-0 left-0 right-0 h-1 theme-gradient-bar z-20" />
 
@@ -61,7 +61,7 @@ export const AboutPage: React.FC = () => {
             <img
               src="/assets/about-hero-bg.jpg"
               alt="DEYSLA IT Solutions Corporate Headquarters"
-              className="w-full h-full object-cover object-center scale-105 transform contrast-105 brightness-[0.82] transition-transform duration-1000"
+              className="w-full h-full object-cover object-center scale-105 transform contrast-105 brightness-[0.78] transition-transform duration-1000"
             />
           </picture>
 
@@ -75,36 +75,55 @@ export const AboutPage: React.FC = () => {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 pb-12 sm:pb-14 text-center space-y-2.5 sm:space-y-3">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 text-center space-y-4 sm:space-y-6">
           {/* Top Kicker */}
-          <div className="inline-flex items-center gap-2 text-[9px] sm:text-[11px] font-mono font-bold uppercase tracking-widest text-white bg-white/20 border border-white/35 px-3 py-1 rounded-full shadow-2xs backdrop-blur-md">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest text-white bg-white/20 border border-white/35 px-4 py-1.5 rounded-full shadow-md backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
             <span>{lang === 'ar' ? 'المملكة العربية السعودية · حلول تقنية المعلومات المعتمدة' : 'Kingdom of Saudi Arabia · Tier-1 IT Solutions'}</span>
           </div>
 
           {/* Main Title */}
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white uppercase leading-tight drop-shadow-md">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-tight drop-shadow-lg">
             {lang === 'ar' ? (
               <>من <span className="theme-text-gradient-light">نحن</span></>
             ) : (
-              <>About <span className="theme-text-gradient-light">Us</span></>
+              <>About <span className="theme-text-gradient-light">DEYSLA</span></>
             )}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xs sm:text-[13px] text-slate-200 max-w-xl mx-auto font-normal leading-relaxed drop-shadow-xs">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-200 max-w-2xl mx-auto font-normal leading-relaxed drop-shadow-sm">
             {dict.about.subtitle}
           </p>
 
+          {/* Quick Highlight Metrics Pills */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            <div className="px-3 py-1.5 rounded-xl bg-white/10 border border-white/20 backdrop-blur-md text-xs text-slate-200 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="font-semibold text-white">15+</span>
+              <span>{lang === 'ar' ? 'سنوات تميز' : 'Years Excellence'}</span>
+            </div>
+            <div className="px-3 py-1.5 rounded-xl bg-white/10 border border-white/20 backdrop-blur-md text-xs text-slate-200 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+              <span className="font-semibold text-white">500+</span>
+              <span>{lang === 'ar' ? 'مشاريع مؤسسية' : 'Enterprise Projects'}</span>
+            </div>
+            <div className="px-3 py-1.5 rounded-xl bg-white/10 border border-white/20 backdrop-blur-md text-xs text-slate-200 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              <span className="font-semibold text-white">100%</span>
+              <span>{lang === 'ar' ? 'أجهزة أصلية معتمدة' : 'OEM Certified Hardware'}</span>
+            </div>
+          </div>
+
           {/* Breadcrumb Navigation */}
-          <div className="pt-1">
+          <div className="pt-2">
             <nav
               aria-label="Breadcrumb"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 border border-white/35 text-[11px] font-semibold text-white shadow-2xs backdrop-blur-md"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 border border-white/35 text-xs font-semibold text-white shadow-sm backdrop-blur-md"
             >
               <Link
                 to={formatPath("/")}
-                className="hover:text-white transition-colors uppercase tracking-wider"
+                className="hover:text-cyan-200 transition-colors uppercase tracking-wider"
               >
                 {dict.nav.home}
               </Link>
@@ -118,7 +137,7 @@ export const AboutPage: React.FC = () => {
 
         {/* Bottom Strip: Key Telemetry Accents */}
         <div className="absolute bottom-0 inset-x-0 z-10 border-t border-white/20 bg-white/10 backdrop-blur-md">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <div className="flex flex-wrap items-center justify-center sm:justify-between gap-3 sm:gap-4 text-xs font-mono text-slate-300">
               <span className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />

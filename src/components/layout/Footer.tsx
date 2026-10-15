@@ -15,11 +15,13 @@ import { COMPANY_DATA } from "../../data/company";
 import { PRODUCT_CATEGORIES } from "../../data/productCategories";
 import { SERVICES_DATA } from "../../data/services";
 import { useLanguage } from "../../context/LanguageContext";
+import { useCmsContent } from "../../context/CmsContentContext";
 import { LanguageSwitcher } from "../common/LanguageSwitcher";
 import { CATEGORY_TRANSLATIONS, SERVICE_TRANSLATIONS } from "../../i18n/translations";
 
 export const Footer: React.FC = () => {
   const { language, dict, formatPath } = useLanguage();
+  const { companyInfo, services } = useCmsContent();
 
   const getCatName = (catId: string, fallback: string) =>
     CATEGORY_TRANSLATIONS[language]?.[catId]?.name || fallback;
@@ -50,24 +52,24 @@ export const Footer: React.FC = () => {
             <div className="space-y-2 pt-2 text-xs">
               <div className="flex items-center gap-2.5 text-slate-700">
                 <MapPin className="w-4 h-4 text-[#ff7a1a] shrink-0" />
-                <span>Al Khalidiya, Dammam, Saudi Arabia</span>
+                <span>{companyInfo.contact.primaryLocation || "Al Khalidiya, Dammam"}, {companyInfo.contact.primaryCity || "Dammam"}, {companyInfo.contact.primaryCountry || "Saudi Arabia"}</span>
               </div>
               <div className="flex items-center gap-2.5 text-slate-700">
                 <Phone className="w-4 h-4 text-[#ff7a1a] shrink-0" />
                 <a
-                  href="tel:+966544553670"
+                  href={`tel:${companyInfo.contact.phone || "+966544553670"}`}
                   className="hover:text-[#0052cc] transition-colors isolate-ltr"
                 >
-                  +966 54 455 3670
+                  {companyInfo.contact.phoneFormatted || "+966 54 455 3670"}
                 </a>
               </div>
               <div className="flex items-center gap-2.5 text-slate-700">
                 <Mail className="w-4 h-4 text-[#ff7a1a] shrink-0" />
                 <a
-                  href="mailto:info@deysla.com"
+                  href={`mailto:${companyInfo.contact.email || "info@deysla.com"}`}
                   className="hover:text-[#0052cc] transition-colors isolate-ltr"
                 >
-                  info@deysla.com
+                  {companyInfo.contact.email || "info@deysla.com"}
                 </a>
               </div>
               <div className="flex items-center gap-2.5 text-slate-500 pt-1">
@@ -126,7 +128,7 @@ export const Footer: React.FC = () => {
               {dict.footer.servicesTitle}
             </h4>
             <ul className="space-y-2 text-xs">
-              {SERVICES_DATA.slice(0, 7).map((s) => (
+              {services.slice(0, 7).map((s) => (
                 <li key={s.id}>
                   <Link
                     to={formatPath(`/services/${s.slug}`)}

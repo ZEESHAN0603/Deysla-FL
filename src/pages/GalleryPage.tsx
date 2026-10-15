@@ -18,9 +18,11 @@ import {
   Boxes,
 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useCmsContent } from "../context/CmsContentContext";
 
 export const GalleryPage: React.FC = () => {
   const { language, formatPath } = useLanguage();
+  const { gallery } = useCmsContent();
   const isAr = language === "ar";
 
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -63,8 +65,8 @@ export const GalleryPage: React.FC = () => {
 
   const filtered =
     selectedCategory === "all"
-      ? GALLERY_DATA
-      : GALLERY_DATA.filter((item) => item.category === selectedCategory);
+      ? gallery
+      : gallery.filter((item) => item.category === selectedCategory);
 
   return (
     <div className="w-full bg-white/70 backdrop-blur-xs">

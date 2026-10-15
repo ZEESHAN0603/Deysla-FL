@@ -140,7 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="h-1 w-full theme-gradient-bar" />
 
       {/* Main Bar: Horizontal Navbar on Laptop/Desktop (>= 1024px), Compact Header with Sidebar Trigger on Mobile (< 1024px) */}
-      <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 lg:gap-4">
+      <div className="w-full max-w-[1480px] mx-auto px-3.5 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 lg:gap-4">
         {/* Zone 1: DEYSLA Brand Wordmark / Official Logo */}
         <div className="flex items-center shrink-0 min-w-0">
           <Link
@@ -151,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <img
               src="/assets/logo.png"
               alt="DEYSLA IT SOLUTIONS"
-              className="h-8 xs:h-8.5 sm:h-9 lg:h-9.5 xl:h-10 w-auto max-w-[160px] xs:max-w-[200px] sm:max-w-[240px] lg:max-w-none object-contain transition-transform duration-200"
+              className="h-7 xs:h-8 sm:h-9 lg:h-9.5 xl:h-10 w-auto max-w-[125px] xs:max-w-[155px] sm:max-w-[220px] lg:max-w-none object-contain transition-transform duration-200"
             />
           </Link>
         </div>
@@ -215,7 +215,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Global Search Button */}
           <button
             onClick={onOpenSearch}
-            className="inline-flex items-center justify-center gap-1.5 h-9 sm:h-10 px-2.5 sm:px-3 lg:px-2.5 xl:px-3 text-xs sm:text-sm font-medium text-neutral-800 hover:text-[#ff5e00] bg-neutral-100 hover:bg-orange-50/60 hover:border-orange-200 rounded-xl transition-all border border-neutral-200 shadow-2xs focus:outline-hidden cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 w-9 h-9 sm:w-auto sm:h-10 sm:px-3 lg:px-2.5 xl:px-3 text-xs sm:text-sm font-medium text-neutral-800 hover:text-[#ff5e00] bg-neutral-100 hover:bg-orange-50/60 hover:border-orange-200 rounded-xl transition-all border border-neutral-200 shadow-2xs focus:outline-hidden cursor-pointer shrink-0"
             title={dict.nav.search}
             aria-label={dict.nav.search}
           >
@@ -232,15 +232,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Product Enquiry Cart Button */}
           <button
             onClick={() => setIsEnquiryModalOpen(true)}
-            className="relative inline-flex items-center justify-center gap-1.5 h-9 sm:h-10 px-3 sm:px-3.5 lg:px-3 xl:px-4 text-xs sm:text-sm font-bold text-white theme-button-primary active:opacity-90 rounded-xl shadow-xs hover:shadow-md transition-all focus:outline-hidden whitespace-nowrap cursor-pointer"
+            className="relative inline-flex items-center justify-center gap-1.5 w-9 h-9 sm:w-auto sm:h-10 px-0 sm:px-3.5 lg:px-3 xl:px-4 text-xs sm:text-sm font-bold text-white theme-button-primary active:opacity-90 rounded-xl shadow-xs hover:shadow-md transition-all focus:outline-hidden whitespace-nowrap cursor-pointer shrink-0"
             aria-label={`${dict.nav.requestQuote} (${totalItemsCount})`}
           >
             <ShoppingCart className="w-4 h-4 shrink-0" />
-            <span className="hidden sm:inline lg:hidden xl:inline">{dict.nav.requestQuote}</span>
-            <span className="hidden lg:inline xl:hidden">{dict.nav.requestQuote}</span>
-            <span className="sm:hidden">{dict.nav.requestQuote}</span>
+            <span className="hidden sm:inline">{dict.nav.requestQuote}</span>
             {totalItemsCount > 0 && (
-              <span className="inline-flex items-center justify-center min-w-[18px] sm:min-w-[20px] h-4.5 sm:h-5 px-1 sm:px-1.5 bg-white text-[#ff5e00] text-[11px] sm:text-xs font-black rounded-full tabular-nums shadow-xs border border-orange-200">
+              <span className="absolute -top-1 -end-1 sm:static sm:top-auto sm:end-auto inline-flex items-center justify-center min-w-[18px] sm:min-w-[20px] h-4.5 sm:h-5 px-1 sm:px-1.5 bg-white text-[#ff5e00] text-[10px] sm:text-xs font-black rounded-full tabular-nums shadow-xs border border-orange-200">
                 {totalItemsCount}
               </span>
             )}
@@ -254,11 +252,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               e.stopPropagation();
               setMobileMenuOpen(true);
             }}
-            className="w-10 h-10 inline-flex items-center justify-center text-slate-800 hover:text-slate-950 bg-slate-100 hover:bg-slate-200/90 border border-slate-200 rounded-xl lg:hidden transition-all focus:outline-hidden cursor-pointer shrink-0 shadow-2xs active:scale-95"
+            className="w-9 h-9 sm:w-10 sm:h-10 inline-flex items-center justify-center text-slate-800 hover:text-slate-950 bg-slate-100 hover:bg-slate-200/90 border border-slate-200 rounded-xl lg:hidden transition-all focus:outline-hidden cursor-pointer shrink-0 shadow-2xs active:scale-95 ms-0.5"
             aria-label={dict.nav.openMenu}
             aria-expanded={mobileMenuOpen}
           >
-            <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-slate-800" />
+            <Menu className="w-5 h-5 text-slate-800" />
           </button>
         </div>
       </div>

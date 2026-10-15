@@ -24,12 +24,38 @@ import { AdminComplaintsTab } from '../../components/admin/AdminComplaintsTab';
 import { AdminQuotesTab } from '../../components/admin/AdminQuotesTab';
 import { AdminMediaTab } from '../../components/admin/AdminMediaTab';
 import { AdminAuditTab } from '../../components/admin/AdminAuditTab';
+import { AdminSettingsTab } from '../../components/admin/AdminSettingsTab';
+import { AdminContentTab } from '../../components/admin/AdminContentTab';
+import { AdminServicesTab } from '../../components/admin/AdminServicesTab';
+import { AdminProjectsTab } from '../../components/admin/AdminProjectsTab';
+import { AdminGalleryTab } from '../../components/admin/AdminGalleryTab';
+import { AdminReviewsTab } from '../../components/admin/AdminReviewsTab';
+import { AdminFaqsTab } from '../../components/admin/AdminFaqsTab';
+import { AdminCareersTab } from '../../components/admin/AdminCareersTab';
+import {
+  Settings,
+  FileText,
+  Wrench,
+  Briefcase,
+  MessageSquareQuote,
+  HelpCircle,
+  GraduationCap,
+  Folder,
+} from 'lucide-react';
 
-type AdminTab =
+export type AdminTab =
   | 'overview'
+  | 'settings'
+  | 'content'
+  | 'services'
   | 'products'
   | 'catalog-items'
   | 'brands'
+  | 'projects'
+  | 'gallery'
+  | 'reviews'
+  | 'faqs'
+  | 'careers'
   | 'complaints'
   | 'quotes'
   | 'media'
@@ -43,13 +69,21 @@ export function AdminDashboardPage() {
 
   const navItems = [
     { id: 'overview' as AdminTab, label: 'Dashboard Overview', icon: LayoutDashboard },
+    { id: 'settings' as AdminTab, label: 'Site Settings & MySQL', icon: Settings },
+    { id: 'content' as AdminTab, label: 'Page Content & Hero', icon: FileText },
+    { id: 'services' as AdminTab, label: 'Enterprise Services', icon: Wrench },
     { id: 'products' as AdminTab, label: 'Products & Taxonomy', icon: Package },
-    { id: 'catalog-items' as AdminTab, label: 'Commercial SKUs (Sub-Products)', icon: Layers },
+    { id: 'catalog-items' as AdminTab, label: 'Commercial SKUs', icon: Layers },
     { id: 'brands' as AdminTab, label: 'OEM Brand Partners', icon: Award },
-    { id: 'complaints' as AdminTab, label: 'Customer Complaints & Inquiries', icon: MessageSquareWarning },
-    { id: 'quotes' as AdminTab, label: 'Quotation Requests (RFQs)', icon: FileSpreadsheet },
-    { id: 'media' as AdminTab, label: 'Media & Image Assets', icon: ImageIcon },
-    { id: 'audit' as AdminTab, label: 'Audit Trail & Snapshots', icon: History },
+    { id: 'projects' as AdminTab, label: 'Turnkey Projects', icon: Briefcase },
+    { id: 'gallery' as AdminTab, label: 'Showcase Gallery', icon: ImageIcon },
+    { id: 'reviews' as AdminTab, label: 'Client Reviews', icon: MessageSquareQuote },
+    { id: 'faqs' as AdminTab, label: 'FAQs Knowledge Base', icon: HelpCircle },
+    { id: 'careers' as AdminTab, label: 'Careers & Resumes', icon: GraduationCap },
+    { id: 'complaints' as AdminTab, label: 'Inquiries & Complaints', icon: MessageSquareWarning },
+    { id: 'quotes' as AdminTab, label: 'Quotation Requests', icon: FileSpreadsheet },
+    { id: 'media' as AdminTab, label: 'Media & Image Assets', icon: Folder },
+    { id: 'audit' as AdminTab, label: 'Audit Trail', icon: History },
   ];
 
   const handleSelectProductForSubproducts = (productId: string) => {
@@ -64,7 +98,8 @@ export function AdminDashboardPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
-            className="md:hidden p-2 text-slate-500 hover:text-slate-800 rounded-lg hover:bg-slate-100 cursor-pointer"
+            className="md:hidden w-9 h-9 inline-flex items-center justify-center text-slate-700 hover:text-slate-950 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg cursor-pointer shrink-0 shadow-2xs transition-colors"
+            aria-label="Toggle mobile sidebar"
           >
             {isMobileSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -170,6 +205,9 @@ export function AdminDashboardPage() {
           {activeTab === 'overview' && (
             <AdminOverviewTab onNavigateTab={(t) => setActiveTab(t as AdminTab)} />
           )}
+          {activeTab === 'settings' && <AdminSettingsTab />}
+          {activeTab === 'content' && <AdminContentTab />}
+          {activeTab === 'services' && <AdminServicesTab />}
           {activeTab === 'products' && (
             <AdminProductsTab
               onSelectProductForSubproducts={handleSelectProductForSubproducts}
@@ -182,6 +220,11 @@ export function AdminDashboardPage() {
             />
           )}
           {activeTab === 'brands' && <AdminBrandsTab />}
+          {activeTab === 'projects' && <AdminProjectsTab />}
+          {activeTab === 'gallery' && <AdminGalleryTab />}
+          {activeTab === 'reviews' && <AdminReviewsTab />}
+          {activeTab === 'faqs' && <AdminFaqsTab />}
+          {activeTab === 'careers' && <AdminCareersTab />}
           {activeTab === 'complaints' && <AdminComplaintsTab />}
           {activeTab === 'quotes' && <AdminQuotesTab />}
           {activeTab === 'media' && <AdminMediaTab />}

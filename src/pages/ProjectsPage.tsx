@@ -4,9 +4,11 @@ import { ArrowRight, ChevronRight, Briefcase, MapPin, Building, ShieldCheck, Che
 import { PROJECTS_DATA, Project } from "../data/projects";
 import { REVIEWS_DATA } from "../data/reviews";
 import { useLanguage } from "../context/LanguageContext";
+import { useCmsContent } from "../context/CmsContentContext";
 
 export const ProjectsPage: React.FC = () => {
   const { language, formatPath } = useLanguage();
+  const { projects, reviews } = useCmsContent();
   const isAr = language === "ar";
 
   const [selectedFilter, setSelectedFilter] = useState("all");
@@ -21,8 +23,8 @@ export const ProjectsPage: React.FC = () => {
 
   const filtered =
     selectedFilter === "all"
-      ? PROJECTS_DATA
-      : PROJECTS_DATA.filter((p) => p.category === selectedFilter);
+      ? projects
+      : projects.filter((p) => p.category === selectedFilter);
 
   return (
     <div className="w-full bg-white/70 backdrop-blur-xs">

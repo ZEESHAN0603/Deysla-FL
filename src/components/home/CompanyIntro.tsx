@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { RadialProductRange } from "./RadialProductRange";
 import { useLanguage } from "../../context/LanguageContext";
+import { useCmsContent } from "../../context/CmsContentContext";
 
 export const CompanyIntro: React.FC = () => {
   const { lang, formatPath } = useLanguage();
+  const { getSectionContent } = useCmsContent();
+  const introContent = getSectionContent<any>('home', 'company_intro', {});
 
   return (
     <section className="py-12 sm:py-20 lg:py-24 bg-transparent border-b border-neutral-200/80 text-neutral-900">
@@ -24,7 +27,7 @@ export const CompanyIntro: React.FC = () => {
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
               {lang === 'ar'
                 ? 'شركة ديسلا لحلول تقنية المعلومات هي موزع ومورد رئيسي لمجموعة شاملة من أجهزة تقنية المعلومات المؤسسية، والكابلات الهيكلية، وحلول اتصالات الصوت عبر بروتوكول الإنترنت (IP Telecom) في جميع أنحاء المملكة العربية السعودية ودول الخليج. نمتلك خبرة تفوق 15 عاماً في القطاع ونفذنا مشاريع رائدة لقطاعات التشييد، الهندسة، النفط والغاز، الطاقة، الضيافة، النقل، سلاسل الإمداد، الرعاية الصحية، والتعليم.'
-                : 'DEYSLA IT Solutions is a distributor and supplier of a wide range of enterprise IT hardware, electrical cables, structured cabling, and IP telecom technology throughout Saudi Arabia and the GCC. We have over 15 years of experience within the industry and have delivered for clients in sectors such as construction, engineering, oil and gas, energy, hospitality, transportation, retail, logistics, healthcare, and education.'}
+                : (introContent?.description || 'DEYSLA IT Solutions is a distributor and supplier of a wide range of enterprise IT hardware, electrical cables, structured cabling, and IP telecom technology throughout Saudi Arabia and the GCC. We have over 15 years of experience within the industry and have delivered for clients in sectors such as construction, engineering, oil and gas, energy, hospitality, transportation, retail, logistics, healthcare, and education.')}
             </p>
 
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">

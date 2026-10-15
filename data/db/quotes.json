@@ -1,5 +1,57 @@
 [
   {
+    "id": "DEY-RFQ-056385",
+    "name": "Zeeshan",
+    "email": "06zeeshan03@gmail.com",
+    "phone": "87654321007",
+    "companyName": "ZEES",
+    "city": "Dammam",
+    "projectTimeline": "Immediate (1-2 weeks)",
+    "items": [
+      {
+        "id": "service-security-systems",
+        "title": "Security Systems Service Proposal",
+        "category": "Service Consultation",
+        "quantity": 1
+      },
+      {
+        "id": "service-data-migration",
+        "title": "Data Migration Service Proposal",
+        "category": "Service Consultation",
+        "quantity": 1
+      }
+    ],
+    "status": "Pending",
+    "submittedAt": "2026-10-15T15:04:10.570Z",
+    "updatedAt": "2026-10-15T15:04:10.570Z"
+  },
+  {
+    "id": "DEY-RFQ-909124",
+    "name": "Zeeshan",
+    "email": "06zeeshan03@gmail.com",
+    "phone": "87654321007",
+    "companyName": "ZEES",
+    "city": "Dammam",
+    "projectTimeline": "Immediate (1-2 weeks)",
+    "items": [
+      {
+        "id": "service-security-systems",
+        "title": "Security Systems Service Proposal",
+        "category": "Service Consultation",
+        "quantity": 1
+      },
+      {
+        "id": "service-data-migration",
+        "title": "Data Migration Service Proposal",
+        "category": "Service Consultation",
+        "quantity": 1
+      }
+    ],
+    "status": "Pending",
+    "submittedAt": "2026-10-15T15:03:59.100Z",
+    "updatedAt": "2026-10-15T15:03:59.100Z"
+  },
+  {
     "id": "DEY-RFQ-009682",
     "name": "Sultan Al-Otaibi",
     "email": "sultan@saudi-datacenter.com",

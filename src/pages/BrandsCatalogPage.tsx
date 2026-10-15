@@ -4,6 +4,7 @@ import { ArrowRight, ChevronRight, Search, ShieldCheck, Layers, Building, Sparkl
 import { Brand } from "../data/brands";
 import { useLanguage } from "../context/LanguageContext";
 import { useCatalog } from "../context/CatalogContext";
+import { AnimatedMarqueeHero } from "../components/ui/hero-3";
 
 export const BrandsCatalogPage: React.FC = () => {
   const { language, formatPath } = useLanguage();
@@ -34,6 +35,11 @@ export const BrandsCatalogPage: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
+  const brandItemsForMarquee = brands.map((b) => ({
+    name: b.name,
+    logo: b.logo || '/assets/brands/cisco-logo-0-2048x2048-1-1536x1536-1.png',
+    category: b.origin,
+  }));
 
   return (
     <div className="w-full bg-slate-50 min-h-screen">
@@ -52,70 +58,80 @@ export const BrandsCatalogPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Page Hero Header */}
-      <section className="relative theme-hero-luminous text-slate-900 py-14 sm:py-20 lg:py-24 border-b border-slate-200/80 overflow-hidden">
-        {/* Top Brand Iridescent Theme Gradient Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 theme-gradient-bar z-20" />
+      {/* Dynamic Animated Marquee Hero Component */}
+      <AnimatedMarqueeHero
+        tagline={isAr ? "منظومة الشركات المصنعة العالمية المعتمدة" : "GLOBAL OEM ALLIANCES · 50+ CERTIFIED BRANDS"}
+        title={
+          isAr ? (
+            <>
+              شركاؤنا من <span className="theme-text-gradient-light">العلامات التجارية العالمية</span>
+            </>
+          ) : (
+            <>
+              Enterprise Technology <span className="theme-text-gradient-light">Brand Partners</span>
+            </>
+          )
+        }
+        description={
+          isAr
+            ? "تقنية موثوقة وحلول مجربة. تعقد ديسلا شراكات مع كبرى الشركات المصنعة العالمية لتوريد أجهزة ومعدات مؤسسية أصلية، كابلات هيكلية، وأنظمة أمان سيبراني في المملكة العربية السعودية ودول الخليج."
+            : "Trusted Technology. Proven Solutions. DEYSLA partners with top-tier global manufacturers to deliver authenticated enterprise hardware, structured cabling, cybersecurity appliances, and telecom systems throughout Saudi Arabia and the GCC."
+        }
+        ctaText={isAr ? "استكشف العلامات والمنتجات" : "Explore OEM Brands"}
+        ctaHref="#brands-directory"
+        brandItems={brandItemsForMarquee}
+      />
 
-        {/* Ambient Grid Pattern */}
-        <div className="absolute inset-0 theme-grid-pattern opacity-30 pointer-events-none" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-slate-200 text-slate-800 text-xs font-semibold shadow-2xs backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-sky-600" />
-            <span>
-              {isAr ? "منظومة الشركات المصنعة العالمية" : "GLOBAL OEM ECOSYSTEM"}
-            </span>
-          </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 max-w-3xl leading-tight">
-            {isAr ? (
-              <>شركاؤنا من <span className="theme-text-gradient">العلامات التجارية التقنية</span></>
-            ) : (
-              <>Our Technology <span className="theme-text-gradient">Brand Partners</span></>
-            )}
-          </h1>
-          <p className="text-xs sm:text-base text-slate-600 max-w-2xl leading-relaxed">
-            {isAr
-              ? "تقنية موثوقة. حلول مجربة. تعقد ديسلا شراكات مع كبرى الشركات المصنعة العالمية لتوريد أجهزة ومعدات مؤسسية أصلية، كابلات هيكلية، أجهزة أمان سيبراني، وأنظمة تحكم أوتوماتيكية في المملكة العربية السعودية ودول الخليج العربي."
-              : "Trusted Technology. Proven Solutions. DEYSLA partners with top-tier global manufacturers to deliver authenticated enterprise hardware, structured cabling, cybersecurity appliances, and automation control systems throughout Saudi Arabia and the GCC."}
-          </p>
-
-          <div className="pt-2 flex flex-wrap items-center gap-6 text-xs text-slate-600 font-medium">
+      {/* Trust & Credibility Strip */}
+      <section className="bg-white border-b border-slate-200 py-4 shadow-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center sm:justify-between gap-4 text-xs text-slate-600 font-medium">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>
-                {isAr ? "أكثر من 40 تحالفاً مع شركات عالمية" : "40+ Global Manufacturer Alliances"}
-              </span>
+              <span>{isAr ? "أكثر من 50 تحالفاً مع شركات عالمية" : "50+ Global Manufacturer Alliances"}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
-              <span>
-                {isAr ? "أجهزة أصلية معتمدة 100% بضمان المصنع" : "100% Genuine Warrantied Hardware"}
-              </span>
+              <span>{isAr ? "أجهزة أصلية معتمدة 100% بضمان المصنع" : "100% Genuine Warrantied Hardware"}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
-              <span>
-                {isAr ? "توريد معتمد عبر قنوات التوزيع الخليجية" : "Authorized GCC Channel Supply"}
-              </span>
+              <span>{isAr ? "توريد معتمد عبر قنوات التوزيع الخليجية" : "Authorized GCC Channel Supply"}</span>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Search Box */}
-          <div className="pt-4 max-w-md">
-            <div className="relative">
-              <Search className="w-4 h-4 text-slate-400 absolute start-3.5 top-3.5" />
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder={
-                  isAr
-                    ? "ابحث عن اسم العلامة التجارية أو المجال التقني..."
-                    : "Search brand name or technology domain..."
-                }
-                className="w-full bg-white text-slate-900 text-xs ps-10 pe-4 py-3 rounded-xl border border-slate-200 shadow-2xs focus:outline-hidden focus:border-sky-500 focus:ring-2 focus:ring-sky-100 transition-all"
-              />
+      {/* Directory Anchor & Search Bar */}
+      <section id="brands-directory" className="pt-8 sm:pt-12 pb-4 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-2">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                {isAr ? "دليل العلامات التجارية والشراكات" : "OEM Brands Directory"}
+              </h2>
+              <p className="text-xs text-slate-500 mt-0.5">
+                {isAr ? "تصفية حسب التخصص التقني أو البحث المباشر" : "Filter by technology domain or search by manufacturer name"}
+              </p>
+            </div>
+
+            {/* Search Box */}
+            <div className="w-full sm:w-80">
+              <div className="relative">
+                <Search className="w-4 h-4 text-slate-400 absolute start-3.5 top-3" />
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder={
+                    isAr
+                      ? "ابحث عن اسم العلامة التجارية..."
+                      : "Search brand name or technology..."
+                  }
+                  className="w-full bg-white text-slate-900 text-xs ps-10 pe-4 py-2.5 rounded-xl border border-slate-200 shadow-2xs focus:outline-hidden focus:border-sky-500 focus:ring-2 focus:ring-sky-200/60"
+                  dir="auto"
+                />
+              </div>
             </div>
           </div>
         </div>
