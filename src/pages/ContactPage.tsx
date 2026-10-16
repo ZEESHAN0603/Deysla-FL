@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Send, CheckCircle2, ChevronRight, MapPin, Sparkles, AlertCircle, Loader2, Briefcase } from "lucide-react";
+import { Send, CheckCircle2, ChevronRight, MapPin, Sparkles, AlertCircle, Loader2, Briefcase, Copy, Check } from "lucide-react";
 import { COMPANY_DATA } from "../data/company";
 import { ContactLocationsMap } from "../components/contact/ContactLocationsMap";
 import { CareersModal } from "../components/careers/CareersModal";
@@ -13,12 +13,15 @@ export const ContactPage: React.FC = () => {
     email: "",
     contact: "",
     companyName: "",
+    type: "Contact Enquiry",
     message: "",
     website: "", // honeypot
   });
 
   const [formState, setFormState] = useState<"default" | "loading" | "success" | "error">("default");
   const [errorMessage, setErrorMessage] = useState("");
+  const [submittedRef, setSubmittedRef] = useState<string | null>(null);
+  const [copiedEmail, setCopiedEmail] = useState(false);
   const [isCareersModalOpen, setIsCareersModalOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -56,18 +59,41 @@ export const ContactPage: React.FC = () => {
       }
 
       setFormState("success");
-      // Clear form on success only
+      setSubmittedRef(data.complaintId || null);
+      // Clear form on success
       setFormData({
         name: "",
         email: "",
         contact: "",
         companyName: "",
+        type: "Contact Enquiry",
         message: "",
         website: "",
       });
     } catch (err: any) {
       setFormState("error");
-      setErrorMessage(err.message || (lang === 'ar' ? 'فشل إرسال الرسالة. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على info@deysla.com.' : 'Failed to send message. Please try again or email us directly at info@deysla.com.'));
+      setErrorMessage(err.message || (lang === 'ar' ? 'فشل إرسال الرسالة. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على info@sa.deysla.com.' : 'Failed to send message. Please try again or email us directly at info@sa.deysla.com.'));
+    }
+  };
+
+  const handleCopyEmail = async () => {
+    const emailToCopy = "enquiry-sa@deysla.com";
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(emailToCopy);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = emailToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2500);
+    } catch {
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2500);
     }
   };
 
@@ -142,14 +168,25 @@ export const ContactPage: React.FC = () => {
 
               {/* Form Status Banners */}
               {formState === "success" && (
-                <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 space-y-2">
-                  <div className="flex items-center gap-2">
+                <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border border-emerald-300 text-emerald-950 shadow-2xs space-y-1.5 animate-in fade-in zoom-in-95 duration-200">
+                  <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                    <p className="text-sm font-bold">{dict.contact.successTitle}</p>
+                    <h3 className="text-sm sm:text-base font-bold text-emerald-950">
+                      {lang === 'ar' ? 'تم إرسال الرسالة بنجاح' : 'Message Transmitted Successfully'}
+                    </h3>
                   </div>
-                  <p className="text-xs text-emerald-700 leading-relaxed">
-                    {dict.contact.successMessage}
+                  <p className="text-xs sm:text-sm text-emerald-700 leading-relaxed ps-7.5">
+                    {lang === 'ar'
+                      ? 'شكراً لتواصلك مع DEYSLA IT Solutions. تم إشعار المتخصص الفني وسيقوم بالرد عليك قريباً.'
+                      : 'Thank you for contacting DEYSLA IT Solutions. A dedicated technical specialist has been notified and will reply shortly.'}
                   </p>
+                  {submittedRef && (
+                    <div className="ps-7.5 pt-1 flex items-center gap-2">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-100/80 border border-emerald-300/80 font-mono text-xs font-bold text-emerald-900">
+                        {lang === 'ar' ? 'رقم التذكرة:' : 'Tracking Ref:'} {submittedRef}
+                      </span>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -239,6 +276,25 @@ export const ContactPage: React.FC = () => {
                   </div>
                 </div>
 
+                {/* Inquiry Type */}
+                <div>
+                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                    {lang === 'ar' ? 'نوع الاستفسار *' : 'Inquiry Category *'}
+                  </label>
+                  <select
+                    value={formData.type}
+                    onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                    className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-hidden focus:border-blue-600 bg-slate-50/50 focus:bg-white transition-colors"
+                  >
+                    <option value="Contact Enquiry">
+                      {lang === 'ar' ? 'استفسار عام / توريد معدات وحلول' : 'General Contact Enquiry / Equipment & Solutions'}
+                    </option>
+                    <option value="Complaint">
+                      {lang === 'ar' ? 'شكوى عملاء / بلاغ دعم فني' : 'Customer Complaint / Technical Support Ticket'}
+                    </option>
+                  </select>
+                </div>
+
                 {/* Message */}
                 <div>
                   <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
@@ -288,7 +344,7 @@ export const ContactPage: React.FC = () => {
       {/* Careers Section */}
       <section className="py-10 sm:py-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-5 sm:p-10 rounded-2xl sm:rounded-3xl bg-slate-900 text-white flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-slate-900 text-white flex flex-col lg:flex-row lg:items-center justify-between gap-6 overflow-hidden">
             <div className="space-y-2 max-w-xl">
               <span className="text-xs font-bold text-blue-400 uppercase tracking-wider">
                 {dict.contact.careersBoxBadge}
@@ -298,21 +354,37 @@ export const ContactPage: React.FC = () => {
                 {dict.contact.careersBoxDescription}
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
               <button
                 type="button"
                 onClick={() => setIsCareersModalOpen(true)}
-                className="w-full sm:w-auto text-center px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition-colors shrink-0 flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md active:scale-98"
               >
-                <Briefcase className="w-4 h-4" />
+                <Briefcase className="w-4 h-4 shrink-0" />
                 <span>{dict.contact.careersApplyBtn}</span>
               </button>
-              <a
-                href={`mailto:${COMPANY_DATA.contact.email}?subject=Career%20Application%20-%20DEYSLA`}
-                className="w-full sm:w-auto text-center px-6 py-3 bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs rounded-xl transition-colors shrink-0"
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="px-5 py-3 bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md active:scale-98"
+                title={lang === 'ar' ? 'انقر لنسخ البريد الإلكتروني' : 'Click to copy email address'}
               >
-                {dict.contact.careersEmailBtn} ({COMPANY_DATA.contact.email})
-              </a>
+                {copiedEmail ? (
+                  <>
+                    <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span className="text-emerald-700 font-bold">
+                      {lang === 'ar' ? 'تم نسخ البريد!' : 'Email Copied!'} (enquiry-sa@deysla.com)
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4 text-slate-600 shrink-0" />
+                    <span>
+                      {dict.contact.careersEmailBtn} (enquiry-sa@deysla.com)
+                    </span>
+                  </>
+                )}
+              </button>
             </div>
           </div>
         </div>

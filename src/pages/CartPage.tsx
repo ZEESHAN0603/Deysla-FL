@@ -73,10 +73,11 @@ export const CartPage: React.FC = () => {
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok || !data.success) {
-        throw new Error(data.error || (lang === 'ar' ? 'فشل إرسال طلب عرض الأسعار. يرجى المحاولة مرة أخرى أو مراسلتنا على info@deysla.com.' : "Failed to submit RFQ. Please try again or contact info@deysla.com directly."));
+        throw new Error(data.error || (lang === 'ar' ? 'فشل إرسال طلب عرض الأسعار. يرجى المحاولة مرة أخرى أو مراسلتنا على info@sa.deysla.com.' : "Failed to submit RFQ. Please try again or contact info@sa.deysla.com directly."));
       }
 
-      setSubmittedRef(data.rfqReference || `DEY-RFQ-${Date.now().toString().slice(-6)}`);
+      const ref = data.rfqReference || `DEY-RFQ-${Date.now().toString().slice(-6)}`;
+      setSubmittedRef(ref);
       clearCart();
     } catch (err: any) {
       setErrorMsg(err.message || (lang === 'ar' ? 'فشل إرسال الطلب. يرجى التحقق من اتصال الشبكة والمحاولة مجدداً.' : "Failed to dispatch RFQ. Please check your network and try again."));

@@ -199,8 +199,8 @@ export function CookiePolicyPage() {
               {isAr ? (
                 <>
                   إذا كان لديك أي أسئلة حول استخدامنا لملفات تعريف الارتباط أو ممارسات البيانات، يُرجى مراسلة مكتب أمن المعلومات لدينا عبر{" "}
-                  <a href="mailto:info@deysla.com" className="text-sky-600 hover:underline font-semibold isolate-ltr" dir="ltr">
-                    info@deysla.com
+                  <a href="mailto:info@sa.deysla.com" className="text-sky-600 hover:underline font-semibold isolate-ltr" dir="ltr">
+                    info@sa.deysla.com
                   </a>{" "}
                   أو الاتصال بمكتبنا الإقليمي بالدمام على{" "}
                   <a href="tel:+966544553670" className="text-sky-600 hover:underline font-semibold isolate-ltr" dir="ltr">
@@ -210,8 +210,8 @@ export function CookiePolicyPage() {
               ) : (
                 <>
                   If you have questions about our cookie usage or data practices, please email our IT security desk at{" "}
-                  <a href="mailto:info@deysla.com" className="text-sky-600 hover:underline font-semibold">
-                    info@deysla.com
+                  <a href="mailto:info@sa.deysla.com" className="text-sky-600 hover:underline font-semibold">
+                    info@sa.deysla.com
                   </a>{" "}
                   or call our regional Dammam office at{" "}
                   <a href="tel:+966544553670" className="text-sky-600 hover:underline font-semibold">

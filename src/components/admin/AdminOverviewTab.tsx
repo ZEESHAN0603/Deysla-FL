@@ -187,11 +187,11 @@ export function AdminOverviewTab({ onNavigateTab }: AdminOverviewTabProps) {
 
         {/* Customer Complaints / Inquiries */}
         <div
-          onClick={() => onNavigateTab('complaints')}
+          onClick={() => onNavigateTab('inbox')}
           className="bg-white border border-slate-200 hover:border-orange-300 hover:shadow-md rounded-2xl p-5 cursor-pointer transition group shadow-xs"
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-medium text-slate-500">Complaints & Inquiries</span>
+            <span className="text-xs font-medium text-slate-500">Inquiry & Support Inbox</span>
             <div className="w-8 h-8 rounded-lg bg-orange-500/10 text-orange-600 flex items-center justify-center">
               <MessageSquareWarning className="w-4 h-4" />
             </div>
@@ -207,7 +207,7 @@ export function AdminOverviewTab({ onNavigateTab }: AdminOverviewTabProps) {
             )}
           </div>
           <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 group-hover:text-orange-600">
-            <span>Contact form tickets</span>
+            <span>Open unified inbox</span>
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
           </div>
         </div>

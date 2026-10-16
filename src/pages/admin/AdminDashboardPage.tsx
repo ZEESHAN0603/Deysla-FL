@@ -32,6 +32,7 @@ import { AdminGalleryTab } from '../../components/admin/AdminGalleryTab';
 import { AdminReviewsTab } from '../../components/admin/AdminReviewsTab';
 import { AdminFaqsTab } from '../../components/admin/AdminFaqsTab';
 import { AdminCareersTab } from '../../components/admin/AdminCareersTab';
+import { AdminInquiryInboxTab } from '../../components/admin/AdminInquiryInboxTab';
 import {
   Settings,
   FileText,
@@ -41,10 +42,12 @@ import {
   HelpCircle,
   GraduationCap,
   Folder,
+  Inbox,
 } from 'lucide-react';
 
 export type AdminTab =
   | 'overview'
+  | 'inbox'
   | 'settings'
   | 'content'
   | 'services'
@@ -69,6 +72,7 @@ export function AdminDashboardPage() {
 
   const navItems = [
     { id: 'overview' as AdminTab, label: 'Dashboard Overview', icon: LayoutDashboard },
+    { id: 'inbox' as AdminTab, label: 'Customer Inquiry Inbox', icon: Inbox },
     { id: 'settings' as AdminTab, label: 'Site Settings & MySQL', icon: Settings },
     { id: 'content' as AdminTab, label: 'Page Content & Hero', icon: FileText },
     { id: 'services' as AdminTab, label: 'Enterprise Services', icon: Wrench },
@@ -205,6 +209,7 @@ export function AdminDashboardPage() {
           {activeTab === 'overview' && (
             <AdminOverviewTab onNavigateTab={(t) => setActiveTab(t as AdminTab)} />
           )}
+          {activeTab === 'inbox' && <AdminInquiryInboxTab />}
           {activeTab === 'settings' && <AdminSettingsTab />}
           {activeTab === 'content' && <AdminContentTab />}
           {activeTab === 'services' && <AdminServicesTab />}

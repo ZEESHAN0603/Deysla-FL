@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
+import { createPortal } from "react-dom";
 import { X, Upload, CheckCircle2, AlertCircle, Loader2, Briefcase, FileText, Send } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -36,8 +37,15 @@ export const CareersModal: React.FC<CareersModalProps> = ({
   onClose,
   defaultPosition = "Network & Infrastructure Solutions Architect",
 }) => {
-  const { language, dict } = useLanguage();
-  const availablePositions = POSITIONS_BY_LANG[language] || POSITIONS_BY_LANG.en;
+  const { language, isRTL, dict } = useLanguage();
+
+  const availablePositions = useMemo(() => {
+    const list = [...(POSITIONS_BY_LANG[language] || POSITIONS_BY_LANG.en)];
+    if (defaultPosition && !list.includes(defaultPosition)) {
+      list.unshift(defaultPosition);
+    }
+    return list;
+  }, [language, defaultPosition]);
 
   const [formData, setFormData] = useState({
     position: defaultPosition,
@@ -54,10 +62,38 @@ export const CareersModal: React.FC<CareersModalProps> = ({
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [submittedAppId, setSubmittedAppId] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (defaultPosition) {
+      setFormData((prev) => ({ ...prev, position: defaultPosition }));
+    }
+  }, [defaultPosition, isOpen]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        handleModalClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
+  if (!isOpen || typeof document === "undefined") return null;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -148,7 +184,10 @@ export const CareersModal: React.FC<CareersModalProps> = ({
             ? "تم استلام طلب التوظيف بنجاح! سيتواصل معك فريق الاستقطاب قريباً."
             : "Your application has been received successfully!")
       );
-      // Reset form on success only
+
+      setSubmittedAppId(data.applicationId || null);
+
+      // Reset form on success
       setFormData({
         position: defaultPosition,
         name: "",
@@ -175,78 +214,95 @@ export const CareersModal: React.FC<CareersModalProps> = ({
 
   const handleModalClose = () => {
     setSuccessMessage(null);
+    setSubmittedAppId(null);
     setErrorMessage(null);
     onClose();
   };
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs animate-in fade-in"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-xs animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
       onClick={handleModalClose}
     >
       <div
-        className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 animate-in zoom-in-95 max-h-[92vh] flex flex-col"
+        className="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 animate-in zoom-in-95 duration-200 flex flex-col my-auto"
         onClick={(e) => e.stopPropagation()}
+        dir={isRTL ? "rtl" : "ltr"}
       >
         {/* Top Iridescent Theme Gradient Bar */}
-        <div className="h-1.5 w-full theme-gradient-bar shrink-0" />
+        <div className="h-1.5 w-full bg-gradient-to-r from-[#003366] via-[#005599] to-[#ff8c3a] shrink-0" />
 
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50 shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold shadow-xs">
-              <Briefcase className="w-5 h-5 text-sky-400" />
+        <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-slate-200 bg-slate-50/90 shrink-0">
+          <div className="flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-lg bg-[#003366] text-white flex items-center justify-center font-bold shadow-2xs shrink-0">
+              <Briefcase className="w-3.5 h-3.5 text-sky-300" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900 leading-tight">
-                Join DEYSLA IT Solutions
+              <h2 className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">
+                {language === "ar" ? "طلب توظيف مباشر • DEYSLA IT Solutions" : "Careers & Direct Application • DEYSLA IT Solutions"}
               </h2>
-              <p className="text-xs text-slate-500">
-                Direct Application &bull; Dammam HQ &amp; Regional Operations
+              <p className="text-[10px] text-slate-500">
+                {language === "ar" ? "المكتب الإداري - الدمام والعمليات الإقليمية" : "Dammam HQ & Regional GCC Operations"}
               </p>
             </div>
           </div>
           <button
+            type="button"
             onClick={handleModalClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors"
-            aria-label="Close"
+            className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer shrink-0"
+            aria-label={language === "ar" ? "إغلاق" : "Close"}
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Modal Body */}
-        <div className="p-6 overflow-y-auto space-y-5">
+        {/* Modal Body - Guaranteed Non-Scrollable Compact Layout */}
+        <div className="p-4 sm:p-5 overflow-hidden">
           {successMessage ? (
-            <div className="py-8 text-center space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600">
-                <CheckCircle2 className="w-8 h-8" />
+            <div className="py-5 px-3 text-center space-y-3 animate-in fade-in">
+              <div className="w-12 h-12 mx-auto rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 shadow-inner">
+                <CheckCircle2 className="w-7 h-7" />
               </div>
-              <div className="space-y-1">
-                <h3 className="text-lg font-extrabold text-slate-900">Application Submitted!</h3>
-                <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
+              <div className="space-y-0.5">
+                <h3 className="text-sm sm:text-base font-bold text-slate-900">
+                  {language === "ar" ? "تم إرسال طلب التوظيف بنجاح!" : "Application Transmitted Successfully!"}
+                </h3>
+                <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
                   {successMessage}
                 </p>
               </div>
-              <p className="text-xs text-slate-500">
-                Our HR &amp; Technical Evaluation team in Dammam will review your qualifications and contact you.
+
+              {submittedAppId && (
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 font-mono font-bold">
+                  <span>{language === "ar" ? "رقم المرجع:" : "Ref:"}</span>
+                  <span>{submittedAppId}</span>
+                </div>
+              )}
+
+              <p className="text-[11px] text-slate-500">
+                {language === "ar"
+                  ? "سيقوم فريق الموارد البشرية والتقييم الفني بالدمام بمراجعة سيرتك الذاتية والتواصل معك."
+                  : "Our talent acquisition team in Dammam will review your qualifications and contact you."}
               </p>
-              <div className="pt-2">
+
+              <div className="pt-1">
                 <button
+                  type="button"
                   onClick={handleModalClose}
-                  className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl shadow-xs transition-colors cursor-pointer"
+                  className="px-6 py-2 bg-[#003366] hover:bg-[#002244] text-white font-bold text-xs rounded-xl shadow-xs transition-colors cursor-pointer"
                 >
-                  Done
+                  {language === "ar" ? "حسناً، تم" : "Done"}
                 </button>
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-2.5">
               {errorMessage && (
-                <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs flex items-start gap-2.5">
-                  <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
+                <div className="p-2 rounded-lg bg-red-50 border border-red-200 text-red-800 text-[11px] flex items-center gap-1.5">
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0 text-red-600" />
                   <span>{errorMessage}</span>
                 </div>
               )}
@@ -262,28 +318,26 @@ export const CareersModal: React.FC<CareersModalProps> = ({
                 autoComplete="off"
               />
 
-              {/* Position */}
-              <div>
-                <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
-                  {dict.careers.position} *
-                </label>
-                <select
-                  value={formData.position}
-                  onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-                  className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-hidden focus:border-black bg-slate-50/50 focus:bg-white transition-colors"
-                >
-                  {availablePositions.map((pos) => (
-                    <option key={pos} value={pos}>
-                      {pos}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Name & Email */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Row 1: Position & Name */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <div>
-                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-0.5">
+                    {dict.careers.position} *
+                  </label>
+                  <select
+                    value={formData.position}
+                    onChange={(e) => setFormData({ ...formData, position: e.target.value })}
+                    className="w-full h-8 text-xs px-2 rounded-lg border border-slate-200 focus:outline-hidden focus:border-[#003366] bg-slate-50/50 focus:bg-white transition-colors"
+                  >
+                    {availablePositions.map((pos) => (
+                      <option key={pos} value={pos}>
+                        {pos}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-0.5">
                     {dict.contact.fullName} *
                   </label>
                   <input
@@ -292,11 +346,15 @@ export const CareersModal: React.FC<CareersModalProps> = ({
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder={language === "ar" ? "مثال: طارق المنصور" : "e.g. Tariq Al-Mansoor"}
-                    className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-hidden focus:border-black bg-slate-50/50 focus:bg-white transition-colors"
+                    className="w-full h-8 text-xs px-2.5 rounded-lg border border-slate-200 focus:outline-hidden focus:border-[#003366] bg-slate-50/50 focus:bg-white transition-colors"
                   />
                 </div>
+              </div>
+
+              {/* Row 2: Email & Phone */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <div>
-                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-0.5">
                     {dict.contact.email} *
                   </label>
                   <input
@@ -305,15 +363,12 @@ export const CareersModal: React.FC<CareersModalProps> = ({
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="candidate@email.com"
-                    className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-hidden focus:border-black bg-slate-50/50 focus:bg-white transition-colors isolate-ltr"
+                    className="w-full h-8 text-xs px-2.5 rounded-lg border border-slate-200 focus:outline-hidden focus:border-[#003366] bg-slate-50/50 focus:bg-white transition-colors isolate-ltr"
+                    dir="ltr"
                   />
                 </div>
-              </div>
-
-              {/* Phone & Experience */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-0.5">
                     {dict.contact.phone} *
                   </label>
                   <input
@@ -322,30 +377,31 @@ export const CareersModal: React.FC<CareersModalProps> = ({
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+966 5..."
-                    className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-hidden focus:border-black bg-slate-50/50 focus:bg-white transition-colors isolate-ltr"
+                    className="w-full h-8 text-xs px-2.5 rounded-lg border border-slate-200 focus:outline-hidden focus:border-[#003366] bg-slate-50/50 focus:bg-white transition-colors isolate-ltr"
+                    dir="ltr"
                   />
                 </div>
+              </div>
+
+              {/* Row 3: Experience & Notice Period */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <div>
-                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-0.5">
                     {dict.careers.experience}
                   </label>
                   <select
                     value={formData.experience}
                     onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                    className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-hidden focus:border-black bg-slate-50/50 focus:bg-white transition-colors"
+                    className="w-full h-8 text-xs px-2 rounded-lg border border-slate-200 focus:outline-hidden focus:border-[#003366] bg-slate-50/50 focus:bg-white transition-colors"
                   >
                     <option value="1-2 years">{language === "ar" ? "1 - 2 سنوات (مبتدئ / مساعد)" : "1 - 2 Years (Junior / Associate)"}</option>
-                    <option value="3-5 years">{language === "ar" ? "3 - 5 سنوات (متوسط الخبرة)" : "3 - 5 Years (Mid-level Professional)"}</option>
+                    <option value="3-5 years">{language === "ar" ? "3 - 5 سنوات (متوسط الخبرة)" : "3 - 5 Years (Mid-level)"}</option>
                     <option value="5-8 years">{language === "ar" ? "5 - 8 سنوات (أخصائي أول)" : "5 - 8 Years (Senior Specialist)"}</option>
-                    <option value="8+ years">{language === "ar" ? "+8 سنوات (قائد فريق / مهندس معماري)" : "8+ Years (Lead / Architect / Principal)"}</option>
+                    <option value="8+ years">{language === "ar" ? "+8 سنوات (قائد فريق / مهندس)" : "8+ Years (Lead / Architect)"}</option>
                   </select>
                 </div>
-              </div>
-
-              {/* Notice Period & LinkedIn */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-0.5">
                     {dict.careers.noticePeriod}
                   </label>
                   <input
@@ -353,11 +409,15 @@ export const CareersModal: React.FC<CareersModalProps> = ({
                     value={formData.noticePeriod}
                     onChange={(e) => setFormData({ ...formData, noticePeriod: e.target.value })}
                     placeholder={language === "ar" ? "فوري / 30 يوم" : "Immediate / 30 Days"}
-                    className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-hidden focus:border-black bg-slate-50/50 focus:bg-white transition-colors"
+                    className="w-full h-8 text-xs px-2.5 rounded-lg border border-slate-200 focus:outline-hidden focus:border-[#003366] bg-slate-50/50 focus:bg-white transition-colors"
                   />
                 </div>
+              </div>
+
+              {/* Row 4: LinkedIn & CV Upload */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <div>
-                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-0.5">
                     {dict.careers.linkedin}
                   </label>
                   <input
@@ -365,69 +425,65 @@ export const CareersModal: React.FC<CareersModalProps> = ({
                     value={formData.portfolioUrl}
                     onChange={(e) => setFormData({ ...formData, portfolioUrl: e.target.value })}
                     placeholder="https://linkedin.com/in/..."
-                    className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-hidden focus:border-black bg-slate-50/50 focus:bg-white transition-colors isolate-ltr"
+                    className="w-full h-8 text-xs px-2.5 rounded-lg border border-slate-200 focus:outline-hidden focus:border-[#003366] bg-slate-50/50 focus:bg-white transition-colors isolate-ltr"
+                    dir="ltr"
                   />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-0.5">
+                    {dict.careers.resumeUpload} *
+                  </label>
+                  <div
+                    onClick={() => fileInputRef.current?.click()}
+                    className="h-8 flex items-center justify-between px-2.5 rounded-lg border border-dashed border-slate-300 hover:border-[#003366] bg-slate-50/70 hover:bg-slate-50 cursor-pointer text-xs transition-colors"
+                  >
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept=".pdf,.doc,.docx"
+                      onChange={handleFileChange}
+                      className="hidden"
+                    />
+                    <div className="flex items-center gap-1.5 truncate">
+                      {resumeFile ? (
+                        <>
+                          <FileText className="w-3.5 h-3.5 text-[#003366] shrink-0" />
+                          <span className="truncate text-slate-800 font-semibold">{resumeFile.name}</span>
+                        </>
+                      ) : (
+                        <>
+                          <Upload className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                          <span className="text-slate-500 truncate text-[11px]">
+                            {language === "ar" ? "اختر ملف السيرة الذاتية (PDF/DOC)" : "Choose CV file (PDF/DOC)"}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-mono shrink-0">Max 5MB</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Resume File Upload */}
+              {/* Row 5: Certifications / Cover Note */}
               <div>
-                <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
-                  {dict.careers.resumeUpload}
-                </label>
-                <div
-                  onClick={() => fileInputRef.current?.click()}
-                  className="border-2 border-dashed border-slate-300 hover:border-black rounded-xl p-4 text-center cursor-pointer bg-slate-50/60 hover:bg-slate-50 transition-colors"
-                >
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept=".pdf,.doc,.docx"
-                    onChange={handleFileChange}
-                    className="hidden"
-                  />
-                  {resumeFile ? (
-                    <div className="flex items-center justify-center gap-3">
-                      <FileText className="w-5 h-5 text-black" />
-                      <div className="text-start">
-                        <p className="text-xs font-bold text-slate-800">{resumeFile.name}</p>
-                        <p className="text-[11px] text-slate-500">
-                          {(resumeFile.size / 1024).toFixed(1)} KB &bull; {language === "ar" ? "انقر للاستبدال" : "Click to replace"}
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center gap-1.5">
-                      <Upload className="w-5 h-5 text-slate-400" />
-                      <p className="text-xs font-semibold text-slate-700">
-                        {language === "ar" ? "انقر لاختيار السيرة الذاتية أو اسحب الملف هنا" : "Click to select CV or drag and drop"}
-                      </p>
-                      <p className="text-[11px] text-slate-400">PDF, DOC, DOCX (Max 5 MB)</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Cover Letter */}
-              <div>
-                <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-0.5">
                   {dict.careers.coverNote}
                 </label>
-                <textarea
-                  rows={3}
+                <input
+                  type="text"
                   value={formData.coverLetter}
                   onChange={(e) => setFormData({ ...formData, coverLetter: e.target.value })}
-                  placeholder={language === "ar" ? "اذكر بإيجاز شهاداتك التقنية (Cisco, Fortinet, Hikvision...) أو أبرز إنجازاتك المهنية..." : "Tell us briefly about your technical certifications (Cisco, Fortinet, Hikvision, etc.) or achievements..."}
-                  className="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-hidden focus:border-black bg-slate-50/50 focus:bg-white transition-colors resize-none"
+                  placeholder={language === "ar" ? "الشهادات التقنية (Cisco, Fortinet...) أو نبذة موجزة..." : "Key technical certifications (Cisco, Fortinet, etc.) or summary..."}
+                  className="w-full h-8 text-xs px-2.5 rounded-lg border border-slate-200 focus:outline-hidden focus:border-[#003366] bg-slate-50/50 focus:bg-white transition-colors"
                 />
               </div>
 
               {/* Submit Button */}
-              <div className="pt-2">
+              <div className="pt-1">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 theme-button-primary text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+                  className="w-full h-9 bg-[#003366] hover:bg-[#002244] text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer transition-all active:scale-[0.99]"
                 >
                   {isSubmitting ? (
                     <>
@@ -446,6 +502,7 @@ export const CareersModal: React.FC<CareersModalProps> = ({
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

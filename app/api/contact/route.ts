@@ -37,7 +37,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { name, email, contact, companyName, message, website } = body;
+    const { name, email, contact, companyName, message, website, type } = body;
 
     // 3. Honeypot spam protection
     if (website && typeof website === 'string' && website.trim() !== '') {
@@ -84,6 +84,12 @@ export async function POST(request: Request) {
       );
     }
 
+    // Determine inquiry type
+    const inquiryType: 'Contact Enquiry' | 'Complaint' =
+      type === 'Complaint' || (typeof type === 'string' && type.toLowerCase().includes('complaint'))
+        ? 'Complaint'
+        : 'Contact Enquiry';
+
     // 5. Persist inquiry/complaint to database immediately
     const complaintRecord = recordComplaint({
       name: name.trim(),
@@ -91,6 +97,7 @@ export async function POST(request: Request) {
       contact: contact ? contact.trim() : undefined,
       companyName: companyName ? String(companyName).trim() : undefined,
       message: message.trim(),
+      type: inquiryType,
     });
 
     // 6. Verify SMTP configuration and send email notification
@@ -102,6 +109,9 @@ export async function POST(request: Request) {
       try {
         const config = getSmtpConfig();
         const transporter = createTransporter();
+
+        const targetRecipient = config.contactEmail || 'info@sa.deysla.com';
+        console.log(`[Contact] Sending notification email to: ${targetRecipient}`);
 
         const submittedAt = new Intl.DateTimeFormat('en-GB', {
           dateStyle: 'full',
@@ -118,11 +128,16 @@ export async function POST(request: Request) {
           submittedAt,
         });
 
+        const subjectPrefix = inquiryType === 'Complaint' ? 'Customer Complaint' : 'New Customer Enquiry';
+
         const mailResult = await transporter.sendMail({
-          from: config.from,
-          to: config.contactEmail,
+          from: {
+            name: "DEYSLA IT Solutions",
+            address: "info@sa.deysla.com",
+          },
+          to: targetRecipient,
           replyTo: `"${name.trim()}" <${email.trim()}>`,
-          subject: `[${complaintRecord.id}] New Customer Enquiry - DEYSLA: ${name.trim()}${companyName ? ` (${companyName.trim()})` : ''}`,
+          subject: `[${complaintRecord.id}] ${subjectPrefix} - DEYSLA: ${name.trim()}${companyName ? ` (${companyName.trim()})` : ''}`,
           text: emailContent.text,
           html: emailContent.html,
         });
@@ -135,9 +150,12 @@ export async function POST(request: Request) {
       }
     }
 
+    const recipient = getSmtpConfig().contactEmail || 'info@sa.deysla.com';
+
     return Response.json({
       success: true,
       complaintId: complaintRecord.id,
+      recipient,
       message: 'Thank you! Your message has been sent successfully to the DEYSLA support team.',
       messageId: mailMessageId,
       mailSent,
@@ -148,7 +166,7 @@ export async function POST(request: Request) {
     const errorMessage =
       error?.code === 'EAUTH'
         ? 'SMTP authentication failed. Please verify your SMTP username and password / app password.'
-        : error?.message || 'Failed to dispatch email. Please try again or reach out to info@deysla.com directly.';
+        : error?.message || 'Failed to dispatch email. Please try again or reach out to info@sa.deysla.com directly.';
 
     return Response.json(
       {

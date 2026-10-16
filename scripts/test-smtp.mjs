@@ -37,8 +37,11 @@ try {
     console.log("SMTP authentication successful!");
 
     const result = await transporter.sendMail({
-        from: process.env.SMTP_FROM,
-        to: process.env.CONTACT_EMAIL,
+        from: {
+            name: "DEYSLA IT Solutions",
+            address: "info@sa.deysla.com",
+        },
+        to: process.env.CONTACT_EMAIL || "info@sa.deysla.com",
         subject: "DEYSLA Website - SMTP Test",
         text: "SMTP is working. This is a test email from DEYSLA.",
         html: `

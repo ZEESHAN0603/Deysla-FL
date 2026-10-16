@@ -32,6 +32,7 @@ export interface ComplaintRecord {
   contact?: string;
   companyName?: string;
   message: string;
+  type?: 'Contact Enquiry' | 'Complaint';
   status: 'New' | 'In Progress' | 'Resolved';
   notes?: string;
   submittedAt: string;
@@ -517,6 +518,7 @@ export function recordComplaint(data: {
   contact?: string;
   companyName?: string;
   message: string;
+  type?: 'Contact Enquiry' | 'Complaint';
 }): ComplaintRecord {
   initDatabase();
   const complaints = getComplaints();
@@ -528,6 +530,7 @@ export function recordComplaint(data: {
     contact: data.contact?.trim(),
     companyName: data.companyName?.trim(),
     message: data.message.trim(),
+    type: data.type || 'Contact Enquiry',
     status: 'New',
     submittedAt: now,
     updatedAt: now,

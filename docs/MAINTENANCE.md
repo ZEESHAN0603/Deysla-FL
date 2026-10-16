@@ -91,7 +91,7 @@ To maintain stability and prevent breaking changes:
 To rotate critical credentials safely:
 
 ### 5.1 SMTP Password Rotation
-1. Generate a new App Password in your email provider dashboard (Google Workspace or Microsoft 365).
+1. Update or reset the mailbox password for `info@sa.deysla.com` in Hostinger hPanel (**Emails** &rarr; **Email Accounts**).
 2. Update `SMTP_PASS` in `.env.local` / production environment variables.
 3. Test using `npx tsx scripts/testSmtpIntegration.ts` or visit `/api/verify-smtp`.
 4. Reload the server process (`pm2 reload deysla-server`).

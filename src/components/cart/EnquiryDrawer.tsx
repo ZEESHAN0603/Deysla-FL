@@ -81,7 +81,8 @@ export const EnquiryDrawer: React.FC = () => {
         throw new Error(data.error || (language === "ar" ? "تعذر إرسال طلب عرض السعر. يرجى المحاولة لاحقاً." : "Failed to submit quote request. Please try again."));
       }
 
-      setSubmittedRef(data.rfqReference || `DEY-RFQ-${Date.now().toString().slice(-6)}`);
+      const ref = data.rfqReference || `DEY-RFQ-${Date.now().toString().slice(-6)}`;
+      setSubmittedRef(ref);
       clearCart();
     } catch (err: any) {
       setErrorMsg(err.message || (language === "ar" ? "تعذر إرسال طلب عرض السعر. يرجى التحقق من الاتصال." : "Failed to dispatch RFQ. Please check your network and try again."));

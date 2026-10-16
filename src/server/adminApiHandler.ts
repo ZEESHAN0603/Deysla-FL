@@ -44,6 +44,12 @@ import {
   validateImagePath,
   processAndSaveImageUpload,
 } from './imageService.ts';
+import {
+  createTransporter,
+  getSmtpConfig,
+  isSmtpConfigured,
+  buildAdminReplyEmail,
+} from './mail/mailer.ts';
 
 export async function handleAdminApiRequest(request: Request): Promise<Response> {
   const url = new URL(request.url);
@@ -290,6 +296,273 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
         const body = await request.json().catch(() => ({}));
         const updated = updateComplaint(decodeURIComponent(id), body, adminUser);
         return Response.json({ success: true, complaint: updated });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    // 7.1 Unified Customer Inquiries & Job Applications Inbox
+    if (pathname === '/api/admin/inquiries' && method === 'GET') {
+      try {
+        const complaints = getComplaints();
+        const careers = await getCareerApplications();
+
+        const unifiedList = [
+          ...complaints.map((c) => ({
+            id: c.id,
+            source: 'complaints' as const,
+            type: c.type || (c.message?.toLowerCase().includes('complaint') ? 'Complaint' : 'Contact Enquiry'),
+            name: c.name,
+            email: c.email,
+            phone: c.contact,
+            companyName: c.companyName,
+            subjectOrPosition: c.companyName ? `Inquiry from ${c.companyName}` : 'Customer Contact Enquiry',
+            message: c.message,
+            status: c.status,
+            originalStatus: c.status,
+            notes: c.notes,
+            submittedAt: c.submittedAt,
+            updatedAt: c.updatedAt,
+          })),
+          ...careers.map((app) => {
+            let unifiedStatus: 'New' | 'In Progress' | 'Resolved' = 'New';
+            if (app.status === 'Reviewing' || app.status === 'Interviewed') {
+              unifiedStatus = 'In Progress';
+            } else if (app.status === 'Offered' || app.status === 'Archived') {
+              unifiedStatus = 'Resolved';
+            }
+
+            return {
+              id: app.id,
+              source: 'careers' as const,
+              type: 'Job Application' as const,
+              name: app.name,
+              email: app.email,
+              phone: app.phone,
+              companyName: undefined,
+              subjectOrPosition: `Application: ${app.position}`,
+              message: app.coverLetter || `Candidate applied for position: ${app.position}`,
+              status: unifiedStatus,
+              originalStatus: app.status,
+              notes: app.notes,
+              experience: app.experience,
+              noticePeriod: app.noticePeriod,
+              portfolioUrl: app.portfolioUrl,
+              resumeFilename: app.resumeFilename,
+              submittedAt: app.submittedAt,
+              updatedAt: app.updatedAt || app.submittedAt,
+            };
+          }),
+        ];
+
+        // Sort descending by submission date
+        unifiedList.sort(
+          (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime()
+        );
+
+        // Pre-filter counts
+        const counts = {
+          all: unifiedList.length,
+          new: unifiedList.filter((i) => i.status === 'New').length,
+          inProgress: unifiedList.filter((i) => i.status === 'In Progress').length,
+          resolved: unifiedList.filter((i) => i.status === 'Resolved').length,
+          contact: unifiedList.filter((i) => i.type === 'Contact Enquiry').length,
+          careers: unifiedList.filter((i) => i.type === 'Job Application').length,
+          complaints: unifiedList.filter((i) => i.type === 'Complaint').length,
+        };
+
+        // Query filters
+        const q = (url.searchParams.get('q') || '').toLowerCase().trim();
+        const typeFilter = url.searchParams.get('type') || 'all';
+        const statusFilter = url.searchParams.get('status') || 'all';
+        const dateRange = url.searchParams.get('dateRange') || 'all';
+        const page = Math.max(1, parseInt(url.searchParams.get('page') || '1', 10));
+        const limit = Math.max(1, parseInt(url.searchParams.get('limit') || '10', 10));
+
+        const filtered = unifiedList.filter((item) => {
+          if (q) {
+            const matchesQ =
+              item.name.toLowerCase().includes(q) ||
+              item.email.toLowerCase().includes(q) ||
+              (item.phone && item.phone.toLowerCase().includes(q)) ||
+              (item.companyName && item.companyName.toLowerCase().includes(q)) ||
+              item.subjectOrPosition.toLowerCase().includes(q) ||
+              item.message.toLowerCase().includes(q) ||
+              item.id.toLowerCase().includes(q);
+            if (!matchesQ) return false;
+          }
+
+          if (typeFilter !== 'all' && item.type !== typeFilter) {
+            return false;
+          }
+
+          if (statusFilter !== 'all' && item.status !== statusFilter) {
+            return false;
+          }
+
+          if (dateRange !== 'all') {
+            const itemTime = new Date(item.submittedAt).getTime();
+            const now = Date.now();
+            if (dateRange === 'today' && now - itemTime > 24 * 60 * 60 * 1000) {
+              return false;
+            }
+            if (dateRange === '7d' && now - itemTime > 7 * 24 * 60 * 60 * 1000) {
+              return false;
+            }
+            if (dateRange === '30d' && now - itemTime > 30 * 24 * 60 * 60 * 1000) {
+              return false;
+            }
+          }
+
+          return true;
+        });
+
+        const total = filtered.length;
+        const totalPages = Math.ceil(total / limit) || 1;
+        const startIndex = (page - 1) * limit;
+        const paginatedInquiries = filtered.slice(startIndex, startIndex + limit);
+
+        return Response.json({
+          success: true,
+          inquiries: paginatedInquiries,
+          total,
+          page,
+          limit,
+          totalPages,
+          counts,
+        });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 500 });
+      }
+    }
+
+    // Direct Inquiry Dispatch Reply
+    if (pathname === '/api/admin/inquiries/reply' && method === 'POST') {
+      try {
+        const body = await request.json().catch(() => ({}));
+        const { inquiryId, recipientEmail, subject, message, markStatus } = body;
+
+        if (!inquiryId || !recipientEmail || !subject || !message) {
+          return Response.json(
+            { success: false, error: 'Inquiry ID, recipient email, subject, and message are required.' },
+            { status: 400 }
+          );
+        }
+
+        // Security check: verify inquiry exists and recipient email matches
+        const complaints = getComplaints();
+        const careers = await getCareerApplications();
+        const compMatch = complaints.find((c) => c.id === inquiryId);
+        const carMatch = careers.find((c) => c.id === inquiryId);
+
+        if (!compMatch && !carMatch) {
+          return Response.json(
+            { success: false, error: `Inquiry with ID "${inquiryId}" not found.` },
+            { status: 404 }
+          );
+        }
+
+        const targetRecord = compMatch || carMatch!;
+        if (targetRecord.email.trim().toLowerCase() !== recipientEmail.trim().toLowerCase()) {
+          return Response.json(
+            {
+              success: false,
+              error: 'Recipient email does not match the validated inquiry record email address.',
+            },
+            { status: 400 }
+          );
+        }
+
+        let messageId: string | undefined = undefined;
+
+        if (isSmtpConfigured()) {
+          const transporter = createTransporter();
+          const emailContent = buildAdminReplyEmail({
+            customerName: targetRecord.name,
+            originalSubject: subject,
+            inquiryId,
+            message: message.trim(),
+          });
+
+          const mailResult = await transporter.sendMail({
+            from: {
+              name: "DEYSLA IT Solutions",
+              address: "info@sa.deysla.com",
+            },
+            to: recipientEmail.trim(),
+            replyTo: "info@sa.deysla.com",
+            subject: subject.trim(),
+            text: emailContent.text,
+            html: emailContent.html,
+          });
+
+          messageId = mailResult.messageId;
+        }
+
+        // Append administrative note
+        const timestampStr = new Date().toISOString();
+        const replyNote = `[Direct Reply sent by ${adminUser} on ${timestampStr}]: "${message.trim().slice(0, 200)}${message.trim().length > 200 ? '...' : ''}"`;
+
+        if (compMatch) {
+          const currentNotes = compMatch.notes ? `${compMatch.notes}\n${replyNote}` : replyNote;
+          const newStatus = (markStatus as any) || (compMatch.status === 'New' ? 'In Progress' : compMatch.status);
+          updateComplaint(inquiryId, { status: newStatus, notes: currentNotes }, adminUser);
+        } else if (carMatch) {
+          const currentNotes = carMatch.notes ? `${carMatch.notes}\n${replyNote}` : replyNote;
+          let newStatus = carMatch.status;
+          if (markStatus === 'In Progress') newStatus = 'Reviewing';
+          else if (markStatus === 'Resolved') newStatus = 'Offered';
+          await updateCareerApplicationStatus(inquiryId, newStatus, adminUser, currentNotes);
+        }
+
+        return Response.json({
+          success: true,
+          message: isSmtpConfigured()
+            ? `Reply email dispatched successfully to ${recipientEmail.trim()}.`
+            : `Reply recorded (SMTP server currently unconfigured in environment).`,
+          messageId,
+        });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 500 });
+      }
+    }
+
+    // Single Inquiry Detail & Status Update
+    if (pathname.match(/^\/api\/admin\/inquiries\/[^/]+$/) && (method === 'PATCH' || method === 'PUT')) {
+      try {
+        const id = pathname.replace('/api/admin/inquiries/', '');
+        const decodedId = decodeURIComponent(id);
+        const body = await request.json().catch(() => ({}));
+        const { status, notes } = body;
+
+        const complaints = getComplaints();
+        const compMatch = complaints.find((c) => c.id === decodedId);
+        if (compMatch) {
+          const updated = updateComplaint(
+            decodedId,
+            {
+              status: status as 'New' | 'In Progress' | 'Resolved',
+              notes,
+            },
+            adminUser
+          );
+          return Response.json({ success: true, inquiry: updated });
+        }
+
+        const careers = await getCareerApplications();
+        const carMatch = careers.find((c) => c.id === decodedId);
+        if (carMatch) {
+          let targetStatus = carMatch.status;
+          if (status === 'New') targetStatus = 'New';
+          else if (status === 'In Progress') targetStatus = 'Reviewing';
+          else if (status === 'Resolved') targetStatus = 'Offered';
+          else if (status) targetStatus = status;
+
+          const updated = await updateCareerApplicationStatus(decodedId, targetStatus, adminUser, notes);
+          return Response.json({ success: true, inquiry: updated });
+        }
+
+        return Response.json({ success: false, error: `Inquiry "${decodedId}" not found.` }, { status: 404 });
       } catch (err: any) {
         return Response.json({ success: false, error: err?.message }, { status: 400 });
       }

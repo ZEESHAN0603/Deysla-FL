@@ -152,7 +152,7 @@ Ensure production secrets are loaded via server environment variables or an unco
    ```bash
    node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
    ```
-4. **`SMTP_PASS`**: App password for the designated mail account (`info@deysla.com`).
+4. **`SMTP_PASS`**: Password for the verified Hostinger mailbox (`info@sa.deysla.com`).
 5. **`VITE_GOOGLE_MAPS_API_KEY`**: Restrict this key in Google Cloud Console to the authorized production domains (`deysla.com`, `*.deysla.com`).
 
 ---
@@ -165,6 +165,6 @@ After deploying to production, execute the following verification steps:
 - [ ] **API Health**: Request `https://deysla.com/api/catalog` and verify a valid JSON response is returned.
 - [ ] **CMS Status**: Check `https://deysla.com/api/cms/content` to confirm live content delivery.
 - [ ] **Database Connection**: In the Admin Dashboard (`/admin`), confirm the database status indicator shows **Connected to MySQL (`u157314465_DEYSLA`)**.
-- [ ] **SMTP Verification**: Request `/api/verify-smtp` or submit a test inquiry on `/contact` to confirm email delivery to `info@deysla.com`.
+- [ ] **SMTP Verification**: Request `/api/verify-smtp` or submit a test inquiry on `/contact` to confirm email delivery to `info@sa.deysla.com`.
 - [ ] **Quotation Workflow**: Add a product to the RFQ cart on `/products`, complete the quotation form on `/cart`, and verify receipt of the quote email.
 - [ ] **Admin Authentication**: Verify that `/admin` requires login and unauthenticated access to `/api/admin/*` returns HTTP 401.

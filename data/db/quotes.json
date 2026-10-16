@@ -1,5 +1,31 @@
 [
   {
+    "id": "DEY-RFQ-025930",
+    "name": "asdfg",
+    "email": "06zeeshan03@gmail.com",
+    "phone": "87654321007",
+    "companyName": "ZEES",
+    "city": "Dammam",
+    "projectTimeline": "Immediate (1-2 weeks)",
+    "items": [
+      {
+        "id": "service-cyber-security",
+        "title": "Cyber Security Scope Request",
+        "category": "Service Consultation",
+        "quantity": 1
+      },
+      {
+        "id": "service-security-systems",
+        "title": "Security Systems Service Proposal",
+        "category": "Service Consultation",
+        "quantity": 5
+      }
+    ],
+    "status": "Pending",
+    "submittedAt": "2026-10-16T12:17:50.266Z",
+    "updatedAt": "2026-10-16T12:17:50.266Z"
+  },
+  {
     "id": "DEY-RFQ-056385",
     "name": "Zeeshan",
     "email": "06zeeshan03@gmail.com",

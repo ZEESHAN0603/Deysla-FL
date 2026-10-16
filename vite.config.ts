@@ -65,7 +65,10 @@ export default defineConfig(() => {
       // Do not modify—file watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
-      watch: process.env.DISABLE_HMR === 'true' ? null : {},
+      // Exclude runtime database storage (data/db) and backups from file watcher to prevent page reload on form submissions.
+      watch: process.env.DISABLE_HMR === 'true' ? null : {
+        ignored: ['**/data/**', '**/.backups/**', '**/*.tmp', '**/*.log'],
+      },
     },
   };
 });

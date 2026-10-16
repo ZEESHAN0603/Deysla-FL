@@ -63,16 +63,16 @@ Populate `.env.local` with your configuration. **Never commit real credentials t
 
 ```env
 # ==============================================================================
-# SMTP Email Configuration (Nodemailer)
+# SMTP Email Configuration (Hostinger / Nodemailer)
 # Server-side only: Used for Contact Us, RFQ Quotations, and Careers forms.
 # ==============================================================================
-SMTP_HOST="smtp.example.com"
-SMTP_PORT="587"
-SMTP_SECURE="false"
-SMTP_USER="info@deysla.com"
-SMTP_PASS="your-smtp-password-or-app-password"
-SMTP_FROM="DEYSLA IT Solutions <info@deysla.com>"
-CONTACT_EMAIL="info@deysla.com"
+SMTP_HOST="smtp.hostinger.com"
+SMTP_PORT="465"
+SMTP_SECURE="true"
+SMTP_USER="info@sa.deysla.com"
+SMTP_PASS="your-hostinger-mailbox-password"
+SMTP_FROM="DEYSLA IT Solutions <info@sa.deysla.com>"
+CONTACT_EMAIL="info@sa.deysla.com"
 
 # ==============================================================================
 # Hostinger MySQL Database Configuration (Optional - Falls back to JSON DB)

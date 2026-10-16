@@ -146,9 +146,15 @@ export async function POST(request: Request) {
           submittedAt,
         });
 
+        const targetRecipient = config.contactEmail || 'info@sa.deysla.com';
+        console.log(`[Quote] Sending notification email to: ${targetRecipient}`);
+
         const mailResult = await transporter.sendMail({
-          from: config.from,
-          to: config.contactEmail,
+          from: {
+            name: "DEYSLA IT Solutions",
+            address: "info@sa.deysla.com",
+          },
+          to: targetRecipient,
           replyTo: `"${name.trim()}" <${email.trim()}>`,
           subject: `[RFQ ${rfqReference}] ${companyName.trim()} - ${sanitizedItems.length} Products Requested`,
           text: emailContent.text,
@@ -162,9 +168,12 @@ export async function POST(request: Request) {
       }
     }
 
+    const recipient = getSmtpConfig().contactEmail || 'info@sa.deysla.com';
+
     return Response.json({
       success: true,
       rfqReference: savedQuote.id,
+      recipient,
       message: `Quotation request ${savedQuote.id} successfully received. Our commercial desk will review and dispatch the BOQ proposal shortly.`,
       messageId: mailMessageId,
       mailSent,
@@ -174,7 +183,7 @@ export async function POST(request: Request) {
     const errorMessage =
       error?.code === 'EAUTH'
         ? 'SMTP authentication failed. Please verify your SMTP credentials.'
-        : error?.message || 'Failed to dispatch quotation request. Please try again or reach out to info@deysla.com directly.';
+        : error?.message || 'Failed to dispatch quotation request. Please try again or reach out to info@sa.deysla.com directly.';
 
     return Response.json(
       {

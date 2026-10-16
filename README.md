@@ -233,15 +233,15 @@ cp .env.example .env.local
 
 ```env
 # ------------------------------------------------------------------------------
-# SMTP Email Delivery (Nodemailer) - Server-side only
+# SMTP Email Delivery (Hostinger / Nodemailer) - Server-side only
 # ------------------------------------------------------------------------------
-SMTP_HOST="smtp.example.com"
-SMTP_PORT="587"
-SMTP_SECURE="false"
-SMTP_USER="info@deysla.com"
-SMTP_PASS="your-smtp-password-or-app-password"
-SMTP_FROM="DEYSLA IT Solutions <info@deysla.com>"
-CONTACT_EMAIL="info@deysla.com"
+SMTP_HOST="smtp.hostinger.com"
+SMTP_PORT="465"
+SMTP_SECURE="true"
+SMTP_USER="info@sa.deysla.com"
+SMTP_PASS="your-hostinger-mailbox-password"
+SMTP_FROM="DEYSLA IT Solutions <info@sa.deysla.com>"
+CONTACT_EMAIL="info@sa.deysla.com"
 
 # ------------------------------------------------------------------------------
 # Hostinger MySQL Database Configuration (Optional - Falls back to JSON DB)
@@ -389,16 +389,16 @@ npm run db:seed
 The system uses **Nodemailer** to send transactional emails for contact forms, RFQs, and job applications.
 
 ### Provider Setup Summary
-- **Google Workspace / Gmail**: Generate a 16-character **App Password** (`myaccount.google.com/apppasswords`) with 2-Step Verification enabled. Set `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=587`, `SMTP_SECURE=false`.
+- **Hostinger Mail (Verified & Recommended)**: Outgoing SMTP server `smtp.hostinger.com`, Port `465` (SSL/TLS), `SMTP_SECURE=true`, Username `info@sa.deysla.com`, and Hostinger mailbox password.
+- **Google Workspace / Gmail**: Generate a 16-character **App Password** (`myaccount.google.com/apppasswords`) with 2-Step Verification enabled. Set `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=465`, `SMTP_SECURE=true`.
 - **Microsoft 365 / Exchange**: Enable **Authenticated SMTP** under Mail &gt; Email apps in the M365 Admin Center. Set `SMTP_HOST=smtp.office365.com`, `SMTP_PORT=587`, `SMTP_SECURE=false`.
-- **Custom / Hosting SMTP**: Set port 465 (`SMTP_SECURE=true`) or port 587 (`SMTP_SECURE=false`).
 
 Test delivery via CLI:
 ```bash
 npx tsx scripts/testSmtpIntegration.ts
 ```
 
-For full setup instructions, see [`SMTP_SETUP_GUIDE.md`](./SMTP_SETUP_GUIDE.md).
+For full setup instructions, see [`docs/SMTP_SETUP_GUIDE.md`](./docs/SMTP_SETUP_GUIDE.md).
 
 ---
 
@@ -475,7 +475,7 @@ For complete deployment walk-throughs and Nginx configuration, see [`docs/DEPLOY
 2. **Environment Variables**: Provide the client with their designated `.env` file containing production credentials over a secure channel.
 3. **Admin Account**: Prompt the client to set a custom, strong `ADMIN_PASSWORD` and `ADMIN_JWT_SECRET`.
 4. **Database Verification**: Confirm Hostinger MySQL connectivity via the Admin Dashboard.
-5. **Email Delivery**: Verify that incoming contact inquiries and quotation emails arrive at `info@deysla.com`.
+5. **Email Delivery**: Verify that incoming contact inquiries and quotation emails arrive at `info@sa.deysla.com`.
 
 For ongoing operational tasks and backup routines, refer to [`docs/MAINTENANCE.md`](./docs/MAINTENANCE.md).
 
@@ -504,5 +504,5 @@ For ongoing operational tasks and backup routines, refer to [`docs/MAINTENANCE.m
 - **[`docs/SETUP.md`](./docs/SETUP.md)** — Local workstation setup and environment configuration.
 - **[`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md)** — Production hosting, PM2 process management, and Nginx setup.
 - **[`docs/MAINTENANCE.md`](./docs/MAINTENANCE.md)** — Database backup, restore, catalog updates, and operations.
-- **[`MYSQL_MIGRATION_GUIDE.md`](./MYSQL_MIGRATION_GUIDE.md)** — Hostinger MySQL table schema and migration steps.
-- **[`SMTP_SETUP_GUIDE.md`](./SMTP_SETUP_GUIDE.md)** — Email gateway configuration for Google Workspace and Microsoft 365.
+- **[`docs/MYSQL_MIGRATION_GUIDE.md`](./docs/MYSQL_MIGRATION_GUIDE.md)** — Hostinger MySQL table schema and migration steps.
+- **[`docs/SMTP_SETUP_GUIDE.md`](./docs/SMTP_SETUP_GUIDE.md)** — Email gateway configuration for Hostinger Mail, Google Workspace, and Microsoft 365.

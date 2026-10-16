@@ -66,10 +66,10 @@ export const Footer: React.FC = () => {
               <div className="flex items-center gap-2.5 text-slate-700">
                 <Mail className="w-4 h-4 text-[#ff7a1a] shrink-0" />
                 <a
-                  href={`mailto:${companyInfo.contact.email || "info@deysla.com"}`}
+                  href={`mailto:${companyInfo.contact.email || "info@sa.deysla.com"}`}
                   className="hover:text-[#0052cc] transition-colors isolate-ltr"
                 >
-                  {companyInfo.contact.email || "info@deysla.com"}
+                  {companyInfo.contact.email || "info@sa.deysla.com"}
                 </a>
               </div>
               <div className="flex items-center gap-2.5 text-slate-500 pt-1">

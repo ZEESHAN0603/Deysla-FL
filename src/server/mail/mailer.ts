@@ -7,18 +7,24 @@ export interface SmtpConfig {
   secure: boolean;
   user: string;
   pass: string;
-  from: string;
+  from: {
+    name: string;
+    address: string;
+  };
   contactEmail: string;
 }
 
 export function getSmtpConfig(): SmtpConfig {
-  const host = process.env.SMTP_HOST || '';
-  const port = parseInt(process.env.SMTP_PORT || '587', 10);
+  const host = process.env.SMTP_HOST || 'smtp.hostinger.com';
+  const port = parseInt(process.env.SMTP_PORT || '465', 10);
   const secure = process.env.SMTP_SECURE === 'true' || port === 465;
-  const user = process.env.SMTP_USER || '';
+  const user = process.env.SMTP_USER || 'info@sa.deysla.com';
   const pass = process.env.SMTP_PASS || '';
-  const from = process.env.SMTP_FROM || `"DEYSLA IT Solutions" <${user || 'info@deysla.com'}>`;
-  const contactEmail = process.env.CONTACT_EMAIL || 'info@deysla.com';
+  const from = {
+    name: 'DEYSLA IT Solutions',
+    address: 'info@sa.deysla.com',
+  };
+  const contactEmail = process.env.CONTACT_EMAIL || 'info@sa.deysla.com';
 
   return {
     host,
@@ -297,7 +303,7 @@ export function renderEmailWrapper(options: {
         DEYSLA IT Solutions · Dammam, Kingdom of Saudi Arabia
       </p>
       <p style="margin: 0 0 6px 0;">
-        Tel: +966 50 206 0148 &bull; Email: <a href="mailto:info@deysla.com">info@deysla.com</a> &bull; Web: <a href="https://deysla.com">deysla.com</a>
+        Tel: +966 50 206 0148 &bull; Email: <a href="mailto:info@sa.deysla.com">info@sa.deysla.com</a> &bull; Web: <a href="https://deysla.com">deysla.com</a>
       </p>
       <p style="margin: 0; font-size: 10px; color: #94a3b8;">
         &copy; ${currentYear} DEYSLA Information Technology. All rights reserved. Automated transmission from DEYSLA Web Platform.
@@ -319,6 +325,12 @@ export function buildContactEmail(data: {
   submittedAt: string;
 }): { html: string; text: string } {
   const contentHtml = `
+    <div style="background-color: #f0f9ff; border: 1px solid #bae6fd; border-left: 4px solid #0284c7; border-radius: 8px; padding: 14px 18px; margin-bottom: 20px;">
+      <div style="font-size: 11px; font-weight: 700; color: #0284c7; text-transform: uppercase; letter-spacing: 0.5px;">Customer Contact Information:</div>
+      <div style="font-size: 18px; font-weight: 800; color: #0369a1; margin-top: 2px;">${escapeHtml(data.name)} &bull; <a href="mailto:${escapeHtml(data.email)}" style="color: #0284c7; text-decoration: none;">${escapeHtml(data.email)}</a></div>
+      <div style="font-size: 13px; color: #475569; margin-top: 4px;">Phone: <a href="tel:${escapeHtml(data.contact)}" style="color: #475569;">${escapeHtml(data.contact)}</a> ${data.companyName ? `&bull; Company: <strong>${escapeHtml(data.companyName)}</strong>` : ''}</div>
+    </div>
+
     <div class="section-title">Customer Information</div>
     <table class="data-table">
       <tr>
@@ -347,7 +359,7 @@ export function buildContactEmail(data: {
     <div class="message-box">${escapeHtml(data.message)}</div>
 
     <p style="font-size: 12px; color: #64748b; margin-top: 20px;">
-      💡 <em>Tip: You can reply directly to this email to respond back to <strong>${escapeHtml(data.name)}</strong>.</em>
+      💡 <em>Tip: You can reply directly to this email to respond back to <strong>${escapeHtml(data.name)} (${escapeHtml(data.email)})</strong>.</em>
     </p>
   `;
 
@@ -355,15 +367,14 @@ export function buildContactEmail(data: {
     badgeTitle: 'Customer Contact Inquiry',
     badgeColor: '#0284c7',
     heading: 'New Contact Request Received',
-    subheading: `Submitted by ${data.name} via DEYSLA website contact portal`,
+    subheading: `Customer: ${data.name} (${data.email}) via DEYSLA website contact portal`,
     contentHtml,
   });
 
   const text = `
 DEYSLA IT SOLUTIONS - NEW CONTACT ENQUIRY
 --------------------------------------------------
-Customer Name: ${data.name}
-Email: ${data.email}
+Customer: ${data.name} <${data.email}>
 Phone: ${data.contact}
 Company: ${data.companyName || 'N/A'}
 Date & Time: ${data.submittedAt}
@@ -371,7 +382,7 @@ Date & Time: ${data.submittedAt}
 Message:
 ${data.message}
 
-Reply directly to this email to respond to the customer.
+Reply directly to this email to respond to ${data.name} at ${data.email}.
   `.trim();
 
   return { html, text };
@@ -534,9 +545,10 @@ export function buildCareersEmail(data: {
   submittedAt: string;
 }): { html: string; text: string } {
   const contentHtml = `
-    <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px;">
-      <span style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">Applied Position:</span>
-      <div style="font-size: 18px; font-weight: 800; color: #0284c7; letter-spacing: -0.3px;">${escapeHtml(data.position)}</div>
+    <div style="background-color: #eef2ff; border: 1px solid #c7d2fe; border-left: 4px solid #6366f1; border-radius: 8px; padding: 14px 18px; margin-bottom: 20px;">
+      <div style="font-size: 11px; font-weight: 700; color: #4f46e5; text-transform: uppercase; letter-spacing: 0.5px;">Candidate Application:</div>
+      <div style="font-size: 18px; font-weight: 800; color: #3730a3; margin-top: 2px;">${escapeHtml(data.name)} &bull; <a href="mailto:${escapeHtml(data.email)}" style="color: #4f46e5; text-decoration: none;">${escapeHtml(data.email)}</a></div>
+      <div style="font-size: 14px; font-weight: 600; color: #4338ca; margin-top: 4px;">Applied for: ${escapeHtml(data.position)} &bull; Phone: ${escapeHtml(data.phone)}</div>
     </div>
 
     <div class="section-title">Candidate Details</div>
@@ -596,7 +608,7 @@ export function buildCareersEmail(data: {
     badgeTitle: 'Talent Acquisition · DEYSLA Careers',
     badgeColor: '#6366f1',
     heading: 'New Candidate Job Application',
-    subheading: `${data.name} applied for "${data.position}"`,
+    subheading: `Candidate: ${data.name} (${data.email}) applied for "${data.position}"`,
     contentHtml,
   });
 
@@ -604,8 +616,7 @@ export function buildCareersEmail(data: {
 DEYSLA IT SOLUTIONS - CAREERS APPLICATION
 --------------------------------------------------
 Position: ${data.position}
-Candidate Name: ${data.name}
-Email: ${data.email}
+Candidate: ${data.name} <${data.email}>
 Phone: ${data.phone}
 Experience: ${data.experience || 'N/A'}
 Notice Period: ${data.noticePeriod || 'N/A'}
@@ -615,6 +626,56 @@ Date: ${data.submittedAt}
 
 Cover Note:
 ${data.coverLetter || 'None'}
+
+Reply directly to this email to respond to ${data.name} at ${data.email}.
+  `.trim();
+
+  return { html, text };
+}
+
+// 4. Admin Direct Customer Reply Email Template
+export function buildAdminReplyEmail(data: {
+  customerName: string;
+  originalSubject: string;
+  inquiryId: string;
+  message: string;
+}): { html: string; text: string } {
+  const contentHtml = `
+    <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin-bottom: 20px;">
+      <div style="font-size: 11px; font-weight: 700; color: #15803d; text-transform: uppercase; letter-spacing: 0.5px;">Support Reference:</div>
+      <div style="font-size: 16px; font-weight: 800; color: #166534; margin-top: 2px;">Ticket #${escapeHtml(data.inquiryId)} &bull; ${escapeHtml(data.originalSubject)}</div>
+    </div>
+
+    <div class="section-title">Message from DEYSLA IT Solutions Support</div>
+    <div class="message-box" style="border-left-color: #0284c7; background-color: #ffffff; border: 1px solid #e2e8f0; font-size: 14px; line-height: 1.7; color: #1e293b;">
+      ${escapeHtml(data.message).replace(/\n/g, '<br/>')}
+    </div>
+
+    <p style="font-size: 12px; color: #64748b; margin-top: 24px;">
+      Need further assistance? You can reply directly to this email or contact us at <a href="mailto:info@sa.deysla.com" style="color: #0284c7;">info@sa.deysla.com</a> or +966 50 206 0148.
+    </p>
+  `;
+
+  const html = renderEmailWrapper({
+    badgeTitle: `Support Response · #${data.inquiryId}`,
+    badgeColor: '#0284c7',
+    heading: 'Update from DEYSLA IT Solutions',
+    subheading: `Dear ${data.customerName}, in response to your recent communication (#${data.inquiryId})`,
+    contentHtml,
+  });
+
+  const text = `
+DEYSLA IT SOLUTIONS - SUPPORT RESPONSE
+--------------------------------------------------
+Ticket ID: #${data.inquiryId}
+Subject: ${data.originalSubject}
+Recipient: ${data.customerName}
+
+${data.message}
+
+--------------------------------------------------
+DEYSLA IT Solutions · Dammam, Kingdom of Saudi Arabia
+Tel: +966 50 206 0148 · Email: info@sa.deysla.com · Web: https://deysla.com
   `.trim();
 
   return { html, text };

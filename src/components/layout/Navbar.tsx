@@ -853,11 +853,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="isolate-ltr">+966 54 455 3670</span>
               </a>
               <a
-                href="mailto:info@deysla.com"
+                href="mailto:info@sa.deysla.com"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-neutral-300 text-xs font-semibold text-neutral-800 hover:text-orange-600 hover:border-[#ff8c3a] shadow-2xs transition-colors"
               >
                 <Mail className="w-3.5 h-3.5 text-[#ff8c3a]" />
-                <span className="isolate-ltr">info@deysla.com</span>
+                <span className="isolate-ltr">info@sa.deysla.com</span>
               </a>
             </div>
             <p className="text-[11px] font-semibold text-neutral-600">

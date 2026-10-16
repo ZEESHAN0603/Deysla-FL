@@ -260,10 +260,16 @@ export async function POST(request: Request) {
       submittedAt,
     });
 
+    const targetRecipient = config.contactEmail || 'info@sa.deysla.com';
+    console.log(`[Careers] Sending notification email to: ${targetRecipient}`);
+
     // Assemble Nodemailer payload
     const mailOptions: any = {
-      from: config.from,
-      to: config.contactEmail,
+      from: {
+        name: "DEYSLA IT Solutions",
+        address: "info@sa.deysla.com",
+      },
+      to: targetRecipient,
       replyTo: `"${name.trim()}" <${email.trim()}>`,
       subject: `[Job Application] ${position.trim()} - ${name.trim()}`,
       text: emailContent.text,
@@ -285,6 +291,7 @@ export async function POST(request: Request) {
       return Response.json({
         success: true,
         applicationId: savedApplicationId,
+        recipient: targetRecipient,
         message: `Your application for "${position}" has been received along with your CV. Our recruitment team will review your profile.`,
         messageId: mailResult.messageId,
       });
@@ -301,7 +308,7 @@ export async function POST(request: Request) {
     const errorMessage =
       error?.code === 'EAUTH'
         ? 'SMTP authentication failed. Please verify your SMTP credentials.'
-        : error?.message || 'Failed to submit application. Please try again or reach out to info@deysla.com directly.';
+        : error?.message || 'Failed to submit application. Please try again or reach out to info@sa.deysla.com directly.';
 
     return Response.json(
       {

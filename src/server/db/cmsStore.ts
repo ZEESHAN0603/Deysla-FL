@@ -62,6 +62,7 @@ export interface CareerApplicationRecord {
   resumeFilename?: string;
   resumePath?: string;
   status: 'New' | 'Reviewing' | 'Interviewed' | 'Offered' | 'Archived';
+  notes?: string;
   submittedAt: string;
   updatedAt?: string;
 }
@@ -1018,7 +1019,8 @@ export async function recordCareerApplication(data: {
 export async function updateCareerApplicationStatus(
   id: string,
   status: 'New' | 'Reviewing' | 'Interviewed' | 'Offered' | 'Archived',
-  user = 'admin'
+  user = 'admin',
+  notes?: string
 ): Promise<CareerApplicationRecord> {
   const connCheck = await checkMysqlConnection();
   if (connCheck.connected) {
@@ -1036,6 +1038,9 @@ export async function updateCareerApplicationStatus(
   }
 
   existing[idx].status = status;
+  if (notes !== undefined) {
+    existing[idx].notes = notes;
+  }
   existing[idx].updatedAt = new Date().toISOString();
   writeJsonAtomically(CAREERS_FILE, existing);
 
@@ -1044,7 +1049,7 @@ export async function updateCareerApplicationStatus(
     action: 'STATUS_CHANGE',
     entity: 'COMPLAINT',
     entityId: id,
-    details: `Updated Career application status to: ${status}`,
+    details: `Updated Career application status to: ${status}${notes ? ` with notes: "${notes}"` : ''}`,
   });
 
   return existing[idx];
