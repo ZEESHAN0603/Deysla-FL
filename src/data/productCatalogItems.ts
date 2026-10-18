@@ -11,6 +11,7 @@ export interface CatalogItem {
   specs: string[];
   image: string;
   imageWebp: string;
+  status?: 'active' | 'inactive';
 }
 
 export const CATALOG_ITEMS: CatalogItem[] = [

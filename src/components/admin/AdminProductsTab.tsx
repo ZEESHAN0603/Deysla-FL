@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   Search,
   Plus,
@@ -15,6 +15,7 @@ import {
   Loader2,
   RefreshCw,
   CheckCircle2,
+  Trash2,
 } from 'lucide-react';
 import { ProductType } from '../../data/products';
 import { useCatalog } from '../../context/CatalogContext';
@@ -59,6 +60,11 @@ export function AdminProductsTab({ onSelectProductForSubproducts }: AdminProduct
     return map;
   }, [catalogItems]);
 
+  // Refresh catalog on mount to ensure fresh MySQL status
+  useEffect(() => {
+    refreshCatalog();
+  }, [refreshCatalog]);
+
   // Filtered Products
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
@@ -99,15 +105,52 @@ export function AdminProductsTab({ onSelectProductForSubproducts }: AdminProduct
     }
   };
 
+  // Delete product
+  const [productToDelete, setProductToDelete] = useState<ProductType | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+
+  const handleDeleteProduct = async () => {
+    if (!productToDelete) return;
+    try {
+      setIsDeleting(true);
+      setDeleteError(null);
+      const res = await fetch(`/api/admin/products/${encodeURIComponent(productToDelete.id)}`, {
+        method: 'DELETE',
+        headers: authHeaders(),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        await refreshCatalog();
+        setSuccessBanner(`Product "${productToDelete.name}" deleted successfully.`);
+        setTimeout(() => setSuccessBanner(null), 4000);
+        setProductToDelete(null);
+      } else {
+        setDeleteError(data.error || 'Failed to delete product.');
+      }
+    } catch (err: any) {
+      setDeleteError(err?.message || 'Error deleting product.');
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+
   const startEditProduct = (prod: ProductType) => {
     setIsCreatingNew(false);
     setOriginalProduct(prod);
+    const combinedBrandIds = new Set(prod.brandIds || []);
+    brands.forEach((b) => {
+      if (Array.isArray(b.productIds) && b.productIds.includes(prod.id)) {
+        combinedBrandIds.add(b.id);
+      }
+    });
     setEditingProduct({
       ...prod,
       status: (prod as any).status || 'active',
       subcategories: [...(prod.subcategories || [])],
       keyApplications: [...(prod.keyApplications || [])],
-      brandIds: [...(prod.brandIds || [])],
+      brandIds: Array.from(combinedBrandIds),
     });
     setSaveError(null);
     setIsEditorOpen(true);
@@ -438,6 +481,14 @@ export function AdminProductsTab({ onSelectProductForSubproducts }: AdminProduct
                           >
                             <Edit2 className="w-3 h-3" />
                             <span>Edit</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setProductToDelete(p)}
+                            className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition cursor-pointer"
+                            title="Delete product"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
                           </button>
                         </div>
                       </td>
@@ -820,6 +871,82 @@ export function AdminProductsTab({ onSelectProductForSubproducts }: AdminProduct
         }}
         title="Associate Product Image"
       />
+
+      {/* DELETE CONFIRMATION MODAL */}
+      {productToDelete && (
+        <div className="fixed inset-0 z-60 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div className="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto">
+              <Trash2 className="w-6 h-6" />
+            </div>
+
+            <div className="text-center space-y-1">
+              <h3 className="text-base font-bold text-slate-900">Confirm Product Deletion</h3>
+              <p className="text-xs text-slate-500">
+                Are you sure you want to permanently delete this product?
+              </p>
+            </div>
+
+            <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-1.5">
+              <div className="flex justify-between">
+                <span className="text-slate-400">Product Name:</span>
+                <strong className="text-slate-800">{productToDelete.name}</strong>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">Category:</span>
+                <span className="text-slate-700">{productToDelete.categoryName || productToDelete.categoryId}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">Product ID:</span>
+                <span className="font-mono text-slate-600">{productToDelete.id}</span>
+              </div>
+
+              {subproductCountMap[productToDelete.id] > 0 ? (
+                <div className="p-2.5 bg-amber-50 border border-amber-200 text-amber-800 rounded-lg text-[11px] mt-2">
+                  <div className="flex items-center gap-1.5 font-bold mb-0.5">
+                    <AlertCircle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                    <span>Deletion Blocked</span>
+                  </div>
+                  <span>
+                    This product has <strong>{subproductCountMap[productToDelete.id]}</strong> commercial SKU(s) attached. You must delete or reassign them under Commercial SKUs before deleting this product line.
+                  </span>
+                </div>
+              ) : (
+                <div className="text-[11px] text-rose-600 pt-1 border-t border-slate-200">
+                  This product record will be permanently deleted from Hostinger MySQL, unlinked from OEM brand partners, and logged in the audit trail.
+                </div>
+              )}
+            </div>
+
+            {deleteError && (
+              <div className="p-2.5 bg-rose-50 border border-rose-200 text-rose-700 rounded-xl text-xs flex items-center gap-2">
+                <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                <span>{deleteError}</span>
+              </div>
+            )}
+
+            <div className="flex items-center justify-end gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setProductToDelete(null)}
+                disabled={isDeleting}
+                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleDeleteProduct}
+                disabled={isDeleting || subproductCountMap[productToDelete.id] > 0}
+                className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isDeleting ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Trash2 className="w-3.5 h-3.5" />}
+                <span>Permanently Delete</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

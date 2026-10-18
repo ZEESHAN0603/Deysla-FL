@@ -117,10 +117,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   // Filtered brands for active category in mega menu
-  const { products, brands, categories } = useCatalog();
+  const { activeProducts: products, brands, categories } = useCatalog();
 
   const brandsForActiveCategory = brands.filter((b) =>
-    b.categoryIds.includes(activeBrandCategory)
+    b.categoryIds.includes(activeBrandCategory) && b.status !== 'inactive'
   );
 
   // Active product category details

@@ -108,9 +108,9 @@ export async function seedMysqlDatabase(): Promise<{
   const counts: Record<string, number> = {};
 
   try {
-    console.log('[DEYSLA DB] Seeding data into MySQL tables idempotently...');
+    console.log('[DEYSLA DB] Seeding default records into MySQL tables (idempotent, preserving existing data)...');
 
-    // 1. Settings (Global configuration)
+    // 1. Settings (Insert if missing)
     const settingsEntries = [
       ['company_name', COMPANY_DATA.name],
       ['tagline', COMPANY_DATA.tagline],
@@ -132,13 +132,13 @@ export async function seedMysqlDatabase(): Promise<{
 
     for (const [key, val] of settingsEntries) {
       await conn.query(
-        `INSERT INTO cms_settings (setting_key, setting_value)
-         VALUES (?, ?)
-         ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value)`,
+        `INSERT IGNORE INTO cms_settings (setting_key, setting_value, updated_at)
+         VALUES (?, ?, NOW())`,
         [key, val]
       );
     }
-    counts['cms_settings'] = settingsEntries.length;
+    const [[{ sCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as sCount FROM cms_settings');
+    counts['cms_settings'] = sCount;
 
     // 2. Pages & Sections
     const defaultPages = [
@@ -154,13 +154,13 @@ export async function seedMysqlDatabase(): Promise<{
 
     for (const p of defaultPages) {
       await conn.query(
-        `INSERT INTO cms_pages (id, slug, title_en, title_ar, meta_title, meta_description, is_published)
-         VALUES (?, ?, ?, ?, ?, ?, 1)
-         ON DUPLICATE KEY UPDATE title_en = VALUES(title_en), title_ar = VALUES(title_ar), meta_title = VALUES(meta_title), meta_description = VALUES(meta_description)`,
+        `INSERT IGNORE INTO cms_pages (id, slug, title_en, title_ar, meta_title, meta_description, is_published, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, 1, NOW())`,
         [`page-${p.slug}`, p.slug, p.title_en, p.title_ar, p.meta_title, p.meta_desc]
       );
     }
-    counts['cms_pages'] = defaultPages.length;
+    const [[{ pCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as pCount FROM cms_pages');
+    counts['cms_pages'] = pCount;
 
     // Home Page Sections
     const defaultSections = [
@@ -203,26 +203,22 @@ export async function seedMysqlDatabase(): Promise<{
 
     for (const s of defaultSections) {
       await conn.query(
-        `INSERT INTO cms_page_sections (id, page_slug, section_key, title, subtitle, content, sort_order, is_visible)
-         VALUES (?, ?, ?, ?, ?, ?, ?, 1)
-         ON DUPLICATE KEY UPDATE title = VALUES(title), subtitle = VALUES(subtitle), content = VALUES(content), sort_order = VALUES(sort_order)`,
+        `INSERT IGNORE INTO cms_page_sections (id, page_slug, section_key, title, subtitle, content, sort_order, is_visible, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, 1, NOW())`,
         [`sec-${s.page_slug}-${s.section_key}`, s.page_slug, s.section_key, s.title, s.subtitle, s.content, s.sort_order]
       );
     }
-    counts['cms_page_sections'] = defaultSections.length;
+    const [[{ secCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as secCount FROM cms_page_sections');
+    counts['cms_page_sections'] = secCount;
 
     // 3. Services
     for (let i = 0; i < SERVICES_DATA.length; i++) {
       const s = SERVICES_DATA[i];
       await conn.query(
-        `INSERT INTO cms_services (
+        `INSERT IGNORE INTO cms_services (
           id, number, slug, title, short_description, overview, image, image_alt, icon,
           sub_services, deliverables, process_steps, relevant_categories, relevant_brand_ids, sort_order, is_active
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
-        ON DUPLICATE KEY UPDATE
-          title = VALUES(title), short_description = VALUES(short_description), overview = VALUES(overview),
-          image = VALUES(image), image_alt = VALUES(image_alt), sub_services = VALUES(sub_services),
-          deliverables = VALUES(deliverables), process_steps = VALUES(process_steps), sort_order = VALUES(sort_order)`,
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)`,
         [
           s.id,
           s.number || String(i + 1).padStart(2, '0'),
@@ -242,17 +238,15 @@ export async function seedMysqlDatabase(): Promise<{
         ]
       );
     }
-    counts['cms_services'] = SERVICES_DATA.length;
+    const [[{ srvCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as srvCount FROM cms_services');
+    counts['cms_services'] = srvCount;
 
     // 4. Product Categories
     for (let i = 0; i < PRODUCT_CATEGORIES.length; i++) {
       const c = PRODUCT_CATEGORIES[i];
       await conn.query(
-        `INSERT INTO cms_product_categories (id, name, slug, icon, headline, description, featured_image, sort_order, is_active)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)
-         ON DUPLICATE KEY UPDATE
-          name = VALUES(name), icon = VALUES(icon), headline = VALUES(headline),
-          description = VALUES(description), featured_image = VALUES(featured_image), sort_order = VALUES(sort_order)`,
+        `INSERT IGNORE INTO cms_product_categories (id, name, slug, icon, headline, description, featured_image, sort_order, is_active)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)`,
         [
           c.id,
           c.name,
@@ -265,9 +259,10 @@ export async function seedMysqlDatabase(): Promise<{
         ]
       );
     }
-    counts['cms_product_categories'] = PRODUCT_CATEGORIES.length;
+    const [[{ catCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as catCount FROM cms_product_categories');
+    counts['cms_product_categories'] = catCount;
 
-    // 5. Existing Catalog from catalog.json (or static fallback)
+    // 5. Products (Insert if missing)
     const storedCatalog = readJsonFile<any>(CATALOG_FILE, {
       products: PRODUCTS_DATA,
       catalogItems: CATALOG_ITEMS,
@@ -275,18 +270,13 @@ export async function seedMysqlDatabase(): Promise<{
       brandEquipmentItems: BRAND_EQUIPMENT_ITEMS,
     });
 
-    // Products
     const productsToSeed = storedCatalog.products || PRODUCTS_DATA;
     for (const p of productsToSeed) {
       await conn.query(
-        `INSERT INTO cms_products (
+        `INSERT IGNORE INTO cms_products (
           id, name, slug, category_id, category_name, description, subcategories,
-          key_applications, image, image_alt, brand_ids, status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE
-          name = VALUES(name), description = VALUES(description), image = VALUES(image),
-          subcategories = VALUES(subcategories), key_applications = VALUES(key_applications),
-          brand_ids = VALUES(brand_ids), status = VALUES(status)`,
+          key_applications, image, image_alt, brand_ids, status, created_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
         [
           p.id,
           p.name,
@@ -303,19 +293,17 @@ export async function seedMysqlDatabase(): Promise<{
         ]
       );
     }
-    counts['cms_products'] = productsToSeed.length;
+    const [[{ prodCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as prodCount FROM cms_products');
+    counts['cms_products'] = prodCount;
 
     // Catalog Items (Commercial SKUs)
     const itemsToSeed = storedCatalog.catalogItems || CATALOG_ITEMS;
     for (const it of itemsToSeed) {
       await conn.query(
-        `INSERT INTO cms_catalog_items (
+        `INSERT IGNORE INTO cms_catalog_items (
           id, sku, name, part_number, subcategory_id, subcategory_name, category_id, category_name,
-          description, badge, specifications, image, image_webp, brand_id, status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE
-          name = VALUES(name), sku = VALUES(sku), specifications = VALUES(specifications),
-          image = VALUES(image), image_webp = VALUES(image_webp), status = VALUES(status)`,
+          description, badge, specifications, image, image_webp, brand_name, status, created_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
         [
           it.id,
           it.id || it.sku,
@@ -330,23 +318,21 @@ export async function seedMysqlDatabase(): Promise<{
           JSON.stringify(it.specs || []),
           it.image || '/assets/placeholder-product.svg',
           it.imageWebp || it.image || '/assets/placeholder-product.svg',
-          it.brand || '',
+          it.brand || 'DEYSLA',
           it.status || 'active',
         ]
       );
     }
-    counts['cms_catalog_items'] = itemsToSeed.length;
+    const [[{ skuCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as skuCount FROM cms_catalog_items');
+    counts['cms_catalog_items'] = skuCount;
 
     // Brands
     const brandsToSeed = storedCatalog.brands || BRANDS_DATA;
     for (const b of brandsToSeed) {
       await conn.query(
-        `INSERT INTO cms_brands (
-          id, name, slug, logo, category_ids, product_ids, origin, website, description, status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE
-          name = VALUES(name), logo = VALUES(logo), category_ids = VALUES(category_ids),
-          product_ids = VALUES(product_ids), description = VALUES(description), status = VALUES(status)`,
+        `INSERT IGNORE INTO cms_brands (
+          id, name, slug, logo, category_ids, product_ids, origin, website, description, status, created_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
         [
           b.id,
           b.name,
@@ -361,7 +347,8 @@ export async function seedMysqlDatabase(): Promise<{
         ]
       );
     }
-    counts['cms_brands'] = brandsToSeed.length;
+    const [[{ brandCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as brandCount FROM cms_brands');
+    counts['cms_brands'] = brandCount;
 
     // Brand Equipment Items
     const equipmentToSeed = storedCatalog.brandEquipmentItems || BRAND_EQUIPMENT_ITEMS;
@@ -369,25 +356,22 @@ export async function seedMysqlDatabase(): Promise<{
       const eq = equipmentToSeed[i];
       const eqId = eq.id || `eq-${eq.brandId}-${i}`;
       await conn.query(
-        `INSERT INTO cms_brand_equipment (id, brand_id, model, category, specs)
-         VALUES (?, ?, ?, ?, ?)
-         ON DUPLICATE KEY UPDATE model = VALUES(model), specs = VALUES(specs)`,
+        `INSERT IGNORE INTO cms_brand_equipment (id, brand_id, model, category, specs, created_at)
+         VALUES (?, ?, ?, ?, ?, NOW())`,
         [eqId, eq.brandId, eq.model, eq.category || '', JSON.stringify(eq.specs || {})]
       );
     }
-    counts['cms_brand_equipment'] = equipmentToSeed.length;
+    const [[{ eqCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as eqCount FROM cms_brand_equipment');
+    counts['cms_brand_equipment'] = eqCount;
 
     // 6. Projects
     for (let i = 0; i < PROJECTS_DATA.length; i++) {
       const proj = PROJECTS_DATA[i];
       await conn.query(
-        `INSERT INTO cms_projects (
+        `INSERT IGNORE INTO cms_projects (
           id, slug, title, category, client_sector, location, short_description,
-          full_overview, scope_of_work, technologies_used, image, is_placeholder, is_featured, is_active, sort_order
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)
-        ON DUPLICATE KEY UPDATE
-          title = VALUES(title), short_description = VALUES(short_description),
-          scope_of_work = VALUES(scope_of_work), technologies_used = VALUES(technologies_used), image = VALUES(image)`,
+          full_overview, scope_of_work, technologies_used, image, is_placeholder, is_featured, is_active, sort_order, created_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, NOW(), NOW())`,
         [
           proj.id,
           proj.slug || proj.id,
@@ -406,29 +390,27 @@ export async function seedMysqlDatabase(): Promise<{
         ]
       );
     }
-    counts['cms_projects'] = PROJECTS_DATA.length;
+    const [[{ projCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as projCount FROM cms_projects');
+    counts['cms_projects'] = projCount;
 
     // 7. Gallery
     for (let i = 0; i < GALLERY_DATA.length; i++) {
       const gal = GALLERY_DATA[i];
       await conn.query(
-        `INSERT INTO cms_gallery (id, title, category, image, description, sort_order, is_active)
-         VALUES (?, ?, ?, ?, ?, ?, 1)
-         ON DUPLICATE KEY UPDATE
-          title = VALUES(title), image = VALUES(image), description = VALUES(description), sort_order = VALUES(sort_order)`,
+        `INSERT IGNORE INTO cms_gallery (id, title, category, image, description, sort_order, is_active, created_at, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, 1, NOW(), NOW())`,
         [gal.id, gal.title, gal.category || '', gal.image, gal.description || '', i + 1]
       );
     }
-    counts['cms_gallery'] = GALLERY_DATA.length;
+    const [[{ galCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as galCount FROM cms_gallery');
+    counts['cms_gallery'] = galCount;
 
     // 8. Reviews
     for (const rev of REVIEWS_DATA) {
       await conn.query(
-        `INSERT INTO cms_reviews (
-          id, client_name, client_role, company_name, industry, quote, rating, project_ref, is_approved, is_active
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, 1)
-        ON DUPLICATE KEY UPDATE
-          quote = VALUES(quote), rating = VALUES(rating), client_name = VALUES(client_name)`,
+        `INSERT IGNORE INTO cms_reviews (
+          id, client_name, client_role, company_name, industry, quote, rating, project_ref, is_approved, is_active, created_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, 1, NOW(), NOW())`,
         [
           rev.id,
           rev.clientName,
@@ -441,15 +423,14 @@ export async function seedMysqlDatabase(): Promise<{
         ]
       );
     }
-    counts['cms_reviews'] = REVIEWS_DATA.length;
+    const [[{ revCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as revCount FROM cms_reviews');
+    counts['cms_reviews'] = revCount;
 
     // 9. FAQs
     for (const faq of INITIAL_FAQS) {
       await conn.query(
-        `INSERT INTO cms_faqs (id, category, question_en, question_ar, answer_en, answer_ar, sort_order, is_active)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-         ON DUPLICATE KEY UPDATE
-          question_en = VALUES(question_en), answer_en = VALUES(answer_en), is_active = VALUES(is_active)`,
+        `INSERT IGNORE INTO cms_faqs (id, category, question_en, question_ar, answer_en, answer_ar, sort_order, is_active, created_at, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
         [
           faq.id,
           faq.category,
@@ -462,15 +443,15 @@ export async function seedMysqlDatabase(): Promise<{
         ]
       );
     }
-    counts['cms_faqs'] = INITIAL_FAQS.length;
+    const [[{ faqCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as faqCount FROM cms_faqs');
+    counts['cms_faqs'] = faqCount;
 
-    // 10. Existing Complaints from complaints.json
+    // 10. Existing Complaints from complaints.json (Insert if missing)
     const complaints = readJsonFile<any[]>(COMPLAINTS_FILE, []);
     for (const c of complaints) {
       await conn.query(
-        `INSERT INTO cms_complaints (id, name, email, contact, company_name, message, status, notes, submitted_at, updated_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-         ON DUPLICATE KEY UPDATE status = VALUES(status), notes = VALUES(notes)`,
+        `INSERT IGNORE INTO cms_complaints (id, name, email, contact, company_name, message, type, status, notes, submitted_at, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
           c.id,
           c.name,
@@ -478,22 +459,23 @@ export async function seedMysqlDatabase(): Promise<{
           c.contact || '',
           c.companyName || '',
           c.message,
+          c.type || 'Contact Enquiry',
           c.status || 'New',
           c.notes || '',
-          c.submittedAt || new Date().toISOString(),
-          c.updatedAt || new Date().toISOString(),
+          c.submittedAt ? new Date(c.submittedAt) : new Date(),
+          c.updatedAt ? new Date(c.updatedAt) : new Date(),
         ]
       );
     }
-    counts['cms_complaints'] = complaints.length;
+    const [[{ compCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as compCount FROM cms_complaints');
+    counts['cms_complaints'] = compCount;
 
-    // 11. Existing Quotes from quotes.json
+    // 11. Existing Quotes from quotes.json (Insert if missing)
     const quotes = readJsonFile<any[]>(QUOTES_FILE, []);
     for (const q of quotes) {
       await conn.query(
-        `INSERT INTO cms_quotes (id, name, email, phone, company_name, city, project_timeline, notes, items, status, submitted_at, updated_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-         ON DUPLICATE KEY UPDATE status = VALUES(status), notes = VALUES(notes)`,
+        `INSERT IGNORE INTO cms_quotes (id, name, email, phone, company_name, city, project_timeline, notes, items, status, submitted_at, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
           q.id,
           q.name,
@@ -505,23 +487,23 @@ export async function seedMysqlDatabase(): Promise<{
           q.notes || '',
           JSON.stringify(q.items || []),
           q.status || 'Pending',
-          q.submittedAt || new Date().toISOString(),
-          q.updatedAt || new Date().toISOString(),
+          q.submittedAt ? new Date(q.submittedAt) : new Date(),
+          q.updatedAt ? new Date(q.updatedAt) : new Date(),
         ]
       );
     }
-    counts['cms_quotes'] = quotes.length;
+    const [[{ quoteCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as quoteCount FROM cms_quotes');
+    counts['cms_quotes'] = quoteCount;
 
-    // 12. Existing Audit Logs from audit_logs.json
+    // 12. Existing Audit Logs from audit_logs.json (Insert if missing)
     const logs = readJsonFile<any[]>(AUDIT_FILE, []);
     for (const l of logs) {
       await conn.query(
-        `INSERT INTO cms_audit_logs (id, timestamp, user, action, entity, entity_id, details)
-         VALUES (?, ?, ?, ?, ?, ?, ?)
-         ON DUPLICATE KEY UPDATE details = VALUES(details)`,
+        `INSERT IGNORE INTO cms_audit_logs (id, timestamp, user, action, entity, entity_id, details)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
         [
           l.id,
-          l.timestamp || new Date().toISOString(),
+          l.timestamp ? new Date(l.timestamp) : new Date(),
           l.user || 'admin',
           l.action,
           l.entity,
@@ -530,13 +512,14 @@ export async function seedMysqlDatabase(): Promise<{
         ]
       );
     }
-    counts['cms_audit_logs'] = logs.length;
+    const [[{ logCount }]]: [any, any] = await conn.query('SELECT COUNT(*) as logCount FROM cms_audit_logs');
+    counts['cms_audit_logs'] = logCount;
 
-    console.log('[DEYSLA DB] Seeding completed successfully. Record counts:', counts);
+    console.log('[DEYSLA DB] Seeding completed safely. Total record counts in MySQL:', counts);
 
     return {
       success: true,
-      message: 'Idempotent seed completed successfully for all CMS tables.',
+      message: 'Idempotent seed completed successfully. All existing records preserved.',
       counts,
     };
   } catch (err: any) {
@@ -552,7 +535,7 @@ export async function seedMysqlDatabase(): Promise<{
 }
 
 // Allow direct CLI execution: tsx src/server/db/seedMysql.ts
-if (import.meta.url === `file:///${process.argv[1].replace(/\\/g, '/')}` || process.argv[1]?.endsWith('seedMysql.ts')) {
+if (process.argv[1] && (import.meta.url === `file:///${process.argv[1].replace(/\\/g, '/')}` || process.argv[1].endsWith('seedMysql.ts'))) {
   console.log('[DEYSLA DB] Executing MySQL Seed Script...');
   seedMysqlDatabase().then((res) => {
     console.log(res.message);

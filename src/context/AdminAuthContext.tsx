@@ -12,7 +12,7 @@ export interface AdminAuthContextType {
   isLoading: boolean;
   login: (username: string, password: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
-  authHeaders: () => Record<string, string>;
+  authHeaders: (extra?: Record<string, string>) => Record<string, string>;
 }
 
 const AdminAuthContext = createContext<AdminAuthContextType | null>(null);
@@ -24,9 +24,12 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AdminUser | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const authHeaders = useCallback((): Record<string, string> => {
+  const authHeaders = useCallback((extra: Record<string, string> = {}): Record<string, string> => {
     const currentToken = token || localStorage.getItem(TOKEN_KEY);
-    return currentToken ? { Authorization: `Bearer ${currentToken}` } : {};
+    return {
+      ...(currentToken ? { Authorization: `Bearer ${currentToken}` } : {}),
+      ...extra,
+    };
   }, [token]);
 
   const checkAuth = useCallback(async () => {

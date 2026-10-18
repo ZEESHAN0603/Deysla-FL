@@ -6,3 +6,17 @@ coverage/
 *.log
 .env*
 !.env.example
+
+
+# Private runtime data
+data/db/careers.json
+data/db/complaints.json
+data/db/quotes.json
+data/db/audit_logs.json
+
+# Local database backups
+.backups/
+
+# Persistent user uploads
+data/uploads/
+

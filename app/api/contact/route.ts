@@ -91,7 +91,7 @@ export async function POST(request: Request) {
         : 'Contact Enquiry';
 
     // 5. Persist inquiry/complaint to database immediately
-    const complaintRecord = recordComplaint({
+    const complaintRecord = await recordComplaint({
       name: name.trim(),
       email: email.trim(),
       contact: contact ? contact.trim() : undefined,

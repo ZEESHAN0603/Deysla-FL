@@ -106,7 +106,7 @@ export async function POST(request: Request) {
       : [];
 
     // 6. Persist to Database immediately
-    const savedQuote = recordQuote({
+    const savedQuote = await recordQuote({
       rfqReference,
       name: name.trim(),
       email: email.trim(),

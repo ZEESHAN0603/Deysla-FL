@@ -7,6 +7,7 @@ import { BRAND_EQUIPMENT_ITEMS, BrandProductItem } from '../data/brandProducts';
 
 export interface CatalogContextType {
   products: ProductType[];
+  activeProducts: ProductType[];
   catalogItems: CatalogItem[];
   brands: Brand[];
   categories: ProductCategory[];
@@ -15,13 +16,13 @@ export interface CatalogContextType {
   error: string | null;
   refreshCatalog: () => Promise<void>;
   // Helpers
-  getProduct: (idOrSlug: string) => ProductType | undefined;
-  getBrand: (idOrSlug: string) => Brand | undefined;
-  getCatalogItemsByCategory: (categoryId: string) => CatalogItem[];
-  getCatalogItemsBySubcategory: (subcategoryId: string) => CatalogItem[];
-  getBrandsByCategoryId: (categoryId: string) => Brand[];
-  getBrandsByProductId: (productId: string) => Brand[];
-  getProductsByBrandId: (brandId: string) => ProductType[];
+  getProduct: (idOrSlug: string, includeInactive?: boolean) => ProductType | undefined;
+  getBrand: (idOrSlug: string, includeInactive?: boolean) => Brand | undefined;
+  getCatalogItemsByCategory: (categoryId: string, includeInactive?: boolean) => CatalogItem[];
+  getCatalogItemsBySubcategory: (subcategoryId: string, includeInactive?: boolean) => CatalogItem[];
+  getBrandsByCategoryId: (categoryId: string, includeInactive?: boolean) => Brand[];
+  getBrandsByProductId: (productId: string, includeInactive?: boolean) => Brand[];
+  getProductsByBrandId: (brandId: string, includeInactive?: boolean) => ProductType[];
 }
 
 const CatalogContext = createContext<CatalogContextType | null>(null);
@@ -38,7 +39,15 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
   const fetchCatalog = useCallback(async () => {
     try {
       setIsLoading(true);
-      const res = await fetch('/api/catalog');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('deysla_admin_jwt') : null;
+      const headers: Record<string, string> = {};
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+      const res = await fetch('/api/catalog?includeInactive=true', {
+        headers,
+        credentials: 'include',
+      });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       if (data.success) {
@@ -70,55 +79,79 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
     fetchCatalog();
   }, [fetchCatalog]);
 
+  const activeProducts = useMemo(() => {
+    return products.filter((p) => p.status !== 'inactive');
+  }, [products]);
+
   const getProduct = useCallback(
-    (idOrSlug: string) => {
-      return products.find((p) => p.id === idOrSlug || p.slug === idOrSlug);
+    (idOrSlug: string, includeInactive: boolean = false) => {
+      return products.find(
+        (p) => (p.id === idOrSlug || p.slug === idOrSlug) && (includeInactive || p.status !== 'inactive')
+      );
     },
     [products]
   );
 
   const getBrand = useCallback(
-    (idOrSlug: string) => {
-      return brands.find((b) => b.id === idOrSlug || b.slug === idOrSlug);
+    (idOrSlug: string, includeInactive: boolean = false) => {
+      return brands.find(
+        (b) => (b.id === idOrSlug || b.slug === idOrSlug) && (includeInactive || b.status !== 'inactive')
+      );
     },
     [brands]
   );
 
   const getCatalogItemsByCategory = useCallback(
-    (categoryId: string) => {
-      return catalogItems.filter((i) => i.categoryId === categoryId);
+    (categoryId: string, includeInactive: boolean = false) => {
+      return catalogItems.filter(
+        (i) => i.categoryId === categoryId && (includeInactive || i.status !== 'inactive')
+      );
     },
     [catalogItems]
   );
 
   const getCatalogItemsBySubcategory = useCallback(
-    (subcategoryId: string) => {
-      return catalogItems.filter((i) => i.subcategoryId === subcategoryId);
+    (subcategoryId: string, includeInactive: boolean = false) => {
+      return catalogItems.filter(
+        (i) => i.subcategoryId === subcategoryId && (includeInactive || i.status !== 'inactive')
+      );
     },
     [catalogItems]
   );
 
   const getBrandsByCategoryId = useCallback(
-    (categoryId: string) => {
-      return brands.filter((b) => b.categoryIds.includes(categoryId));
+    (categoryId: string, includeInactive: boolean = false) => {
+      return brands.filter(
+        (b) => b.categoryIds.includes(categoryId) && (includeInactive || b.status !== 'inactive')
+      );
     },
     [brands]
   );
 
   const getBrandsByProductId = useCallback(
-    (productId: string) => {
+    (productId: string, includeInactive: boolean = false) => {
       const prod = products.find((p) => p.id === productId || p.slug === productId);
-      if (!prod) return [];
-      return brands.filter((b) => prod.brandIds.includes(b.id));
+      const targetId = prod?.id || productId;
+      return brands.filter(
+        (b) =>
+          ((prod && Array.isArray(prod.brandIds) && prod.brandIds.includes(b.id)) ||
+            (Array.isArray(b.productIds) && b.productIds.includes(targetId))) &&
+          (includeInactive || b.status !== 'inactive')
+      );
     },
     [products, brands]
   );
 
   const getProductsByBrandId = useCallback(
-    (brandId: string) => {
+    (brandId: string, includeInactive: boolean = false) => {
       const brand = brands.find((b) => b.id === brandId || b.slug === brandId);
-      if (!brand) return [];
-      return products.filter((p) => brand.productIds.includes(p.id));
+      const targetId = brand?.id || brandId;
+      return products.filter(
+        (p) =>
+          ((brand && Array.isArray(brand.productIds) && brand.productIds.includes(p.id)) ||
+            (Array.isArray(p.brandIds) && p.brandIds.includes(targetId))) &&
+          (includeInactive || p.status !== 'inactive')
+      );
     },
     [brands, products]
   );
@@ -126,6 +159,7 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
   const value = useMemo<CatalogContextType>(
     () => ({
       products,
+      activeProducts,
       catalogItems,
       brands,
       categories,
@@ -143,6 +177,7 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
     }),
     [
       products,
+      activeProducts,
       catalogItems,
       brands,
       categories,

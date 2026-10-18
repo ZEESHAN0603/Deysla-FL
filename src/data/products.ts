@@ -10,6 +10,7 @@ export interface ProductType {
   image: string;
   imageAlt?: string;
   brandIds: string[];
+  status?: 'active' | 'inactive';
 }
 
 export const PRODUCTS_DATA: ProductType[] = [

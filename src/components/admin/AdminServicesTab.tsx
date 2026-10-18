@@ -14,11 +14,13 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { useCmsContent } from '../../context/CmsContentContext';
+import { useAdminAuth } from '../../context/AdminAuthContext';
 import { Service } from '../../data/services';
 import { ImagePickerModal } from './ImagePickerModal';
 
 export function AdminServicesTab() {
   const { services, refreshCmsContent } = useCmsContent();
+  const { authHeaders } = useAdminAuth();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [editingService, setEditingService] = useState<Partial<Service> | null>(null);
@@ -85,7 +87,7 @@ export function AdminServicesTab() {
     try {
       const res = await fetch('/api/admin/cms/services', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(payload),
       });
 
@@ -109,6 +111,7 @@ export function AdminServicesTab() {
     try {
       const res = await fetch(`/api/admin/cms/services/${encodeURIComponent(id)}`, {
         method: 'DELETE',
+        headers: authHeaders(),
       });
       if (!res.ok) {
         const err = await res.json();

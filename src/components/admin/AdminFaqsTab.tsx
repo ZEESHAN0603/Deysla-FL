@@ -12,9 +12,11 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { useCmsContent, CmsFaq } from '../../context/CmsContentContext';
+import { useAdminAuth } from '../../context/AdminAuthContext';
 
 export function AdminFaqsTab() {
   const { faqs, refreshCmsContent } = useCmsContent();
+  const { authHeaders } = useAdminAuth();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [editingFaq, setEditingFaq] = useState<Partial<CmsFaq> | null>(null);
@@ -58,7 +60,7 @@ export function AdminFaqsTab() {
     try {
       const res = await fetch('/api/admin/cms/faqs', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(editingFaq),
       });
 
@@ -82,6 +84,7 @@ export function AdminFaqsTab() {
     try {
       const res = await fetch(`/api/admin/cms/faqs/${encodeURIComponent(id)}`, {
         method: 'DELETE',
+        headers: authHeaders(),
       });
       if (!res.ok) {
         const err = await res.json();

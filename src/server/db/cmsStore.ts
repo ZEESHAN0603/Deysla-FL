@@ -1,19 +1,15 @@
 import fs from 'fs';
 import path from 'path';
-import { checkMysqlConnection, query, execute } from './mysql.ts';
+import { checkMysqlConnection, isMysqlConfigured, query, execute } from './mysql.ts';
 import { logAudit } from './database.ts';
 
-// Static defaults for fallback
+// Static defaults for read-only bootstrap / offline fallback
 import { COMPANY_DATA } from '../../data/company.ts';
 import { SERVICES_DATA, Service } from '../../data/services.ts';
 import { PROJECTS_DATA, Project } from '../../data/projects.ts';
 import { GALLERY_DATA, GalleryItem } from '../../data/gallery.ts';
 import { REVIEWS_DATA, Review } from '../../data/reviews.ts';
 import { INITIAL_FAQS } from './seedMysql.ts';
-
-const DB_DIR = path.resolve(process.cwd(), 'data', 'db');
-const CMS_STORE_FILE = path.join(DB_DIR, 'cms_content.json');
-const CAREERS_FILE = path.join(DB_DIR, 'careers.json');
 
 export interface CmsPage {
   id: string;
@@ -78,26 +74,14 @@ export interface CmsStoreData {
   faqs: CmsFaq[];
 }
 
-function ensureDirectory() {
-  if (!fs.existsSync(DB_DIR)) {
-    fs.mkdirSync(DB_DIR, { recursive: true });
-  }
-}
-
-function readJsonSafely<T>(filePath: string, fallback: T): T {
+function parseJsonField<T>(value: any, fallback: T): T {
+  if (!value) return fallback;
+  if (typeof value === 'object') return value as T;
   try {
-    if (!fs.existsSync(filePath)) return fallback;
-    return JSON.parse(fs.readFileSync(filePath, 'utf-8')) as T;
-  } catch (err) {
+    return JSON.parse(value) as T;
+  } catch {
     return fallback;
   }
-}
-
-function writeJsonAtomically(filePath: string, data: any) {
-  ensureDirectory();
-  const tmpPath = `${filePath}.${Date.now()}.${Math.random().toString(36).slice(2, 8)}.tmp`;
-  fs.writeFileSync(tmpPath, JSON.stringify(data, null, 2), 'utf-8');
-  fs.renameSync(tmpPath, filePath);
 }
 
 function getDefaultStoreData(): CmsStoreData {
@@ -149,29 +133,6 @@ function getDefaultStoreData(): CmsStoreData {
         sort_order: 1,
         is_visible: true,
       },
-      {
-        id: 'sec-home-company_intro',
-        page_slug: 'home',
-        section_key: 'company_intro',
-        title: 'End-to-End Enterprise Technology Partner',
-        subtitle: 'Engineering Excellence & Certified Distribution',
-        content: {
-          description: 'DEYSLA IT Solutions is a premier technology provider operating across Saudi Arabia, the Kingdom of Bahrain, and the United States. We specialize in supply, deployment, and lifecycle maintenance of mission-critical IT infrastructure.',
-          badge: 'ISO Compliant Engineering & OEM Alliances',
-        },
-        sort_order: 2,
-        is_visible: true,
-      },
-      {
-        id: 'sec-home-stats',
-        page_slug: 'home',
-        section_key: 'stats',
-        title: 'Proven Scale & Regional Impact',
-        subtitle: 'Key Milestones',
-        content: COMPANY_DATA.stats,
-        sort_order: 3,
-        is_visible: true,
-      },
     ],
     services: SERVICES_DATA,
     projects: PROJECTS_DATA,
@@ -181,22 +142,8 @@ function getDefaultStoreData(): CmsStoreData {
   };
 }
 
-export function getLocalCmsStore(): CmsStoreData {
-  ensureDirectory();
-  if (!fs.existsSync(CMS_STORE_FILE)) {
-    const defaults = getDefaultStoreData();
-    writeJsonAtomically(CMS_STORE_FILE, defaults);
-    return defaults;
-  }
-  return readJsonSafely<CmsStoreData>(CMS_STORE_FILE, getDefaultStoreData());
-}
-
-export function saveLocalCmsStore(data: CmsStoreData) {
-  writeJsonAtomically(CMS_STORE_FILE, data);
-}
-
 // ============================================================================
-// Public CMS Content Fetcher (Dual Mode: MySQL with JSON Fallback)
+// Public CMS Content Fetcher (MySQL primary)
 // ============================================================================
 export async function getPublicCmsContent(): Promise<{
   source: 'mysql' | 'json';
@@ -239,17 +186,11 @@ export async function getPublicCmsContent(): Promise<{
       const sectionRows = await query<any>(
         'SELECT id, page_slug, section_key, title, subtitle, content, sort_order, is_visible, updated_at FROM cms_page_sections WHERE is_visible = 1 ORDER BY sort_order ASC'
       );
-      const sections: CmsPageSection[] = sectionRows.map((r: any) => {
-        let parsedContent = r.content;
-        try {
-          parsedContent = JSON.parse(r.content);
-        } catch {}
-        return {
-          ...r,
-          content: parsedContent,
-          is_visible: Boolean(r.is_visible),
-        };
-      });
+      const sections: CmsPageSection[] = sectionRows.map((r: any) => ({
+        ...r,
+        content: parseJsonField<any>(r.content, {}),
+        is_visible: Boolean(r.is_visible),
+      }));
 
       // 4. Services
       const serviceRows = await query<any>(
@@ -264,11 +205,11 @@ export async function getPublicCmsContent(): Promise<{
         overview: r.overview,
         image: r.image,
         imageAlt: r.image_alt,
-        subServices: r.sub_services ? JSON.parse(r.sub_services) : [],
-        deliverables: r.deliverables ? JSON.parse(r.deliverables) : [],
-        process: r.process_steps ? JSON.parse(r.process_steps) : [],
-        relevantCategories: r.relevant_categories ? JSON.parse(r.relevant_categories) : [],
-        relevantBrandIds: r.relevant_brand_ids ? JSON.parse(r.relevant_brand_ids) : [],
+        subServices: parseJsonField<string[]>(r.sub_services, []),
+        deliverables: parseJsonField<string[]>(r.deliverables, []),
+        process: parseJsonField<any[]>(r.process_steps, []),
+        relevantCategories: parseJsonField<string[]>(r.relevant_categories, []),
+        relevantBrandIds: parseJsonField<string[]>(r.relevant_brand_ids, []),
       }));
 
       // 5. Projects
@@ -284,8 +225,8 @@ export async function getPublicCmsContent(): Promise<{
         location: r.location,
         shortDescription: r.short_description,
         fullOverview: r.full_overview,
-        scopeOfWork: r.scope_of_work ? JSON.parse(r.scope_of_work) : [],
-        technologiesUsed: r.technologies_used ? JSON.parse(r.technologies_used) : [],
+        scopeOfWork: parseJsonField<string[]>(r.scope_of_work, []),
+        technologiesUsed: parseJsonField<string[]>(r.technologies_used, []),
         image: r.image,
         isPlaceholder: Boolean(r.is_placeholder),
       }));
@@ -344,95 +285,98 @@ export async function getPublicCmsContent(): Promise<{
         faqs,
       };
     } catch (err: any) {
-      console.warn('[DEYSLA CMS] MySQL query error, falling back to local JSON store:', err?.message);
+      console.error('[DEYSLA CMS] MySQL query error in getPublicCmsContent:', err?.message);
+      throw new Error(`Failed to retrieve CMS content from MySQL database: ${err?.message}`);
     }
   }
+  if (isMysqlConfigured()) {
+    throw new Error(`MySQL database connection failed: ${connCheck.error || 'Database unavailable'}. Please verify your Hostinger MySQL connection settings.`);
+  }
 
-  // Fallback to local JSON store
-  const localStore = getLocalCmsStore();
+  // Read-only fallback ONLY for unconfigured offline local development
+  const defaults = getDefaultStoreData();
   return {
     source: 'json',
-    settings: localStore.settings,
-    pages: localStore.pages.filter((p) => p.is_published),
-    sections: localStore.sections.filter((s) => s.is_visible),
-    services: localStore.services,
-    projects: localStore.projects,
-    gallery: localStore.gallery,
-    reviews: localStore.reviews,
-    faqs: localStore.faqs.filter((f) => f.is_active),
+    settings: defaults.settings,
+    pages: defaults.pages,
+    sections: defaults.sections,
+    services: defaults.services,
+    projects: defaults.projects,
+    gallery: defaults.gallery,
+    reviews: defaults.reviews,
+    faqs: defaults.faqs,
   };
 }
 
 // ============================================================================
-// Settings Management
+// Settings Management (MySQL-First, Throws on Failure)
 // ============================================================================
 export async function updateCmsSetting(key: string, value: any, user = 'admin'): Promise<void> {
-  const valueStr = typeof value === 'object' ? JSON.stringify(value) : String(value);
   const connCheck = await checkMysqlConnection();
-
-  if (connCheck.connected) {
-    try {
-      await execute(
-        `INSERT INTO cms_settings (setting_key, setting_value)
-         VALUES (?, ?)
-         ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value)`,
-        [key, valueStr]
-      );
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error saving setting to MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  // Always update local JSON as backup
-  const store = getLocalCmsStore();
-  store.settings[key] = value;
-  saveLocalCmsStore(store);
+  const valueStr = typeof value === 'object' ? JSON.stringify(value) : String(value);
 
-  logAudit({
+  await execute(
+    `INSERT INTO cms_settings (setting_key, setting_value, updated_at)
+     VALUES (?, ?, NOW())
+     ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value), updated_at = NOW()`,
+    [key, valueStr]
+  );
+
+  await logAudit({
     user,
     action: 'UPDATE',
-    entity: 'PRODUCT', // using standard audit enum or setting
+    entity: 'PRODUCT',
     entityId: `setting-${key}`,
     details: `Updated CMS Setting: ${key}`,
   });
 }
 
 // ============================================================================
-// Page Sections Management
+// Page Sections Management (MySQL-First, Throws on Failure)
 // ============================================================================
-export async function savePageSection(sectionData: Partial<CmsPageSection> & { page_slug: string; section_key: string }, user = 'admin'): Promise<CmsPageSection> {
-  const id = sectionData.id || `sec-${sectionData.page_slug}-${sectionData.section_key}`;
-  const contentStr = typeof sectionData.content === 'object' ? JSON.stringify(sectionData.content) : String(sectionData.content || '{}');
+export async function savePageSection(
+  sectionData: Partial<CmsPageSection> & { page_slug: string; section_key: string },
+  user = 'admin'
+): Promise<CmsPageSection> {
   const connCheck = await checkMysqlConnection();
-
-  if (connCheck.connected) {
-    try {
-      await execute(
-        `INSERT INTO cms_page_sections (id, page_slug, section_key, title, subtitle, content, sort_order, is_visible)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-         ON DUPLICATE KEY UPDATE
-          title = VALUES(title), subtitle = VALUES(subtitle), content = VALUES(content),
-          sort_order = VALUES(sort_order), is_visible = VALUES(is_visible)`,
-        [
-          id,
-          sectionData.page_slug,
-          sectionData.section_key,
-          sectionData.title || '',
-          sectionData.subtitle || '',
-          contentStr,
-          sectionData.sort_order ?? 0,
-          sectionData.is_visible !== false ? 1 : 0,
-        ]
-      );
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error saving page section to MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  // Update local JSON store
-  const store = getLocalCmsStore();
-  const idx = store.sections.findIndex((s) => s.id === id);
-  const updated: CmsPageSection = {
+  const id = sectionData.id || `sec-${sectionData.page_slug}-${sectionData.section_key}`;
+  const contentStr = typeof sectionData.content === 'object' ? JSON.stringify(sectionData.content) : String(sectionData.content || '{}');
+
+  await execute(
+    `INSERT INTO cms_page_sections (id, page_slug, section_key, title, subtitle, content, sort_order, is_visible, updated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())
+     ON DUPLICATE KEY UPDATE
+      title = VALUES(title), subtitle = VALUES(subtitle), content = VALUES(content),
+      sort_order = VALUES(sort_order), is_visible = VALUES(is_visible), updated_at = NOW()`,
+    [
+      id,
+      sectionData.page_slug,
+      sectionData.section_key,
+      sectionData.title || '',
+      sectionData.subtitle || '',
+      contentStr,
+      sectionData.sort_order ?? 0,
+      sectionData.is_visible !== false ? 1 : 0,
+    ]
+  );
+
+  await logAudit({
+    user,
+    action: 'UPDATE',
+    entity: 'PRODUCT',
+    entityId: id,
+    details: `Updated Page Section: [${sectionData.page_slug}] ${sectionData.section_key}`,
+  });
+
+  return {
     id,
     page_slug: sectionData.page_slug,
     section_key: sectionData.section_key,
@@ -443,72 +387,61 @@ export async function savePageSection(sectionData: Partial<CmsPageSection> & { p
     is_visible: sectionData.is_visible !== false,
     updated_at: new Date().toISOString(),
   };
-
-  if (idx >= 0) {
-    store.sections[idx] = updated;
-  } else {
-    store.sections.push(updated);
-  }
-  saveLocalCmsStore(store);
-
-  logAudit({
-    user,
-    action: idx >= 0 ? 'UPDATE' : 'CREATE',
-    entity: 'PRODUCT',
-    entityId: id,
-    details: `Updated Page Section: [${updated.page_slug}] ${updated.section_key}`,
-  });
-
-  return updated;
 }
 
 // ============================================================================
-// Services CRUD
+// Services CRUD (MySQL-First, Throws on Failure)
 // ============================================================================
 export async function saveCmsService(serviceData: Partial<Service> & { title: string }, user = 'admin'): Promise<Service> {
-  const store = getLocalCmsStore();
-  const id = serviceData.id || serviceData.slug || serviceData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  const slug = serviceData.slug || id;
-  const isCreate = !store.services.some((s) => s.id === id);
-
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute(
-        `INSERT INTO cms_services (
-          id, number, slug, title, short_description, overview, image, image_alt,
-          sub_services, deliverables, process_steps, relevant_categories, relevant_brand_ids, sort_order, is_active
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE
-          number = VALUES(number), slug = VALUES(slug), title = VALUES(title),
-          short_description = VALUES(short_description), overview = VALUES(overview),
-          image = VALUES(image), image_alt = VALUES(image_alt), sub_services = VALUES(sub_services),
-          deliverables = VALUES(deliverables), process_steps = VALUES(process_steps),
-          relevant_categories = VALUES(relevant_categories), relevant_brand_ids = VALUES(relevant_brand_ids)`,
-        [
-          id,
-          serviceData.number || '01',
-          slug,
-          serviceData.title,
-          serviceData.shortDescription || '',
-          serviceData.overview || '',
-          serviceData.image || '/assets/products/cybersecurity-systems.webp',
-          serviceData.imageAlt || serviceData.title,
-          JSON.stringify(serviceData.subServices || []),
-          JSON.stringify(serviceData.deliverables || []),
-          JSON.stringify(serviceData.process || []),
-          JSON.stringify(serviceData.relevantCategories || []),
-          JSON.stringify(serviceData.relevantBrandIds || []),
-          1,
-          1,
-        ]
-      );
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error saving service to MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  const newService: Service = {
+  const id = serviceData.id || serviceData.slug || serviceData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const slug = serviceData.slug || id;
+
+  const [existing] = await query<any>('SELECT id FROM cms_services WHERE id = ?', [id]);
+  const isCreate = !existing;
+
+  await execute(
+    `INSERT INTO cms_services (
+      id, number, slug, title, short_description, overview, image, image_alt,
+      sub_services, deliverables, process_steps, relevant_categories, relevant_brand_ids, sort_order, is_active
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
+    ON DUPLICATE KEY UPDATE
+      number = VALUES(number), slug = VALUES(slug), title = VALUES(title),
+      short_description = VALUES(short_description), overview = VALUES(overview),
+      image = VALUES(image), image_alt = VALUES(image_alt), sub_services = VALUES(sub_services),
+      deliverables = VALUES(deliverables), process_steps = VALUES(process_steps),
+      relevant_categories = VALUES(relevant_categories), relevant_brand_ids = VALUES(relevant_brand_ids)`,
+    [
+      id,
+      serviceData.number || '01',
+      slug,
+      serviceData.title,
+      serviceData.shortDescription || '',
+      serviceData.overview || '',
+      serviceData.image || '/assets/products/cybersecurity-systems.webp',
+      serviceData.imageAlt || serviceData.title,
+      JSON.stringify(serviceData.subServices || []),
+      JSON.stringify(serviceData.deliverables || []),
+      JSON.stringify(serviceData.process || []),
+      JSON.stringify(serviceData.relevantCategories || []),
+      JSON.stringify(serviceData.relevantBrandIds || []),
+      1,
+    ]
+  );
+
+  await logAudit({
+    user,
+    action: isCreate ? 'CREATE' : 'UPDATE',
+    entity: 'PRODUCT',
+    entityId: id,
+    details: `${isCreate ? 'Created' : 'Updated'} Service: ${serviceData.title}`,
+  });
+
+  return {
     id,
     number: serviceData.number || '01',
     slug,
@@ -523,41 +456,17 @@ export async function saveCmsService(serviceData: Partial<Service> & { title: st
     relevantCategories: serviceData.relevantCategories || [],
     relevantBrandIds: serviceData.relevantBrandIds || [],
   };
-
-  const idx = store.services.findIndex((s) => s.id === id);
-  if (idx >= 0) {
-    store.services[idx] = newService;
-  } else {
-    store.services.push(newService);
-  }
-  saveLocalCmsStore(store);
-
-  logAudit({
-    user,
-    action: isCreate ? 'CREATE' : 'UPDATE',
-    entity: 'PRODUCT',
-    entityId: id,
-    details: `${isCreate ? 'Created' : 'Updated'} Service: ${newService.title}`,
-  });
-
-  return newService;
 }
 
 export async function deleteCmsService(id: string, user = 'admin'): Promise<void> {
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute('DELETE FROM cms_services WHERE id = ?', [id]);
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error deleting service from MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  const store = getLocalCmsStore();
-  store.services = store.services.filter((s) => s.id !== id);
-  saveLocalCmsStore(store);
+  await execute('DELETE FROM cms_services WHERE id = ?', [id]);
 
-  logAudit({
+  await logAudit({
     user,
     action: 'DELETE',
     entity: 'PRODUCT',
@@ -567,50 +476,57 @@ export async function deleteCmsService(id: string, user = 'admin'): Promise<void
 }
 
 // ============================================================================
-// Projects CRUD
+// Projects CRUD (MySQL-First, Throws on Failure)
 // ============================================================================
 export async function saveCmsProject(projectData: Partial<Project> & { title: string }, user = 'admin'): Promise<Project> {
-  const store = getLocalCmsStore();
-  const id = projectData.id || projectData.slug || `proj-${projectData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-  const slug = projectData.slug || id;
-  const isCreate = !store.projects.some((p) => p.id === id);
-
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute(
-        `INSERT INTO cms_projects (
-          id, slug, title, category, client_sector, location, short_description,
-          full_overview, scope_of_work, technologies_used, image, is_placeholder, is_featured, is_active
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
-        ON DUPLICATE KEY UPDATE
-          slug = VALUES(slug), title = VALUES(title), category = VALUES(category),
-          client_sector = VALUES(client_sector), location = VALUES(location),
-          short_description = VALUES(short_description), full_overview = VALUES(full_overview),
-          scope_of_work = VALUES(scope_of_work), technologies_used = VALUES(technologies_used),
-          image = VALUES(image)`,
-        [
-          id,
-          slug,
-          projectData.title,
-          projectData.category || '',
-          projectData.clientSector || '',
-          projectData.location || '',
-          projectData.shortDescription || '',
-          projectData.fullOverview || '',
-          JSON.stringify(projectData.scopeOfWork || []),
-          JSON.stringify(projectData.technologiesUsed || []),
-          projectData.image || '/assets/Picture21.png',
-          projectData.isPlaceholder ? 1 : 0,
-          1,
-        ]
-      );
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error saving project to MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  const newProject: Project = {
+  const id = projectData.id || projectData.slug || `proj-${projectData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+  const slug = projectData.slug || id;
+
+  const [existing] = await query<any>('SELECT id FROM cms_projects WHERE id = ?', [id]);
+  const isCreate = !existing;
+
+  await execute(
+    `INSERT INTO cms_projects (
+      id, slug, title, category, client_sector, location, short_description,
+      full_overview, scope_of_work, technologies_used, image, is_placeholder, is_featured, is_active
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
+    ON DUPLICATE KEY UPDATE
+      slug = VALUES(slug), title = VALUES(title), category = VALUES(category),
+      client_sector = VALUES(client_sector), location = VALUES(location),
+      short_description = VALUES(short_description), full_overview = VALUES(full_overview),
+      scope_of_work = VALUES(scope_of_work), technologies_used = VALUES(technologies_used),
+      image = VALUES(image)`,
+    [
+      id,
+      slug,
+      projectData.title,
+      projectData.category || '',
+      projectData.clientSector || '',
+      projectData.location || '',
+      projectData.shortDescription || '',
+      projectData.fullOverview || '',
+      JSON.stringify(projectData.scopeOfWork || []),
+      JSON.stringify(projectData.technologiesUsed || []),
+      projectData.image || '/assets/Picture21.png',
+      projectData.isPlaceholder ? 1 : 0,
+      1,
+    ]
+  );
+
+  await logAudit({
+    user,
+    action: isCreate ? 'CREATE' : 'UPDATE',
+    entity: 'PRODUCT',
+    entityId: id,
+    details: `${isCreate ? 'Created' : 'Updated'} Project: ${projectData.title}`,
+  });
+
+  return {
     id,
     slug,
     title: projectData.title,
@@ -624,41 +540,17 @@ export async function saveCmsProject(projectData: Partial<Project> & { title: st
     image: projectData.image || '/assets/Picture21.png',
     isPlaceholder: Boolean(projectData.isPlaceholder),
   };
-
-  const idx = store.projects.findIndex((p) => p.id === id);
-  if (idx >= 0) {
-    store.projects[idx] = newProject;
-  } else {
-    store.projects.push(newProject);
-  }
-  saveLocalCmsStore(store);
-
-  logAudit({
-    user,
-    action: isCreate ? 'CREATE' : 'UPDATE',
-    entity: 'PRODUCT',
-    entityId: id,
-    details: `${isCreate ? 'Created' : 'Updated'} Project: ${newProject.title}`,
-  });
-
-  return newProject;
 }
 
 export async function deleteCmsProject(id: string, user = 'admin'): Promise<void> {
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute('DELETE FROM cms_projects WHERE id = ?', [id]);
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error deleting project from MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  const store = getLocalCmsStore();
-  store.projects = store.projects.filter((p) => p.id !== id);
-  saveLocalCmsStore(store);
+  await execute('DELETE FROM cms_projects WHERE id = ?', [id]);
 
-  logAudit({
+  await logAudit({
     user,
     action: 'DELETE',
     entity: 'PRODUCT',
@@ -668,70 +560,52 @@ export async function deleteCmsProject(id: string, user = 'admin'): Promise<void
 }
 
 // ============================================================================
-// Gallery CRUD
+// Gallery CRUD (MySQL-First, Throws on Failure)
 // ============================================================================
 export async function saveCmsGalleryItem(itemData: Partial<GalleryItem> & { title: string; image: string }, user = 'admin'): Promise<GalleryItem> {
-  const store = getLocalCmsStore();
-  const id = itemData.id || `gal-${Date.now()}`;
-  const isCreate = !store.gallery.some((g) => g.id === id);
-
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute(
-        `INSERT INTO cms_gallery (id, title, category, image, description, sort_order, is_active)
-         VALUES (?, ?, ?, ?, ?, 0, 1)
-         ON DUPLICATE KEY UPDATE
-          title = VALUES(title), category = VALUES(category), image = VALUES(image), description = VALUES(description)`,
-        [id, itemData.title, itemData.category || '', itemData.image, itemData.description || '']
-      );
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error saving gallery to MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  const newItem: GalleryItem = {
+  const id = itemData.id || `gal-${Date.now()}`;
+  const [existing] = await query<any>('SELECT id FROM cms_gallery WHERE id = ?', [id]);
+  const isCreate = !existing;
+
+  await execute(
+    `INSERT INTO cms_gallery (id, title, category, image, description, sort_order, is_active)
+     VALUES (?, ?, ?, ?, ?, 0, 1)
+     ON DUPLICATE KEY UPDATE
+      title = VALUES(title), category = VALUES(category), image = VALUES(image), description = VALUES(description)`,
+    [id, itemData.title, itemData.category || '', itemData.image, itemData.description || '']
+  );
+
+  await logAudit({
+    user,
+    action: isCreate ? 'CREATE' : 'UPDATE',
+    entity: 'PRODUCT',
+    entityId: id,
+    details: `${isCreate ? 'Created' : 'Updated'} Gallery item: ${itemData.title}`,
+  });
+
+  return {
     id,
     title: itemData.title,
     category: itemData.category || '',
     image: itemData.image,
     description: itemData.description || '',
   };
-
-  const idx = store.gallery.findIndex((g) => g.id === id);
-  if (idx >= 0) {
-    store.gallery[idx] = newItem;
-  } else {
-    store.gallery.push(newItem);
-  }
-  saveLocalCmsStore(store);
-
-  logAudit({
-    user,
-    action: isCreate ? 'CREATE' : 'UPDATE',
-    entity: 'PRODUCT',
-    entityId: id,
-    details: `${isCreate ? 'Created' : 'Updated'} Gallery item: ${newItem.title}`,
-  });
-
-  return newItem;
 }
 
 export async function deleteCmsGalleryItem(id: string, user = 'admin'): Promise<void> {
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute('DELETE FROM cms_gallery WHERE id = ?', [id]);
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error deleting gallery item from MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  const store = getLocalCmsStore();
-  store.gallery = store.gallery.filter((g) => g.id !== id);
-  saveLocalCmsStore(store);
+  await execute('DELETE FROM cms_gallery WHERE id = ?', [id]);
 
-  logAudit({
+  await logAudit({
     user,
     action: 'DELETE',
     entity: 'PRODUCT',
@@ -741,41 +615,47 @@ export async function deleteCmsGalleryItem(id: string, user = 'admin'): Promise<
 }
 
 // ============================================================================
-// Reviews CRUD
+// Reviews CRUD (MySQL-First, Throws on Failure)
 // ============================================================================
 export async function saveCmsReview(reviewData: Partial<Review> & { clientName: string; quote: string }, user = 'admin'): Promise<Review> {
-  const store = getLocalCmsStore();
-  const id = reviewData.id || `rev-${Date.now()}`;
-  const isCreate = !store.reviews.some((r) => r.id === id);
-
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute(
-        `INSERT INTO cms_reviews (
-          id, client_name, client_role, company_name, industry, quote, rating, project_ref, is_approved, is_active
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, 1)
-        ON DUPLICATE KEY UPDATE
-          client_name = VALUES(client_name), client_role = VALUES(client_role),
-          company_name = VALUES(company_name), industry = VALUES(industry),
-          quote = VALUES(quote), rating = VALUES(rating), project_ref = VALUES(project_ref)`,
-        [
-          id,
-          reviewData.clientName,
-          reviewData.clientRole || '',
-          reviewData.companyName || '',
-          reviewData.industry || '',
-          reviewData.quote,
-          reviewData.rating || 5,
-          reviewData.projectRef || '',
-        ]
-      );
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error saving review to MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  const newReview: Review = {
+  const id = reviewData.id || `rev-${Date.now()}`;
+  const [existing] = await query<any>('SELECT id FROM cms_reviews WHERE id = ?', [id]);
+  const isCreate = !existing;
+
+  await execute(
+    `INSERT INTO cms_reviews (
+      id, client_name, client_role, company_name, industry, quote, rating, project_ref, is_approved, is_active
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, 1)
+    ON DUPLICATE KEY UPDATE
+      client_name = VALUES(client_name), client_role = VALUES(client_role),
+      company_name = VALUES(company_name), industry = VALUES(industry),
+      quote = VALUES(quote), rating = VALUES(rating), project_ref = VALUES(project_ref)`,
+    [
+      id,
+      reviewData.clientName,
+      reviewData.clientRole || '',
+      reviewData.companyName || '',
+      reviewData.industry || '',
+      reviewData.quote,
+      reviewData.rating || 5,
+      reviewData.projectRef || '',
+    ]
+  );
+
+  await logAudit({
+    user,
+    action: isCreate ? 'CREATE' : 'UPDATE',
+    entity: 'PRODUCT',
+    entityId: id,
+    details: `${isCreate ? 'Created' : 'Updated'} Review from: ${reviewData.clientName}`,
+  });
+
+  return {
     id,
     clientName: reviewData.clientName,
     clientRole: reviewData.clientRole || '',
@@ -785,41 +665,17 @@ export async function saveCmsReview(reviewData: Partial<Review> & { clientName: 
     rating: reviewData.rating || 5,
     projectRef: reviewData.projectRef || '',
   };
-
-  const idx = store.reviews.findIndex((r) => r.id === id);
-  if (idx >= 0) {
-    store.reviews[idx] = newReview;
-  } else {
-    store.reviews.push(newReview);
-  }
-  saveLocalCmsStore(store);
-
-  logAudit({
-    user,
-    action: isCreate ? 'CREATE' : 'UPDATE',
-    entity: 'PRODUCT',
-    entityId: id,
-    details: `${isCreate ? 'Created' : 'Updated'} Review from: ${newReview.clientName}`,
-  });
-
-  return newReview;
 }
 
 export async function deleteCmsReview(id: string, user = 'admin'): Promise<void> {
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute('DELETE FROM cms_reviews WHERE id = ?', [id]);
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error deleting review from MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  const store = getLocalCmsStore();
-  store.reviews = store.reviews.filter((r) => r.id !== id);
-  saveLocalCmsStore(store);
+  await execute('DELETE FROM cms_reviews WHERE id = ?', [id]);
 
-  logAudit({
+  await logAudit({
     user,
     action: 'DELETE',
     entity: 'PRODUCT',
@@ -829,39 +685,45 @@ export async function deleteCmsReview(id: string, user = 'admin'): Promise<void>
 }
 
 // ============================================================================
-// FAQs CRUD
+// FAQs CRUD (MySQL-First, Throws on Failure)
 // ============================================================================
 export async function saveCmsFaq(faqData: Partial<CmsFaq> & { question_en: string; answer_en: string }, user = 'admin'): Promise<CmsFaq> {
-  const store = getLocalCmsStore();
-  const id = faqData.id || `faq-${Date.now()}`;
-  const isCreate = !store.faqs.some((f) => f.id === id);
-
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute(
-        `INSERT INTO cms_faqs (id, category, question_en, question_ar, answer_en, answer_ar, sort_order, is_active)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-         ON DUPLICATE KEY UPDATE
-          category = VALUES(category), question_en = VALUES(question_en), question_ar = VALUES(question_ar),
-          answer_en = VALUES(answer_en), answer_ar = VALUES(answer_ar), sort_order = VALUES(sort_order), is_active = VALUES(is_active)`,
-        [
-          id,
-          faqData.category || 'General',
-          faqData.question_en,
-          faqData.question_ar || '',
-          faqData.answer_en,
-          faqData.answer_ar || '',
-          faqData.sort_order ?? 0,
-          faqData.is_active !== false ? 1 : 0,
-        ]
-      );
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error saving FAQ to MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  const newFaq: CmsFaq = {
+  const id = faqData.id || `faq-${Date.now()}`;
+  const [existing] = await query<any>('SELECT id FROM cms_faqs WHERE id = ?', [id]);
+  const isCreate = !existing;
+
+  await execute(
+    `INSERT INTO cms_faqs (id, category, question_en, question_ar, answer_en, answer_ar, sort_order, is_active)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+     ON DUPLICATE KEY UPDATE
+      category = VALUES(category), question_en = VALUES(question_en), question_ar = VALUES(question_ar),
+      answer_en = VALUES(answer_en), answer_ar = VALUES(answer_ar), sort_order = VALUES(sort_order), is_active = VALUES(is_active)`,
+    [
+      id,
+      faqData.category || 'General',
+      faqData.question_en,
+      faqData.question_ar || '',
+      faqData.answer_en,
+      faqData.answer_ar || '',
+      faqData.sort_order ?? 0,
+      faqData.is_active !== false ? 1 : 0,
+    ]
+  );
+
+  await logAudit({
+    user,
+    action: isCreate ? 'CREATE' : 'UPDATE',
+    entity: 'PRODUCT',
+    entityId: id,
+    details: `${isCreate ? 'Created' : 'Updated'} FAQ: ${faqData.question_en.slice(0, 40)}`,
+  });
+
+  return {
     id,
     category: faqData.category || 'General',
     question_en: faqData.question_en,
@@ -871,41 +733,17 @@ export async function saveCmsFaq(faqData: Partial<CmsFaq> & { question_en: strin
     sort_order: faqData.sort_order ?? 0,
     is_active: faqData.is_active !== false,
   };
-
-  const idx = store.faqs.findIndex((f) => f.id === id);
-  if (idx >= 0) {
-    store.faqs[idx] = newFaq;
-  } else {
-    store.faqs.push(newFaq);
-  }
-  saveLocalCmsStore(store);
-
-  logAudit({
-    user,
-    action: isCreate ? 'CREATE' : 'UPDATE',
-    entity: 'PRODUCT',
-    entityId: id,
-    details: `${isCreate ? 'Created' : 'Updated'} FAQ: ${newFaq.question_en.slice(0, 40)}`,
-  });
-
-  return newFaq;
 }
 
 export async function deleteCmsFaq(id: string, user = 'admin'): Promise<void> {
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute('DELETE FROM cms_faqs WHERE id = ?', [id]);
-    } catch (err) {
-      console.warn(`[DEYSLA CMS] Error deleting FAQ from MySQL:`, err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  const store = getLocalCmsStore();
-  store.faqs = store.faqs.filter((f) => f.id !== id);
-  saveLocalCmsStore(store);
+  await execute('DELETE FROM cms_faqs WHERE id = ?', [id]);
 
-  logAudit({
+  await logAudit({
     user,
     action: 'DELETE',
     entity: 'PRODUCT',
@@ -915,35 +753,32 @@ export async function deleteCmsFaq(id: string, user = 'admin'): Promise<void> {
 }
 
 // ============================================================================
-// Career Applications Persistence
+// Career Applications Persistence (MySQL-First, Throws on Failure)
 // ============================================================================
 export async function getCareerApplications(): Promise<CareerApplicationRecord[]> {
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      const rows = await query<any>('SELECT * FROM cms_careers ORDER BY submitted_at DESC');
-      return rows.map((r: any) => ({
-        id: r.id,
-        name: r.name,
-        email: r.email,
-        phone: r.phone,
-        position: r.position,
-        experience: r.experience,
-        noticePeriod: r.notice_period,
-        portfolioUrl: r.portfolio_url,
-        coverLetter: r.cover_letter,
-        resumeFilename: r.resume_filename,
-        resumePath: r.resume_path,
-        status: r.status,
-        submittedAt: r.submitted_at,
-        updatedAt: r.updated_at,
-      }));
-    } catch (err) {
-      console.warn('[DEYSLA Careers] MySQL fetch failed, reading JSON:', err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  return readJsonSafely<CareerApplicationRecord[]>(CAREERS_FILE, []);
+  const rows = await query<any>('SELECT * FROM cms_careers ORDER BY submitted_at DESC');
+  return rows.map((r: any) => ({
+    id: r.id,
+    name: r.name,
+    email: r.email,
+    phone: r.phone,
+    position: r.position,
+    experience: r.experience || '',
+    noticePeriod: r.notice_period || '',
+    portfolioUrl: r.portfolio_url || '',
+    coverLetter: r.cover_letter || '',
+    resumeFilename: r.resume_filename || '',
+    resumePath: r.resume_path || '',
+    status: r.status || 'New',
+    notes: r.notes || '',
+    submittedAt: r.submitted_at ? new Date(r.submitted_at).toISOString() : new Date().toISOString(),
+    updatedAt: r.updated_at ? new Date(r.updated_at).toISOString() : new Date().toISOString(),
+  }));
 }
 
 export async function recordCareerApplication(data: {
@@ -958,10 +793,35 @@ export async function recordCareerApplication(data: {
   resumeFilename?: string;
   resumePath?: string;
 }): Promise<CareerApplicationRecord> {
+  const connCheck = await checkMysqlConnection();
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
+  }
+
   const now = new Date().toISOString();
   const id = `CAR-${Date.now().toString().slice(-6)}-${Math.floor(100 + Math.random() * 900)}`;
 
-  const record: CareerApplicationRecord = {
+  await execute(
+    `INSERT INTO cms_careers (
+      id, name, email, phone, position, experience, notice_period,
+      portfolio_url, cover_letter, resume_filename, resume_path, status, notes, submitted_at, updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'New', '', NOW(), NOW())`,
+    [
+      id,
+      data.name.trim(),
+      data.email.trim(),
+      data.phone.trim(),
+      data.position.trim(),
+      data.experience?.trim() || '',
+      data.noticePeriod?.trim() || '',
+      data.portfolioUrl?.trim() || '',
+      data.coverLetter?.trim() || '',
+      data.resumeFilename || '',
+      data.resumePath || '',
+    ]
+  );
+
+  return {
     id,
     name: data.name.trim(),
     email: data.email.trim(),
@@ -974,46 +834,10 @@ export async function recordCareerApplication(data: {
     resumeFilename: data.resumeFilename,
     resumePath: data.resumePath,
     status: 'New',
+    notes: '',
     submittedAt: now,
     updatedAt: now,
   };
-
-  const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute(
-        `INSERT INTO cms_careers (
-          id, name, email, phone, position, experience, notice_period,
-          portfolio_url, cover_letter, resume_filename, resume_path, status, submitted_at, updated_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [
-          record.id,
-          record.name,
-          record.email,
-          record.phone,
-          record.position,
-          record.experience || '',
-          record.noticePeriod || '',
-          record.portfolioUrl || '',
-          record.coverLetter || '',
-          record.resumeFilename || '',
-          record.resumePath || '',
-          record.status,
-          record.submittedAt,
-          record.updatedAt,
-        ]
-      );
-    } catch (err) {
-      console.warn('[DEYSLA Careers] Error inserting to MySQL:', err);
-    }
-  }
-
-  // Always write to JSON fallback
-  const existing = readJsonSafely<CareerApplicationRecord[]>(CAREERS_FILE, []);
-  existing.unshift(record);
-  writeJsonAtomically(CAREERS_FILE, existing);
-
-  return record;
 }
 
 export async function updateCareerApplicationStatus(
@@ -1023,34 +847,65 @@ export async function updateCareerApplicationStatus(
   notes?: string
 ): Promise<CareerApplicationRecord> {
   const connCheck = await checkMysqlConnection();
-  if (connCheck.connected) {
-    try {
-      await execute('UPDATE cms_careers SET status = ?, updated_at = NOW() WHERE id = ?', [status, id]);
-    } catch (err) {
-      console.warn('[DEYSLA Careers] Error updating in MySQL:', err);
-    }
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
   }
 
-  const existing = readJsonSafely<CareerApplicationRecord[]>(CAREERS_FILE, []);
-  const idx = existing.findIndex((c) => c.id === id);
-  if (idx === -1) {
+  const [existing] = await query<any>('SELECT * FROM cms_careers WHERE id = ?', [id]);
+  if (!existing) {
     throw new Error(`Career application "${id}" not found.`);
   }
 
-  existing[idx].status = status;
-  if (notes !== undefined) {
-    existing[idx].notes = notes;
-  }
-  existing[idx].updatedAt = new Date().toISOString();
-  writeJsonAtomically(CAREERS_FILE, existing);
+  const finalNotes = notes !== undefined ? notes : existing.notes;
+  await execute('UPDATE cms_careers SET status = ?, notes = ?, updated_at = NOW() WHERE id = ?', [status, finalNotes || '', id]);
 
-  logAudit({
+  await logAudit({
     user,
     action: 'STATUS_CHANGE',
-    entity: 'COMPLAINT',
+    entity: 'CAREER',
     entityId: id,
     details: `Updated Career application status to: ${status}${notes ? ` with notes: "${notes}"` : ''}`,
   });
 
-  return existing[idx];
+  const [refetched] = await query<any>('SELECT * FROM cms_careers WHERE id = ?', [id]);
+  return {
+    id: refetched.id,
+    name: refetched.name,
+    email: refetched.email,
+    phone: refetched.phone,
+    position: refetched.position,
+    experience: refetched.experience,
+    noticePeriod: refetched.notice_period,
+    portfolioUrl: refetched.portfolio_url,
+    coverLetter: refetched.cover_letter,
+    resumeFilename: refetched.resume_filename,
+    resumePath: refetched.resume_path,
+    status: refetched.status,
+    notes: refetched.notes,
+    submittedAt: refetched.submitted_at ? new Date(refetched.submitted_at).toISOString() : new Date().toISOString(),
+    updatedAt: refetched.updated_at ? new Date(refetched.updated_at).toISOString() : new Date().toISOString(),
+  };
 }
+
+export async function deleteCareerApplication(id: string, user = 'admin'): Promise<void> {
+  const connCheck = await checkMysqlConnection();
+  if (!connCheck.connected) {
+    throw new Error(`MySQL database is unavailable: ${connCheck.error || 'Connection failed'}`);
+  }
+
+  const [existing] = await query<any>('SELECT * FROM cms_careers WHERE id = ?', [id]);
+  if (!existing) {
+    throw new Error(`Career application "${id}" not found.`);
+  }
+
+  await execute('DELETE FROM cms_careers WHERE id = ?', [id]);
+
+  await logAudit({
+    user,
+    action: 'DELETE',
+    entity: 'CAREER',
+    entityId: id,
+    details: `Deleted career application: "${id}" for candidate "${existing.name}" (Role: ${existing.position})`,
+  });
+}
+

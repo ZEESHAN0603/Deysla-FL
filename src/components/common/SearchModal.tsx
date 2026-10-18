@@ -17,7 +17,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const { language, dict, formatPath } = useLanguage();
-  const { products, brands, categories } = useCatalog();
+  const { activeProducts: products, brands, categories } = useCatalog();
 
   useEffect(() => {
     if (isOpen) {
@@ -85,8 +85,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
   const matchingBrands = q
     ? brands.filter(
         (b) =>
-          b.name.toLowerCase().includes(q) ||
-          b.description.toLowerCase().includes(q)
+          b.status !== 'inactive' &&
+          (b.name.toLowerCase().includes(q) ||
+            b.description.toLowerCase().includes(q))
       )
     : [];
 

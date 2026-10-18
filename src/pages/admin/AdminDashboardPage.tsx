@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
-  LayoutDashboard,
-  Package,
-  Layers,
-  Award,
-  MessageSquareWarning,
-  FileSpreadsheet,
-  Image as ImageIcon,
-  History,
-  LogOut,
-  ExternalLink,
-  Shield,
   Menu,
   X,
+  ExternalLink,
+  LogOut,
   ChevronRight,
+  Shield,
+  RefreshCw,
+  Bell,
+  Search,
+  Sparkles,
 } from 'lucide-react';
 import { useAdminAuth } from '../../context/AdminAuthContext';
+import { AdminSidebar } from '../../components/admin/AdminSidebar';
+
+// Tab Components
 import { AdminOverviewTab } from '../../components/admin/AdminOverviewTab';
 import { AdminProductsTab } from '../../components/admin/AdminProductsTab';
 import { AdminCatalogItemsTab } from '../../components/admin/AdminCatalogItemsTab';
@@ -33,17 +33,6 @@ import { AdminReviewsTab } from '../../components/admin/AdminReviewsTab';
 import { AdminFaqsTab } from '../../components/admin/AdminFaqsTab';
 import { AdminCareersTab } from '../../components/admin/AdminCareersTab';
 import { AdminInquiryInboxTab } from '../../components/admin/AdminInquiryInboxTab';
-import {
-  Settings,
-  FileText,
-  Wrench,
-  Briefcase,
-  MessageSquareQuote,
-  HelpCircle,
-  GraduationCap,
-  Folder,
-  Inbox,
-} from 'lucide-react';
 
 export type AdminTab =
   | 'overview'
@@ -64,150 +53,254 @@ export type AdminTab =
   | 'media'
   | 'audit';
 
+const VALID_TABS: AdminTab[] = [
+  'overview',
+  'inbox',
+  'settings',
+  'content',
+  'services',
+  'products',
+  'catalog-items',
+  'brands',
+  'projects',
+  'gallery',
+  'reviews',
+  'faqs',
+  'careers',
+  'complaints',
+  'quotes',
+  'media',
+  'audit',
+];
+
+interface BreadcrumbInfo {
+  section: string;
+  group?: string;
+  title: string;
+}
+
+const TAB_BREADCRUMBS: Record<AdminTab, BreadcrumbInfo> = {
+  overview: { section: 'Overview', title: 'Executive Dashboard' },
+  content: { section: 'Website Content', group: 'Website Pages', title: 'Page Content & Hero' },
+  settings: { section: 'Website Content', group: 'Website Pages', title: 'Site Settings & MySQL' },
+  services: { section: 'Website Content', title: 'Enterprise Services' },
+  products: { section: 'Website Content', group: 'Products & Brands', title: 'Products & Taxonomy' },
+  'catalog-items': { section: 'Website Content', group: 'Products & Brands', title: 'Commercial SKUs' },
+  brands: { section: 'Website Content', group: 'Products & Brands', title: 'OEM Brand Partners' },
+  projects: { section: 'Website Content', title: 'Turnkey Projects' },
+  gallery: { section: 'Website Content', group: 'Gallery & Media', title: 'Showcase Gallery' },
+  media: { section: 'Website Content', group: 'Gallery & Media', title: 'Media & Image Assets' },
+  faqs: { section: 'Website Content', title: 'FAQs Knowledge Base' },
+  reviews: { section: 'Website Content', title: 'Client Reviews & Testimonials' },
+  inbox: { section: 'Customer & Sales', title: 'Customer Inquiries' },
+  quotes: { section: 'Customer & Sales', title: 'Quotation Requests' },
+  complaints: { section: 'Customer & Sales', title: 'Customer Complaints' },
+  careers: { section: 'Recruitment', title: 'Careers & Resumes' },
+  audit: { section: 'System & Administration', title: 'Audit Trail & Operations Log' },
+};
+
 export function AdminDashboardPage() {
-  const { user, logout } = useAdminAuth();
-  const [activeTab, setActiveTab] = useState<AdminTab>('overview');
+  const { user, logout, authHeaders } = useAdminAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Extract tab from route: /admin or /admin/:tab
+  const currentTabFromUrl = useMemo<AdminTab>(() => {
+    const raw = location.pathname.replace(/^\/admin\/?/, '').split('/')[0];
+    if (raw && (VALID_TABS as string[]).includes(raw)) {
+      return raw as AdminTab;
+    }
+    return 'overview';
+  }, [location.pathname]);
+
+  const [activeTab, setActiveTab] = useState<AdminTab>(currentTabFromUrl);
+
+  // Sync state if URL changes (e.g. browser back/forward or direct link)
+  useEffect(() => {
+    if (currentTabFromUrl !== activeTab) {
+      setActiveTab(currentTabFromUrl);
+    }
+  }, [currentTabFromUrl]);
+
+  // Handle tab selection with clean URL navigation and refresh preservation
+  const handleSelectTab = useCallback(
+    (tab: AdminTab) => {
+      setActiveTab(tab);
+      const targetUrl = tab === 'overview' ? '/admin' : `/admin/${tab}`;
+      if (location.pathname !== targetUrl) {
+        navigate(targetUrl);
+      }
+    },
+    [navigate, location.pathname]
+  );
+
+  // Mobile sidebar state
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+  // Compact sidebar mode with persistent preference
+  const [isCompact, setIsCompact] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem('deysla_admin_sidebar_compact') === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  const toggleCompact = () => {
+    setIsCompact((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem('deysla_admin_sidebar_compact', String(next));
+      } catch {}
+      return next;
+    });
+  };
+
+  // Cross-tab subproduct linking
   const [subproductFilter, setSubproductFilter] = useState<string | undefined>(undefined);
-
-  const navItems = [
-    { id: 'overview' as AdminTab, label: 'Dashboard Overview', icon: LayoutDashboard },
-    { id: 'inbox' as AdminTab, label: 'Customer Inquiry Inbox', icon: Inbox },
-    { id: 'settings' as AdminTab, label: 'Site Settings & MySQL', icon: Settings },
-    { id: 'content' as AdminTab, label: 'Page Content & Hero', icon: FileText },
-    { id: 'services' as AdminTab, label: 'Enterprise Services', icon: Wrench },
-    { id: 'products' as AdminTab, label: 'Products & Taxonomy', icon: Package },
-    { id: 'catalog-items' as AdminTab, label: 'Commercial SKUs', icon: Layers },
-    { id: 'brands' as AdminTab, label: 'OEM Brand Partners', icon: Award },
-    { id: 'projects' as AdminTab, label: 'Turnkey Projects', icon: Briefcase },
-    { id: 'gallery' as AdminTab, label: 'Showcase Gallery', icon: ImageIcon },
-    { id: 'reviews' as AdminTab, label: 'Client Reviews', icon: MessageSquareQuote },
-    { id: 'faqs' as AdminTab, label: 'FAQs Knowledge Base', icon: HelpCircle },
-    { id: 'careers' as AdminTab, label: 'Careers & Resumes', icon: GraduationCap },
-    { id: 'complaints' as AdminTab, label: 'Inquiries & Complaints', icon: MessageSquareWarning },
-    { id: 'quotes' as AdminTab, label: 'Quotation Requests', icon: FileSpreadsheet },
-    { id: 'media' as AdminTab, label: 'Media & Image Assets', icon: Folder },
-    { id: 'audit' as AdminTab, label: 'Audit Trail', icon: History },
-  ];
-
   const handleSelectProductForSubproducts = (productId: string) => {
     setSubproductFilter(productId);
-    setActiveTab('catalog-items');
+    handleSelectTab('catalog-items');
+  };
+
+  // Live sidebar badge stats
+  const [sidebarStats, setSidebarStats] = useState<{
+    newInquiries?: number;
+    pendingQuotes?: number;
+    openComplaints?: number;
+    newCareers?: number;
+    inactiveProducts?: number;
+  } | null>(null);
+
+  const fetchSidebarStats = useCallback(async () => {
+    try {
+      const res = await fetch('/api/admin/stats', { headers: authHeaders() });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && data.stats) {
+          const s = data.stats;
+          setSidebarStats({
+            newInquiries: s.newInquiries ?? s.newComplaints ?? 0,
+            pendingQuotes: s.pendingQuotes ?? 0,
+            openComplaints: s.openComplaints ?? s.newComplaints ?? 0,
+            newCareers: s.newCareers ?? 0,
+            inactiveProducts: s.inactiveProducts ?? 0,
+          });
+        }
+      }
+    } catch {
+      // Non-critical background telemetry
+    }
+  }, [authHeaders]);
+
+  useEffect(() => {
+    fetchSidebarStats();
+    // Poll stats occasionally for live badge updates
+    const timer = setInterval(fetchSidebarStats, 60000);
+    return () => clearInterval(timer);
+  }, [fetchSidebarStats]);
+
+  const breadcrumb = TAB_BREADCRUMBS[activeTab] || {
+    section: 'Administration',
+    title: activeTab,
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans selection:bg-orange-500 selection:text-white">
-      {/* Top Enterprise Bar */}
-      <header className="h-16 border-b border-slate-200 bg-white/95 backdrop-blur-md sticky top-0 z-40 px-4 md:px-6 flex items-center justify-between shadow-xs">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
-            className="md:hidden w-9 h-9 inline-flex items-center justify-center text-slate-700 hover:text-slate-950 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg cursor-pointer shrink-0 shadow-2xs transition-colors"
-            aria-label="Toggle mobile sidebar"
-          >
-            {isMobileSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+    <div className="min-h-screen bg-slate-100 text-slate-800 flex font-sans selection:bg-orange-500 selection:text-white">
+      {/* Redesigned Structured Sidebar */}
+      <AdminSidebar
+        activeTab={activeTab}
+        onSelectTab={handleSelectTab}
+        isMobileOpen={isMobileSidebarOpen}
+        onCloseMobile={() => setIsMobileSidebarOpen(false)}
+        isCompact={isCompact}
+        onToggleCompact={toggleCompact}
+        stats={sidebarStats}
+      />
 
-          <div className="flex items-center gap-3">
-            <img src="/assets/logo.png" alt="DEYSLA" className="h-7 w-auto" />
-            <div className="hidden sm:block">
-              <span className="font-bold text-slate-900 text-sm tracking-tight">DEYSLA</span>
-              <span className="text-[10px] font-bold uppercase tracking-widest block bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent font-mono">
-                Management Console
+      {/* Main App Container */}
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        {/* Top Enterprise Bar */}
+        <header className="h-16 border-b border-slate-200/90 bg-white sticky top-0 z-30 px-4 md:px-8 flex items-center justify-between shadow-2xs">
+          {/* Left: Mobile Toggle & Contextual Breadcrumbs */}
+          <div className="flex items-center gap-3 min-w-0">
+            <button
+              onClick={() => setIsMobileSidebarOpen(true)}
+              className="md:hidden w-9 h-9 inline-flex items-center justify-center text-slate-700 hover:text-slate-950 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg cursor-pointer shrink-0 transition"
+              aria-label="Open mobile menu"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+
+            {/* Breadcrumb Navigation */}
+            <nav className="flex items-center gap-2 text-xs truncate">
+              <span
+                onClick={() => handleSelectTab('overview')}
+                className="font-semibold text-slate-500 hover:text-slate-900 cursor-pointer transition hidden sm:inline"
+              >
+                DEYSLA CMS
               </span>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <a
-            href="/en"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 text-xs border border-slate-200 transition font-medium"
-          >
-            <span>Live Storefront</span>
-            <ExternalLink className="w-3 h-3 text-slate-500" />
-          </a>
-
-          <div className="flex items-center gap-2 pl-3 border-l border-slate-200">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">
-              {user?.username?.charAt(0).toUpperCase() || 'A'}
-            </div>
-            <div className="hidden lg:block text-left">
-              <span className="text-xs font-semibold text-slate-900 block leading-none">{user?.username}</span>
-              <span className="text-[10px] text-slate-500">Authenticated Admin</span>
-            </div>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-400 rtl-flip shrink-0 hidden sm:inline" />
+              <span className="text-slate-500 font-medium truncate hidden md:inline">
+                {breadcrumb.section}
+              </span>
+              {breadcrumb.group && (
+                <>
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-400 rtl-flip shrink-0 hidden md:inline" />
+                  <span className="text-slate-500 font-medium truncate hidden md:inline">
+                    {breadcrumb.group}
+                  </span>
+                </>
+              )}
+              <ChevronRight className="w-3.5 h-3.5 text-slate-400 rtl-flip shrink-0" />
+              <span className="font-bold text-slate-900 truncate">
+                {breadcrumb.title}
+              </span>
+            </nav>
           </div>
 
-          <button
-            onClick={() => logout()}
-            className="p-2 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition cursor-pointer"
-            title="Sign Out"
-          >
-            <LogOut className="w-4 h-4" />
-          </button>
-        </div>
-      </header>
+          {/* Right: Actions, Storefront Link, User Profile */}
+          <div className="flex items-center gap-3 shrink-0">
+            {/* Live Storefront Button */}
+            <a
+              href="/en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 text-xs font-semibold border border-slate-200/80 transition"
+              title="Open public website in new tab"
+            >
+              <span>Live Website</span>
+              <ExternalLink className="w-3 h-3 text-slate-500" />
+            </a>
 
-      {/* Main Layout Body */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Sidebar Navigation */}
-        <aside
-          className={`fixed inset-y-0 left-0 z-30 w-72 bg-white border-r border-slate-200 pt-16 md:pt-0 transform transition-transform duration-200 md:relative md:translate-x-0 flex flex-col justify-between shadow-xs ${
-            isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          }`}
-        >
-          <div className="p-4 space-y-1.5 overflow-y-auto">
-            <div className="px-3 py-2 text-[10px] uppercase font-bold tracking-wider text-slate-400">
-              Operations & Catalogue
+            {/* User Profile Pill */}
+            <div className="flex items-center gap-2 pl-2 sm:pl-3 border-l border-slate-200">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-orange-500 to-sky-600 text-white font-bold text-xs flex items-center justify-center shadow-2xs">
+                {user?.username?.charAt(0).toUpperCase() || 'A'}
+              </div>
+              <div className="hidden lg:block text-left">
+                <span className="text-xs font-bold text-slate-900 block leading-none">
+                  {user?.username || 'admin'}
+                </span>
+                <span className="text-[10px] text-slate-500">Super Administrator</span>
+              </div>
             </div>
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = activeTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setActiveTab(item.id);
-                    setIsMobileSidebarOpen(false);
-                  }}
-                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium transition text-left cursor-pointer ${
-                    isActive
-                      ? 'bg-gradient-to-r from-orange-500 to-blue-600 text-white font-semibold shadow-md shadow-orange-500/20'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
-                    <span>{item.label}</span>
-                  </div>
-                  {isActive && <ChevronRight className="w-3.5 h-3.5 text-white/90" />}
-                </button>
-              );
-            })}
+
+            {/* Logout Button */}
+            <button
+              onClick={() => logout()}
+              className="p-2 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition cursor-pointer"
+              title="Sign out of DEYSLA CMS"
+            >
+              <LogOut className="w-4 h-4" />
+            </button>
           </div>
+        </header>
 
-          <div className="p-4 border-t border-slate-100 bg-slate-50/70">
-            <div className="flex items-center gap-2 text-[11px] text-slate-500">
-              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-blue-600" />
-              <span>Persistent Engine v2.0 (Active)</span>
-            </div>
-          </div>
-        </aside>
-
-        {/* Backdrop for mobile */}
-        {isMobileSidebarOpen && (
-          <div
-            onClick={() => setIsMobileSidebarOpen(false)}
-            className="fixed inset-0 bg-slate-900/40 z-20 md:hidden backdrop-blur-xs"
-          />
-        )}
-
-        {/* Content Area */}
-        <main className="flex-1 p-4 md:p-8 overflow-y-auto max-w-7xl mx-auto w-full bg-slate-50/60">
+        {/* Content Viewport */}
+        <main className="flex-1 p-4 md:p-8 overflow-y-auto max-w-7xl mx-auto w-full bg-slate-100/70">
           {activeTab === 'overview' && (
-            <AdminOverviewTab onNavigateTab={(t) => setActiveTab(t as AdminTab)} />
+            <AdminOverviewTab onNavigateTab={handleSelectTab} />
           )}
           {activeTab === 'inbox' && <AdminInquiryInboxTab />}
           {activeTab === 'settings' && <AdminSettingsTab />}

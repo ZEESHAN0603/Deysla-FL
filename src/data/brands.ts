@@ -10,6 +10,7 @@ export interface Brand {
   origin?: string;
   image?: string;
   imageAlt?: string;
+  status?: 'active' | 'inactive';
 }
 
 export const BRANDS_DATA: Brand[] = [

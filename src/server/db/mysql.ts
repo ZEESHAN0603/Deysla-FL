@@ -31,6 +31,8 @@ export function getDatabaseConfig(): DatabaseConfig {
   const password = process.env.DB_PASSWORD || process.env.MYSQL_PASSWORD || '';
   const database = process.env.DB_NAME || process.env.MYSQL_DATABASE || 'u157314465_DEYSLA';
   const useSsl = process.env.DB_SSL === 'true' || process.env.MYSQL_SSL === 'true';
+  // Allow configurable CA verification for managed hosting providers (default: true for secure transport)
+  const rejectUnauthorized = process.env.DB_SSL_REJECT_UNAUTHORIZED !== 'false';
 
   return {
     host,
@@ -40,7 +42,7 @@ export function getDatabaseConfig(): DatabaseConfig {
     database,
     connectionLimit: 10,
     connectTimeout: 5000,
-    ...(useSsl ? { ssl: { rejectUnauthorized: false } } : {}),
+    ...(useSsl ? { ssl: { rejectUnauthorized } } : {}),
   };
 }
 

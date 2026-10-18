@@ -2,16 +2,23 @@ import {
   getCatalog,
   saveProduct,
   toggleProductStatus,
+  deleteProduct,
   saveCatalogItem,
   toggleCatalogItemStatus,
+  deleteCatalogItem,
   saveBrand,
   toggleBrandStatus,
+  deleteBrand,
   getComplaints,
   updateComplaint,
+  deleteComplaint,
   getQuotes,
+  updateQuoteStatus,
+  deleteQuote,
   getDashboardStats,
   getAuditLogs,
   createCatalogBackup,
+  logAudit,
 } from './db/database.ts';
 import {
   getPublicCmsContent,
@@ -29,6 +36,7 @@ import {
   deleteCmsFaq,
   getCareerApplications,
   updateCareerApplicationStatus,
+  deleteCareerApplication,
 } from './db/cmsStore.ts';
 import { checkMysqlConnection, getDatabaseConfig } from './db/mysql.ts';
 import { seedMysqlDatabase } from './db/seedMysql.ts';
@@ -69,17 +77,20 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
   }
 
   // --------------------------------------------------------------------------
-  // Public Catalog Endpoint
+  // Catalog Endpoint (Public & Admin)
   // --------------------------------------------------------------------------
   if (pathname === '/api/catalog' && method === 'GET') {
-    const catalog = getCatalog();
-    // Return all data (or only active for public, but including status)
+    const catalog = await getCatalog();
+    const token = extractTokenFromRequest(request);
+    const auth = verifyAdminToken(token);
+    const includeInactive = url.searchParams.get('includeInactive') === 'true' || auth.valid;
+
     return Response.json({
       success: true,
       lastUpdated: catalog.lastUpdated,
-      products: catalog.products.filter((p) => p.status !== 'inactive'),
-      catalogItems: catalog.catalogItems.filter((i) => i.status !== 'inactive'),
-      brands: catalog.brands.filter((b) => b.status !== 'inactive'),
+      products: includeInactive ? catalog.products : catalog.products.filter((p) => p.status !== 'inactive'),
+      catalogItems: includeInactive ? catalog.catalogItems : catalog.catalogItems.filter((i) => i.status !== 'inactive'),
+      brands: includeInactive ? catalog.brands : catalog.brands.filter((b) => b.status !== 'inactive'),
       categories: catalog.categories,
       brandEquipmentItems: catalog.brandEquipmentItems,
     });
@@ -168,25 +179,25 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
 
     // 1. Dashboard Overview Stats
     if (pathname === '/api/admin/stats' && method === 'GET') {
-      const stats = getDashboardStats();
+      const stats = await getDashboardStats();
       return Response.json({ success: true, stats });
     }
 
     // 2. Audit Logs
     if (pathname === '/api/admin/audit-logs' && method === 'GET') {
-      const logs = getAuditLogs();
+      const logs = await getAuditLogs();
       return Response.json({ success: true, logs });
     }
 
     // 3. Manual Backup
     if (pathname === '/api/admin/backup' && method === 'POST') {
-      const backupPath = createCatalogBackup('admin_manual');
+      const backupPath = await createCatalogBackup('admin_manual');
       return Response.json({ success: true, backupPath });
     }
 
     // 4. Products CRUD & Status Toggle
     if (pathname === '/api/admin/products' && method === 'GET') {
-      const catalog = getCatalog();
+      const catalog = await getCatalog();
       return Response.json({ success: true, products: catalog.products });
     }
 
@@ -200,7 +211,7 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
           );
         }
         const isCreate = body.isCreate !== undefined ? !!body.isCreate : (method === 'POST' && !body.isUpdate);
-        const saved = saveProduct({ ...body, isCreate }, adminUser);
+        const saved = await saveProduct({ ...body, isCreate }, adminUser);
         return Response.json({ success: true, product: saved });
       } catch (err: any) {
         return Response.json({ success: false, error: err?.message }, { status: 400 });
@@ -210,8 +221,18 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
     if (pathname.match(/^\/api\/admin\/products\/[^/]+\/toggle-status$/) && method === 'POST') {
       try {
         const id = pathname.replace('/api/admin/products/', '').replace('/toggle-status', '');
-        const updated = toggleProductStatus(decodeURIComponent(id), adminUser);
+        const updated = await toggleProductStatus(decodeURIComponent(id), adminUser);
         return Response.json({ success: true, product: updated });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    if (pathname.match(/^\/api\/admin\/products\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/products/', '');
+        await deleteProduct(decodeURIComponent(id), adminUser);
+        return Response.json({ success: true, message: `Product "${id}" deleted.` });
       } catch (err: any) {
         return Response.json({ success: false, error: err?.message }, { status: 400 });
       }
@@ -219,7 +240,7 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
 
     // 5. Sub-Products / Catalog Items CRUD & Status Toggle
     if (pathname === '/api/admin/catalog-items' && method === 'GET') {
-      const catalog = getCatalog();
+      const catalog = await getCatalog();
       return Response.json({ success: true, catalogItems: catalog.catalogItems });
     }
 
@@ -233,7 +254,7 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
           );
         }
         const isCreate = body.isCreate !== undefined ? !!body.isCreate : (method === 'POST' && !body.isUpdate);
-        const saved = saveCatalogItem({ ...body, isCreate }, adminUser);
+        const saved = await saveCatalogItem({ ...body, isCreate }, adminUser);
         return Response.json({ success: true, catalogItem: saved });
       } catch (err: any) {
         return Response.json({ success: false, error: err?.message }, { status: 400 });
@@ -243,8 +264,18 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
     if (pathname.match(/^\/api\/admin\/catalog-items\/[^/]+\/toggle-status$/) && method === 'POST') {
       try {
         const id = pathname.replace('/api/admin/catalog-items/', '').replace('/toggle-status', '');
-        const updated = toggleCatalogItemStatus(decodeURIComponent(id), adminUser);
+        const updated = await toggleCatalogItemStatus(decodeURIComponent(id), adminUser);
         return Response.json({ success: true, catalogItem: updated });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    if (pathname.match(/^\/api\/admin\/catalog-items\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/catalog-items/', '');
+        await deleteCatalogItem(decodeURIComponent(id), adminUser);
+        return Response.json({ success: true, message: `Catalog item SKU "${id}" deleted.` });
       } catch (err: any) {
         return Response.json({ success: false, error: err?.message }, { status: 400 });
       }
@@ -252,7 +283,7 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
 
     // 6. Brands CRUD & Status Toggle
     if (pathname === '/api/admin/brands' && method === 'GET') {
-      const catalog = getCatalog();
+      const catalog = await getCatalog();
       return Response.json({ success: true, brands: catalog.brands });
     }
 
@@ -266,19 +297,28 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
           );
         }
         const isCreate = body.isCreate !== undefined ? !!body.isCreate : (method === 'POST' && !body.isUpdate);
-        const saved = saveBrand({ ...body, isCreate }, adminUser);
+        const saved = await saveBrand({ ...body, isCreate }, adminUser);
         return Response.json({ success: true, brand: saved });
       } catch (err: any) {
         return Response.json({ success: false, error: err?.message }, { status: 400 });
       }
     }
 
-
     if (pathname.match(/^\/api\/admin\/brands\/[^/]+\/toggle-status$/) && method === 'POST') {
       try {
         const id = pathname.replace('/api/admin/brands/', '').replace('/toggle-status', '');
-        const updated = toggleBrandStatus(decodeURIComponent(id), adminUser);
+        const updated = await toggleBrandStatus(decodeURIComponent(id), adminUser);
         return Response.json({ success: true, brand: updated });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    if (pathname.match(/^\/api\/admin\/brands\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/brands/', '');
+        await deleteBrand(decodeURIComponent(id), adminUser);
+        return Response.json({ success: true, message: `Brand "${id}" deleted.` });
       } catch (err: any) {
         return Response.json({ success: false, error: err?.message }, { status: 400 });
       }
@@ -286,7 +326,7 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
 
     // 7. Customer Complaints / Contact Inquiries
     if (pathname === '/api/admin/complaints' && method === 'GET') {
-      const complaints = getComplaints();
+      const complaints = await getComplaints();
       return Response.json({ success: true, complaints });
     }
 
@@ -294,17 +334,28 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
       try {
         const id = pathname.replace('/api/admin/complaints/', '');
         const body = await request.json().catch(() => ({}));
-        const updated = updateComplaint(decodeURIComponent(id), body, adminUser);
+        const updated = await updateComplaint(decodeURIComponent(id), body, adminUser);
         return Response.json({ success: true, complaint: updated });
       } catch (err: any) {
         return Response.json({ success: false, error: err?.message }, { status: 400 });
       }
     }
 
+    if (pathname.match(/^\/api\/admin\/complaints\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/complaints/', '');
+        await deleteComplaint(decodeURIComponent(id), adminUser);
+        return Response.json({ success: true, message: `Complaint "${id}" deleted.` });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+
     // 7.1 Unified Customer Inquiries & Job Applications Inbox
     if (pathname === '/api/admin/inquiries' && method === 'GET') {
       try {
-        const complaints = getComplaints();
+        const complaints = await getComplaints();
         const careers = await getCareerApplications();
 
         const unifiedList = [
@@ -450,7 +501,7 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
         }
 
         // Security check: verify inquiry exists and recipient email matches
-        const complaints = getComplaints();
+        const complaints = await getComplaints();
         const careers = await getCareerApplications();
         const compMatch = complaints.find((c) => c.id === inquiryId);
         const carMatch = careers.find((c) => c.id === inquiryId);
@@ -506,7 +557,7 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
         if (compMatch) {
           const currentNotes = compMatch.notes ? `${compMatch.notes}\n${replyNote}` : replyNote;
           const newStatus = (markStatus as any) || (compMatch.status === 'New' ? 'In Progress' : compMatch.status);
-          updateComplaint(inquiryId, { status: newStatus, notes: currentNotes }, adminUser);
+          await updateComplaint(inquiryId, { status: newStatus, notes: currentNotes }, adminUser);
         } else if (carMatch) {
           const currentNotes = carMatch.notes ? `${carMatch.notes}\n${replyNote}` : replyNote;
           let newStatus = carMatch.status;
@@ -535,10 +586,10 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
         const body = await request.json().catch(() => ({}));
         const { status, notes } = body;
 
-        const complaints = getComplaints();
+        const complaints = await getComplaints();
         const compMatch = complaints.find((c) => c.id === decodedId);
         if (compMatch) {
-          const updated = updateComplaint(
+          const updated = await updateComplaint(
             decodedId,
             {
               status: status as 'New' | 'In Progress' | 'Resolved',
@@ -568,11 +619,62 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
       }
     }
 
-    // 8. Quotation Requests (View-Only Inspection)
+    if (pathname.match(/^\/api\/admin\/inquiries\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/inquiries/', '');
+        const decodedId = decodeURIComponent(id);
+
+        const complaints = await getComplaints();
+        const compMatch = complaints.find((c) => c.id === decodedId);
+        if (compMatch) {
+          await deleteComplaint(decodedId, adminUser);
+          return Response.json({ success: true, message: `Inquiry "${decodedId}" deleted.` });
+        }
+
+        const careers = await getCareerApplications();
+        const carMatch = careers.find((c) => c.id === decodedId);
+        if (carMatch) {
+          await deleteCareerApplication(decodedId, adminUser);
+          return Response.json({ success: true, message: `Inquiry application "${decodedId}" deleted.` });
+        }
+
+        return Response.json({ success: false, error: `Inquiry "${decodedId}" not found.` }, { status: 404 });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    // 8. Quotation Requests (RFQs)
     if (pathname === '/api/admin/quotes' && method === 'GET') {
-      const quotes = getQuotes();
+      const quotes = await getQuotes();
       return Response.json({ success: true, quotes });
     }
+
+    if (pathname.match(/^\/api\/admin\/quotes\/[^/]+$/) && (method === 'PATCH' || method === 'PUT')) {
+      try {
+        const id = pathname.replace('/api/admin/quotes/', '');
+        const body = await request.json().catch(() => ({}));
+        const { status, notes } = body;
+        if (!status) {
+          return Response.json({ success: false, error: 'Status is required.' }, { status: 400 });
+        }
+        const updated = await updateQuoteStatus(decodeURIComponent(id), status, notes, adminUser);
+        return Response.json({ success: true, quote: updated });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
+    if (pathname.match(/^\/api\/admin\/quotes\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/quotes/', '');
+        await deleteQuote(decodeURIComponent(id), adminUser);
+        return Response.json({ success: true, message: `Quotation request "${id}" deleted.` });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
 
     // 9. Existing Images Browser & Validation
     if (pathname === '/api/admin/existing-images' && method === 'GET') {
@@ -608,6 +710,14 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
             { status: 400 }
           );
         }
+
+        await logAudit({
+          user: adminUser,
+          action: 'UPLOAD_IMAGE',
+          entity: 'PRODUCT',
+          entityId: uploadResult.url,
+          details: `Uploaded image: ${uploadResult.url}`,
+        });
 
         return Response.json({
           success: true,
@@ -814,13 +924,24 @@ export async function handleAdminApiRequest(request: Request): Promise<Response>
     if (pathname.match(/^\/api\/admin\/cms\/careers\/[^/]+$/) && (method === 'PATCH' || method === 'PUT')) {
       try {
         const id = pathname.replace('/api/admin/cms/careers/', '');
-        const { status } = await request.json();
-        const updated = await updateCareerApplicationStatus(decodeURIComponent(id), status, adminUser);
+        const { status, notes } = await request.json();
+        const updated = await updateCareerApplicationStatus(decodeURIComponent(id), status, adminUser, notes);
         return Response.json({ success: true, application: updated });
       } catch (err: any) {
         return Response.json({ success: false, error: err?.message }, { status: 400 });
       }
     }
+
+    if (pathname.match(/^\/api\/admin\/cms\/careers\/[^/]+$/) && method === 'DELETE') {
+      try {
+        const id = pathname.replace('/api/admin/cms/careers/', '');
+        await deleteCareerApplication(decodeURIComponent(id), adminUser);
+        return Response.json({ success: true, message: `Career application "${id}" deleted.` });
+      } catch (err: any) {
+        return Response.json({ success: false, error: err?.message }, { status: 400 });
+      }
+    }
+
   }
 
   return Response.json({ error: 'Endpoint Not Found' }, { status: 404 });

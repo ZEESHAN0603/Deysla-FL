@@ -14,24 +14,32 @@ export const BrandDetailPage: React.FC = () => {
   const { addItem, setIsEnquiryModalOpen } = useCart();
   const { getProductImage } = usePosterImages();
   const { language, formatPath } = useLanguage();
-  const { brands, products, categories } = useCatalog();
+  const { brands, activeProducts: products, categories, brandEquipmentItems } = useCatalog();
   const isAr = language === "ar";
 
-  const brand = brands.find((b) => b.slug === brandSlug || b.id === brandSlug);
+  const brand = brands.find((b) => (b.slug === brandSlug || b.id === brandSlug) && b.status !== "inactive");
 
   if (!brand) {
     return <Navigate to={formatPath("/brands")} replace />;
   }
 
-  const brandEquipment = getBrandEquipmentItems(brand.id);
+  // Dynamic brand equipment models from MySQL with fallback to static catalog
+  const brandEquipment =
+    brandEquipmentItems && brandEquipmentItems.length > 0
+      ? brandEquipmentItems.filter((be) => be.brandId === brand.id)
+      : getBrandEquipmentItems(brand.id);
 
-  // Cross-linked products supported strictly by DEYSLA
-  const supportedProducts = products.filter((p) =>
-    brand.productIds.includes(p.id)
+  // Cross-linked products supported strictly by DEYSLA (checks both brand.productIds and p.brandIds)
+  const supportedProducts = products.filter(
+    (p) =>
+      (brand.productIds && brand.productIds.includes(p.id)) ||
+      (p.brandIds && p.brandIds.includes(brand.id))
   );
 
-  const supportedCategories = categories.filter((c) =>
-    brand.categoryIds.includes(c.id)
+  const supportedCategories = categories.filter(
+    (c) =>
+      (brand.categoryIds && brand.categoryIds.includes(c.id)) ||
+      supportedProducts.some((p) => p.categoryId === c.id)
   );
 
 

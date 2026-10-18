@@ -9,14 +9,70 @@ import { POST as careersHandler } from '../../app/api/careers/route.ts';
 import { GET as verifySmtpHandler } from '../../app/api/verify-smtp/route.ts';
 import { handleAdminApiRequest } from './adminApiHandler.ts';
 
+import fs from 'fs';
+import { getUploadsDir, getLegacyUploadsDir, ensureUploadsDir } from './imageService.ts';
+
 // Load .env and .env.local
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+
+function serveFileFromDisk(dir: string, req: IncomingMessage, res: ServerResponse): boolean {
+  try {
+    const rawUrl = (req.url || '').split('?')[0];
+    const cleanSubPath = rawUrl
+      .replace(/^\/?(assets\/uploads|uploads)\/?/i, '')
+      .replace(/^\/+/, '');
+
+    if (!cleanSubPath) return false;
+
+    const resolvedDir = path.resolve(dir);
+    const targetPath = path.resolve(resolvedDir, cleanSubPath);
+    const normalizedDir = resolvedDir.endsWith(path.sep) ? resolvedDir : resolvedDir + path.sep;
+
+    if (!targetPath.startsWith(normalizedDir) && targetPath !== resolvedDir) return false;
+
+    if (fs.existsSync(targetPath) && fs.statSync(targetPath).isFile()) {
+      const ext = path.extname(targetPath).toLowerCase();
+      const mimeTypes: Record<string, string> = {
+        '.webp': 'image/webp',
+        '.png': 'image/png',
+        '.jpg': 'image/jpeg',
+        '.jpeg': 'image/jpeg',
+        '.svg': 'image/svg+xml',
+        '.gif': 'image/gif',
+      };
+      res.statusCode = 200;
+      res.setHeader('Content-Type', mimeTypes[ext] || 'application/octet-stream');
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+      fs.createReadStream(targetPath).pipe(res);
+      return true;
+    }
+  } catch (err) {
+    console.error('[DEYSLA Vite Static Error]:', err);
+  }
+  return false;
+}
 
 export function smtpApiPlugin(): Plugin {
   return {
     name: 'smtp-api-plugin',
     configureServer(server: ViteDevServer) {
+      const uploadsDir = ensureUploadsDir();
+      const legacyUploads = getLegacyUploadsDir();
+
+      // Serve persistent uploads
+      server.middlewares.use('/uploads', (req: IncomingMessage, res: ServerResponse, next: () => void) => {
+        if (serveFileFromDisk(uploadsDir, req, res)) return;
+        if (fs.existsSync(legacyUploads) && serveFileFromDisk(legacyUploads, req, res)) return;
+        next();
+      });
+
+      server.middlewares.use('/assets/uploads', (req: IncomingMessage, res: ServerResponse, next: () => void) => {
+        if (serveFileFromDisk(uploadsDir, req, res)) return;
+        if (fs.existsSync(legacyUploads) && serveFileFromDisk(legacyUploads, req, res)) return;
+        next();
+      });
+
       server.middlewares.use('/api/catalog', (req: IncomingMessage, res: ServerResponse) => {
         handleNodeRequest(req, res, handleAdminApiRequest);
       });

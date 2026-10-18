@@ -308,6 +308,14 @@ export const MIGRATIONS: Migration[] = [
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;`,
     ],
   },
+  {
+    id: '002_enhance_complaints_and_careers',
+    name: 'Add inquiry type to complaints and notes to careers',
+    up: [
+      `ALTER TABLE cms_complaints ADD COLUMN IF NOT EXISTS type VARCHAR(50) DEFAULT 'Contact Enquiry' AFTER message;`,
+      `ALTER TABLE cms_careers ADD COLUMN IF NOT EXISTS notes LONGTEXT AFTER status;`,
+    ],
+  },
 ];
 
 export async function runMigrations(): Promise<{ success: boolean; appliedCount: number; message: string }> {
@@ -375,7 +383,7 @@ export async function runMigrations(): Promise<{ success: boolean; appliedCount:
 }
 
 // Allow direct CLI execution: tsx src/server/db/migrations/runMigrations.ts
-if (import.meta.url === `file:///${process.argv[1].replace(/\\/g, '/')}` || process.argv[1]?.endsWith('runMigrations.ts')) {
+if (process.argv[1] && (import.meta.url === `file:///${process.argv[1].replace(/\\/g, '/')}` || process.argv[1].endsWith('runMigrations.ts'))) {
   console.log('[DEYSLA DB] Running database migrations...');
   runMigrations().then((res) => {
     console.log(res.message);

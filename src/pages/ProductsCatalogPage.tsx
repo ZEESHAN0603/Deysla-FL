@@ -7,7 +7,7 @@ import { CATEGORY_TRANSLATIONS } from "../i18n/translations";
 
 export const ProductsCatalogPage: React.FC = () => {
   const { dict, lang, formatPath } = useLanguage();
-  const { products, categories } = useCatalog();
+  const { activeProducts: products, categories } = useCatalog();
   const [searchTerm, setSearchTerm] = useState("");
 
   const getCatName = (catId: string, fallback: string) => {

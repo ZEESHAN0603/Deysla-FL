@@ -25,6 +25,7 @@ import {
   Loader2,
   Sparkles,
   ArrowUpRight,
+  Trash2,
 } from 'lucide-react';
 import { useAdminAuth } from '../../context/AdminAuthContext';
 
@@ -114,6 +115,9 @@ export function AdminInquiryInboxTab() {
   const [isSendingReply, setIsSendingReply] = useState(false);
   const [replySuccessMessage, setReplySuccessMessage] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [inquiryToDelete, setInquiryToDelete] = useState<UnifiedInquiry | null>(null);
+  const [isDeletingInquiry, setIsDeletingInquiry] = useState(false);
+  const [deleteInquiryError, setDeleteInquiryError] = useState<string | null>(null);
 
   // Debounce search query
   useEffect(() => {
@@ -246,6 +250,37 @@ export function AdminInquiryInboxTab() {
       setIsSavingNotes(false);
     }
   };
+
+  // Handle Deleting an Inquiry
+  const handleDeleteInquiry = async () => {
+    if (!inquiryToDelete) return;
+    try {
+      setIsDeletingInquiry(true);
+      setDeleteInquiryError(null);
+      const res = await fetch(`/api/admin/inquiries/${encodeURIComponent(inquiryToDelete.id)}`, {
+        method: 'DELETE',
+        headers: authHeaders(),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setInquiries((prev) => prev.filter((item) => item.id !== inquiryToDelete.id));
+        if (selectedInquiry?.id === inquiryToDelete.id) {
+          setSelectedInquiry(null);
+        }
+        setInquiryToDelete(null);
+        setActionSuccess(`Inquiry #${inquiryToDelete.id} permanently deleted.`);
+        setTimeout(() => setActionSuccess(null), 3000);
+        fetchInquiries();
+      } else {
+        setDeleteInquiryError(data.error || 'Failed to delete inquiry.');
+      }
+    } catch (err: any) {
+      setDeleteInquiryError(err?.message || 'Error deleting inquiry.');
+    } finally {
+      setIsDeletingInquiry(false);
+    }
+  };
+
 
   // Open Direct Email Reply Modal
   const handleOpenReplyModal = (inquiry: UnifiedInquiry) => {
@@ -648,6 +683,14 @@ export function AdminInquiryInboxTab() {
                         >
                           View
                         </button>
+                        <button
+                          type="button"
+                          onClick={() => setInquiryToDelete(inquiry)}
+                          className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition cursor-pointer"
+                          title="Delete inquiry"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
                       </div>
                     </td>
                   </tr>
@@ -940,6 +983,16 @@ export function AdminInquiryInboxTab() {
                   <Send className="w-3.5 h-3.5" />
                   <span>Send Direct Reply via SMTP</span>
                 </button>
+
+                <button
+                  type="button"
+                  onClick={() => setInquiryToDelete(selectedInquiry)}
+                  className="px-3.5 py-2 bg-white hover:bg-rose-50 text-rose-600 rounded-xl text-xs font-semibold border border-rose-200 transition flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                  title="Permanently Delete Inquiry"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  <span>Delete</span>
+                </button>
               </div>
 
               <button
@@ -1067,6 +1120,69 @@ export function AdminInquiryInboxTab() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirmation Modal */}
+      {inquiryToDelete && (
+        <div className="fixed inset-0 z-70 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div className="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto">
+              <Trash2 className="w-6 h-6" />
+            </div>
+
+            <div className="text-center space-y-1">
+              <h3 className="text-base font-bold text-slate-900">Confirm Record Deletion</h3>
+              <p className="text-xs text-slate-500">
+                Are you sure you want to permanently delete this customer inquiry record?
+              </p>
+            </div>
+
+            <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-1">
+              <div className="flex justify-between">
+                <span className="text-slate-400">Customer:</span>
+                <strong className="text-slate-800">{inquiryToDelete.name}</strong>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">Subject:</span>
+                <span className="text-slate-700 truncate max-w-[200px]">{inquiryToDelete.subjectOrPosition}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">Record ID:</span>
+                <span className="font-mono text-slate-600">{inquiryToDelete.id}</span>
+              </div>
+              <div className="text-[11px] text-rose-600 pt-1 border-t border-slate-200">
+                This record will be permanently purged from Hostinger MySQL ({inquiryToDelete.source}) and logged in audit trail.
+              </div>
+            </div>
+
+            {deleteInquiryError && (
+              <div className="p-2.5 bg-rose-50 border border-rose-200 text-rose-700 rounded-xl text-xs flex items-center gap-2">
+                <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                <span>{deleteInquiryError}</span>
+              </div>
+            )}
+
+            <div className="flex items-center justify-end gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setInquiryToDelete(null)}
+                disabled={isDeletingInquiry}
+                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleDeleteInquiry}
+                disabled={isDeletingInquiry}
+                className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer disabled:opacity-50"
+              >
+                {isDeletingInquiry ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Trash2 className="w-3.5 h-3.5" />}
+                <span>Permanently Delete</span>
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -15,10 +15,12 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { useCmsContent } from '../../context/CmsContentContext';
+import { useAdminAuth } from '../../context/AdminAuthContext';
 import { ImagePickerModal } from './ImagePickerModal';
 
 export function AdminSettingsTab() {
   const { companyInfo, refreshCmsContent } = useCmsContent();
+  const { authHeaders } = useAdminAuth();
 
   const [dbStatus, setDbStatus] = useState<{
     loading: boolean;
@@ -70,7 +72,9 @@ export function AdminSettingsTab() {
   const fetchDbStatus = async () => {
     setDbStatus((prev) => ({ ...prev, loading: true }));
     try {
-      const res = await fetch('/api/admin/cms/db-status');
+      const res = await fetch('/api/admin/cms/db-status', {
+        headers: authHeaders(),
+      });
       const data = await res.json();
       if (data.success) {
         setDbStatus({
@@ -96,7 +100,10 @@ export function AdminSettingsTab() {
   const handleRunMigration = async () => {
     setMigrationStatus({ running: true, message: 'Executing migrations & importing records...', success: null });
     try {
-      const res = await fetch('/api/admin/cms/migrate-seed', { method: 'POST' });
+      const res = await fetch('/api/admin/cms/migrate-seed', {
+        method: 'POST',
+        headers: authHeaders(),
+      });
       const data = await res.json();
       if (data.success) {
         setMigrationStatus({
@@ -132,7 +139,7 @@ export function AdminSettingsTab() {
       for (const [key, val] of Object.entries(formData)) {
         const res = await fetch('/api/admin/cms/settings', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: authHeaders({ 'Content-Type': 'application/json' }),
           body: JSON.stringify({ key, value: val }),
         });
         if (!res.ok) {

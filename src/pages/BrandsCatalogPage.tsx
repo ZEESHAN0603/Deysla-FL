@@ -27,19 +27,22 @@ export const BrandsCatalogPage: React.FC = () => {
   ];
 
   const filteredBrands = brands.filter((brand) => {
+    const isActive = brand.status !== "inactive";
     const matchesCategory =
       selectedCategory === "all" || brand.categoryIds.includes(selectedCategory);
     const matchesSearch =
       brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       brand.description.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
+    return isActive && matchesCategory && matchesSearch;
   });
 
-  const brandItemsForMarquee = brands.map((b) => ({
-    name: b.name,
-    logo: b.logo || '/assets/brands/cisco-logo-0-2048x2048-1-1536x1536-1.png',
-    category: b.origin,
-  }));
+  const brandItemsForMarquee = brands
+    .filter((b) => b.status !== "inactive")
+    .map((b) => ({
+      name: b.name,
+      logo: b.logo || '/assets/brands/cisco-logo-0-2048x2048-1-1536x1536-1.png',
+      category: b.origin,
+    }));
 
   return (
     <div className="w-full bg-slate-50 min-h-screen">

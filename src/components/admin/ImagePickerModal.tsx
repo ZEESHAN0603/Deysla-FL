@@ -345,7 +345,7 @@ export function ImagePickerModal({
                   </button>
                 </div>
                 <p className="text-[11px] text-slate-500 mt-1">
-                  Paths must resolve inside public/assets directory (e.g., /assets/products/network-switches.webp).
+                  Paths can be persistent uploads (e.g. /uploads/image.webp) or bundled static assets (e.g. /assets/products/network-switches.webp).
                 </p>
               </div>
 
@@ -455,7 +455,7 @@ export function ImagePickerModal({
                         className="w-full bg-white border border-slate-200 rounded-lg px-3 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-orange-500"
                       />
                       <span className="text-[10px] text-slate-500 mt-1 block">
-                        File will be saved to persistent storage at /assets/uploads/{preferredName || 'prod-upload'}-*.webp
+                        File will be saved to persistent storage at /uploads/{preferredName || 'upload'}-*.webp
                       </span>
                     </div>
                   </div>

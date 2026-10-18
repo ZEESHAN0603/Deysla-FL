@@ -13,10 +13,12 @@ import {
   Building,
 } from 'lucide-react';
 import { useCmsContent } from '../../context/CmsContentContext';
+import { useAdminAuth } from '../../context/AdminAuthContext';
 import { Review } from '../../data/reviews';
 
 export function AdminReviewsTab() {
   const { reviews, refreshCmsContent } = useCmsContent();
+  const { authHeaders } = useAdminAuth();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [editingReview, setEditingReview] = useState<Partial<Review> | null>(null);
@@ -61,7 +63,7 @@ export function AdminReviewsTab() {
     try {
       const res = await fetch('/api/admin/cms/reviews', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(editingReview),
       });
 
@@ -85,6 +87,7 @@ export function AdminReviewsTab() {
     try {
       const res = await fetch(`/api/admin/cms/reviews/${encodeURIComponent(id)}`, {
         method: 'DELETE',
+        headers: authHeaders(),
       });
       if (!res.ok) {
         const err = await res.json();

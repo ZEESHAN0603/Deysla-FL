@@ -14,11 +14,13 @@ import {
   Building,
 } from 'lucide-react';
 import { useCmsContent } from '../../context/CmsContentContext';
+import { useAdminAuth } from '../../context/AdminAuthContext';
 import { Project } from '../../data/projects';
 import { ImagePickerModal } from './ImagePickerModal';
 
 export function AdminProjectsTab() {
   const { projects, refreshCmsContent } = useCmsContent();
+  const { authHeaders } = useAdminAuth();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [editingProject, setEditingProject] = useState<Partial<Project> | null>(null);
@@ -84,7 +86,7 @@ export function AdminProjectsTab() {
     try {
       const res = await fetch('/api/admin/cms/projects', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(payload),
       });
 
@@ -108,6 +110,7 @@ export function AdminProjectsTab() {
     try {
       const res = await fetch(`/api/admin/cms/projects/${encodeURIComponent(id)}`, {
         method: 'DELETE',
+        headers: authHeaders(),
       });
       if (!res.ok) {
         const err = await res.json();

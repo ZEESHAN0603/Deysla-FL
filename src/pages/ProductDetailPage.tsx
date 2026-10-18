@@ -43,7 +43,7 @@ export const ProductDetailPage: React.FC = () => {
   const { addItem, setIsEnquiryModalOpen } = useCart();
   const { getProductImage } = usePosterImages();
   const { language, formatPath } = useLanguage();
-  const { products, brands, categories, getCatalogItemsBySubcategory } = useCatalog();
+  const { activeProducts: products, brands, categories, getCatalogItemsBySubcategory } = useCatalog();
   const isAr = language === "ar";
 
   const [selectedBrand, setSelectedBrand] = useState<string>("");
@@ -55,8 +55,23 @@ export const ProductDetailPage: React.FC = () => {
   const [backdropMode, setBackdropMode] = useState<"light" | "dark">("light");
   const [isZoomModalOpen, setIsZoomModalOpen] = useState<boolean>(false);
 
-  const product = products.find((p) => p.slug === productSlug || p.id === productSlug);
-  const category = categories.find((c) => c.slug === categorySlug || c.id === categorySlug);
+  const norm = (s?: string) => (s || '').toLowerCase().trim();
+  const targetProduct = norm(productSlug);
+  const targetCategory = norm(categorySlug);
+
+  const product = products.find((p) => {
+    const pSlug = norm(p.slug);
+    const pId = norm(p.id);
+    if (pSlug === targetProduct || pId === targetProduct) return true;
+    if (targetProduct === 'cctv' && (pSlug === 'cctvv' || pId === 'cctvv')) return true;
+    if (targetProduct === 'cctvv' && (pSlug === 'cctv' || pId === 'cctv')) return true;
+    return false;
+  });
+  const category = categories.find((c) => {
+    const cSlug = norm(c.slug);
+    const cId = norm(c.id);
+    return cSlug === targetCategory || cId === targetCategory;
+  });
 
   if (!product || !category) {
     return <Navigate to={formatPath("/products")} replace />;

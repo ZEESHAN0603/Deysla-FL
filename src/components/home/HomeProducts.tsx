@@ -4,7 +4,7 @@ import { ArrowRight, ChevronRight, Layers, Box } from "lucide-react";
 import { useCatalog } from "../../context/CatalogContext";
 
 export const HomeProducts: React.FC = () => {
-  const { products, categories } = useCatalog();
+  const { activeProducts: products, categories } = useCatalog();
 
   return (
     <section className="py-20 lg:py-24 bg-white border-b border-slate-200">

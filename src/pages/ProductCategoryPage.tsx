@@ -17,7 +17,7 @@ export const ProductCategoryPage: React.FC = () => {
   const { addItem, setIsEnquiryModalOpen } = useCart();
   const { getProductImage } = usePosterImages();
   const { dict, lang, formatPath } = useLanguage();
-  const { products, brands, categories, getCatalogItemsByCategory } = useCatalog();
+  const { activeProducts: products, brands, categories, getCatalogItemsByCategory } = useCatalog();
   const [selectedSubcategoryFilter, setSelectedSubcategoryFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 

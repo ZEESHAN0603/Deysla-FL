@@ -12,9 +12,11 @@ import {
   Layers,
 } from 'lucide-react';
 import { useCmsContent } from '../../context/CmsContentContext';
+import { useAdminAuth } from '../../context/AdminAuthContext';
 
 export function AdminContentTab() {
   const { getSectionContent, refreshCmsContent } = useCmsContent();
+  const { authHeaders } = useAdminAuth();
 
   const [selectedPage, setSelectedPage] = useState<'home' | 'about'>('home');
   const [selectedSection, setSelectedSection] = useState<'hero' | 'company_intro' | 'stats'>('hero');
@@ -53,7 +55,7 @@ export function AdminContentTab() {
     try {
       const res = await fetch('/api/admin/cms/sections', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({
           page_slug: 'home',
           section_key: 'hero',
@@ -89,7 +91,7 @@ export function AdminContentTab() {
     try {
       const res = await fetch('/api/admin/cms/sections', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({
           page_slug: 'home',
           section_key: 'company_intro',

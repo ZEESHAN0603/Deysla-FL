@@ -11,11 +11,13 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { useCmsContent } from '../../context/CmsContentContext';
+import { useAdminAuth } from '../../context/AdminAuthContext';
 import { GalleryItem } from '../../data/gallery';
 import { ImagePickerModal } from './ImagePickerModal';
 
 export function AdminGalleryTab() {
   const { gallery, refreshCmsContent } = useCmsContent();
+  const { authHeaders } = useAdminAuth();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [editingItem, setEditingItem] = useState<Partial<GalleryItem> | null>(null);
@@ -57,7 +59,7 @@ export function AdminGalleryTab() {
     try {
       const res = await fetch('/api/admin/cms/gallery', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(editingItem),
       });
 
@@ -81,6 +83,7 @@ export function AdminGalleryTab() {
     try {
       const res = await fetch(`/api/admin/cms/gallery/${encodeURIComponent(id)}`, {
         method: 'DELETE',
+        headers: authHeaders(),
       });
       if (!res.ok) {
         const err = await res.json();

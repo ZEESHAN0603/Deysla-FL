@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   Search,
   Plus,
@@ -13,6 +13,7 @@ import {
   Loader2,
   ExternalLink,
   Award,
+  Trash2,
 } from 'lucide-react';
 import { Brand } from '../../data/brands';
 import { useCatalog } from '../../context/CatalogContext';
@@ -36,6 +37,37 @@ export function AdminBrandsTab() {
   const [isSaving, setIsSaving] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successBanner, setSuccessBanner] = useState<string | null>(null);
+
+  // Deletion modal state
+  const [brandToDelete, setBrandToDelete] = useState<Brand | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const handleDeleteBrand = async () => {
+    if (!brandToDelete) return;
+    setIsDeleting(true);
+    try {
+      const res = await fetch(`/api/admin/brands/${encodeURIComponent(brandToDelete.id)}`, {
+        method: 'DELETE',
+        headers: authHeaders(),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to delete brand.');
+      }
+      setSuccessBanner(`Brand Partner "${brandToDelete.name}" (${brandToDelete.id}) was safely removed.`);
+      setTimeout(() => setSuccessBanner(null), 4000);
+      setBrandToDelete(null);
+      await refreshCatalog();
+    } catch (err: any) {
+      alert(err.message || 'Error deleting brand');
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  useEffect(() => {
+    refreshCatalog();
+  }, [refreshCatalog]);
 
   const filteredBrands = useMemo(() => {
     return brands.filter((b) => {
@@ -327,14 +359,25 @@ export function AdminBrandsTab() {
                       </td>
 
                       <td className="py-3 px-4 text-right">
-                        <button
-                          type="button"
-                          onClick={() => startEditBrand(b)}
-                          className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-medium transition flex items-center gap-1 border border-slate-200 ml-auto cursor-pointer"
-                        >
-                          <Edit2 className="w-3 h-3" />
-                          <span>Edit</span>
-                        </button>
+                        <div className="flex items-center justify-end gap-1.5">
+                          <button
+                            type="button"
+                            onClick={() => startEditBrand(b)}
+                            className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-medium transition flex items-center gap-1 border border-slate-200 cursor-pointer"
+                            title="Edit Brand"
+                          >
+                            <Edit2 className="w-3 h-3" />
+                            <span>Edit</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setBrandToDelete(b)}
+                            className="p-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-lg text-xs font-medium transition border border-rose-200 cursor-pointer"
+                            title="Delete Brand"
+                          >
+                            <Trash2 className="w-3 h-3" />
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );
@@ -511,6 +554,56 @@ export function AdminBrandsTab() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirmation Modal */}
+      {brandToDelete && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4 animate-in fade-in duration-150">
+          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-md shadow-2xl p-6 text-slate-800">
+            <div className="flex items-center gap-3 text-rose-600 mb-4">
+              <div className="p-3 bg-rose-100 rounded-xl">
+                <Trash2 className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold text-slate-900 text-base">Delete Partner Brand</h3>
+                <p className="text-xs text-slate-500">Permanent Database Action</p>
+              </div>
+            </div>
+
+            <p className="text-sm text-slate-600 mb-4">
+              Are you sure you want to permanently delete OEM Brand{' '}
+              <span className="font-bold text-slate-900">"{brandToDelete.name}"</span> (ID:{' '}
+              <code className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded">{brandToDelete.id}</code>)?
+            </p>
+
+            <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 mb-6 flex items-start gap-2">
+              <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+              <span>
+                Brands referenced by existing catalog products or commercial equipment cannot be deleted until those associations are safely removed or updated.
+              </span>
+            </div>
+
+            <div className="flex items-center justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => setBrandToDelete(null)}
+                disabled={isDeleting}
+                className="px-4 py-2 border border-slate-200 rounded-xl text-xs font-medium text-slate-700 hover:bg-slate-100 cursor-pointer disabled:opacity-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleDeleteBrand}
+                disabled={isDeleting}
+                className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-semibold shadow-md shadow-rose-600/20 transition flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+              >
+                {isDeleting ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Trash2 className="w-3.5 h-3.5" />}
+                <span>{isDeleting ? 'Deleting...' : 'Confirm Delete'}</span>
+              </button>
+            </div>
           </div>
         </div>
       )}
